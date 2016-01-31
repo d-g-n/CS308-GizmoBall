@@ -1,5 +1,6 @@
 package view;
+public class RunBoard implements Board{
 
-public class RunBoard {
-
+   
+   
 }

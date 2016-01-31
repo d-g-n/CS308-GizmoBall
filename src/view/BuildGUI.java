@@ -1,5 +1,5 @@
 package view;
 
-public class BuildGUI {
-
+public class BuildGUI implements GBallGui{
+   
 }

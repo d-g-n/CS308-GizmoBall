@@ -1,5 +1,5 @@
 package view;
-
-public class RunGUI {
-
+public class RunGUI implements GBallGui{
+   
+   
 }
