@@ -1,5 +1,5 @@
 package view;
 
-public interface GBallGui {
 
+public interface GBallGui {
 }

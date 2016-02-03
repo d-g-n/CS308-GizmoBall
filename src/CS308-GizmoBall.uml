@@ -1,136 +1,218 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:UMLLabProfile="http:///schemas/UMLLabProfile/NS/0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http:///schemas/UMLLabProfile/NS/0 pathmap://UMLLAB_PROFILES/UMLLab.profile.uml#UMLLabProfile-Annotation_2-UMLLabProfile">
-  <uml:Model xmi:id="_91uYUMd-EeWj08ZIq996Zg" name="CS308_GizmoBall">
-    <eAnnotations xmi:id="_9-Wv4Md-EeWj08ZIq996Zg" source="http://ns.yatta.de/umllab">
-      <contents xmi:type="ecore:EAnnotation" xmi:id="_9-Wv4cd-EeWj08ZIq996Zg" source="codegen">
-        <details xmi:id="_9-Wv4sd-EeWj08ZIq996Zg" key="codegenDirectory" value="/CS308-GizmoBall/src"/>
-        <details xmi:id="_-NYDUMd-EeWj08ZIq996Zg" key="AssociatedSourceCode" value="/CS308-GizmoBall/src/controller/BuildListener.java;1797168825/1;/CS308-GizmoBall/src/controller/MenuListener.java;454095050/1;/CS308-GizmoBall/src/controller/RunListener.java;2070464189/1;/CS308-GizmoBall/src/view/Board.java;2690729671/1;/CS308-GizmoBall/src/view/BuildBoard.java;1108603217/1;/CS308-GizmoBall/src/view/BuildGUI.java;2089773233/1;/CS308-GizmoBall/src/view/GBallGui.java;2604956181/1;/CS308-GizmoBall/src/view/RunBoard.java;569333903/1;/CS308-GizmoBall/src/view/RunGUI.java;3062893623/1;/CS308-GizmoBall/src/Physics.java;3650981775/1;"/>
+  <uml:Model xmi:id="_qTq5IMmbEeWBNseD5yJdiw" name="CS308_GizmoBall">
+    <eAnnotations xmi:id="_qZ_jkMmbEeWBNseD5yJdiw" source="http://ns.yatta.de/umllab">
+      <contents xmi:type="ecore:EAnnotation" xmi:id="_qZ_jkcmbEeWBNseD5yJdiw" source="codegen">
+        <details xmi:id="_qZ_jksmbEeWBNseD5yJdiw" key="codegenDirectory" value="/CS308-GizmoBall/src"/>
+        <details xmi:id="_rs3gsMmbEeWBNseD5yJdiw" key="AssociatedSourceCode" value="/CS308-GizmoBall/src/controller/BuildListener.java;1897690386/1;/CS308-GizmoBall/src/controller/MenuListener.java;1611138517/1;/CS308-GizmoBall/src/controller/RunListener.java;1273775109/1;/CS308-GizmoBall/src/gizmos/Absorber.java;3917554363/1;/CS308-GizmoBall/src/gizmos/Circle.java;1251692921/1;/CS308-GizmoBall/src/gizmos/Flipper.java;3056757570/1;/CS308-GizmoBall/src/gizmos/Gizmo.java;1001542703/1;/CS308-GizmoBall/src/gizmos/Rectangle.java;3597390338/1;/CS308-GizmoBall/src/gizmos/Square.java;2873482963/1;/CS308-GizmoBall/src/gizmos/Triangle.java;1332772545/1;/CS308-GizmoBall/src/gizmos/TriggerSystem.java;2509763914/1;/CS308-GizmoBall/src/physics/GeometryReference.java;1368246496/1;/CS308-GizmoBall/src/view/BuildGUI.java;3159318623/1;/CS308-GizmoBall/src/view/DesignViewMockup.java;2360042094/1;/CS308-GizmoBall/src/view/GBallGui.java;406333169/1;/CS308-GizmoBall/src/view/PlayViewMockup.java;2730848948/1;/CS308-GizmoBall/src/view/RunGUI.java;4260156869/1;/CS308-GizmoBall/src/physics/Angle.java;1840935406/0;/CS308-GizmoBall/src/physics/Circle.java;3860803380/0;/CS308-GizmoBall/src/physics/Geometry.java;1658753026/0;/CS308-GizmoBall/src/physics/GeometryCompare.java;1495349252/0;/CS308-GizmoBall/src/physics/GeometryImpl.java;679890778/0;/CS308-GizmoBall/src/physics/GeometryInterface.java;2659954493/0;/CS308-GizmoBall/src/physics/IntervalList.java;4255677628/0;/CS308-GizmoBall/src/physics/LineSegment.java;3502346235/0;/CS308-GizmoBall/src/physics/Newton.java;2232066794/0;/CS308-GizmoBall/src/physics/SimpleGeometry.java;2644178888/0;/CS308-GizmoBall/src/physics/Vect.java;2400111623/0;/CS308-GizmoBall/src/model/Board.java;3746617331/1;/CS308-GizmoBall/src/model/BuildBoard.java;2518785875/1;/CS308-GizmoBall/src/model/RunBoard.java;2152902013/1;"/>
       </contents>
     </eAnnotations>
-    <elementImport xmi:id="_-Env8Md-EeWj08ZIq996Zg">
+    <elementImport xmi:id="_qnvrsMmbEeWBNseD5yJdiw">
       <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
     </elementImport>
-    <elementImport xmi:id="_-Env8cd-EeWj08ZIq996Zg">
+    <elementImport xmi:id="_qnvrscmbEeWBNseD5yJdiw">
       <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
     </elementImport>
-    <elementImport xmi:id="_-EoXAMd-EeWj08ZIq996Zg">
+    <elementImport xmi:id="_qnvrssmbEeWBNseD5yJdiw">
       <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#char"/>
     </elementImport>
-    <elementImport xmi:id="_-EoXAcd-EeWj08ZIq996Zg">
+    <elementImport xmi:id="_qnvrs8mbEeWBNseD5yJdiw">
       <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
     </elementImport>
-    <elementImport xmi:id="_-EoXAsd-EeWj08ZIq996Zg">
+    <elementImport xmi:id="_qnvrtMmbEeWBNseD5yJdiw">
       <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#float"/>
     </elementImport>
-    <elementImport xmi:id="_-EoXA8d-EeWj08ZIq996Zg">
+    <elementImport xmi:id="_qnvrtcmbEeWBNseD5yJdiw">
       <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
     </elementImport>
-    <elementImport xmi:id="_-EoXBMd-EeWj08ZIq996Zg">
+    <elementImport xmi:id="_qnvrtsmbEeWBNseD5yJdiw">
       <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
     </elementImport>
-    <elementImport xmi:id="_-EoXBcd-EeWj08ZIq996Zg">
+    <elementImport xmi:id="_qnvrt8mbEeWBNseD5yJdiw">
       <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#short"/>
     </elementImport>
-    <elementImport xmi:id="_-Eo-EMd-EeWj08ZIq996Zg">
+    <elementImport xmi:id="_qnwSwMmbEeWBNseD5yJdiw">
       <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </elementImport>
-    <packagedElement xmi:type="uml:Package" xmi:id="_-EsBYMd-EeWj08ZIq996Zg" name="controller">
-      <packagedElement xmi:type="uml:Class" xmi:id="_-E4OoMd-EeWj08ZIq996Zg" name="BuildListener">
-        <ownedAttribute xmi:id="_cU2-1MeAEeWj08ZIq996Zg" name="buildGUI" type="_-FAxgMd-EeWj08ZIq996Zg" association="_cU2-0MeAEeWj08ZIq996Zg">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_cU2-1ceAEeWj08ZIq996Zg"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_cU2-1seAEeWj08ZIq996Zg" value="*"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_qnwSwcmbEeWBNseD5yJdiw" name="view">
+      <packagedElement xmi:type="uml:Class" xmi:id="_qo6JUMmbEeWBNseD5yJdiw" name="BuildGUI">
+        <ownedAttribute xmi:id="_nbBewMmgEeWBNseD5yJdiw" name="buildListener" type="_qorf0MmbEeWBNseD5yJdiw" association="_nbA3sMmgEeWBNseD5yJdiw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_nbBewcmgEeWBNseD5yJdiw"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_nbBewsmgEeWBNseD5yJdiw" value="*"/>
         </ownedAttribute>
-        <ownedAttribute xmi:id="_oapE5MeAEeWj08ZIq996Zg" name="physics" type="_FSUswMd_EeWj08ZIq996Zg" association="_oapE4MeAEeWj08ZIq996Zg">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_oapE5ceAEeWj08ZIq996Zg"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_oapE5seAEeWj08ZIq996Zg" value="*"/>
+        <interfaceRealization xmi:id="_qqGcIMmbEeWBNseD5yJdiw" client="_qo6JUMmbEeWBNseD5yJdiw" supplier="_qpCFIMmbEeWBNseD5yJdiw" contract="_qpCFIMmbEeWBNseD5yJdiw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Interface" xmi:id="_qpCFIMmbEeWBNseD5yJdiw" name="GBallGui">
+        <ownedAttribute xmi:id="_aI6P1MmdEeWBNseD5yJdiw" name="gUI" type="_8sCiIMmcEeWBNseD5yJdiw" association="_aI6P0MmdEeWBNseD5yJdiw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_aI624MmdEeWBNseD5yJdiw"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_aI624cmdEeWBNseD5yJdiw" value="*"/>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_-E9HIMd-EeWj08ZIq996Zg" name="MenuListener">
-        <ownedAttribute xmi:id="_bDIRNMeAEeWj08ZIq996Zg" name="runGUI" type="_-FDNwMd-EeWj08ZIq996Zg" association="_bDIRMMeAEeWj08ZIq996Zg">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_bDIRNceAEeWj08ZIq996Zg"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bDIRNseAEeWj08ZIq996Zg" value="*"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_qpHksMmbEeWBNseD5yJdiw" name="RunGUI">
+        <ownedAttribute xmi:id="_t9JPUMmdEeWBNseD5yJdiw" name="runListener" type="_qowYUMmbEeWBNseD5yJdiw" association="_t9IoQMmdEeWBNseD5yJdiw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_t9JPUcmdEeWBNseD5yJdiw"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_t9JPUsmdEeWBNseD5yJdiw" value="*"/>
         </ownedAttribute>
+        <interfaceRealization xmi:id="_qqJfcMmbEeWBNseD5yJdiw" client="_qpHksMmbEeWBNseD5yJdiw" supplier="_qpCFIMmbEeWBNseD5yJdiw" contract="_qpCFIMmbEeWBNseD5yJdiw"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_-E9uMMd-EeWj08ZIq996Zg" name="RunListener">
-        <ownedAttribute xmi:id="_at3L1MeAEeWj08ZIq996Zg" name="runGUI" type="_-FDNwMd-EeWj08ZIq996Zg" association="_at3L0MeAEeWj08ZIq996Zg">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_at3L1ceAEeWj08ZIq996Zg"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_at3L1seAEeWj08ZIq996Zg" value="*"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:id="_d31NdMeAEeWj08ZIq996Zg" name="physics" type="_FSUswMd_EeWj08ZIq996Zg" association="_d31NcMeAEeWj08ZIq996Zg">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_d31NdceAEeWj08ZIq996Zg"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_d31NdseAEeWj08ZIq996Zg" value="*"/>
-        </ownedAttribute>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_at3L0MeAEeWj08ZIq996Zg" name="" memberEnd="_at3L0ceAEeWj08ZIq996Zg _at3L1MeAEeWj08ZIq996Zg"/>
-      <packagedElement xmi:type="uml:Association" xmi:id="_bDIRMMeAEeWj08ZIq996Zg" name="" memberEnd="_bDIRMceAEeWj08ZIq996Zg _bDIRNMeAEeWj08ZIq996Zg"/>
-      <packagedElement xmi:type="uml:Association" xmi:id="_cU2-0MeAEeWj08ZIq996Zg" name="" memberEnd="_cU2-0ceAEeWj08ZIq996Zg _cU2-1MeAEeWj08ZIq996Zg"/>
-      <packagedElement xmi:type="uml:Association" xmi:id="_d31NcMeAEeWj08ZIq996Zg" name="" memberEnd="_d31NcceAEeWj08ZIq996Zg _d31NdMeAEeWj08ZIq996Zg"/>
-      <packagedElement xmi:type="uml:Association" xmi:id="_oapE4MeAEeWj08ZIq996Zg" name="" memberEnd="_oapE4ceAEeWj08ZIq996Zg _oapE5MeAEeWj08ZIq996Zg"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_aI6P0MmdEeWBNseD5yJdiw" name="" memberEnd="_aI6P0cmdEeWBNseD5yJdiw _aI6P1MmdEeWBNseD5yJdiw"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Package" xmi:id="_-EudoMd-EeWj08ZIq996Zg" name="view">
-      <packagedElement xmi:type="uml:Interface" xmi:id="_-E-VQMd-EeWj08ZIq996Zg" name="Board"/>
-      <packagedElement xmi:type="uml:Class" xmi:id="_-E_jYMd-EeWj08ZIq996Zg" name="BuildBoard">
-        <ownedAttribute xmi:id="_ZZyU0ceAEeWj08ZIq996Zg" name="buildGUI" type="_-FAxgMd-EeWj08ZIq996Zg" association="_ZZyU0MeAEeWj08ZIq996Zg">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ZZyU0seAEeWj08ZIq996Zg"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZZyU08eAEeWj08ZIq996Zg" value="*"/>
-        </ownedAttribute>
-        <interfaceRealization xmi:id="_-FcPUMd-EeWj08ZIq996Zg" client="_-E_jYMd-EeWj08ZIq996Zg" supplier="_-E-VQMd-EeWj08ZIq996Zg" contract="_-E-VQMd-EeWj08ZIq996Zg"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_qnwSwsmbEeWBNseD5yJdiw" name="java">
+      <packagedElement xmi:type="uml:Package" xmi:id="_qnwSw8mbEeWBNseD5yJdiw" name="util">
+        <packagedElement xmi:type="uml:Interface" xmi:id="_qqCKsMmbEeWBNseD5yJdiw" name="Set"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_qqCxwcmbEeWBNseD5yJdiw" name="HashSet"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_-FAxgMd-EeWj08ZIq996Zg" name="BuildGUI">
-        <ownedAttribute xmi:id="_ZZyU1MeAEeWj08ZIq996Zg" name="buildBoard" type="_-E_jYMd-EeWj08ZIq996Zg" association="_ZZyU0MeAEeWj08ZIq996Zg">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ZZyU1ceAEeWj08ZIq996Zg"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZZyU1seAEeWj08ZIq996Zg" value="*"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:id="_cU2-0ceAEeWj08ZIq996Zg" name="buildListener" type="_-E4OoMd-EeWj08ZIq996Zg" association="_cU2-0MeAEeWj08ZIq996Zg">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_cU2-0seAEeWj08ZIq996Zg"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_cU2-08eAEeWj08ZIq996Zg" value="*"/>
-        </ownedAttribute>
-        <interfaceRealization xmi:id="_J34GIMeAEeWj08ZIq996Zg" client="_-FAxgMd-EeWj08ZIq996Zg" supplier="_-FBYkMd-EeWj08ZIq996Zg" contract="_-FBYkMd-EeWj08ZIq996Zg"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Interface" xmi:id="_-FBYkMd-EeWj08ZIq996Zg" name="GBallGui"/>
-      <packagedElement xmi:type="uml:Class" xmi:id="_-FB_oMd-EeWj08ZIq996Zg" name="RunBoard">
-        <ownedAttribute xmi:id="_YrE0tMeAEeWj08ZIq996Zg" name="runGUI" type="_-FDNwMd-EeWj08ZIq996Zg" association="_YrE0sMeAEeWj08ZIq996Zg">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_YrE0tceAEeWj08ZIq996Zg"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_YrE0tseAEeWj08ZIq996Zg" value="*"/>
-        </ownedAttribute>
-        <interfaceRealization xmi:id="_NiWMwMeAEeWj08ZIq996Zg" client="_-FB_oMd-EeWj08ZIq996Zg" supplier="_-E-VQMd-EeWj08ZIq996Zg" contract="_-E-VQMd-EeWj08ZIq996Zg"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_-FDNwMd-EeWj08ZIq996Zg" name="RunGUI">
-        <ownedAttribute xmi:id="_YrE0sceAEeWj08ZIq996Zg" name="runBoard" type="_-FB_oMd-EeWj08ZIq996Zg" association="_YrE0sMeAEeWj08ZIq996Zg">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_YrE0sseAEeWj08ZIq996Zg"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_YrE0s8eAEeWj08ZIq996Zg" value="*"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:id="_at3L0ceAEeWj08ZIq996Zg" name="runListener" type="_-E9uMMd-EeWj08ZIq996Zg" association="_at3L0MeAEeWj08ZIq996Zg">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_at3L0seAEeWj08ZIq996Zg"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_at3L08eAEeWj08ZIq996Zg" value="*"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:id="_bDIRMceAEeWj08ZIq996Zg" name="menuListener" type="_-E9HIMd-EeWj08ZIq996Zg" association="_bDIRMMeAEeWj08ZIq996Zg">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_bDIRMseAEeWj08ZIq996Zg"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bDIRM8eAEeWj08ZIq996Zg" value="*"/>
-        </ownedAttribute>
-        <interfaceRealization xmi:id="_MDdM4MeAEeWj08ZIq996Zg" client="_-FDNwMd-EeWj08ZIq996Zg" supplier="_-FBYkMd-EeWj08ZIq996Zg" contract="_-FBYkMd-EeWj08ZIq996Zg"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_YrE0sMeAEeWj08ZIq996Zg" name="" memberEnd="_YrE0sceAEeWj08ZIq996Zg _YrE0tMeAEeWj08ZIq996Zg"/>
-      <packagedElement xmi:type="uml:Association" xmi:id="_ZZyU0MeAEeWj08ZIq996Zg" name="" memberEnd="_ZZyU0ceAEeWj08ZIq996Zg _ZZyU1MeAEeWj08ZIq996Zg"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_FSUswMd_EeWj08ZIq996Zg" name="Physics" visibility="package">
-      <ownedAttribute xmi:id="_d31NcceAEeWj08ZIq996Zg" name="runListener" type="_-E9uMMd-EeWj08ZIq996Zg" association="_d31NcMeAEeWj08ZIq996Zg">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_d31NcseAEeWj08ZIq996Zg"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_d31Nc8eAEeWj08ZIq996Zg" value="*"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_qnw50MmbEeWBNseD5yJdiw" name="controller">
+      <packagedElement xmi:type="uml:Class" xmi:id="_qorf0MmbEeWBNseD5yJdiw" name="BuildListener">
+        <ownedAttribute xmi:id="_9NF5ZMmfEeWBNseD5yJdiw" name="buildBoard" type="_qo5iQMmbEeWBNseD5yJdiw" association="_9NF5YMmfEeWBNseD5yJdiw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9NGgcMmfEeWBNseD5yJdiw"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9NGgccmfEeWBNseD5yJdiw" value="*"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_nbCF0MmgEeWBNseD5yJdiw" name="buildGUI" type="_qo6JUMmbEeWBNseD5yJdiw" association="_nbA3sMmgEeWBNseD5yJdiw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_nbCF0cmgEeWBNseD5yJdiw"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_nbCF0smgEeWBNseD5yJdiw" value="*"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_qost8MmbEeWBNseD5yJdiw" name="MenuListener">
+        <ownedAttribute xmi:id="_jjy148mdEeWBNseD5yJdiw" name="gUI" type="_8sCiIMmcEeWBNseD5yJdiw" association="_jjyO0MmdEeWBNseD5yJdiw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_jjzc8MmdEeWBNseD5yJdiw"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_jjzc8cmdEeWBNseD5yJdiw" value="*"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_qowYUMmbEeWBNseD5yJdiw" name="RunListener">
+        <ownedAttribute xmi:id="_t9JPU8mdEeWBNseD5yJdiw" name="runGUI" type="_qpHksMmbEeWBNseD5yJdiw" association="_t9IoQMmdEeWBNseD5yJdiw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_t9JPVMmdEeWBNseD5yJdiw"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_t9JPVcmdEeWBNseD5yJdiw" value="*"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_urSnYsmgEeWBNseD5yJdiw" name="runBoard" type="_qpGWkMmbEeWBNseD5yJdiw" association="_urSAUMmgEeWBNseD5yJdiw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_urSnY8mgEeWBNseD5yJdiw"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_urSnZMmgEeWBNseD5yJdiw" value="*"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_jjyO0MmdEeWBNseD5yJdiw" name="" memberEnd="_jjy14MmdEeWBNseD5yJdiw _jjy148mdEeWBNseD5yJdiw"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_t9IoQMmdEeWBNseD5yJdiw" name="" memberEnd="_t9JPUMmdEeWBNseD5yJdiw _t9JPU8mdEeWBNseD5yJdiw"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_9NF5YMmfEeWBNseD5yJdiw" name="" memberEnd="_9NF5YcmfEeWBNseD5yJdiw _9NF5ZMmfEeWBNseD5yJdiw">
+        <ownedEnd xmi:id="_9NF5YcmfEeWBNseD5yJdiw" name="" type="_qorf0MmbEeWBNseD5yJdiw" association="_9NF5YMmfEeWBNseD5yJdiw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_nbA3sMmgEeWBNseD5yJdiw" name="" memberEnd="_nbBewMmgEeWBNseD5yJdiw _nbCF0MmgEeWBNseD5yJdiw"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_urSAUMmgEeWBNseD5yJdiw" name="" memberEnd="_urSAUcmgEeWBNseD5yJdiw _urSnYsmgEeWBNseD5yJdiw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_qnyH8MmbEeWBNseD5yJdiw" name="gizmos">
+      <packagedElement xmi:type="uml:Class" xmi:id="_qow_YMmbEeWBNseD5yJdiw" name="Absorber">
+        <generalization xmi:id="_qqD_4cmbEeWBNseD5yJdiw" general="_qo2e8MmbEeWBNseD5yJdiw"/>
+        <interfaceRealization xmi:id="_qqD_4MmbEeWBNseD5yJdiw" client="_qow_YMmbEeWBNseD5yJdiw" supplier="_qozboMmbEeWBNseD5yJdiw" contract="_qozboMmbEeWBNseD5yJdiw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_qoyNgMmbEeWBNseD5yJdiw" name="Circle">
+        <generalization xmi:id="_qqD_48mbEeWBNseD5yJdiw" general="_qo2e8MmbEeWBNseD5yJdiw"/>
+        <interfaceRealization xmi:id="_qqD_4smbEeWBNseD5yJdiw" client="_qoyNgMmbEeWBNseD5yJdiw" supplier="_qozboMmbEeWBNseD5yJdiw" contract="_qozboMmbEeWBNseD5yJdiw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_qoy0kMmbEeWBNseD5yJdiw" name="Flipper">
+        <generalization xmi:id="_qqEm8cmbEeWBNseD5yJdiw" general="_qo2e8MmbEeWBNseD5yJdiw"/>
+        <interfaceRealization xmi:id="_qqEm8MmbEeWBNseD5yJdiw" client="_qoy0kMmbEeWBNseD5yJdiw" supplier="_qozboMmbEeWBNseD5yJdiw" contract="_qozboMmbEeWBNseD5yJdiw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Interface" xmi:id="_qozboMmbEeWBNseD5yJdiw" name="Gizmo"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_qo0CsMmbEeWBNseD5yJdiw" name="Rectangle">
+        <generalization xmi:id="_qqEm88mbEeWBNseD5yJdiw" general="_qo2e8MmbEeWBNseD5yJdiw"/>
+        <interfaceRealization xmi:id="_qqEm8smbEeWBNseD5yJdiw" client="_qo0CsMmbEeWBNseD5yJdiw" supplier="_qozboMmbEeWBNseD5yJdiw" contract="_qozboMmbEeWBNseD5yJdiw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_qo0pwMmbEeWBNseD5yJdiw" name="Square">
+        <generalization xmi:id="_qqEm9cmbEeWBNseD5yJdiw" general="_qo2e8MmbEeWBNseD5yJdiw"/>
+        <interfaceRealization xmi:id="_qqEm9MmbEeWBNseD5yJdiw" client="_qo0pwMmbEeWBNseD5yJdiw" supplier="_qozboMmbEeWBNseD5yJdiw" contract="_qozboMmbEeWBNseD5yJdiw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_qo1Q0MmbEeWBNseD5yJdiw" name="Triangle">
+        <generalization xmi:id="_qqFOAcmbEeWBNseD5yJdiw" general="_qo2e8MmbEeWBNseD5yJdiw"/>
+        <interfaceRealization xmi:id="_qqFOAMmbEeWBNseD5yJdiw" client="_qo1Q0MmbEeWBNseD5yJdiw" supplier="_qozboMmbEeWBNseD5yJdiw" contract="_qozboMmbEeWBNseD5yJdiw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_qo2e8MmbEeWBNseD5yJdiw" name="TriggerSystem" isAbstract="true">
+        <ownedOperation xmi:id="_qo2e8cmbEeWBNseD5yJdiw" name="trigger"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_qn0kMMmbEeWBNseD5yJdiw" name="physics">
+      <packagedElement xmi:type="uml:Package" xmi:id="_qn0kMcmbEeWBNseD5yJdiw" name="Geometry">
+        <packagedElement xmi:type="uml:Class" xmi:id="_qqFOAsmbEeWBNseD5yJdiw" name="DoublePair"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_qqNJ0MmbEeWBNseD5yJdiw" name="SimpleGeometry"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_qn6DwMmbEeWBNseD5yJdiw" name="javax">
+      <packagedElement xmi:type="uml:Package" xmi:id="_qn6DwcmbEeWBNseD5yJdiw" name="swing">
+        <packagedElement xmi:type="uml:Class" xmi:id="_qqOX8MmbEeWBNseD5yJdiw" name="JPanel"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_qqO_AcmbEeWBNseD5yJdiw" name="JButton"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_qqPmEcmbEeWBNseD5yJdiw" name="JTextArea"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_qqQ0MMmbEeWBNseD5yJdiw" name="JTextField"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_qqRbQMmbEeWBNseD5yJdiw" name="JComboBox"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_H7oKkMmeEeWBNseD5yJdiw" name="model">
+      <packagedElement xmi:type="uml:Class" xmi:id="_FiDrIMmeEeWBNseD5yJdiw" name="ProjectManager">
+        <ownedAttribute xmi:id="_gXVEcsmeEeWBNseD5yJdiw" name="fileManager" type="_eL8K8MmeEeWBNseD5yJdiw" association="_gXUdYMmeEeWBNseD5yJdiw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gXVEc8meEeWBNseD5yJdiw"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gXVEdMmeEeWBNseD5yJdiw" value="*"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_4ryG0cmeEeWBNseD5yJdiw" name="collisionManager" type="_3Qf0kMmeEeWBNseD5yJdiw" association="_4rxfwMmeEeWBNseD5yJdiw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4ryG0smeEeWBNseD5yJdiw"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4ryG08meEeWBNseD5yJdiw" value="*"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_eL8K8MmeEeWBNseD5yJdiw" name="FileManager">
+        <ownedAttribute xmi:id="_gXUdYcmeEeWBNseD5yJdiw" name="projectManager" type="_FiDrIMmeEeWBNseD5yJdiw" association="_gXUdYMmeEeWBNseD5yJdiw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gXVEcMmeEeWBNseD5yJdiw"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gXVEccmeEeWBNseD5yJdiw" value="*"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_gXUdYMmeEeWBNseD5yJdiw" name="" memberEnd="_gXUdYcmeEeWBNseD5yJdiw _gXVEcsmeEeWBNseD5yJdiw"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_4rxfwMmeEeWBNseD5yJdiw" name="" memberEnd="_4rxfwcmeEeWBNseD5yJdiw _4ryG0cmeEeWBNseD5yJdiw"/>
+      <packagedElement xmi:type="uml:Interface" xmi:id="_qo47MMmbEeWBNseD5yJdiw" name="Board"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_qo5iQMmbEeWBNseD5yJdiw" name="BuildBoard">
+      <interfaceRealization xmi:id="_qqF1EcmbEeWBNseD5yJdiw" client="_qo5iQMmbEeWBNseD5yJdiw" supplier="_qo47MMmbEeWBNseD5yJdiw" contract="_qo47MMmbEeWBNseD5yJdiw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_qpGWkMmbEeWBNseD5yJdiw" name="RunBoard">
+      <ownedAttribute xmi:id="_urSAUcmgEeWBNseD5yJdiw" name="runListener" type="_qowYUMmbEeWBNseD5yJdiw" association="_urSAUMmgEeWBNseD5yJdiw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_urSnYMmgEeWBNseD5yJdiw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_urSnYcmgEeWBNseD5yJdiw" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_oapE4ceAEeWj08ZIq996Zg" name="buildListener" type="_-E4OoMd-EeWj08ZIq996Zg" association="_oapE4MeAEeWj08ZIq996Zg">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_oapE4seAEeWj08ZIq996Zg"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_oapE48eAEeWj08ZIq996Zg" value="*"/>
-      </ownedAttribute>
+      <interfaceRealization xmi:id="_qqI4YMmbEeWBNseD5yJdiw" client="_qpGWkMmbEeWBNseD5yJdiw" supplier="_qo47MMmbEeWBNseD5yJdiw" contract="_qo47MMmbEeWBNseD5yJdiw"/>
     </packagedElement>
-    <profileApplication xmi:id="_9-ZMIMd-EeWj08ZIq996Zg">
-      <eAnnotations xmi:id="_9-cPcMd-EeWj08ZIq996Zg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <packagedElement xmi:type="uml:Package" xmi:id="_9nDcEMmgEeWBNseD5yJdiw" name="view">
+      <packagedElement xmi:type="uml:Class" xmi:id="_8sCiIMmcEeWBNseD5yJdiw" name="GUI">
+        <ownedAttribute xmi:id="_aI6P0cmdEeWBNseD5yJdiw" name="gBallGui" type="_qpCFIMmbEeWBNseD5yJdiw" association="_aI6P0MmdEeWBNseD5yJdiw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_aI6P0smdEeWBNseD5yJdiw"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_aI6P08mdEeWBNseD5yJdiw" value="*"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_jjy14MmdEeWBNseD5yJdiw" name="menuListener" type="_qost8MmbEeWBNseD5yJdiw" association="_jjyO0MmdEeWBNseD5yJdiw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_jjy14cmdEeWBNseD5yJdiw"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_jjy14smdEeWBNseD5yJdiw" value="*"/>
+        </ownedAttribute>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_RFS9cMmhEeWBNseD5yJdiw" name="physics">
+      <packagedElement xmi:type="uml:Class" xmi:id="_3Qf0kMmeEeWBNseD5yJdiw" name="CollisionManager">
+        <ownedAttribute xmi:id="_4rxfwcmeEeWBNseD5yJdiw" name="projectManager" type="_FiDrIMmeEeWBNseD5yJdiw" association="_4rxfwMmeEeWBNseD5yJdiw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4rxfwsmeEeWBNseD5yJdiw"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4ryG0MmeEeWBNseD5yJdiw" value="*"/>
+        </ownedAttribute>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:id="_qaBYwMmbEeWBNseD5yJdiw">
+      <eAnnotations xmi:id="_qaEcEMmbEeWBNseD5yJdiw" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://UMLLAB_PROFILES/UMLLab.profile.uml#UMLLabProfile-Annotation_2-UMLLabProfile"/>
       </eAnnotations>
       <appliedProfile href="pathmap://UMLLAB_PROFILES/UMLLab.profile.uml#UMLLabProfile"/>
     </profileApplication>
   </uml:Model>
-  <UMLLabProfile:TargetLanguage xmi:id="_9-f50Md-EeWj08ZIq996Zg" base_Package="_91uYUMd-EeWj08ZIq996Zg">
+  <UMLLabProfile:TargetLanguage xmi:id="_qaFDIMmbEeWBNseD5yJdiw" base_Package="_qTq5IMmbEeWBNseD5yJdiw">
     <languageName>java</languageName>
   </UMLLabProfile:TargetLanguage>
+  <UMLLabProfile:Reference xmi:id="_qqCxwMmbEeWBNseD5yJdiw" base_Element="_qqCKsMmbEeWBNseD5yJdiw"/>
+  <UMLLabProfile:Reference xmi:id="_qqDY0MmbEeWBNseD5yJdiw" base_Element="_qqCxwcmbEeWBNseD5yJdiw"/>
+  <UMLLabProfile:Reference xmi:id="_qqF1EMmbEeWBNseD5yJdiw" base_Element="_qqFOAsmbEeWBNseD5yJdiw"/>
+  <UMLLabProfile:Reference xmi:id="_qqNw4MmbEeWBNseD5yJdiw" base_Element="_qqNJ0MmbEeWBNseD5yJdiw"/>
+  <UMLLabProfile:Reference xmi:id="_qqO_AMmbEeWBNseD5yJdiw" base_Element="_qqOX8MmbEeWBNseD5yJdiw"/>
+  <UMLLabProfile:Reference xmi:id="_qqPmEMmbEeWBNseD5yJdiw" base_Element="_qqO_AcmbEeWBNseD5yJdiw"/>
+  <UMLLabProfile:Reference xmi:id="_qqQNIMmbEeWBNseD5yJdiw" base_Element="_qqPmEcmbEeWBNseD5yJdiw"/>
+  <UMLLabProfile:Reference xmi:id="_qqQ0McmbEeWBNseD5yJdiw" base_Element="_qqQ0MMmbEeWBNseD5yJdiw"/>
+  <UMLLabProfile:Reference xmi:id="_qqRbQcmbEeWBNseD5yJdiw" base_Element="_qqRbQMmbEeWBNseD5yJdiw"/>
+  <UMLLabProfile:Patch xmi:id="_KewjwMmgEeWBNseD5yJdiw" base_Element="_qo6JUMmbEeWBNseD5yJdiw" patchText="@@ -11,29 +11,8 @@&#xA; ew;%0D&#xA;-%0Aimport model.Board;%0D&#xA; %0A%0D%0Ai&#xA;@@ -337,355 +337,8 @@&#xA; */%0D%0A&#xA;-/**%0D%0A    * %3Cpre%3E%0D%0A    *           0..*     0..*%0D%0A    * BuildGUI ------------------------%3E Board%0D%0A    *           &amp;lt;       board%0D%0A    * %3C/pre%3E%0D%0A    */%0D%0A   private Set%3CBoard%3E board;%0D%0A   %0D%0A   public Set%3CBoard%3E getBoard() %7B%0D%0A      if (this.board == null) %7B%0D%0A         this.board = new HashSet%3CBoard%3E();%0D%0A      %7D%0D%0A      return this.board;%0D%0A   %7D%0D%0A   %0D%0A&#xA;    p&#xA;" conflicting="false"/>
+  <UMLLabProfile:Patch xmi:id="_KeyY8MmgEeWBNseD5yJdiw" base_Element="_qpHksMmbEeWBNseD5yJdiw" patchText="@@ -11,29 +11,8 @@&#xA; ew;%0D&#xA;-%0Aimport model.Board;%0D&#xA; %0A%0D%0Ai&#xA;@@ -198,353 +198,8 @@&#xA;  %7B%0D%0A&#xA;-/**%0D%0A    * %3Cpre%3E%0D%0A    *           0..*     0..*%0D%0A    * RunGUI ------------------------%3E Board%0D%0A    *           &amp;lt;       board%0D%0A    * %3C/pre%3E%0D%0A    */%0D%0A   private Set%3CBoard%3E board;%0D%0A   %0D%0A   public Set%3CBoard%3E getBoard() %7B%0D%0A      if (this.board == null) %7B%0D%0A         this.board = new HashSet%3CBoard%3E();%0D%0A      %7D%0D%0A      return this.board;%0D%0A   %7D%0D%0A   %0D%0A&#xA;    /&#xA;" conflicting="true"/>
 </xmi:XMI>
