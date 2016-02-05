@@ -1,9 +1,6 @@
-package model;
+package view;
 
 import java.util.Set;
-
-import view.RunGUI;
-
 import java.util.HashSet;
 
 public class RunBoard implements Board {

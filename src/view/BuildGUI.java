@@ -3,7 +3,6 @@ package view;
 import java.util.Set;
 import java.util.HashSet;
 import controller.BuildListener;
-import model.BuildBoard;
 
 public class BuildGUI implements GBallGui {
    /**

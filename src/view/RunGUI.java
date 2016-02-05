@@ -3,7 +3,6 @@ package view;
 import java.util.Set;
 import java.util.HashSet;
 import controller.RunListener;
-import model.RunBoard;
 import controller.MenuListener;
 
 public class RunGUI implements GBallGui {
