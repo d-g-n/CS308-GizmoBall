@@ -7,15 +7,21 @@ import java.util.Observable;
 public abstract class AbstractGizmo extends Observable{
 	
 	protected int xpos, ypos, width, height;
+	protected double reflectionCoefficient;
 	protected List<AbstractGizmo> gizmoListeners;
 	
-	public AbstractGizmo(int x, int y, int width, int height){
+	public AbstractGizmo(int x, int y, int width, int height, double rCo){
 		this.xpos = x;
 		this.ypos = y;
 		this.width = width;
 		this.height = height;
+		this.reflectionCoefficient = rCo;
 
 		this.gizmoListeners = new ArrayList<AbstractGizmo>();
+	}
+
+	public double getReflectionCoefficient(){
+		return reflectionCoefficient;
 	}
 
 	/**
@@ -33,7 +39,7 @@ public abstract class AbstractGizmo extends Observable{
 	 * Will likely need to extend this method to provide desired functionality
 	 */
 	public void doAction(){
-
+		// there is no default action but needed here to override it.
 	}
 
 }
