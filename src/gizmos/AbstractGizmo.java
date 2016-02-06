@@ -21,12 +21,12 @@ public abstract class AbstractGizmo extends Observable{
 
 	protected List<VisualShape> StoredVisualShapes;
 	
-	public AbstractGizmo(int x, int y, int width, int height, double angRadians){
+	public AbstractGizmo(int x, int y, int width, int height, int angDegrees){
 		this.xpos = x;
 		this.ypos = y;
 		this.width = width;
 		this.height = height;
-		this.gizAngle = new Angle(angRadians);
+		this.gizAngle = new Angle(Math.toRadians(angDegrees));
 
 		this.gizmoListeners = new ArrayList<AbstractGizmo>();
 

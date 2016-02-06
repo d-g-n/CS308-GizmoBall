@@ -3,8 +3,8 @@ package gizmos;
 
 public class Absorber extends AbstractGizmo {
 
-	public Absorber(int x, int y, int width, int height, double radians) {
-		super(x, y, width, height, radians);
+	public Absorber(int x, int y, int width, int height, int degrees) {
+		super(x, y, width, height, degrees);
 	}
 
 

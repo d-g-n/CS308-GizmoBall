@@ -31,7 +31,7 @@ public class MainMethod {
 		pm.addGizmo(new SquareBumper(11, 7, 1, 1, 0));
 
 		pm.addGizmo(new TriangleBumper(1, 1, 1, 1, 0));
-		pm.addGizmo(new TriangleBumper(2, 1, 1, 1, 1));
+		pm.addGizmo(new TriangleBumper(2, 1, 1, 1, 90));
 
 
 

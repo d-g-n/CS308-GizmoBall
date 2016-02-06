@@ -81,7 +81,9 @@ public class GizmoPanel extends JPanel {
 					shape.addPoint(((this.getWidth()/CONS_SIZE) * xC) + (localX * (this.getWidth()/CONS_SIZE)), ((this.getWidth()/CONS_SIZE) * yC) + (localY * (this.getWidth()/CONS_SIZE)));
 					shape.addPoint(((this.getWidth()/CONS_SIZE) * xC) + (localX * (this.getWidth()/CONS_SIZE)) + ((this.getWidth()/CONS_SIZE) * localWidth), ((this.getWidth()/CONS_SIZE) * yC) + (localY * (this.getWidth()/CONS_SIZE)));
 					shape.addPoint(((this.getWidth()/CONS_SIZE) * xC) + (localX * (this.getWidth()/CONS_SIZE)), ((this.getWidth()/CONS_SIZE) * yC) + (localY * (this.getWidth()/CONS_SIZE))+ ((this.getHeight()/CONS_SIZE) * localHeight));
-					g2d.rotate(ang.radians()); // this does not rotate around the center point lol
+					//g2d.rotate(ang.radians()); // this does not rotate around the center point lol
+					g2d.rotate(ang.radians(), shape.getBounds2D().getX() + (this.getWidth()/CONS_SIZE)/2, shape.getBounds2D().getY() + (this.getHeight()/CONS_SIZE)/2);
+
 					g2d.draw(shape);
 
 					g2d.fill(shape);
