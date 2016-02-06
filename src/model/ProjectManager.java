@@ -1,9 +1,11 @@
 package model;
 
+import java.util.Observable;
+
 import controller.MenuListener;
 import controller.RunListener;
 
-public class ProjectManager {
+public class ProjectManager extends Observable{
 	
 	private static CollisionManager cManager;
 	private static FileManager fManager;
@@ -13,8 +15,5 @@ public class ProjectManager {
 	public ProjectManager(){
 		cManager = new CollisionManager();
 		fManager = new FileManager();
-		cManager.addObserver(runListener);
 	}
-	
-	
 }

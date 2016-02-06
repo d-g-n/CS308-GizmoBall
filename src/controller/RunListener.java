@@ -1,19 +1,18 @@
 package controller;
 
-import java.util.Observable;
-import java.util.Observer;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class RunListener implements Observer{
+public class RunListener implements ActionListener{
 
 	public RunListener(){
 		
 	}
-	
+
 	@Override
-	public void update(Observable o, Object arg) {
-		//TODO: Here we should update the run board with the change
-		//sent by the Observable
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
- 
    
    }

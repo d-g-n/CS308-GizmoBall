@@ -1,14 +1,8 @@
 /CS308-GizmoBall.uml
 /CS308-GizmoBall.umlcd
+/MainMethod.class
 /controller/
-/physics/
-/view/
-/Absorber.class
-/Circle.class
-/Flipper.class
-/Physics.class
-/Rectangle.class
-/Square.class
-/Triangle.class
 /gizmos/
 /model/
+/physics/
+/view/
