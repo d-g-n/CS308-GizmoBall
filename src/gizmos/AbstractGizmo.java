@@ -9,13 +9,15 @@ public abstract class AbstractGizmo extends Observable{
 	protected int xpos, ypos, width, height;
 	protected double reflectionCoefficient;
 	protected List<AbstractGizmo> gizmoListeners;
+	protected List<CircleEndLine> GizmoShape;
 	
-	public AbstractGizmo(int x, int y, int width, int height, double rCo){
+	public AbstractGizmo(int x, int y, int width, int height, double rCo, List<CircleEndLine> gs){
 		this.xpos = x;
 		this.ypos = y;
 		this.width = width;
 		this.height = height;
 		this.reflectionCoefficient = rCo;
+		this.GizmoShape = gs;
 
 		this.gizmoListeners = new ArrayList<AbstractGizmo>();
 	}
