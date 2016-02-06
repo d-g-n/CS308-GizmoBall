@@ -20,4 +20,17 @@ public class VisualShape {
 		this.cList = Arrays.asList(l);
 
 	}
+
+
+	public String getType() {
+		return type;
+	}
+
+	public List<Integer> getValList() {
+		return cList;
+	}
+
+	public Color getColour() {
+		return colour;
+	}
 }

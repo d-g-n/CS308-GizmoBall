@@ -1,5 +1,9 @@
 package view;
 
+import gizmos.AbstractGizmo;
+import gizmos.VisualShape;
+import model.ProjectManager;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -10,8 +14,11 @@ public class GizmoPanel extends JPanel {
 
 	public static final int CONS_SIZE = 20;
 
-	public GizmoPanel(){
+	public ProjectManager pm;
+
+	public GizmoPanel(ProjectManager pm){
 		setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
+		this.pm = pm;
 	}
 
 	public void paintComponent(Graphics g){
@@ -34,6 +41,25 @@ public class GizmoPanel extends JPanel {
 
 		for(int i = 1; i <= CONS_SIZE; i++){
 			g.drawLine(0, ((this.getWidth()/CONS_SIZE) * i), this.getWidth(), ((this.getWidth()/CONS_SIZE) * i));
+		}
+
+		// Draw Sample shapes
+
+		for(AbstractGizmo giz : pm.getBoardGizmos()){
+			int xC = giz.getXpos();
+			int yC = giz.getYpos();
+			for(VisualShape vs : giz.getStoredVisualShapes()){
+				// for square, first two is x, y in percent, next two is width and height in percent
+				if(vs.getType().equals("Square")){
+					int localX = vs.getValList().get(0)/100;
+					int localY = vs.getValList().get(1)/100;
+					int localWidth = vs.getValList().get(2)/100;
+					int localHeight = vs.getValList().get(3)/100;
+
+					g.setColor(vs.getColour());
+					g.fillRect(((this.getWidth()/CONS_SIZE) * xC) + (localX * (this.getWidth()/CONS_SIZE)), ((this.getWidth()/CONS_SIZE) * yC) + (localX * (this.getWidth()/CONS_SIZE)), (this.getWidth()/CONS_SIZE) * localWidth, (this.getWidth()/CONS_SIZE) * localHeight);
+				}
+			}
 		}
 	}
 }

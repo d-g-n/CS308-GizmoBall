@@ -1,4 +1,5 @@
 import gizmos.SquareBumper;
+import model.ProjectManager;
 import view.GizmoPanel;
 
 import javax.swing.*;
@@ -17,9 +18,16 @@ public class MainMethod {
 
 	public MainMethod(){
 
+		ProjectManager pm = new ProjectManager();
+		pm.addGizmo(new SquareBumper(10, 10, 1, 1));
+		pm.addGizmo(new SquareBumper(9, 10, 1, 1));
+		pm.addGizmo(new SquareBumper(11, 10, 1, 1));
 
-		SquareBumper sb = new SquareBumper(1, 1, 1, 1);
+		pm.addGizmo(new SquareBumper(12, 9, 1, 1));
+		pm.addGizmo(new SquareBumper(8, 9, 1, 1));
 
+		pm.addGizmo(new SquareBumper(9, 7, 1, 1));
+		pm.addGizmo(new SquareBumper(11, 7, 1, 1));
 
 
 
@@ -27,7 +35,7 @@ public class MainMethod {
 		testFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		testFrame.setLayout(new BorderLayout());
 
-		GizmoPanel gp = new GizmoPanel();
+		GizmoPanel gp = new GizmoPanel(pm);
 
 		gp.setPreferredSize(new Dimension(700, 700));
 

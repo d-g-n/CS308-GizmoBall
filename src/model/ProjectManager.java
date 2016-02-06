@@ -21,4 +21,12 @@ public class ProjectManager extends Observable{
 		fManager = new FileManager();
 		boardGizmos = new ArrayList<AbstractGizmo>();
 	}
+
+	public void addGizmo(AbstractGizmo g){
+		boardGizmos.add(g);
+	}
+
+	public List<AbstractGizmo> getBoardGizmos(){
+		return boardGizmos;
+	}
 }

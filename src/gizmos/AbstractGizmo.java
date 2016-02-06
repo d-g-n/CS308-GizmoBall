@@ -35,9 +35,15 @@ public abstract class AbstractGizmo extends Observable{
 
 	}
 
+	public int getXpos(){ return xpos; }
+	public int getYpos(){ return ypos; }
 	public double getReflectionCoefficient(){
 		return reflectionCoefficient;
 	}
+
+	public List<Circle> getStoredCircles(){ return StoredCircles; }
+	public List<LineSegment> getStoredLines(){ return StoredLines; }
+	public List<VisualShape> getStoredVisualShapes() { return StoredVisualShapes; }
 
 	/**
 	 * This method is called by the engine when the ball collides with this gizmo
