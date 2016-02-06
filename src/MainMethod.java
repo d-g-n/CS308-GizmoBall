@@ -1,4 +1,5 @@
 import gizmos.SquareBumper;
+import gizmos.TriangleBumper;
 import model.ProjectManager;
 import view.GizmoPanel;
 
@@ -19,15 +20,18 @@ public class MainMethod {
 	public MainMethod(){
 
 		ProjectManager pm = new ProjectManager();
-		pm.addGizmo(new SquareBumper(10, 10, 1, 1));
-		pm.addGizmo(new SquareBumper(9, 10, 1, 1));
-		pm.addGizmo(new SquareBumper(11, 10, 1, 1));
+		pm.addGizmo(new SquareBumper(10, 10, 1, 1, 0));
+		pm.addGizmo(new SquareBumper(9, 10, 1, 1, 0));
+		pm.addGizmo(new SquareBumper(11, 10, 1, 1, 0));
 
-		pm.addGizmo(new SquareBumper(12, 9, 1, 1));
-		pm.addGizmo(new SquareBumper(8, 9, 1, 1));
+		pm.addGizmo(new SquareBumper(12, 9, 1, 1, 0));
+		pm.addGizmo(new SquareBumper(8, 9, 1, 1, 0));
 
-		pm.addGizmo(new SquareBumper(9, 7, 1, 1));
-		pm.addGizmo(new SquareBumper(11, 7, 1, 1));
+		pm.addGizmo(new SquareBumper(9, 7, 1, 1, 0));
+		pm.addGizmo(new SquareBumper(11, 7, 1, 1, 0));
+
+		pm.addGizmo(new TriangleBumper(1, 1, 1, 1, 0));
+		pm.addGizmo(new TriangleBumper(2, 1, 1, 1, 1));
 
 
 

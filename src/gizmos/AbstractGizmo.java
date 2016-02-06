@@ -1,5 +1,6 @@
 package gizmos;
 
+import physics.Angle;
 import physics.Circle;
 import physics.LineSegment;
 
@@ -10,6 +11,7 @@ import java.util.Observable;
 public abstract class AbstractGizmo extends Observable{
 	
 	protected int xpos, ypos, width, height;
+	protected Angle gizAngle;
 	protected double reflectionCoefficient;
 	protected List<AbstractGizmo> gizmoListeners;
 
@@ -19,11 +21,12 @@ public abstract class AbstractGizmo extends Observable{
 
 	protected List<VisualShape> StoredVisualShapes;
 	
-	public AbstractGizmo(int x, int y, int width, int height){
+	public AbstractGizmo(int x, int y, int width, int height, double angRadians){
 		this.xpos = x;
 		this.ypos = y;
 		this.width = width;
 		this.height = height;
+		this.gizAngle = new Angle(angRadians);
 
 		this.gizmoListeners = new ArrayList<AbstractGizmo>();
 
@@ -40,6 +43,7 @@ public abstract class AbstractGizmo extends Observable{
 	public double getReflectionCoefficient(){
 		return reflectionCoefficient;
 	}
+	public Angle getGizAngle(){ return gizAngle; }
 
 	public List<Circle> getStoredCircles(){ return StoredCircles; }
 	public List<LineSegment> getStoredLines(){ return StoredLines; }

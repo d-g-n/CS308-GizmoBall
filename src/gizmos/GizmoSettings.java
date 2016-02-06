@@ -78,7 +78,7 @@ public class GizmoSettings {
 			for(JsonValue entry : jv.asObject().get("VisualDef").asArray()){
 				String type = entry.asArray().get(0).asString();
 
-				if(type.equals("Square")){ // if is line index 1 and 2 are coords
+				if(type.equals("Square") || type.equals("Triangle")){ // if is line index 1 and 2 are coords
 					int xSrc = entry.asArray().get(1).asArray().get(0).asInt();
 					int ySrc = entry.asArray().get(1).asArray().get(1).asInt();
 					int xDest = entry.asArray().get(2).asArray().get(0).asInt();

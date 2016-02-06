@@ -3,7 +3,7 @@ package gizmos;
 
 public class LeftFlipper extends AbstractGizmo {
 
-	public LeftFlipper(int x, int y, int width, int height) {
-		super(x, y, width, height);
+	public LeftFlipper(int x, int y, int width, int height, double radians) {
+		super(x, y, width, height, radians);
 	}
 }
