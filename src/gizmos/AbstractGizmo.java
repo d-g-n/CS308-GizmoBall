@@ -40,6 +40,10 @@ public abstract class AbstractGizmo extends Observable{
 
 	public int getXpos(){ return xpos; }
 	public int getYpos(){ return ypos; }
+
+	public int getWidth(){ return width; }
+	public int getHeight(){ return height; }
+
 	public double getReflectionCoefficient(){
 		return reflectionCoefficient;
 	}

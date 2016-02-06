@@ -1,17 +1,10 @@
 {
   "ReflectionCoefficient": 1.0,
-  "ShapeColour": "red",
+  "ShapeColour": "white",
   "PhysicsDef": [
-    ["Line",[0, 0], [0, 100]],
-    ["Line",[0, 100], [100, 100]],
-    ["Line",[100, 100], [100, 0]],
-    ["Line",[0, 0], [100, 0]],
-    ["Circle",[0, 0], 0],
-    ["Circle",[100, 0], 0],
-    ["Circle",[0, 100], 0],
-    ["Circle",[100, 100], 0]
+    ["Circle",[50, 50], 50]
   ],
   "VisualDef": [
-    ["Square", [0, 0], [100, 100]]
+    ["Circle", [0, 0], 50]
   ]
 }

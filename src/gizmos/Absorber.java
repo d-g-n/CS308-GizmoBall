@@ -4,7 +4,7 @@ package gizmos;
 public class Absorber extends AbstractGizmo {
 
 	public Absorber(int x, int y, int width, int height, int degrees) {
-		super(x, y, width, height, degrees);
+		super(x, y, width, 1, degrees);
 	}
 
 

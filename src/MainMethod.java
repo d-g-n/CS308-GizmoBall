@@ -1,3 +1,5 @@
+import gizmos.CircularBumper;
+import gizmos.LeftFlipper;
 import gizmos.SquareBumper;
 import gizmos.TriangleBumper;
 import model.ProjectManager;
@@ -32,6 +34,10 @@ public class MainMethod {
 
 		pm.addGizmo(new TriangleBumper(1, 1, 1, 1, 0));
 		pm.addGizmo(new TriangleBumper(2, 1, 1, 1, 90));
+
+		pm.addGizmo(new CircularBumper(3, 1, 1, 1, 0));
+
+		pm.addGizmo(new LeftFlipper(15, 15, 0, 0, 0));
 
 
 
