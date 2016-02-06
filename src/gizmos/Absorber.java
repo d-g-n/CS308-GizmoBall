@@ -1,9 +1,9 @@
 package gizmos;
 
 
-public class Gizmo_Absorber extends AbstractGizmo {
+public class Absorber extends AbstractGizmo {
 
-	public Gizmo_Absorber(int x, int y, int width, int height) {
+	public Absorber(int x, int y, int width, int height) {
 		super(x, y, width, height, 0, ShapeGlobals.Gizmo_SquareBumper);
 	}
 
