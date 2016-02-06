@@ -1,3 +1,4 @@
+import gizmos.SquareBumper;
 import view.GizmoPanel;
 
 import javax.swing.*;
@@ -15,8 +16,15 @@ public class MainMethod {
 
 
 	public MainMethod(){
+
+
+		SquareBumper sb = new SquareBumper(1, 1, 1, 1);
+
+
+
+
 		JFrame testFrame = new JFrame("test panel");
-		testFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		testFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		testFrame.setLayout(new BorderLayout());
 
 		GizmoPanel gp = new GizmoPanel();

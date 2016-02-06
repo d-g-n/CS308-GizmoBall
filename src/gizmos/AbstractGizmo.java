@@ -1,5 +1,8 @@
 package gizmos;
 
+import physics.Circle;
+import physics.LineSegment;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -9,17 +12,27 @@ public abstract class AbstractGizmo extends Observable{
 	protected int xpos, ypos, width, height;
 	protected double reflectionCoefficient;
 	protected List<AbstractGizmo> gizmoListeners;
-	protected List<CircleEndLine> GizmoShape;
+
+
+	protected List<Circle> StoredCircles;
+	protected List<LineSegment> StoredLines;
+
+	protected List<VisualShape> StoredVisualShapes;
 	
-	public AbstractGizmo(int x, int y, int width, int height, double rCo, List<CircleEndLine> gs){
+	public AbstractGizmo(int x, int y, int width, int height){
 		this.xpos = x;
 		this.ypos = y;
 		this.width = width;
 		this.height = height;
-		this.reflectionCoefficient = rCo;
-		this.GizmoShape = gs;
 
 		this.gizmoListeners = new ArrayList<AbstractGizmo>();
+
+		GizmoSettings gs = new GizmoSettings(this);
+		this.reflectionCoefficient = gs.getReflectionCoefficient();
+		this.StoredCircles = gs.getParsedCircles();
+		this.StoredLines = gs.getParsedLines();
+		this.StoredVisualShapes = gs.getVisualShapes();
+
 	}
 
 	public double getReflectionCoefficient(){

@@ -4,7 +4,7 @@ package gizmos;
 public class Absorber extends AbstractGizmo {
 
 	public Absorber(int x, int y, int width, int height) {
-		super(x, y, width, height, 0, ShapeGlobals.Gizmo_SquareBumper);
+		super(x, y, width, height);
 	}
 
 
