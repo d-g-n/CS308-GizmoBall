@@ -1,7 +1,4 @@
-import gizmos.CircularBumper;
-import gizmos.LeftFlipper;
-import gizmos.SquareBumper;
-import gizmos.TriangleBumper;
+import gizmos.*;
 import model.ProjectManager;
 import view.GizmoPanel;
 
@@ -38,6 +35,8 @@ public class MainMethod {
 		pm.addGizmo(new CircularBumper(3, 1, 1, 1, 0));
 
 		pm.addGizmo(new LeftFlipper(15, 15, 0, 0, 0));
+
+		pm.addGizmo(new Absorber(1, 18, 18, 1, 0));
 
 
 

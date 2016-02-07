@@ -2,10 +2,10 @@
   "ReflectionCoefficient": 0.95,
   "ShapeColour": "blue",
   "PhysicsDef": [
-    ["Line",[24, 0], [76, 0]],
-    ["Line",[24, 24], [76, 24]],
-    ["Circle",[12, 12], 12],
-    ["Circle",[88, 12], 12]
+    ["Line",[12, 0], [88, 0]],
+    ["Line",[12, 24], [88, 24]],
+    ["Circle",[0, 0], 12],
+    ["Circle",[76, 0], 12]
 
   ],
   "VisualDef": [

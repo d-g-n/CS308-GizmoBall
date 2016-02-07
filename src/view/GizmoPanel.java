@@ -4,6 +4,8 @@ import gizmos.AbstractGizmo;
 import gizmos.VisualShape;
 import model.ProjectManager;
 import physics.Angle;
+import physics.Circle;
+import physics.LineSegment;
 
 import javax.swing.*;
 import java.awt.*;
@@ -38,7 +40,7 @@ public class GizmoPanel extends JPanel {
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 
 
-		g.setColor(Color.gray);
+		g.setColor(Color.darkGray);
 
 		// Draw guidelines on x axis
 
@@ -52,22 +54,27 @@ public class GizmoPanel extends JPanel {
 			g.drawLine(0, ((this.getWidth()/CONS_SIZE) * i), this.getWidth(), ((this.getWidth()/CONS_SIZE) * i));
 		}
 
-		// Draw Sample shapes
+
+		// Primary gizmo drawcode
 
 		for(AbstractGizmo giz : pm.getBoardGizmos()){
+			double sqWidth = (this.getWidth()/CONS_SIZE);
+			double sqHeight = (this.getHeight()/CONS_SIZE);
 			int xC = giz.getXpos();
 			int yC = giz.getYpos();
 			int gizWidth = giz.getWidth();
 			int gizHeight = giz.getHeight();
 			Angle ang = giz.getGizAngle();
 
+
+			// MAIN manual drawcode to define gizmo components
+
 			for(VisualShape vs : giz.getStoredVisualShapes()){
 
 				AffineTransform pT = g2d.getTransform();
 				// for square, first two is x, y in percent, next two is width and height in percent
 
-				double sqWidth = (this.getWidth()/CONS_SIZE);
-				double sqHeight = (this.getHeight()/CONS_SIZE);
+
 
 				if(vs.getType().equals("Square")){
 					int localX = vs.getValList().get(0);
@@ -136,6 +143,47 @@ public class GizmoPanel extends JPanel {
 				}
 
 				g2d.setTransform(pT);
+			}
+
+
+
+
+			// DEBUG drawcode that shows MIT physics lines and circles
+
+			g2d.setColor(Color.white);
+			// draw the lines
+			for(LineSegment ls : giz.getStoredLines()){
+				double sourceX = ls.p1().x();
+				double sourceY = ls.p1().y();
+				double destX = ls.p2().x();
+				double destY = ls.p2().y();
+
+				g2d.setStroke(new BasicStroke(3));
+				g2d.drawLine(
+						(int)((sqWidth * xC) + (sqWidth * (sourceX/100))*gizWidth),
+						(int)((sqHeight * yC) + (sqHeight * (sourceY/100))*gizHeight),
+						(int)((sqWidth * xC) + (sqWidth * (destX/100))* gizWidth),
+						(int)((sqHeight * yC) + (sqHeight * (destY/100))* gizHeight)
+				);
+				g2d.setStroke(new BasicStroke(1));
+			}
+
+			for(Circle cs : giz.getStoredCircles()){
+				double centerX = cs.getCenter().x();
+				double centerY = cs.getCenter().y();
+				double radius = cs.getRadius();
+
+
+				g2d.setStroke(new BasicStroke(3));
+				Ellipse2D.Double shape = new Ellipse2D.Double(
+						((sqWidth * xC) + ((centerX/100) * sqWidth)* gizWidth),
+						((sqHeight * yC) + (( centerY/100)* sqHeight)* gizHeight),
+						(radius/100)*2*sqWidth* gizWidth,
+						(radius/100)*2*sqHeight* gizHeight
+				);
+
+				g2d.draw(shape);
+				g2d.setStroke(new BasicStroke(1));
 			}
 		}
 	}

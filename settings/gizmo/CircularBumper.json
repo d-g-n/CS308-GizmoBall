@@ -1,8 +1,8 @@
 {
   "ReflectionCoefficient": 1.0,
-  "ShapeColour": "white",
+  "ShapeColour": "green",
   "PhysicsDef": [
-    ["Circle",[50, 50], 50]
+    ["Circle",[0, 0], 50]
   ],
   "VisualDef": [
     ["Circle", [0, 0], 50]
