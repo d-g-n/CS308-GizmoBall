@@ -1,6 +1,6 @@
 {
   "ReflectionCoefficient": 1.0,
-  "ShapeColour": "red",
+  "ShapeColour": "black",
   "PhysicsDef": [
     ["Line",[0, 0], [0, 100]],
     ["Line",[0, 100], [100, 100]],
