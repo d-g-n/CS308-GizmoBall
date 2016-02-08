@@ -11,6 +11,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.Line2D;
 
 /**
  * Created by Declan on 06/02/2016.
@@ -153,19 +154,28 @@ public class GizmoPanel extends JPanel {
 			g2d.setColor(Color.white);
 			// draw the lines
 			for(LineSegment ls : giz.getStoredLines()){
+				AffineTransform pT = g2d.getTransform();
+
 				double sourceX = ls.p1().x();
 				double sourceY = ls.p1().y();
 				double destX = ls.p2().x();
 				double destY = ls.p2().y();
 
 				g2d.setStroke(new BasicStroke(3));
-				g2d.drawLine(
-						(int)((sqWidth * xC) + (sqWidth * (sourceX/100))*gizWidth),
-						(int)((sqHeight * yC) + (sqHeight * (sourceY/100))*gizHeight),
-						(int)((sqWidth * xC) + (sqWidth * (destX/100))* gizWidth),
-						(int)((sqHeight * yC) + (sqHeight * (destY/100))* gizHeight)
+
+				Line2D.Double shape = new Line2D.Double(
+						((sqWidth * xC) + (sqWidth * (sourceX / 100)) * gizWidth),
+						((sqHeight * yC) + (sqHeight * (sourceY / 100)) * gizHeight),
+						((sqWidth * xC) + (sqWidth * (destX / 100)) * gizWidth),
+						((sqHeight * yC) + (sqHeight * (destY / 100)) * gizHeight)
 				);
+
+
+				g2d.rotate(ang.radians(), (sqWidth * xC) + sqWidth/2, (sqHeight * yC) + sqHeight/2);
+				g2d.draw(shape);
 				g2d.setStroke(new BasicStroke(1));
+
+				g2d.setTransform(pT);
 			}
 
 			for(Circle cs : giz.getStoredCircles()){
