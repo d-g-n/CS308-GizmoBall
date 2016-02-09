@@ -17,6 +17,10 @@ public class TestView {
 
 	public TestView(){
 
+	}
+	
+	public JPanel getBoard(){
+
 		ProjectManager pm = new ProjectManager();
 		pm.addGizmo(new SquareBumper(10, 10, 1, 1, 0));
 		pm.addGizmo(new SquareBumper(9, 10, 1, 1, 0));
@@ -39,8 +43,7 @@ public class TestView {
 
 
 
-		JFrame testFrame = new JFrame("test panel");
-		testFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		JPanel testFrame = new JPanel();
 		testFrame.setLayout(new BorderLayout());
 
 		GizmoPanel gp = new GizmoPanel(pm);
@@ -48,8 +51,6 @@ public class TestView {
 		gp.setPreferredSize(new Dimension(700, 700));
 
 		testFrame.add(gp, BorderLayout.CENTER);
-		testFrame.pack();
-
-		testFrame.setVisible(true);
+		return testFrame;
 	}
 }
