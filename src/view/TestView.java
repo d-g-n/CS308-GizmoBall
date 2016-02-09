@@ -13,7 +13,7 @@ import java.util.TimerTask;
  */
 public class TestView {
 
-
+	GizmoPanel gp;
 
 	public TestView(){
 
@@ -42,19 +42,11 @@ public class TestView {
 		pm.addGizmo(ba);
 
 
-
-		JFrame testFrame = new JFrame("test panel");
-		testFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		testFrame.setLayout(new BorderLayout());
-
-		GizmoPanel gp = new GizmoPanel(pm);
+		gp = new GizmoPanel(pm);
 
 		gp.setPreferredSize(new Dimension(700, 700));
 
-		testFrame.add(gp, BorderLayout.CENTER);
-		testFrame.pack();
 
-		testFrame.setVisible(true);
 
 		java.util.Timer updateT = new java.util.Timer();
 		updateT.scheduleAtFixedRate(new TimerTask() {
@@ -76,5 +68,13 @@ public class TestView {
 				ba.setPos(xp, ba.getYpos());
 			}
 		}, 50, 50);
+	}
+
+	public JPanel getBoard(){
+		JPanel testFrame = new JPanel();
+		testFrame.setLayout(new BorderLayout());
+		testFrame.add(gp, BorderLayout.CENTER);
+
+		return testFrame;
 	}
 }

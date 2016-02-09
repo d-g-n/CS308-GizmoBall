@@ -1,9 +1,8 @@
 package view;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-
-import javax.swing.*;
 
 public class RunGUI implements GBallGui {
 
@@ -63,7 +62,7 @@ public class RunGUI implements GBallGui {
 	private static void createAndShowGui() {
 		JFrame frame = new JFrame("Gizmoball");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setPreferredSize(new Dimension(600,500));
+		//frame.setPreferredSize(new Dimension(950,800));
 		addComponentsToPane(frame.getContentPane());
 		createMenuBar(frame.getContentPane());
 		createStatusBar(frame.getContentPane());
