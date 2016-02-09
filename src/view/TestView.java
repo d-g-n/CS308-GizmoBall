@@ -2,10 +2,10 @@ package view;
 
 import gizmos.*;
 import model.ProjectManager;
-import view.GizmoPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.TimerTask;
 
 /**
  * purely for testing
@@ -37,6 +37,10 @@ public class TestView {
 
 		pm.addGizmo(new Absorber(1, 18, 18, 1, 0));
 
+		AbstractGizmo ba = new BallActor(10.5, 5.1, 0, 0, 0);
+
+		pm.addGizmo(ba);
+
 
 
 		JFrame testFrame = new JFrame("test panel");
@@ -51,5 +55,26 @@ public class TestView {
 		testFrame.pack();
 
 		testFrame.setVisible(true);
+
+		java.util.Timer updateT = new java.util.Timer();
+		updateT.scheduleAtFixedRate(new TimerTask() {
+			@Override
+			public void run() {
+				gp.repaint();
+
+
+				// THIS CODE SHOULD BE IN COLLIONMANAGER OR SOMETHING, PURELY ILLUSTRATIONAL
+				double xp = ba.getXpos();
+				double yp = ba.getYpos();
+
+				if(xp >= 20){
+					xp = 0;
+				} else{
+					xp = xp + 0.05;
+				}
+
+				ba.setPos(xp, ba.getYpos());
+			}
+		}, 50, 50);
 	}
 }

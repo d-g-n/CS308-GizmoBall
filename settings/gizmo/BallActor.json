@@ -1,0 +1,10 @@
+{
+  "ReflectionCoefficient": 1.0,
+  "ShapeColour": "blue",
+  "PhysicsDef": [
+    ["Circle",[0, 0], 50]
+  ],
+  "VisualDef": [
+    ["Circle", [0, 0], 50]
+  ]
+}
