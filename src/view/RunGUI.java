@@ -94,6 +94,9 @@ public class RunGUI implements GBallGui, Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
+		if(tv == null)
+			return;
+
 		tv.getGizPanel().repaint();
 	}
 }
