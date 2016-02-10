@@ -1,16 +1,30 @@
 package view;
 
-import model.ProjectManager;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
+import controller.RunListener;
+import model.ProjectManager;
+
 public class RunGUI implements GBallGui, Observer {
 
 	TestView tv;
+	private RunListener runListener;
 	
 	private void createMenuBar(Container pane){
 		JMenuBar menuBar = new JMenuBar();
@@ -60,6 +74,7 @@ public class RunGUI implements GBallGui, Observer {
 	private void addAButton(String title, Container pane) {
 		JButton button = new JButton(title);
 		button.setAlignmentX(Component.LEFT_ALIGNMENT);
+		button.addActionListener(runListener);
 		pane.add(button);
 		
 	}
@@ -90,6 +105,8 @@ public class RunGUI implements GBallGui, Observer {
 				createAndShowGui(pm);
 			}
 		});
+		
+		runListener = new RunListener(this);
 	}
 
 	@Override

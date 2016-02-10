@@ -13,7 +13,6 @@ public class ProjectManager extends Observable{
 	
 	private static CollisionManager cManager;
 	private static FileManager fManager;
-	private RunListener runListener = new RunListener();
 	private MenuListener menuListener = new MenuListener();
 	private List<AbstractGizmo> boardGizmos;
 	
