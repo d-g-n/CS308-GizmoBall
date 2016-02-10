@@ -34,6 +34,7 @@ public class MainInit {
 
         AbstractGizmo ba = new BallActor(10.5, 5.1, 0, 0, 0);
 
+        pm.addBallActor(ba);
         pm.addGizmo(ba);
 
         java.util.Timer updateT = new java.util.Timer();
@@ -42,7 +43,7 @@ public class MainInit {
             public void run() {
 
 
-                pm.updateBallTest();
+                pm.timeTick();
             }
         }, 50, 50);
 

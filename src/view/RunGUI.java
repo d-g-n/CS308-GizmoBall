@@ -113,7 +113,6 @@ public class RunGUI implements GBallGui, Observer {
 	public void update(Observable o, Object arg) {
 		if(tv == null)
 			return;
-
 		tv.getGizPanel().repaint();
 	}
 }

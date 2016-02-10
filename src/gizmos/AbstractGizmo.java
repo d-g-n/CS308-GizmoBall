@@ -8,20 +8,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
-public abstract class AbstractGizmo extends Observable{
-	
+public abstract class AbstractGizmo extends Observable {
+
 	protected double xpos, ypos, width, height;
 	protected Angle gizAngle;
 	protected double reflectionCoefficient;
 	protected List<AbstractGizmo> gizmoListeners;
 
-
 	protected List<Circle> StoredCircles;
 	protected List<LineSegment> StoredLines;
 
 	protected List<VisualShape> StoredVisualShapes;
-	
-	public AbstractGizmo(double x, double y, double width, double height, int angDegrees){
+
+	public AbstractGizmo(double x, double y, double width, double height, int angDegrees) {
 		this.xpos = x;
 		this.ypos = y;
 		this.width = width;
@@ -38,42 +37,63 @@ public abstract class AbstractGizmo extends Observable{
 
 	}
 
-	public double getXpos(){ return xpos; }
-	public double getYpos(){ return ypos; }
+	public double getXpos() {
+		return xpos;
+	}
 
-	public double getWidth(){ return width; }
-	public double getHeight(){ return height; }
+	public double getYpos() {
+		return ypos;
+	}
 
-	public double getReflectionCoefficient(){
+	public double getWidth() {
+		return width;
+	}
+
+	public double getHeight() {
+		return height;
+	}
+
+	public double getReflectionCoefficient() {
 		return reflectionCoefficient;
 	}
-	public Angle getGizAngle(){ return gizAngle; }
 
-	public List<Circle> getStoredCircles(){ return StoredCircles; }
-	public List<LineSegment> getStoredLines(){ return StoredLines; }
-	public List<VisualShape> getStoredVisualShapes() { return StoredVisualShapes; }
+	public Angle getGizAngle() {
+		return gizAngle;
+	}
 
+	public List<Circle> getStoredCircles() {
+		return StoredCircles;
+	}
 
-	public void setPos(double xpos, double ypos){
+	public List<LineSegment> getStoredLines() {
+		return StoredLines;
+	}
+
+	public List<VisualShape> getStoredVisualShapes() {
+		return StoredVisualShapes;
+	}
+
+	public void setPos(double xpos, double ypos) {
 		this.xpos = xpos;
 		this.ypos = ypos;
 	}
 
 	/**
-	 * This method is called by the engine when the ball collides with this gizmo
-	 * Can also be extended to provide the ball-holding functionality seen in the Absorber.
+	 * This method is called by the engine when the ball collides with this
+	 * gizmo Can also be extended to provide the ball-holding functionality seen
+	 * in the Absorber.
 	 */
-	public void onHit(){
-		for(AbstractGizmo g : gizmoListeners){
-			g.doAction();
+	public void onHit() {
+		for (AbstractGizmo g : gizmoListeners) {
+			g.onCollision();
 		}
 	}
 
 	/**
-	 * This method is called by the gizmo that has been hit
-	 * Will likely need to extend this method to provide desired functionality
+	 * This method is called by the gizmo that has been hit Will likely need to
+	 * extend this method to provide desired functionality
 	 */
-	public void doAction(){
+	public void onCollision() {
 		// there is no default action but needed here to override it.
 	}
 

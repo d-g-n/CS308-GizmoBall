@@ -15,42 +15,33 @@ public class ProjectManager extends Observable{
 	private static FileManager fManager;
 	private MenuListener menuListener = new MenuListener();
 	private List<AbstractGizmo> boardGizmos;
+	private AbstractGizmo ball;
 	
 	public ProjectManager(){
-		cManager = new CollisionManager();
+		cManager = new CollisionManager(this);
 		fManager = new FileManager();
 		boardGizmos = new ArrayList<AbstractGizmo>();
+		ball = new BallActor(0,0,0,0,0);
 	}
 
 	public void addGizmo(AbstractGizmo g){
 		boardGizmos.add(g);
 	}
 
+	public void addBallActor(AbstractGizmo ball){
+		this.ball = ball;
+	}
+	
+	public void setBallPosition(double xpos, double ypos){
+		ball.setPos(xpos, ypos);
+	}
+	
 	public List<AbstractGizmo> getBoardGizmos(){
 		return boardGizmos;
 	}
 
-	public void updateBallTest() {
-		BallActor ba = new BallActor(0, 0, 0, 0, 0);
-
-		for(AbstractGizmo ag : boardGizmos){
-			if(ag.getClass().equals(BallActor.class)){
-				ba = (BallActor) ag;
-				break;
-			}
-		}
-		// THIS CODE SHOULD BE IN COLLIONMANAGER OR SOMETHING, PURELY ILLUSTRATIONAL
-		double xp = ba.getXpos();
-		double yp = ba.getYpos();
-
-		if (xp >= 20) {
-			xp = 0;
-		} else {
-			xp = xp + 0.05;
-		}
-
-		ba.setPos(xp, ba.getYpos());
-
+	public void timeTick(){
+		cManager.update(ball,null);
 		this.setChanged();
 		this.notifyObservers();
 	}

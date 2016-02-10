@@ -23,8 +23,8 @@ public class Absorber extends AbstractGizmo {
 	 * Like above, will want to set the velocity of the ball if the ball is currently being held
 	 */
 	@Override
-	public void doAction() {
-		super.doAction();
+	public void onCollision() {
+		super.onCollision();
 
 		// if ball is held, chuck it back out
 
