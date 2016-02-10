@@ -1,19 +1,24 @@
 package view;
 
+import model.ProjectManager;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.Observable;
+import java.util.Observer;
 
-public class RunGUI implements GBallGui {
+public class RunGUI implements GBallGui, Observer {
 
+	TestView tv;
 	
-	private static void createMenuBar(Container pane){
+	private void createMenuBar(Container pane){
 		JMenuBar menuBar = new JMenuBar();
 		
 		JMenu menu = new JMenu("File");
 		menu.setMnemonic(KeyEvent.VK_F);
 		menu.getAccessibleContext().setAccessibleDescription(
-		        "The file menu");
+				"The file menu");
 		menuBar.add(menu);
 		JMenuItem fileItem1 = new JMenuItem("Load...");
 		JMenuItem fileItem2 = new JMenuItem("Exit");
@@ -21,7 +26,7 @@ public class RunGUI implements GBallGui {
 		menu.add(fileItem2);
 		pane.add(menuBar,BorderLayout.PAGE_START);
 	}
-	private static void addComponentsToPane(Container pane) {
+	private void addComponentsToPane(Container pane, ProjectManager pm) {
 		pane.setLayout(new BorderLayout());
 		
 	    JPanel leftPanel = new JPanel();
@@ -32,10 +37,10 @@ public class RunGUI implements GBallGui {
 		addAButton("Tick", leftPanel);
 		addAButton("Exit", leftPanel);
 		
-		pane.add(leftPanel,BorderLayout.LINE_START);
+		pane.add(leftPanel, BorderLayout.LINE_START);
 		
-		TestView t = new TestView();
-		pane.add(t.getBoard(),BorderLayout.CENTER);
+		tv = new TestView(pm);
+		pane.add(tv.getBoard(),BorderLayout.CENTER);
 		
 		JPanel rightPanel = new JPanel();
 		rightPanel.setLayout(new GridLayout(3,1));
@@ -46,50 +51,49 @@ public class RunGUI implements GBallGui {
 		pane.add(rightPanel,BorderLayout.LINE_END);
 	}
 	
-	private static void createStatusBar(Container pane){
+	private void createStatusBar(Container pane){
 		JLabel label = new JLabel("Here will be the status label");
 		pane.add(label,BorderLayout.PAGE_END);
 		
 	}
 
-	private static void addAButton(String title, Container pane) {
+	private void addAButton(String title, Container pane) {
 		JButton button = new JButton(title);
 		button.setAlignmentX(Component.LEFT_ALIGNMENT);
 		pane.add(button);
 		
 	}
 
-	private static void createAndShowGui() {
+	private void createAndShowGui(ProjectManager pm) {
 		JFrame frame = new JFrame("Gizmoball");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//frame.setPreferredSize(new Dimension(950,800));
-		addComponentsToPane(frame.getContentPane());
+		addComponentsToPane(frame.getContentPane(), pm);
 		createMenuBar(frame.getContentPane());
 		createStatusBar(frame.getContentPane());
 		frame.pack();
         frame.setVisible(true);
 	}
 
-	public static void main(String[] args){
+
+	public RunGUI(ProjectManager pm){
 		/* Use an appropriate Look and Feel */
-        try {
-            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-        } catch (UnsupportedLookAndFeelException ex) {
-            ex.printStackTrace();
-        } catch (IllegalAccessException ex) {
-            ex.printStackTrace();
-        } catch (InstantiationException ex) {
-            ex.printStackTrace();
-        } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
-        }
-         
-        //Schedule a job for the event dispatch thread:
-        //creating and showing this application's GUI.
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                createAndShowGui();
-            }
-        });
+		try {
+			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+		} catch (UnsupportedLookAndFeelException | InstantiationException | ClassNotFoundException | IllegalAccessException ex) {
+		}
+
+		//Schedule a job for the event dispatch thread:
+		//creating and showing this application's GUI.
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				createAndShowGui(pm);
+			}
+		});
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		tv.getGizPanel().repaint();
 	}
 }
