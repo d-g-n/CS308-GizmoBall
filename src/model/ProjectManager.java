@@ -1,7 +1,6 @@
 package model;
 
 import controller.MenuListener;
-import controller.RunListener;
 import gizmos.AbstractGizmo;
 import gizmos.BallActor;
 import physics.Angle;
@@ -33,17 +32,14 @@ public class ProjectManager extends Observable{
 	public void addBallActor(AbstractGizmo ball){
 		this.ball = ball;
 	}
-	
-	public void setBallPosition(double xpos, double ypos){
-		ball.setPos(xpos, ypos);
-	}
-	
+
 	public List<AbstractGizmo> getBoardGizmos(){
 		return boardGizmos;
 	}
 
 	public void timeTick(){
-		cManager.update(ball);
+		cManager.collisionUpdate(ball);
+
 		this.setChanged();
 		this.notifyObservers();
 	}

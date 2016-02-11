@@ -1,17 +1,10 @@
-import java.util.TimerTask;
-
-import gizmos.Absorber;
-import gizmos.AbstractGizmo;
-import gizmos.BallActor;
-import gizmos.CircularBumper;
-import gizmos.LeftFlipper;
-import gizmos.OuterWall;
-import gizmos.SquareBumper;
-import gizmos.TriangleBumper;
+import gizmos.*;
 import model.ProjectManager;
 import physics.Angle;
 import physics.Vect;
 import view.RunGUI;
+
+import java.util.TimerTask;
 
 /**
  * Created by gkb13160 on 10/02/16.
@@ -22,9 +15,15 @@ public class MainInit {
         // init model
         ProjectManager pm = new ProjectManager();
 
-        pm.addGizmo(new OuterWall(0,0,0,20,0));
-        pm.addGizmo(new OuterWall(0,0,20,0,0));
-        pm.addGizmo(new OuterWall(0,0,0,0,0));
+        // note: walls should be outside the standard 20x20 playing area
+        // top wall
+        pm.addGizmo(new OuterWall(-1,-1,22,1,0));
+        // bottom wall
+        pm.addGizmo(new OuterWall(-1,21,22,1,0));
+        // left wall
+        pm.addGizmo(new OuterWall(-1,0,1,20,0));
+        // right wall
+        pm.addGizmo(new OuterWall(21,0,1,20,0));
         
         pm.addGizmo(new SquareBumper(10, 10, 1, 1, 0));
         pm.addGizmo(new SquareBumper(9, 10, 1, 1, 0));
