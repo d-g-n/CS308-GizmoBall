@@ -1,13 +1,11 @@
 package view;
 
-import gizmos.*;
-import model.ProjectManager;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 
-import javax.swing.*;
-import java.awt.*;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.TimerTask;
+import javax.swing.JPanel;
+
+import model.ProjectManager;
 
 /**
  * purely for testing
@@ -21,7 +19,7 @@ public class TestView  {
 
 		gp = new GizmoPanel(pm);
 
-		gp.setPreferredSize(new Dimension(700, 700));
+		gp.setPreferredSize(new Dimension(RunGUI.BOARD_WIDTH, RunGUI.BOARD_HEIGHT));
 
 
 	}

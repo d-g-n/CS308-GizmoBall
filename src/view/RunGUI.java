@@ -23,8 +23,10 @@ import model.ProjectManager;
 
 public class RunGUI implements GBallGui, Observer {
 
-	TestView tv;
+	private TestView tv;
 	private RunListener runListener;
+	public static final int BOARD_WIDTH = 500;
+	public static final int BOARD_HEIGHT = 500;
 	
 	private void createMenuBar(Container pane){
 		JMenuBar menuBar = new JMenuBar();

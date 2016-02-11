@@ -1,35 +1,38 @@
 package model;
 
+import java.util.List;
 import java.util.Observable;
-import java.util.Observer;
+
+import gizmos.AbstractGizmo;
 import gizmos.BallActor;
+import physics.*;
 
-public class CollisionManager implements Observer{
+public class CollisionManager extends Observable{
 
-	public final int BOARD_LIMIT_RIGHT = 20;
-	public final int BOARD_LIMIT_LEFT = 0;
-	public final int BOARD_LIMIT_UP = 0;
-	public final int BOARD_LIMIT_DOWN = 20;
+	public final double STEP = 0.05;
 	private ProjectManager pm;
 
 	public CollisionManager(ProjectManager pm) {
 		this.pm = pm;
 	}
 
-	@Override
-	public void update(Observable o, Object arg) {
-		BallActor ba = (BallActor) o;
-		
-		double xp = ba.getXpos();
-		double yp = ba.getYpos();
+	public void update(AbstractGizmo b) {
+		BallActor ball = (BallActor) b;
+		double xp = ball.getXpos();
+		double yp = ball.getYpos();
 
-		if (xp >= BOARD_LIMIT_RIGHT) {
-			xp = 0;
-		} else {
-			xp = xp + 0.05;
+		List<AbstractGizmo> gizmos = pm.getBoardGizmos();
+		Vect velocity = new Vect(Angle.DEG_90,1);
+		for(AbstractGizmo gizmo : gizmos){
+			if(gizmo.getClass().equals("OuterWall")){
+				if(gizmo.getXpos() >= 20){
+					velocity = Geometry.reflectWall(gizmo.getStoredLines().get(3), ball.getVelocity());
+				}
+			}
+				
 		}
 		
-		pm.setBallPosition(xp, yp);
+		pm.setBallPosition(velocity.x(), velocity.y());
 	}
 	
 	

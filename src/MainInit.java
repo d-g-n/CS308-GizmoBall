@@ -1,8 +1,17 @@
-import gizmos.*;
-import model.ProjectManager;
-import view.RunGUI;
-
 import java.util.TimerTask;
+
+import gizmos.Absorber;
+import gizmos.AbstractGizmo;
+import gizmos.BallActor;
+import gizmos.CircularBumper;
+import gizmos.LeftFlipper;
+import gizmos.OuterWall;
+import gizmos.SquareBumper;
+import gizmos.TriangleBumper;
+import model.ProjectManager;
+import physics.Angle;
+import physics.Vect;
+import view.RunGUI;
 
 /**
  * Created by gkb13160 on 10/02/16.
@@ -13,6 +22,10 @@ public class MainInit {
         // init model
         ProjectManager pm = new ProjectManager();
 
+        pm.addGizmo(new OuterWall(0,0,0,20,0));
+        pm.addGizmo(new OuterWall(0,0,20,0,0));
+        pm.addGizmo(new OuterWall(0,0,0,0,0));
+        
         pm.addGizmo(new SquareBumper(10, 10, 1, 1, 0));
         pm.addGizmo(new SquareBumper(9, 10, 1, 1, 0));
         pm.addGizmo(new SquareBumper(11, 10, 1, 1, 0));
@@ -32,7 +45,7 @@ public class MainInit {
 
         pm.addGizmo(new Absorber(1, 18, 18, 1, 0));
 
-        AbstractGizmo ba = new BallActor(10.5, 5.1, 0, 0, 0);
+        AbstractGizmo ba = new BallActor(10.5, 5.1, 0, 0, 0, new Vect(Angle.ZERO,1));
 
         pm.addBallActor(ba);
         pm.addGizmo(ba);

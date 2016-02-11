@@ -4,6 +4,8 @@ import controller.MenuListener;
 import controller.RunListener;
 import gizmos.AbstractGizmo;
 import gizmos.BallActor;
+import physics.Angle;
+import physics.Vect;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +23,7 @@ public class ProjectManager extends Observable{
 		cManager = new CollisionManager(this);
 		fManager = new FileManager();
 		boardGizmos = new ArrayList<AbstractGizmo>();
-		ball = new BallActor(0,0,0,0,0);
+		ball = new BallActor(0,0,0,0,0,new Vect(Angle.ZERO,1));
 	}
 
 	public void addGizmo(AbstractGizmo g){
@@ -41,7 +43,7 @@ public class ProjectManager extends Observable{
 	}
 
 	public void timeTick(){
-		cManager.update(ball,null);
+		cManager.update(ball);
 		this.setChanged();
 		this.notifyObservers();
 	}

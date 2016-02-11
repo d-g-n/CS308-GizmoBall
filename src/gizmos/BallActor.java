@@ -1,9 +1,17 @@
 package gizmos;
 
+import physics.Vect;
+
 public class BallActor extends AbstractGizmo {
 
-	public BallActor(double x, double y, double width, double height, int degrees) {
+	private Vect velocity;
+	public BallActor(double x, double y, double width, double height, int degrees, Vect velocity) {
 		super(x, y, 0.5, 0.5, 0);
+		this.velocity = velocity;
+	}
+	
+	public Vect getVelocity(){
+		return velocity;
 	}
 
 }

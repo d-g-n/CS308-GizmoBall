@@ -20,7 +20,7 @@ public class GizmoPanel extends JPanel {
 
 	private static final int CONS_SIZE = 20;
 
-	private static final boolean ENABLE_DEBUG = false;
+	private static final boolean ENABLE_DEBUG = true;
 
 	public ProjectManager pm;
 
@@ -163,7 +163,7 @@ public class GizmoPanel extends JPanel {
 					double destX = ls.p2().x();
 					double destY = ls.p2().y();
 
-					g2d.setStroke(new BasicStroke(3));
+					g2d.setStroke(new BasicStroke(1));
 
 					Line2D.Double shape = new Line2D.Double(
 							((sqWidth * xC) + (sqWidth * (sourceX / 100)) * gizWidth),
@@ -186,7 +186,7 @@ public class GizmoPanel extends JPanel {
 					double radius = cs.getRadius();
 
 
-					g2d.setStroke(new BasicStroke(3));
+					g2d.setStroke(new BasicStroke(1));
 					Ellipse2D.Double shape = new Ellipse2D.Double(
 							((sqWidth * xC) + ((centerX / 100) * sqWidth) * gizWidth),
 							((sqHeight * yC) + ((centerY / 100) * sqHeight) * gizHeight),
