@@ -19,12 +19,14 @@ import view.RunGUI;
 public class MainInit {
     public static void main(String[] args){
 
+    	int totalWidth=20;
         // init model
         ProjectManager pm = new ProjectManager();
 
-        pm.addGizmo(new OuterWall(0,0,0,20,0));
-        pm.addGizmo(new OuterWall(0,0,20,0,0));
-        pm.addGizmo(new OuterWall(0,0,0,0,0));
+        pm.addGizmo(new OuterWall(0,0,totalWidth,0,0));
+        pm.addGizmo(new OuterWall(0,totalWidth,0,totalWidth,0));
+        pm.addGizmo(new OuterWall(0,0,0,totalWidth,0));
+        pm.addGizmo(new OuterWall(totalWidth,0,totalWidth,0,0));
         
         pm.addGizmo(new SquareBumper(10, 10, 1, 1, 0));
         pm.addGizmo(new SquareBumper(9, 10, 1, 1, 0));
@@ -39,7 +41,7 @@ public class MainInit {
         pm.addGizmo(new TriangleBumper(1, 1, 1, 1, 0));
         pm.addGizmo(new TriangleBumper(2, 1, 1, 1, 90));
 
-        pm.addGizmo(new CircularBumper(3, 1, 1, 1, 0));
+        pm.addGizmo(new CircularBumper(10, 1, 1, 1, 0));
 
         pm.addGizmo(new LeftFlipper(15, 15, 0, 0, 0));
 

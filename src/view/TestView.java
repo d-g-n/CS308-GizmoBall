@@ -13,18 +13,18 @@ import model.ProjectManager;
  */
 public class TestView  {
 
-	GizmoPanel gp;
+	RunBoard gp;
 
 	public TestView(ProjectManager pm){
 
-		gp = new GizmoPanel(pm);
+		gp = new RunBoard(pm);
 
 		gp.setPreferredSize(new Dimension(RunGUI.BOARD_WIDTH, RunGUI.BOARD_HEIGHT));
 
 
 	}
 
-	public GizmoPanel getGizPanel(){
+	public RunBoard getGizPanel(){
 		return gp;
 	}
 

@@ -1,17 +1,26 @@
 package view;
 
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Polygon;
+import java.awt.Rectangle;
+import java.awt.RenderingHints;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Line2D;
+
+import javax.sound.sampled.Line;
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
+
 import gizmos.AbstractGizmo;
 import gizmos.VisualShape;
 import model.ProjectManager;
 import physics.Angle;
 import physics.Circle;
 import physics.LineSegment;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Line2D;
 
 /**
  * Created by Declan on 06/02/2016.
@@ -94,7 +103,17 @@ public class GizmoPanel extends JPanel {
 					g2d.rotate(ang.radians());
 					g2d.draw(shape);
 					g2d.fill(shape);
+				} else if(vs.getType().equals("OuterWall")){
+					
+					g2d.setColor(vs.getColour());
+					
+					Line2D.Double shape = new Line2D.Double(
+							0,1,1,1);
+					
+					g2d.draw(shape);
+					g2d.fill(shape);
 				} else if (vs.getType().equals("Triangle")) {
+				
 					int localX = vs.getValList().get(0);
 					int localY = vs.getValList().get(1);
 					int localWidth = vs.getValList().get(2);
