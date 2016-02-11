@@ -51,8 +51,6 @@ public class GizmoSettings {
 				gizmoColour = Color.white; // Not defined
 			}
 
-			System.out.println(gizmoColour);
-
 			// now get the MIT physics line definitions
 
 			for(JsonValue entry : jv.asObject().get("PhysicsDef").asArray()){
