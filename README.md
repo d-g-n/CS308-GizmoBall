@@ -41,11 +41,11 @@ Doing it this way allows us to easily add new gizmos comprised of basic shapes e
 
 ####Explanation of the formats used
 
-The standard format is `[String, [xCoordinate, yCoordinate], other]` where `other` varies depending on what the shape requires, currently `other` can be `[xCoordinateDestination, yCoordinateDestination]` or `radius`
+The standard format is `[String, [xCoordinate, yCoordinate], other]` where `other` varies depending on what the shape requires, currently `other` can be `[width, height]` or `radius`
 
 `["Circle", [76, 0], 12]` > In this example this defines a circle object (parseable as physics or visual) with the top left corner starting at 76 across the x and 0 down on the y, and it has a radius of 12
 
-`["Square", [24, 0], [76, 24]]` > In this example this defines a square visual object with the top left corner of the square at x 24, y 0 and the bottom right of the square being drawn at 
+`["Square", [24, 0], [76, 24]]` > In this example this defines a square visual object with the top left corner of the square at x 24, y 0 and the width being 76 and the height being 24
 
 ####Conversion of an object from stored values to screenspace
 

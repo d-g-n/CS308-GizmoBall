@@ -17,13 +17,13 @@ public class MainInit {
 
         // note: walls should be outside the standard 20x20 playing area
         // top wall
-        pm.addGizmo(new OuterWall(-1,-1,22,1,0));
+      /*  pm.addGizmo(new OuterWall(-1,-1,22,1,0));
         // bottom wall
         pm.addGizmo(new OuterWall(-1,21,22,1,0));
         // left wall
         pm.addGizmo(new OuterWall(-1,0,1,20,0));
         // right wall
-        pm.addGizmo(new OuterWall(21,0,1,20,0));
+        pm.addGizmo(new OuterWall(21,0,1,20,0));*/
         
         pm.addGizmo(new SquareBumper(10, 10, 1, 1, 0));
         pm.addGizmo(new SquareBumper(9, 10, 1, 1, 0));
@@ -40,7 +40,9 @@ public class MainInit {
 
         pm.addGizmo(new CircularBumper(3, 1, 1, 1, 0));
 
-        pm.addGizmo(new LeftFlipper(15, 15, 0, 0, 0));
+        pm.addGizmo(new LeftFlipper(15, 15, 2, 2, 0));
+
+        pm.addGizmo(new RightFlipper(10, 15, 2, 2, 0));
 
         pm.addGizmo(new Absorber(1, 18, 18, 1, 0));
 
