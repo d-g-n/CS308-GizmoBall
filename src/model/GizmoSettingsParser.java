@@ -1,9 +1,11 @@
-package gizmos;
+package model;
 
 import com.eclipsesource.json.Json;
 import com.eclipsesource.json.JsonValue;
+import gizmos.AbstractGizmo;
 import physics.Circle;
 import physics.LineSegment;
+import view.VisualShape;
 
 import java.awt.*;
 import java.io.FileReader;
@@ -15,7 +17,7 @@ import java.util.List;
 /**
  * Created by Declan on 06/02/2016.
  */
-public class GizmoSettings {
+public class GizmoSettingsParser {
 
 	private double reflectionCoefficient;
 	private Color gizmoColour;
@@ -23,7 +25,7 @@ public class GizmoSettings {
 	private List<LineSegment> parsedLines;
 	private List<VisualShape> visualShapes;
 
-	public GizmoSettings(AbstractGizmo g){
+	public GizmoSettingsParser(AbstractGizmo g){
 
 		this.parsedCircles = new ArrayList<Circle>();
 		this.parsedLines = new ArrayList<LineSegment>();

@@ -1,7 +1,6 @@
 package view;
 
 import gizmos.AbstractGizmo;
-import gizmos.VisualShape;
 import model.ProjectManager;
 import physics.Angle;
 import physics.Circle;
