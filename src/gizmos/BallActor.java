@@ -2,12 +2,17 @@ package gizmos;
 
 import physics.Vect;
 
+import java.awt.*;
+
 public class BallActor extends AbstractGizmo {
 
 	private Vect velocity;
 
 	public BallActor(double x, double y, double width, double height, int degrees, Vect velocity) {
-		super(x, y, 0.5, 0.5, 0);
+		super(x, y, 0.5, 0.5, 0,
+				Color.blue, // colour of gizmo
+				0.95 // reflection coefficient
+		);
 		this.velocity = velocity;
 	}
 	

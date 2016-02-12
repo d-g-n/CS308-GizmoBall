@@ -1,10 +1,20 @@
 package gizmos;
 
 
+import physics.LineSegment;
+
+import java.awt.*;
+
 public class Absorber extends AbstractGizmo {
 
 	public Absorber(int x, int y, int width, int height, int degrees) {
-		super(x, y, width, height, degrees);
+
+		super(x, y, width, height, degrees,
+				Color.magenta, // colour of gizmo
+				0.95 // reflection coefficent
+		);
+
+		StoredLines.add(new LineSegment(0, 0, 0, 0)); // this is how you would define the physics stuff using the x, y and width
 	}
 
 
