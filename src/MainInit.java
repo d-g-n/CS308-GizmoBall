@@ -40,7 +40,7 @@ public class MainInit {
 
         pm.addGizmo(new CircularBumper(3, 1, 1, 1, 0));
 
-        pm.addGizmo(new LeftFlipper(15, 15, 2, 2, 0));
+        pm.addGizmo(new LeftFlipper(15, 15, 2, 2, 90));
 
         pm.addGizmo(new RightFlipper(10, 15, 2, 2, 0));
 

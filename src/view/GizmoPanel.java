@@ -201,12 +201,14 @@ public class GizmoPanel extends JPanel {
 		double gizWidth = giz.getWidth();
 		double gizHeight = giz.getHeight();
 		Angle gizAngle = giz.getGizAngle();
-		AffineTransform pT = g2d.getTransform();
+
 		Shape shape = new Polygon();
 
 		g.setColor(Color.white);
 		// draw the lines
 		for (LineSegment ls : giz.getStoredLines()) {
+
+			AffineTransform pT = g2d.getTransform();
 
 			double percentXsrc = ls.p1().x() / 100;
 			double percentYsrc = ls.p1().y() / 100;
@@ -227,13 +229,13 @@ public class GizmoPanel extends JPanel {
 			);
 			g2d.draw(shape);
 
+			g2d.setTransform(pT);
+
 		}
 
-		g2d.setTransform(pT);
-
-		pT = g2d.getTransform();
-
 		for (Circle cs : giz.getStoredCircles()) {
+
+			AffineTransform pT = g2d.getTransform();
 
 			double percentX = cs.getCenter().x() / 100;
 			double percentY = cs.getCenter().y() / 100;
@@ -253,9 +255,8 @@ public class GizmoPanel extends JPanel {
 			);
 			g2d.draw(shape);
 
+			g2d.setTransform(pT);
 		}
-
-		g2d.setTransform(pT);
 
 	}
 
