@@ -1,24 +1,14 @@
 package view;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Polygon;
-import java.awt.Rectangle;
-import java.awt.RenderingHints;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Ellipse2D;
-
-import javax.swing.JPanel;
-
-import gizmos.Absorber;
-import gizmos.AbstractGizmo;
-import gizmos.BallActor;
-import gizmos.CircularBumper;
-import gizmos.SquareBumper;
-import gizmos.TriangleBumper;
+import gizmos.*;
 import model.ProjectManager;
 import physics.Vect;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
 
 public class RunBoard extends JPanel implements Board {
 
@@ -54,19 +44,30 @@ public class RunBoard extends JPanel implements Board {
 		for (AbstractGizmo gizmo : pm.getBoardGizmos()) {
 			AffineTransform pT = g2d.getTransform();
 
+
 			double gizmoXpos = gizmo.getXpos();
 			double gizmoYpos = gizmo.getYpos();
 			double gizmoWidth = gizmo.getWidth();
 			double gizmoHeight = gizmo.getHeight();
+			g.setColor(gizmo.getGizCol());
+
+			Shape shape = new Polygon();
 
 			//If the gizmo is a Circle or a Ball then paint an Ellipse
-			if (aCircle.getClass().isInstance(gizmo) || aBall.getClass().isInstance(gizmo)) {
-				if (aBall.getClass().isInstance(gizmo)) {
-					g.setColor(Color.blue);
-				} else {
-					g.setColor(Color.red);
-				}
-				Ellipse2D.Double shape = new Ellipse2D.Double(
+			if (gizmo.getClass().equals(CircularBumper.class)
+					|| gizmo.getClass().equals(BallActor.class)) {
+
+				shape = new Ellipse2D.Double(
+						(cellWidth * gizmoXpos),
+						(cellHeight * gizmoYpos),
+						(cellWidth * gizmoWidth),
+						(cellHeight * gizmoHeight)
+				);
+
+			} else if (gizmo.getClass().equals(Absorber.class) //If it is an absorber or a square
+					|| gizmo.getClass().equals(SquareBumper.class)) { //paint a Rectangle
+
+				shape = new Rectangle2D.Double(
 						(cellWidth * gizmoXpos),
 						(cellHeight * gizmoYpos),
 						(cellWidth * gizmoWidth),
@@ -77,39 +78,25 @@ public class RunBoard extends JPanel implements Board {
 				g2d.draw(shape);
 				g2d.fill(shape);
 
-			} else if (anAbsorber.getClass().isInstance(gizmo) //If it is an absorber or a square
-					|| aSquare.getClass().isInstance(gizmo)) { //paint a Rectangle
-				if(aSquare.getClass().isInstance(gizmo)){
-					g.setColor(Color.red);
-				}else{
-					g2d.setColor(Color.magenta);
-				}
-				Rectangle shape = new Rectangle(
-						(int) (cellWidth * gizmoXpos), 
-						(int) (cellHeight * gizmoYpos),
-						(int) (cellWidth * gizmoWidth), 
-						(int) (cellHeight * gizmoHeight));
-				g2d.rotate(gizmo.getGizAngle().radians());
-				g2d.draw(shape);
-				g2d.fill(shape);
-			}else if(aTriangle.getClass().isInstance(gizmo)){
-				g.setColor(Color.yellow);
-				Polygon shape = new Polygon();
+			}else if(gizmo.getClass().equals(TriangleBumper.class)){
+
+				shape = new Polygon();
 				//Add the three points of the triangle to the shape
 				
 				/*
 				 *  *    
 				 *  - -
 				 */
-				shape.addPoint((int) (cellWidth * gizmoXpos),
-								(int) (cellHeight * gizmoYpos)
+				((Polygon) shape).addPoint(
+						(int) (cellWidth * gizmoXpos),
+						(int) (cellHeight * gizmoYpos)
 				);
 				
 				/*
 				 *  -    
 				 *  - *
 				 */
-				shape.addPoint(
+				((Polygon) shape).addPoint(
 						(int) ((cellWidth * gizmoXpos) + (cellWidth * gizmoWidth)),
 						(int) ((cellWidth * gizmoYpos) + (cellHeight * gizmoHeight))
 				);
@@ -118,17 +105,22 @@ public class RunBoard extends JPanel implements Board {
 				 *  -    
 				 *  * -
 				 */
-				shape.addPoint(
+				((Polygon) shape).addPoint(
 						(int) (cellWidth * gizmoXpos),
 						(int) ((cellWidth * gizmoYpos) + (cellHeight * gizmoHeight))			
 				);
-				
-				// Rotate appropriately the triangle
-				g2d.rotate(gizmo.getGizAngle().radians(),
-						shape.getBounds2D().getX() + cellWidth / 2, shape.getBounds2D().getY() + cellHeight / 2);
-				g2d.draw(shape);
-				g2d.fill(shape);
+
 			}
+
+			g2d.rotate(
+					gizmo.getGizAngle().radians(),
+					shape.getBounds2D().getX() + cellWidth / 2,
+					shape.getBounds2D().getY() + cellHeight / 2
+			);
+			g2d.draw(shape);
+			g2d.fill(shape);
+
+
 			g2d.setTransform(pT);
 		}
 

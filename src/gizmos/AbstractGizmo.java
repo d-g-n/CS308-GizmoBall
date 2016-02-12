@@ -1,11 +1,10 @@
 package gizmos;
 
-import model.GizmoSettingsParser;
 import physics.Angle;
 import physics.Circle;
 import physics.LineSegment;
-import view.VisualShape;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,10 +17,10 @@ public abstract class AbstractGizmo {
 
 	protected List<Circle> StoredCircles;
 	protected List<LineSegment> StoredLines;
+	protected Color gizCol;
 
-	protected List<VisualShape> StoredVisualShapes;
 
-	public AbstractGizmo(double x, double y, double width, double height, int angDegrees) {
+	public AbstractGizmo(double x, double y, double width, double height, int angDegrees, Color c, double rc) {
 		this.xpos = x;
 		this.ypos = y;
 		this.width = width;
@@ -30,11 +29,11 @@ public abstract class AbstractGizmo {
 
 		this.gizmoListeners = new ArrayList<AbstractGizmo>();
 
-		GizmoSettingsParser gs = new GizmoSettingsParser(this);
-		this.reflectionCoefficient = gs.getReflectionCoefficient();
-		this.StoredCircles = gs.getParsedCircles();
-		this.StoredLines = gs.getParsedLines();
-		this.StoredVisualShapes = gs.getVisualShapes();
+		this.reflectionCoefficient = rc;
+		this.gizCol = c;
+
+		this.StoredCircles = new ArrayList<>();
+		this.StoredLines = new ArrayList<>();
 
 	}
 
@@ -62,16 +61,16 @@ public abstract class AbstractGizmo {
 		return gizAngle;
 	}
 
+	public Color getGizCol() {
+		return gizCol;
+	}
+
 	public List<Circle> getStoredCircles() {
 		return StoredCircles;
 	}
 
 	public List<LineSegment> getStoredLines() {
 		return StoredLines;
-	}
-
-	public List<VisualShape> getStoredVisualShapes() {
-		return StoredVisualShapes;
 	}
 
 	public void setPos(double xpos, double ypos) {
