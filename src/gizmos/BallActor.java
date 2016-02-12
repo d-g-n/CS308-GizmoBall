@@ -13,7 +13,14 @@ public class BallActor extends AbstractGizmo {
 				Color.blue, // colour of gizmo
 				0.95 // reflection coefficient
 		);
+
 		this.velocity = velocity;
+
+		this.addPhysicsCircle(
+				x + (this.getWidth() / 2),
+				y + (this.getHeight() / 2),
+				this.getWidth()
+		);
 	}
 	
 	public Vect getVelocity(){

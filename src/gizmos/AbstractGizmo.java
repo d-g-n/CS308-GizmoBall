@@ -3,6 +3,7 @@ package gizmos;
 import physics.Angle;
 import physics.Circle;
 import physics.LineSegment;
+import physics.Vect;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -76,6 +77,27 @@ public abstract class AbstractGizmo {
 	public void setPos(double xpos, double ypos) {
 		this.xpos = xpos;
 		this.ypos = ypos;
+	}
+
+	protected void addPhysicsCircle(double x, double y, double r){
+		StoredCircles.add(new Circle(x, y, r));
+	}
+
+	protected void addPhysicsPath(List<Vect> lv){
+
+		Vect lastVect = null;
+
+		for(Vect curVect : lv){
+			if(lastVect == null){
+				lastVect = curVect;
+				continue;
+			}
+
+			StoredCircles.add(new Circle(lastVect, 0.0));
+			StoredLines.add(new LineSegment(lastVect, curVect));
+
+			lastVect = curVect;
+		}
 	}
 
 	/**
