@@ -9,6 +9,12 @@ public class CircularBumper extends AbstractGizmo {
 				Color.blue, // colour of gizmo
 				0.95 // reflection coefficent
 		);
+
+		this.addPhysicsCircle(
+				x + (this.getWidth() / 2),
+				y + (this.getHeight() / 2),
+				this.getWidth()
+		);
 	}
 
 }
