@@ -202,7 +202,16 @@ public class GizmoPanel extends JPanel {
 		double gizHeight = giz.getHeight();
 		Angle gizAngle = giz.getGizAngle();
 
-		Shape shape = new Polygon();
+		Shape shape;
+
+		// Note that the data storage for physics objects is slightly different
+		// Instead of storing width and height in the second tuple, it stores destination x and y coords
+		// in ["MITCircle", [x, y], radius] Circle behaves exactly the same as the visible circle
+		// in ["MITLine", [x1, y1], [x2, y2]] But physics are comprised of lines rather than shapes so instead of using
+		// the "other" datapart to store width and height of shapes, we use it to store x and y destinations so the
+		// aforementioned object represents a LineSeg object from x1, y1 to x2, y2. Note that as i mentioned before,
+		// the x1/y1/x2/y2 values are stored in percentage based vals, divide by 100 to get modifier and then manipulate
+		// them as you desire using the various ways i've describes in this file
 
 		g.setColor(Color.white);
 		// draw the lines
