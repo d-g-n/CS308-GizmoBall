@@ -1,6 +1,8 @@
 package view;
 
 import gizmos.AbstractGizmo;
+import gizmos.LeftFlipper;
+import gizmos.RightFlipper;
 import model.ProjectManager;
 import physics.Angle;
 import physics.Circle;
@@ -90,6 +92,31 @@ public class GizmoPanel extends JPanel {
 				// Set AffineTransform so we can reset it, otherwise the rotations will persist across objects
 
 				AffineTransform pT = g2d.getTransform();
+
+				// EXAMPLE CODE on how to actually do the flipper triggering and stuff
+				// we're using percentX = 0.125 and percentY = 0.125 because if you look at the json, that's the midpoint
+				// of the circle on the left so we use that as the pivot point
+
+				if(giz.getClass().equals(RightFlipper.class)){
+
+					g2d.rotate(
+							Math.toRadians(System.currentTimeMillis()/10), // arbritrary incrementing variable to test
+							(gizXpos * SQUARE_WIDTH) + (0.125 * (SQUARE_WIDTH * gizWidth)),
+							(gizYpos * SQUARE_HEIGHT) + (0.125 * (SQUARE_HEIGHT * gizHeight))
+					);
+
+				}
+
+				if(giz.getClass().equals(LeftFlipper.class)){
+
+					g2d.rotate(
+							Math.toRadians(System.currentTimeMillis()/10), // arbritrary incrementing variable to test
+							(gizXpos * SQUARE_WIDTH) + (0.875 * (SQUARE_WIDTH * gizWidth)),
+							(gizYpos * SQUARE_HEIGHT) + (0.125 * (SQUARE_HEIGHT * gizHeight))
+					);
+
+				}
+
 
 				// Define our common variables that are loaded in from JSON
 				// in ["Circle", [x, y], radius] .get(0) is x, 1 is y, 2 is radius
