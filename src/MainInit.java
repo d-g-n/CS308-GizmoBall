@@ -1,10 +1,17 @@
-import gizmos.*;
+import java.util.TimerTask;
+
+import gizmos.Absorber;
+import gizmos.AbstractGizmo;
+import gizmos.BallActor;
+import gizmos.CircularBumper;
+import gizmos.LeftFlipper;
+import gizmos.OuterWall;
+import gizmos.SquareBumper;
+import gizmos.TriangleBumper;
 import model.ProjectManager;
 import physics.Angle;
 import physics.Vect;
 import view.RunGUI;
-
-import java.util.TimerTask;
 
 /**
  * Created by gkb13160 on 10/02/16.
@@ -12,19 +19,14 @@ import java.util.TimerTask;
 public class MainInit {
     public static void main(String[] args){
 
+    	int totalWidth=20;
         // init model
         ProjectManager pm = new ProjectManager();
 
-        // note: walls should be outside the standard 20x20 playing area
-        // this should be "hard coded" when games are loaded
-        // top wall
-        pm.addGizmo(new OuterWall(-1,-1,22,1,0));
-        // bottom wall
-        pm.addGizmo(new OuterWall(-1,20,22,1,0));
-        // left wall
-        pm.addGizmo(new OuterWall(-1,0,1,20,0));
-        // right wall
-        pm.addGizmo(new OuterWall(20,0,1,20,0));
+        pm.addGizmo(new OuterWall(0,0,totalWidth,0,0));
+        pm.addGizmo(new OuterWall(0,totalWidth,0,totalWidth,0));
+        pm.addGizmo(new OuterWall(0,0,0,totalWidth,0));
+        pm.addGizmo(new OuterWall(totalWidth,0,totalWidth,0,0));
         
         pm.addGizmo(new SquareBumper(10, 10, 1, 1, 0));
         pm.addGizmo(new SquareBumper(9, 10, 1, 1, 0));
@@ -39,11 +41,9 @@ public class MainInit {
         pm.addGizmo(new TriangleBumper(1, 1, 1, 1, 0));
         pm.addGizmo(new TriangleBumper(2, 1, 1, 1, 90));
 
-        pm.addGizmo(new CircularBumper(3, 1, 1, 1, 0));
+        pm.addGizmo(new CircularBumper(10, 1, 1, 1, 0));
 
-        pm.addGizmo(new LeftFlipper(15, 15, 2, 2, 0));
-
-        pm.addGizmo(new RightFlipper(10, 15, 2, 2, 0));
+        pm.addGizmo(new LeftFlipper(15, 15, 0, 0, 0));
 
         pm.addGizmo(new Absorber(1, 18, 18, 1, 0));
 
