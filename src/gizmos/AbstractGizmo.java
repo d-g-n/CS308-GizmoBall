@@ -1,14 +1,15 @@
 package gizmos;
 
+import model.GizmoSettingsParser;
 import physics.Angle;
 import physics.Circle;
 import physics.LineSegment;
+import view.VisualShape;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 
-public abstract class AbstractGizmo extends Observable {
+public abstract class AbstractGizmo {
 
 	protected double xpos, ypos, width, height;
 	protected Angle gizAngle;
@@ -29,7 +30,7 @@ public abstract class AbstractGizmo extends Observable {
 
 		this.gizmoListeners = new ArrayList<AbstractGizmo>();
 
-		GizmoSettings gs = new GizmoSettings(this);
+		GizmoSettingsParser gs = new GizmoSettingsParser(this);
 		this.reflectionCoefficient = gs.getReflectionCoefficient();
 		this.StoredCircles = gs.getParsedCircles();
 		this.StoredLines = gs.getParsedLines();

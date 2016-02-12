@@ -2,15 +2,15 @@
   "ReflectionCoefficient": 0.95,
   "ShapeColour": "blue",
   "PhysicsDef": [
-    ["Line",[12, 0], [88, 0]],
-    ["Line",[12, 24], [88, 24]],
-    ["Circle",[0, 0], 12],
-    ["Circle",[76, 0], 12]
+    ["MITLine",[12.5, 0], [87.5, 0]],
+    ["MITLine",[12.5, 25], [87.5, 25]],
+    ["MITCircle",[0, 0], 12.5],
+    ["MITCircle",[75, 0], 12.5]
 
   ],
   "VisualDef": [
-    ["Square", [24, 0], [76, 24]],
-    ["Circle", [0, 0], 12],
-    ["Circle", [76, 0], 12]
+    ["Square", [12.5, 0], [75, 25]],
+    ["Circle", [0, 0], 12.5],
+    ["Circle", [75, 0], 12.5]
   ]
 }

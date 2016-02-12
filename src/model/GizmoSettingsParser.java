@@ -1,9 +1,11 @@
-package gizmos;
+package model;
 
 import com.eclipsesource.json.Json;
 import com.eclipsesource.json.JsonValue;
+import gizmos.AbstractGizmo;
 import physics.Circle;
 import physics.LineSegment;
+import view.VisualShape;
 
 import java.awt.*;
 import java.io.FileReader;
@@ -15,7 +17,7 @@ import java.util.List;
 /**
  * Created by Declan on 06/02/2016.
  */
-public class GizmoSettings {
+public class GizmoSettingsParser {
 
 	private double reflectionCoefficient;
 	private Color gizmoColour;
@@ -23,7 +25,7 @@ public class GizmoSettings {
 	private List<LineSegment> parsedLines;
 	private List<VisualShape> visualShapes;
 
-	public GizmoSettings(AbstractGizmo g){
+	public GizmoSettingsParser(AbstractGizmo g){
 
 		this.parsedCircles = new ArrayList<Circle>();
 		this.parsedLines = new ArrayList<LineSegment>();
@@ -51,50 +53,59 @@ public class GizmoSettings {
 				gizmoColour = Color.white; // Not defined
 			}
 
-			System.out.println(gizmoColour);
-
-			// now get the MIT physics line definitions
+			// now get the MIT physics line definitions and store them
 
 			for(JsonValue entry : jv.asObject().get("PhysicsDef").asArray()){
 				String type = entry.asArray().get(0).asString();
 
 
-				if(type.equals("Line")){ // if is line index 1 and 2 are coords
-					int xSrc = entry.asArray().get(1).asArray().get(0).asInt();
-					int ySrc = entry.asArray().get(1).asArray().get(1).asInt();
-					int xDest = entry.asArray().get(2).asArray().get(0).asInt();
-					int yDest = entry.asArray().get(2).asArray().get(1).asInt();
+				if(type.equals("MITLine")){ // if is line index 1 and 2 are coords
+
+					double xSrc = entry.asArray().get(1).asArray().get(0).asDouble();
+					double ySrc = entry.asArray().get(1).asArray().get(1).asDouble();
+					double xDest = entry.asArray().get(2).asArray().get(0).asDouble();
+					double yDest = entry.asArray().get(2).asArray().get(1).asDouble();
 
 					parsedLines.add(new LineSegment(xSrc, ySrc, xDest, yDest));
-				} else if(type.equals("Circle")){ // if is circle index 1 is origin and index 2 is radius
-					int xSrc = entry.asArray().get(1).asArray().get(0).asInt();
-					int ySrc = entry.asArray().get(1).asArray().get(1).asInt();
-					int radius = entry.asArray().get(2).asInt();
+
+				} else if(type.equals("MITCircle")){ // if is circle index 1 is origin and index 2 is radius
+
+					double xSrc = entry.asArray().get(1).asArray().get(0).asDouble();
+					double ySrc = entry.asArray().get(1).asArray().get(1).asDouble();
+					double radius = entry.asArray().get(2).asDouble();
 
 					parsedCircles.add(new Circle(xSrc, ySrc, radius));
+
 				}
 			}
 
+
+			// now finally get the stored coordinated for the visible shapes and encapsulate them in a VisualShape obj
+
 			for(JsonValue entry : jv.asObject().get("VisualDef").asArray()){
+
 				String type = entry.asArray().get(0).asString();
 
 				if(type.equals("Square") || type.equals("Triangle")){ // if is line index 1 and 2 are coords
-					int xSrc = entry.asArray().get(1).asArray().get(0).asInt();
-					int ySrc = entry.asArray().get(1).asArray().get(1).asInt();
-					int xDest = entry.asArray().get(2).asArray().get(0).asInt();
-					int yDest = entry.asArray().get(2).asArray().get(1).asInt();
+
+					double xSrc = entry.asArray().get(1).asArray().get(0).asDouble();
+					double ySrc = entry.asArray().get(1).asArray().get(1).asDouble();
+					double xDest = entry.asArray().get(2).asArray().get(0).asDouble();
+					double yDest = entry.asArray().get(2).asArray().get(1).asDouble();
 
 					visualShapes.add(new VisualShape(type, gizmoColour, xSrc, ySrc, xDest, yDest));
+
 				} else if(type.equals("Circle")){ // if is circle index 1 is origin and index 2 is radius
-					int xSrc = entry.asArray().get(1).asArray().get(0).asInt();
-					int ySrc = entry.asArray().get(1).asArray().get(1).asInt();
-					int radius = entry.asArray().get(2).asInt();
+
+					double xSrc = entry.asArray().get(1).asArray().get(0).asDouble();
+					double ySrc = entry.asArray().get(1).asArray().get(1).asDouble();
+					double radius = entry.asArray().get(2).asDouble();
 
 					visualShapes.add(new VisualShape(type, gizmoColour, xSrc, ySrc, radius));
+
 				}
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
 		}
 	}
 
@@ -110,7 +121,5 @@ public class GizmoSettings {
 		return parsedLines;
 	}
 
-	public List<VisualShape> getVisualShapes() {
-		return visualShapes;
-	}
+	public List<VisualShape> getVisualShapes() { return visualShapes; }
 }

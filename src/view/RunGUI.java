@@ -1,32 +1,20 @@
 package view;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.GridLayout;
+import controller.RunListener;
+import model.ProjectManager;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.Observable;
 import java.util.Observer;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-
-import controller.RunListener;
-import model.ProjectManager;
 
 public class RunGUI implements GBallGui, Observer {
 
 	private TestView tv;
 	private RunListener runListener;
-	public static final int BOARD_WIDTH = 500;
-	public static final int BOARD_HEIGHT = 500;
+	public static final int BOARD_WIDTH = 1000;
+	public static final int BOARD_HEIGHT = 1000;
 	
 	private void createMenuBar(Container pane){
 		JMenuBar menuBar = new JMenuBar();

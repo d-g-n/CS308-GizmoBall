@@ -1,4 +1,4 @@
-package gizmos;
+package view;
 
 import java.awt.*;
 import java.util.Arrays;
@@ -11,9 +11,9 @@ public class VisualShape {
 
 	private String type;
 	private Color colour;
-	private List<Integer> cList;
+	private List<Double> cList;
 
-	public VisualShape(String t, Color c, Integer... l){
+	public VisualShape(String t, Color c, Double... l){
 
 		this.type = t;
 		this.colour = c;
@@ -26,7 +26,7 @@ public class VisualShape {
 		return type;
 	}
 
-	public List<Integer> getValList() {
+	public List<Double> getValList() {
 		return cList;
 	}
 
