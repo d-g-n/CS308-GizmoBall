@@ -1,9 +1,10 @@
 package gizmos;
 
 
-import physics.LineSegment;
+import physics.Vect;
 
 import java.awt.*;
+import java.util.Arrays;
 
 public class Absorber extends AbstractGizmo {
 
@@ -14,7 +15,15 @@ public class Absorber extends AbstractGizmo {
 				0.95 // reflection coefficent
 		);
 
-		StoredLines.add(new LineSegment(0, 0, 0, 0)); // this is how you would define the physics stuff using the x, y and width
+
+		addPhysicsPath(Arrays.asList(
+				new Vect(x, y), // start at top left
+				new Vect(x + width, y), // move to top right
+				new Vect(x + width, y + height), // move to bottom right
+				new Vect(x, y + height), // move to bottom left
+				new Vect(x, y) // and back up to top left
+		));
+
 	}
 
 

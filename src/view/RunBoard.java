@@ -2,7 +2,6 @@ package view;
 
 import gizmos.*;
 import model.ProjectManager;
-import physics.Vect;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,14 +30,6 @@ public class RunBoard extends JPanel implements Board {
 		int boardHeight = this.getHeight();
 		double cellWidth = boardWidth / X_CELLS;
 		double cellHeight = boardHeight / Y_CELLS;
-
-		// Some useless gizmo objects to help identity the type of gizmo below
-		CircularBumper aCircle = new CircularBumper(0, 0, 0, 0, 0);
-		Absorber anAbsorber = new Absorber(0, 0, 0, 0, 0);
-		BallActor aBall = new BallActor(0, 0, 0, 0, 0, new Vect(0, 0));
-		SquareBumper aSquare = new SquareBumper(0, 0, 0, 0, 0);
-		TriangleBumper aTriangle = new TriangleBumper(0, 0, 0, 0, 0);
-
 		
 		drawEmptyBoardWithGuidelines(g, boardWidth, boardHeight);
 		
