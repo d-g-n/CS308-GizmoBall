@@ -9,6 +9,7 @@ import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
+import java.awt.geom.RoundRectangle2D;
 
 public class RunBoard extends JPanel implements Board {
 
@@ -49,7 +50,6 @@ public class RunBoard extends JPanel implements Board {
 			double gizmoYpos = gizmo.getYpos();
 			double gizmoWidth = gizmo.getWidth();
 			double gizmoHeight = gizmo.getHeight();
-			g.setColor(gizmo.getGizCol());
 
 			Shape shape = new Polygon();
 
@@ -110,8 +110,21 @@ public class RunBoard extends JPanel implements Board {
 						(int) ((cellWidth * gizmoYpos) + (cellHeight * gizmoHeight))			
 				);
 
+			} else if(gizmo.getClass().equals(LeftFlipper.class)
+					|| gizmo.getClass().equals(RightFlipper.class)){
+
+				shape = new RoundRectangle2D.Double(
+						(cellWidth * gizmoXpos),
+						(cellHeight * gizmoYpos),
+						(cellWidth * gizmoWidth),
+						(cellHeight * gizmoHeight) * 0.25,
+						25,
+						100
+				);
+
 			}
 
+			g.setColor(gizmo.getGizCol());
 			g2d.rotate(
 					gizmo.getGizAngle().radians(),
 					shape.getBounds2D().getX() + cellWidth / 2,
