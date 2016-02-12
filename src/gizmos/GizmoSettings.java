@@ -57,19 +57,23 @@ public class GizmoSettings {
 				String type = entry.asArray().get(0).asString();
 
 
-				if(type.equals("Line")){ // if is line index 1 and 2 are coords
+				if(type.equals("MITLine")){ // if is line index 1 and 2 are coords
+
 					double xSrc = entry.asArray().get(1).asArray().get(0).asDouble();
 					double ySrc = entry.asArray().get(1).asArray().get(1).asDouble();
 					double xDest = entry.asArray().get(2).asArray().get(0).asDouble();
 					double yDest = entry.asArray().get(2).asArray().get(1).asDouble();
 
 					parsedLines.add(new LineSegment(xSrc, ySrc, xDest, yDest));
-				} else if(type.equals("Circle")){ // if is circle index 1 is origin and index 2 is radius
+
+				} else if(type.equals("MITCircle")){ // if is circle index 1 is origin and index 2 is radius
+
 					double xSrc = entry.asArray().get(1).asArray().get(0).asDouble();
 					double ySrc = entry.asArray().get(1).asArray().get(1).asDouble();
 					double radius = entry.asArray().get(2).asDouble();
 
 					parsedCircles.add(new Circle(xSrc, ySrc, radius));
+
 				}
 			}
 
@@ -77,21 +81,26 @@ public class GizmoSettings {
 			// now finally get the stored coordinated for the visible shapes and encapsulate them in a VisualShape obj
 
 			for(JsonValue entry : jv.asObject().get("VisualDef").asArray()){
+
 				String type = entry.asArray().get(0).asString();
 
 				if(type.equals("Square") || type.equals("Triangle")){ // if is line index 1 and 2 are coords
+
 					double xSrc = entry.asArray().get(1).asArray().get(0).asDouble();
 					double ySrc = entry.asArray().get(1).asArray().get(1).asDouble();
 					double xDest = entry.asArray().get(2).asArray().get(0).asDouble();
 					double yDest = entry.asArray().get(2).asArray().get(1).asDouble();
 
 					visualShapes.add(new VisualShape(type, gizmoColour, xSrc, ySrc, xDest, yDest));
+
 				} else if(type.equals("Circle")){ // if is circle index 1 is origin and index 2 is radius
+
 					double xSrc = entry.asArray().get(1).asArray().get(0).asDouble();
 					double ySrc = entry.asArray().get(1).asArray().get(1).asDouble();
 					double radius = entry.asArray().get(2).asDouble();
 
 					visualShapes.add(new VisualShape(type, gizmoColour, xSrc, ySrc, radius));
+
 				}
 			}
 		} catch (IOException e) {

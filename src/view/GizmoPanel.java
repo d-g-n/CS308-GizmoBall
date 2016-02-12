@@ -113,12 +113,27 @@ public class GizmoPanel extends JPanel {
 
 
 				// Main if stack for the manual definitions of the component shapes
+				// explanation for xpos etc
+				// gizXpos is the int of what x square the gizmo is in from 0 to 19, multiplying that by the pixel width
+				// which is SQUARE_WIDTH gives you the number of pixels on the x that the top left corner of the square
+				// the gizmo should be drawn in is at
+
+				// the percentWhatever values are the converted 0-100 values from the JSON file that determine where in
+				// the 1x1 or 2x2 or whatever grid the specific visual shape appears at.
+				// as SQUARE_WIDTH is the pixel length of one visible square, multiplying that by gizWidth gives us
+				// the pixel length of the entire gizmo, then multiplying that by percentX (keep in mint that percentX)
+				// was divided by 100 above so is now a value from 0.00 to 1.00, doing that gives us how many pixels
+				// along this shape should start at
+
+				// apply this similar logic for width and height calcs as above, gizWidth * SQUARE_WIDTH gives you
+				// the pixel width of the entire shape space, then all you need to do is mult that by percentWidth
+				// and that scales it to whatever is specified in the json
 
 				if (vs.getType().equals("Square")) {
 
 					shape = new Rectangle2D.Double(
-							(gizXpos * SQUARE_WIDTH) + ((percentX * SQUARE_WIDTH) * gizWidth),
-							(gizYpos * SQUARE_HEIGHT) + ((percentY * SQUARE_HEIGHT) * gizHeight),
+							(gizXpos * SQUARE_WIDTH) + (percentX * (SQUARE_WIDTH * gizWidth)),
+							(gizYpos * SQUARE_HEIGHT) + (percentY * (SQUARE_HEIGHT * gizHeight)),
 							(gizWidth * SQUARE_WIDTH) * percentWidth,
 							(gizHeight * SQUARE_HEIGHT) * percentHeight
 					);
@@ -133,13 +148,13 @@ public class GizmoPanel extends JPanel {
 					); // start at 0, 0 in the grid essentially
 
 					((Path2D.Double) shape).lineTo(
-							(gizXpos * SQUARE_WIDTH) + ((gizWidth * SQUARE_WIDTH) * percentWidth),
+							(gizXpos * SQUARE_WIDTH) + (gizWidth * (SQUARE_WIDTH * percentWidth)),
 							(gizYpos * SQUARE_HEIGHT)
 					); // draw a line from 0, 0 to width, 0
 
 					((Path2D.Double) shape).lineTo(
 							(gizXpos * SQUARE_WIDTH),
-							(gizYpos * SQUARE_HEIGHT) + ((gizHeight * SQUARE_HEIGHT) * percentHeight)
+							(gizYpos * SQUARE_HEIGHT) + (gizHeight * (SQUARE_HEIGHT * percentHeight))
 					); // draw a line from width, 0 to 0, height
 
 					((Path2D.Double) shape).closePath(); // automatically close it and draw a line back to the origin
@@ -147,8 +162,8 @@ public class GizmoPanel extends JPanel {
 				} else if (vs.getType().equals("Circle")) {
 
 					shape = new Ellipse2D.Double(
-							(gizXpos * SQUARE_WIDTH) + ((percentX * SQUARE_WIDTH) * gizWidth),
-							(gizYpos * SQUARE_HEIGHT) + ((percentY * SQUARE_HEIGHT) * gizHeight),
+							(gizXpos * SQUARE_WIDTH) + (percentX * (SQUARE_WIDTH * gizWidth)),
+							(gizYpos * SQUARE_HEIGHT) + (percentY * (SQUARE_HEIGHT * gizHeight)),
 							(gizWidth * SQUARE_WIDTH) * percentRadius,
 							(gizHeight * SQUARE_HEIGHT) * percentRadius
 					);
@@ -158,7 +173,11 @@ public class GizmoPanel extends JPanel {
 				// Set the colour, rotate it around the middle of the gizmo and draw it
 
 				g.setColor(vs.getColour());
-				g2d.rotate(gizAngle.radians(), (gizXpos * SQUARE_WIDTH) + (gizWidth * SQUARE_WIDTH)/2, (gizYpos * SQUARE_HEIGHT) + (gizHeight * SQUARE_HEIGHT)/2);
+				g2d.rotate(
+						gizAngle.radians(),
+						(gizXpos * SQUARE_WIDTH) + (gizWidth * SQUARE_WIDTH)/2,
+						(gizYpos * SQUARE_HEIGHT) + (gizHeight * SQUARE_HEIGHT)/2
+				);
 				g2d.draw(shape);
 				g2d.fill(shape);
 
@@ -166,71 +185,78 @@ public class GizmoPanel extends JPanel {
 
 				g2d.setTransform(pT);
 			}
+
+			if(ENABLE_DEBUG)
+				paintDebug(giz, g);
+
 		}
 	}
 
-	private void paintDebug(Graphics g){
+	private void paintDebug(AbstractGizmo giz, Graphics g){
 
 		Graphics2D g2d = (Graphics2D) g;
 
-		for(AbstractGizmo giz : pm.getBoardGizmos()) {
-			double sqWidth = (this.getWidth() / CONS_SIZE);
-			double sqHeight = (this.getHeight() / CONS_SIZE);
-			double xC = giz.getXpos();
-			double yC = giz.getYpos();
-			double gizWidth = giz.getWidth();
-			double gizHeight = giz.getHeight();
-			Angle ang = giz.getGizAngle();
+		double gizXpos = giz.getXpos();
+		double gizYpos = giz.getYpos();
+		double gizWidth = giz.getWidth();
+		double gizHeight = giz.getHeight();
+		Angle gizAngle = giz.getGizAngle();
+		AffineTransform pT = g2d.getTransform();
+		Shape shape = new Polygon();
 
+		g.setColor(Color.white);
+		// draw the lines
+		for (LineSegment ls : giz.getStoredLines()) {
 
-			// DEBUG drawcode that shows MIT physics lines and circles
+			double percentXsrc = ls.p1().x() / 100;
+			double percentYsrc = ls.p1().y() / 100;
+			double percentXdest = ls.p2().x() / 100;
+			double percentYdest = ls.p2().y() / 100;
 
-			g.setColor(Color.white);
-			// draw the lines
-			for (LineSegment ls : giz.getStoredLines()) {
-				AffineTransform pT = g2d.getTransform();
+			shape = new Line2D.Double(
+					(gizXpos * SQUARE_WIDTH) + (percentXsrc * (SQUARE_WIDTH * gizWidth)),
+					(gizYpos * SQUARE_HEIGHT) + (percentYsrc * (SQUARE_HEIGHT * gizHeight)),
+					(gizXpos * SQUARE_WIDTH) + (percentXdest * (SQUARE_WIDTH * gizWidth)),
+					(gizYpos * SQUARE_HEIGHT) + (percentYdest * (SQUARE_HEIGHT * gizHeight))
+			);
 
-				double sourceX = ls.p1().x();
-				double sourceY = ls.p1().y();
-				double destX = ls.p2().x();
-				double destY = ls.p2().y();
-
-				g2d.setStroke(new BasicStroke(1));
-
-				Line2D.Double shape = new Line2D.Double(
-						((sqWidth * xC) + (sqWidth * (sourceX / 100)) * gizWidth),
-						((sqHeight * yC) + (sqHeight * (sourceY / 100)) * gizHeight),
-						((sqWidth * xC) + (sqWidth * (destX / 100)) * gizWidth),
-						((sqHeight * yC) + (sqHeight * (destY / 100)) * gizHeight)
-				);
-
-
-				g2d.rotate(ang.radians(), (sqWidth * xC) + sqWidth / 2, (sqHeight * yC) + sqHeight / 2);
-				g2d.draw(shape);
-				g2d.setStroke(new BasicStroke(1));
-
-				g2d.setTransform(pT);
-			}
-
-			for (Circle cs : giz.getStoredCircles()) {
-				double centerX = cs.getCenter().x();
-				double centerY = cs.getCenter().y();
-				double radius = cs.getRadius();
-
-
-				g2d.setStroke(new BasicStroke(1));
-				Ellipse2D.Double shape = new Ellipse2D.Double(
-						((sqWidth * xC) + ((centerX / 100) * sqWidth) * gizWidth),
-						((sqHeight * yC) + ((centerY / 100) * sqHeight) * gizHeight),
-						(radius / 100) * 2 * sqWidth * gizWidth,
-						(radius / 100) * 2 * sqHeight * gizHeight
-				);
-
-				g2d.draw(shape);
-				g2d.setStroke(new BasicStroke(1));
-			}
+			g2d.rotate(
+					gizAngle.radians(),
+					(gizXpos * SQUARE_WIDTH) + (gizWidth * SQUARE_WIDTH)/2,
+					(gizYpos * SQUARE_HEIGHT) + (gizHeight * SQUARE_HEIGHT)/2
+			);
+			g2d.draw(shape);
 
 		}
+
+		g2d.setTransform(pT);
+
+		pT = g2d.getTransform();
+
+		for (Circle cs : giz.getStoredCircles()) {
+
+			double percentX = cs.getCenter().x() / 100;
+			double percentY = cs.getCenter().y() / 100;
+			double percentRadius = cs.getRadius() * 2 / 100;
+
+			shape = new Ellipse2D.Double(
+					(gizXpos * SQUARE_WIDTH) + (percentX * (SQUARE_WIDTH * gizWidth)),
+					(gizYpos * SQUARE_HEIGHT) + (percentY * (SQUARE_HEIGHT * gizHeight)),
+					(gizWidth * SQUARE_WIDTH) * percentRadius,
+					(gizHeight * SQUARE_HEIGHT) * percentRadius
+			);
+
+			g2d.rotate(
+					gizAngle.radians(),
+					(gizXpos * SQUARE_WIDTH) + (gizWidth * SQUARE_WIDTH)/2,
+					(gizYpos * SQUARE_HEIGHT) + (gizHeight * SQUARE_HEIGHT)/2
+			);
+			g2d.draw(shape);
+
+		}
+
+		g2d.setTransform(pT);
+
 	}
 
 	public void paintComponent(Graphics g){
@@ -239,9 +265,6 @@ public class GizmoPanel extends JPanel {
 		this.paintBackground(g);
 
 		this.paintGizmos(g);
-
-		if(ENABLE_DEBUG)
-			this.paintDebug(g);
 
 	}
 }
