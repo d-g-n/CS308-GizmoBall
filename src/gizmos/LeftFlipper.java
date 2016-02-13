@@ -22,6 +22,5 @@ public class LeftFlipper extends AbstractGizmo {
 				new Vect(x, y + height), // move to bottom left
 				new Vect(x, y) // and back up to top left
 		));
-
 	}
 }

@@ -1,5 +1,6 @@
 package view;
 
+import controller.MagicKeyListener;
 import controller.RunListener;
 import model.ProjectManager;
 
@@ -13,6 +14,7 @@ public class RunGUI implements GBallGui, Observer {
 
 	private TestView tv;
 	private RunListener runListener;
+	private MagicKeyListener keyListener;
 	public static final int BOARD_WIDTH = 1000;
 	public static final int BOARD_HEIGHT = 1000;
 	
@@ -35,6 +37,7 @@ public class RunGUI implements GBallGui, Observer {
 		
 	    JPanel leftPanel = new JPanel();
 	    leftPanel.setLayout(new GridLayout(4,1));
+	    leftPanel.addKeyListener(keyListener);
 	    
 		addAButton("Play", leftPanel);
 		addAButton("Stop", leftPanel);
@@ -48,16 +51,19 @@ public class RunGUI implements GBallGui, Observer {
 		
 		JPanel rightPanel = new JPanel();
 		rightPanel.setLayout(new GridLayout(3,1));
+		rightPanel.addKeyListener(keyListener);
 		addAButton("Build Mode", rightPanel);
 		addAButton("Settings", rightPanel);
 		addAButton("About", rightPanel);
 		
 		pane.add(rightPanel,BorderLayout.LINE_END);
+		pane.addKeyListener(keyListener);
 	}
 	
 	private void createStatusBar(Container pane){
 		JLabel label = new JLabel("Here will be the status label");
 		pane.add(label,BorderLayout.PAGE_END);
+		pane.addKeyListener(keyListener);
 		
 	}
 
@@ -65,17 +71,20 @@ public class RunGUI implements GBallGui, Observer {
 		JButton button = new JButton(title);
 		button.setAlignmentX(Component.LEFT_ALIGNMENT);
 		button.addActionListener(runListener);
+		button.addKeyListener(keyListener);
 		pane.add(button);
+		pane.addKeyListener(keyListener);
 		
 	}
 
 	private void createAndShowGui(ProjectManager pm) {
 		JFrame frame = new JFrame("Gizmoball");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//frame.setPreferredSize(new Dimension(950,800));
+		//frame.setPreferredSize(new Dimension(600,700));
 		addComponentsToPane(frame.getContentPane(), pm);
 		createMenuBar(frame.getContentPane());
 		createStatusBar(frame.getContentPane());
+		frame.addKeyListener(keyListener);
 		frame.pack();
         frame.setVisible(true);
 	}
@@ -97,6 +106,7 @@ public class RunGUI implements GBallGui, Observer {
 		});
 		
 		runListener = new RunListener(this);
+		keyListener = new MagicKeyListener(pm);
 	}
 
 	@Override

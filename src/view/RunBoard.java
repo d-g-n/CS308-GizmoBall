@@ -124,7 +124,6 @@ public class RunBoard extends JPanel implements Board {
 			g2d.draw(shape);
 			g2d.fill(shape);
 
-
 			g2d.setTransform(pT);
 		}
 

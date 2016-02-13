@@ -78,6 +78,10 @@ public abstract class AbstractGizmo {
 		this.xpos = xpos;
 		this.ypos = ypos;
 	}
+	
+	public void setGizAngle(int ang) {
+		this.gizAngle = new Angle(Math.toRadians(ang));
+	}
 
 	protected void addPhysicsCircle(double x, double y, double r){
 		StoredCircles.add(new Circle(x, y, r));
