@@ -43,4 +43,9 @@ public class ProjectManager extends Observable{
 		this.setChanged();
 		this.notifyObservers();
 	}
+	
+	public AbstractGizmo getBallActor() {	
+		return ball;
+	}
+	
 }

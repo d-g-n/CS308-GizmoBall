@@ -2,11 +2,15 @@ package gizmos;
 
 
 import physics.Vect;
+import model.ProjectManager;
 
 import java.awt.*;
 import java.util.Arrays;
 
 public class Absorber extends AbstractGizmo {
+	
+	
+
 
 	public Absorber(int x, int y, int width, int height, int degrees) {
 
@@ -33,8 +37,8 @@ public class Absorber extends AbstractGizmo {
 	@Override
 	public void onHit() {
 		super.onHit();
-
-		// hold the ball in this
+		
+		
 
 	}
 
@@ -43,9 +47,12 @@ public class Absorber extends AbstractGizmo {
 	 */
 	@Override
 	public void onCollision() {
+	
 		super.onCollision();
 
+		
 		// if ball is held, chuck it back out
 
 	}
+	
 }

@@ -2,7 +2,9 @@ package model;
 
 import gizmos.AbstractGizmo;
 import gizmos.BallActor;
+import physics.*;
 
+import java.util.List;
 import java.util.Observable;
 
 public class CollisionManager extends Observable{
@@ -19,27 +21,29 @@ public class CollisionManager extends Observable{
 		double xp = ball.getXpos();
 		double yp = ball.getYpos();
 
-		/*
+		
 		List<AbstractGizmo> gizmos = pm.getBoardGizmos();
 		Vect velocity = new Vect(Angle.DEG_90,1);
-		for(AbstractGizmo gizmo : gizmos){
+	/*	for(AbstractGizmo gizmo : gizmos){
 			if(gizmo.getClass().equals("OuterWall")){
-				if(gizmo.getXpos() >= 20){
+				if(ball.getXpos() >= 20){
 					velocity = Geometry.reflectWall(gizmo.getStoredLines().get(3), ball.getVelocity());
+					ball.setVelocity(velocity.x(),velocity.y());
 				}
 			}
 				
-		}
-*/
-		//ball.setPos(velocity.x(), velocity.y());
+		} */
 
-		if(xp >= 20)
-			xp = 0;
+		ball.setPos(velocity.x(), velocity.y());
 
-		xp = xp + 0.10;
-		ball.setPos(xp, 10);
+		if(yp >= 20)
+			yp = 0;
+
+		yp = yp + 0.10;
+		ball.setPos(10, yp);
 
 	}
+	
 	
 	
 
