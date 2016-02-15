@@ -20,13 +20,14 @@ public class MainInit {
     public static void main(String[] args){
 
     	int totalWidth=20;
+    	int totalHeight = 20;
         // init model
         ProjectManager pm = new ProjectManager();
 
-        pm.addGizmo(new OuterWall(0,0,totalWidth,0,0));
-        pm.addGizmo(new OuterWall(0,totalWidth,0,totalWidth,0));
-        pm.addGizmo(new OuterWall(0,0,0,totalWidth,0));
-        pm.addGizmo(new OuterWall(totalWidth,0,totalWidth,0,0));
+        pm.addGizmo(new OuterWall(0,totalWidth,0,totalHeight,0,"RIGHT"));
+        pm.addGizmo(new OuterWall(0,0,totalWidth,0,0,"TOP"));
+        pm.addGizmo(new OuterWall(0,totalWidth,0,totalWidth,0,"BOTTOM"));
+        pm.addGizmo(new OuterWall(0,0,0,totalWidth,0,"LEFT"));
         
         pm.addGizmo(new SquareBumper(10, 10, 1, 1, 0));
         pm.addGizmo(new SquareBumper(9, 10, 1, 1, 0));
@@ -47,7 +48,7 @@ public class MainInit {
 
         pm.addGizmo(new Absorber(1, 18, 18, 1, 0));
 
-        AbstractGizmo ba = new BallActor(10.5, 5.1, 0, 0, 0, new Vect(Angle.ZERO,1));
+        AbstractGizmo ba = new BallActor(11, 5.1, 0, 0, 0, Vect.X_HAT);
 
         pm.addBallActor(ba);
         pm.addGizmo(ba);

@@ -13,8 +13,8 @@ public class RunGUI implements GBallGui, Observer {
 
 	private TestView tv;
 	private RunListener runListener;
-	public static final int BOARD_WIDTH = 1000;
-	public static final int BOARD_HEIGHT = 1000;
+	public static final int BOARD_WIDTH = 600;
+	public static final int BOARD_HEIGHT = 600;
 	
 	private void createMenuBar(Container pane){
 		JMenuBar menuBar = new JMenuBar();

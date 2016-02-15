@@ -19,6 +19,7 @@ public abstract class AbstractGizmo {
 	protected List<Circle> StoredCircles;
 	protected List<LineSegment> StoredLines;
 	protected Color gizCol;
+	protected Vect vector;
 
 
 	public AbstractGizmo(double x, double y, double width, double height, int angDegrees, Color c, double rc) {
@@ -33,9 +34,14 @@ public abstract class AbstractGizmo {
 		this.reflectionCoefficient = rc;
 		this.gizCol = c;
 
-		this.StoredCircles = new ArrayList<>();
-		this.StoredLines = new ArrayList<>();
+		this.StoredCircles = new ArrayList<Circle>();
+		this.StoredLines = new ArrayList<LineSegment>();
+		vector = new Vect(x,y);
 
+	}
+	
+	public Vect getVect(){
+		return vector;
 	}
 
 	public double getXpos() {
@@ -68,6 +74,10 @@ public abstract class AbstractGizmo {
 
 	public List<Circle> getStoredCircles() {
 		return StoredCircles;
+	}
+	
+	public void setGizAngle(Angle gizAngle) {
+		this.gizAngle = gizAngle;
 	}
 
 	public List<LineSegment> getStoredLines() {
