@@ -3,7 +3,7 @@ import java.util.TimerTask;
 import gizmos.Absorber;
 import gizmos.AbstractGizmo;
 import gizmos.BallActor;
-import gizmos.CircularBumper;
+import gizmos.CircleBumper;
 import gizmos.LeftFlipper;
 import gizmos.OuterWall;
 import gizmos.SquareBumper;
@@ -22,8 +22,9 @@ public class MainInit {
     	int totalWidth=20;
         // init model
         ProjectManager pm = new ProjectManager();
+        pm.loadFile("boards/gizmos.txt");
 
-        pm.addGizmo(new OuterWall(0,0,totalWidth,0,0));
+        /*pm.addGizmo(new OuterWall(0,0,totalWidth,0,0));
         pm.addGizmo(new OuterWall(0,totalWidth,0,totalWidth,0));
         pm.addGizmo(new OuterWall(0,0,0,totalWidth,0));
         pm.addGizmo(new OuterWall(totalWidth,0,totalWidth,0,0));
@@ -46,8 +47,8 @@ public class MainInit {
         pm.addGizmo(new LeftFlipper(15, 15, 0, 0, 0));
 
         pm.addGizmo(new Absorber(1, 18, 18, 1, 0));
-
-        AbstractGizmo ba = new BallActor(10.5, 5.1, 0, 0, 0, new Vect(Angle.ZERO,1));
+*/
+        AbstractGizmo ba = new BallActor(0, 0, 0, 0, 0, new Vect(Angle.ZERO,1));
 
         pm.addBallActor(ba);
         pm.addGizmo(ba);

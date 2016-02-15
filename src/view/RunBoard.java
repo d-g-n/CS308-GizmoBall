@@ -45,7 +45,7 @@ public class RunBoard extends JPanel implements Board {
 			Shape shape = new Polygon();
 
 			//If the gizmo is a Circle or a Ball then paint an Ellipse
-			if (gizmo.getClass().equals(CircularBumper.class)
+			if (gizmo.getClass().equals(CircleBumper.class)
 					|| gizmo.getClass().equals(BallActor.class)) {
 
 				shape = new Ellipse2D.Double(
