@@ -1,11 +1,11 @@
 package gizmos;
 
-import model.GizmoSettingsParser;
 import physics.Angle;
 import physics.Circle;
 import physics.LineSegment;
-import view.VisualShape;
+import physics.Vect;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,10 +18,11 @@ public abstract class AbstractGizmo {
 
 	protected List<Circle> StoredCircles;
 	protected List<LineSegment> StoredLines;
+	protected Color gizCol;
+	protected Vect vector;
 
-	protected List<VisualShape> StoredVisualShapes;
 
-	public AbstractGizmo(double x, double y, double width, double height, int angDegrees) {
+	public AbstractGizmo(double x, double y, double width, double height, int angDegrees, Color c, double rc) {
 		this.xpos = x;
 		this.ypos = y;
 		this.width = width;
@@ -30,12 +31,17 @@ public abstract class AbstractGizmo {
 
 		this.gizmoListeners = new ArrayList<AbstractGizmo>();
 
-		GizmoSettingsParser gs = new GizmoSettingsParser(this);
-		this.reflectionCoefficient = gs.getReflectionCoefficient();
-		this.StoredCircles = gs.getParsedCircles();
-		this.StoredLines = gs.getParsedLines();
-		this.StoredVisualShapes = gs.getVisualShapes();
+		this.reflectionCoefficient = rc;
+		this.gizCol = c;
 
+		this.StoredCircles = new ArrayList<Circle>();
+		this.StoredLines = new ArrayList<LineSegment>();
+		vector = new Vect(x,y);
+
+	}
+	
+	public Vect getVect(){
+		return vector;
 	}
 
 	public double getXpos() {
@@ -62,21 +68,46 @@ public abstract class AbstractGizmo {
 		return gizAngle;
 	}
 
+	public Color getGizCol() {
+		return gizCol;
+	}
+
 	public List<Circle> getStoredCircles() {
 		return StoredCircles;
+	}
+	
+	public void setGizAngle(Angle gizAngle) {
+		this.gizAngle = gizAngle;
 	}
 
 	public List<LineSegment> getStoredLines() {
 		return StoredLines;
 	}
 
-	public List<VisualShape> getStoredVisualShapes() {
-		return StoredVisualShapes;
-	}
-
 	public void setPos(double xpos, double ypos) {
 		this.xpos = xpos;
 		this.ypos = ypos;
+	}
+
+	protected void addPhysicsCircle(double x, double y, double r){
+		StoredCircles.add(new Circle(x, y, r));
+	}
+
+	protected void addPhysicsPath(List<Vect> lv){
+
+		Vect lastVect = null;
+
+		for(Vect curVect : lv){
+			if(lastVect == null){
+				lastVect = curVect;
+				continue;
+			}
+
+			StoredCircles.add(new Circle(lastVect, 0.0));
+			StoredLines.add(new LineSegment(lastVect, curVect));
+
+			lastVect = curVect;
+		}
 	}
 
 	/**
