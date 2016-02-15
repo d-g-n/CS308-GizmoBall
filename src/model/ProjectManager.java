@@ -47,15 +47,14 @@ public class ProjectManager extends Observable{
 		this.notifyObservers();
 	}
 
-	public void updateFlipper(String string, int ang) {
+	public void updateFlipper(String string,int ang) {
 		for(AbstractGizmo g : boardGizmos){
 			if(g.getClass().equals(LeftFlipper.class)){
-			
 			g.setGizAngle(ang);
+			//g.rotate(ang);
 			this.setChanged();
 			this.notifyObservers();
 			}
 		}
-		
 	}
 }

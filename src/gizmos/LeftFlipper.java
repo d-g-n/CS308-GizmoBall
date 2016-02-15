@@ -1,6 +1,8 @@
 package gizmos;
 
 
+import physics.Angle;
+import physics.Geometry;
 import physics.Vect;
 
 import java.awt.*;
@@ -14,7 +16,6 @@ public class LeftFlipper extends AbstractGizmo {
 				Color.blue, // colour of gizmo
 				0.95 // reflection coefficent
 		);
-
 		addPhysicsPath(Arrays.asList(
 				new Vect(x, y), // start at top left
 				new Vect(x + width, y), // move to top right

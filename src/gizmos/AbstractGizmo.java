@@ -2,6 +2,7 @@ package gizmos;
 
 import physics.Angle;
 import physics.Circle;
+import physics.Geometry;
 import physics.LineSegment;
 import physics.Vect;
 
@@ -102,6 +103,11 @@ public abstract class AbstractGizmo {
 
 			lastVect = curVect;
 		}
+	}
+	
+	public void rotate(int angle){
+		Angle ang = new Angle(angle);
+		Geometry.rotateAround(new Vect(this.getXpos()+ this.getWidth(),this.getYpos() + this.getHeight()), new Vect(this.getXpos(),this.getYpos()), ang);
 	}
 
 	/**

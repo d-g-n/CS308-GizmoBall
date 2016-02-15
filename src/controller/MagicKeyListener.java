@@ -23,7 +23,7 @@ public class MagicKeyListener implements KeyListener {
 		int key = e.getKeyCode();
 		switch(key){
 		case KeyEvent.VK_LEFT :
-			pm.updateFlipper("left",0);
+			pm.updateFlipper("left",360);
 			break;
 		}
 		
@@ -35,7 +35,7 @@ public class MagicKeyListener implements KeyListener {
 		int key = e.getKeyCode();
 		switch(key){
 		case KeyEvent.VK_LEFT :
-			pm.updateFlipper("left",90);
+			pm.updateFlipper("left",270);
 			break;
 		}
 	}
