@@ -36,12 +36,15 @@ public class MainInit {
         pm.addGizmo(new TriangleBumper(2, 1, 1, 1, 90));
 
         pm.addGizmo(new CircularBumper(10, 1, 1, 1, 0));
+        pm.addGizmo(new CircularBumper(17, 10, 1, 1, 0));
+        pm.addGizmo(new CircularBumper(10, 14, 1, 1, 0));
+        pm.addGizmo(new CircularBumper(11, 1, 1, 1, 0));
 
         pm.addGizmo(new LeftFlipper(15, 15, 0, 0, 0));
 
         pm.addGizmo(new Absorber(1, 18, 18, 1, 0));
         
-        pm.setBallSpeed(50, 50);
+        pm.setBallSpeed(200, 200);
         
         // init test view and pass ref from model to view
 

@@ -8,6 +8,7 @@ import gizmos.AbstractGizmo;
 import gizmos.Ball;
 import physics.Vect;
 import view.Board;
+import view.RunGUI;
 
 public class ProjectManager extends Observable{
 	
@@ -15,11 +16,13 @@ public class ProjectManager extends Observable{
 	private static FileManager fManager;
 	private List<AbstractGizmo> boardGizmos;
 	private Ball ball;
+	private static final double INITIAL_BALL_XPOS = (15 * Board.BOARD_WIDTH /Board.CELL_WIDTH);
+	private static final double INITIAL_BALL_YPOS = (10 * Board.BOARD_HEIGHT /Board.CELL_HEIGHT);
 	
 	public ProjectManager(){
 		fManager = new FileManager();
 		boardGizmos = new ArrayList<AbstractGizmo>();
-		ball = new Ball(18 * Board.CELL_WIDTH,5 * Board.CELL_WIDTH,100,100);
+		ball = new Ball(INITIAL_BALL_XPOS, INITIAL_BALL_YPOS,100,100);
 		cManager = new CollisionManager(this);
 	}
 

@@ -8,28 +8,30 @@ import model.ProjectManager;
 
 public class RunListener implements ActionListener {
 
-	private ProjectManager model;
+	private ProjectManager pm;
 	private Timer timer;
 
 	public RunListener(ProjectManager model) {
-		this.model = model;
-		timer = new Timer(50, this);
+		this.pm = model;
+		timer = new Timer(25, this);
 		timer.start();
 	}
 
 	@Override
 	public void actionPerformed(final ActionEvent e) {
 		if (e.getSource() == timer) {
-			model.moveBall();
+			pm.moveBall();
 		} else {
 			switch (e.getActionCommand()) {
+			case "Play":
+				timer.start();break;
 			case "Exit":
 				System.exit(0);
 				break;
 			case "Stop":
-				/* Kill execution; */ break;
+				timer.stop(); break;
 			case "Tick":
-				/* Update only one frame */ break;
+				pm.moveBall(); break;
 			case "Build Mode":
 				/* Switch to build mode view */ break;
 			case "Settings":
