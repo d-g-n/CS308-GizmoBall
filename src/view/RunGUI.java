@@ -96,7 +96,7 @@ public class RunGUI implements GBallGui, Observer {
 			}
 		});
 		
-		runListener = new RunListener(this);
+		runListener = new RunListener(pm);
 	}
 
 	@Override
