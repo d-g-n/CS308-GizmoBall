@@ -2,6 +2,7 @@ package gizmos;
 
 
 import physics.Vect;
+import view.Board;
 
 import java.awt.*;
 import java.util.Arrays;
@@ -13,13 +14,21 @@ public class SquareBumper extends AbstractGizmo {
 				Color.red, // colour of gizmo
 				0.95 // reflection coefficent
 		);
+		
+		
+		
+		double pixelsY = (y * Board.BOARD_HEIGHT / Board.Y_CELLS);
+		double pixelsX = (x * Board.BOARD_WIDTH / Board.X_CELLS);
+		double localWidth = (Board.BOARD_WIDTH / Board.X_CELLS);
+		double localHeight = Board.BOARD_HEIGHT/ Board.Y_CELLS;
+		
 
 		addPhysicsPath(Arrays.asList(
-				new Vect(x, y), // start at top left
-				new Vect(x + width, y), // move to top right
-				new Vect(x + width, y + height), // move to bottom right
-				new Vect(x, y + height), // move to bottom left
-				new Vect(x, y) // and back up to top left
+				new Vect(pixelsX, pixelsY), // start at top left
+				new Vect(pixelsX + localWidth, pixelsY), // move to top right
+				new Vect(pixelsX + localWidth, pixelsY + localHeight), // move to bottom right
+				new Vect(pixelsX, pixelsY + localHeight), // move to bottom left
+				new Vect(pixelsX, pixelsY) // and back up to top left
 		));
 
 	}
