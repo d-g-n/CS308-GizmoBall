@@ -68,7 +68,7 @@ public class MainInit {
        
         */
         
-        pm.setBallSpeed(200, -200);
+        pm.setBallSpeed(50, -50);
         
         // init test view and pass ref from model to view
 
