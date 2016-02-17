@@ -23,6 +23,7 @@ public class MagicKeyListener implements KeyListener {
 		switch(key){
 		case KeyEvent.VK_LEFT :
 			pm.updateFlipper("left",-90);
+			
 			break;
 		}
 		

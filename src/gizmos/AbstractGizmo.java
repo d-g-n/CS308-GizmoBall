@@ -141,4 +141,13 @@ public abstract class AbstractGizmo {
 		// there is no default action but needed here to override it.
 	}
 
+	public boolean isMoving() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	public void setMoving(){
+		
+	}
+
 }

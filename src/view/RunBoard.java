@@ -108,24 +108,26 @@ public class RunBoard extends JPanel implements Board {
 			} else if(gizmo.getClass().equals(LeftFlipper.class)
 					|| gizmo.getClass().equals(RightFlipper.class)){
 
-//				shape = new RoundRectangle2D.Double(
-//						(cellWidth * gizmoXpos),
-//						(cellHeight * gizmoYpos),
-//						(cellWidth * gizmoWidth),
-//						(cellHeight * gizmoHeight) * 0.25,
-//						25,
-//						100
-//				);
-				shape = gizmo.getShape();
+				shape = new RoundRectangle2D.Double(
+						(cellWidth * gizmoXpos),
+						(cellHeight * gizmoYpos),
+						(cellWidth * gizmoWidth),
+						(cellHeight * gizmoHeight) * 0.25,
+						25,
+						100
+				);
+				//shape = gizmo.getShape();
 				
 			}
 
 			g.setColor(gizmo.getGizCol());
-//			g2d.rotate(
-//					gizmo.getGizAngle().radians(),
-//					shape.getBounds2D().getX() + cellWidth / 2,
-//					shape.getBounds2D().getY() + cellHeight / 2
-//			);
+			if(!gizmo.isMoving()){
+			g2d.rotate(
+					gizmo.getGizAngle().radians(),
+					shape.getBounds2D().getX() + cellWidth,
+					shape.getBounds2D().getY() + cellHeight
+			);
+			}
 			g2d.draw(shape);
 			g2d.fill(shape);
 			g2d.setTransform(pT);
