@@ -89,7 +89,7 @@ public abstract class AbstractGizmo {
 	}
 
 	protected void addPhysicsPath(List<Vect> lv){
-
+		
 		Vect lastVect = null;
 
 		for(Vect curVect : lv){
@@ -105,9 +105,21 @@ public abstract class AbstractGizmo {
 		}
 	}
 	
+	public void clearPhysicsCircles(){
+		this.getStoredCircles().clear();
+	}
+	
+	public void addPhysicsCircle(Circle c){
+		StoredCircles.add(c);
+	}
+	
 	public void rotate(int angle){
-		Angle ang = new Angle(angle);
-		Geometry.rotateAround(new Vect(this.getXpos()+ this.getWidth(),this.getYpos() + this.getHeight()), new Vect(this.getXpos(),this.getYpos()), ang);
+		// there is no default action but needed here to override it.
+	}
+	
+	public Shape getShape(){
+		// there is no default action but needed here to override it.
+		return null;
 	}
 
 	/**

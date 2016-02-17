@@ -3,7 +3,6 @@ package view;
 import controller.MagicKeyListener;
 import controller.RunListener;
 import model.ProjectManager;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -80,7 +79,7 @@ public class RunGUI implements GBallGui, Observer {
 	private void createAndShowGui(ProjectManager pm) {
 		JFrame frame = new JFrame("Gizmoball");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//frame.setPreferredSize(new Dimension(600,700));
+		frame.setPreferredSize(new Dimension(710,600));
 		addComponentsToPane(frame.getContentPane(), pm);
 		createMenuBar(frame.getContentPane());
 		createStatusBar(frame.getContentPane());

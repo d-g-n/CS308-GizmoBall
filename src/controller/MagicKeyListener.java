@@ -15,7 +15,6 @@ public class MagicKeyListener implements KeyListener {
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -23,7 +22,7 @@ public class MagicKeyListener implements KeyListener {
 		int key = e.getKeyCode();
 		switch(key){
 		case KeyEvent.VK_LEFT :
-			pm.updateFlipper("left",360);
+			pm.updateFlipper("left",-90);
 			break;
 		}
 		
@@ -35,7 +34,7 @@ public class MagicKeyListener implements KeyListener {
 		int key = e.getKeyCode();
 		switch(key){
 		case KeyEvent.VK_LEFT :
-			pm.updateFlipper("left",270);
+			pm.updateFlipper("left",90);
 			break;
 		}
 	}

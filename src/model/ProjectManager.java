@@ -50,8 +50,8 @@ public class ProjectManager extends Observable{
 	public void updateFlipper(String string,int ang) {
 		for(AbstractGizmo g : boardGizmos){
 			if(g.getClass().equals(LeftFlipper.class)){
-			g.setGizAngle(ang);
-			//g.rotate(ang);
+			
+			g.rotate(ang);
 			this.setChanged();
 			this.notifyObservers();
 			}
