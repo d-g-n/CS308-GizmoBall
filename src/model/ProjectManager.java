@@ -22,7 +22,7 @@ public class ProjectManager extends Observable{
 	public ProjectManager(){
 		fManager = new FileManager();
 		boardGizmos = new ArrayList<AbstractGizmo>();
-		ball = new Ball(INITIAL_BALL_XPOS, INITIAL_BALL_YPOS,100,100);
+		ball = new Ball(INITIAL_BALL_XPOS, INITIAL_BALL_YPOS,50,-50);
 		cManager = new CollisionManager(this);
 	}
 

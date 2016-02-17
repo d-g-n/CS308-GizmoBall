@@ -8,6 +8,7 @@ import gizmos.Ball;
 import gizmos.BallActor;
 import gizmos.CircularBumper;
 import gizmos.OuterWall;
+import gizmos.TriangleBumper;
 import physics.Circle;
 import physics.Geometry;
 import physics.LineSegment;
@@ -46,7 +47,7 @@ public class CollisionManager extends Observable {
 		for (AbstractGizmo gizmo : gizmos) {
 			if (gizmo instanceof OuterWall) {
 				for (LineSegment line : gizmo.getStoredLines()) {
-					timeToCollision = Geometry.timeUntilWallCollision(line, ball.getCircle(), ball.getVelocity());
+					timeToCollision = Geometry.timeUntilWallCollision(line, ball.getCircle(), velocity);
 					if (timeToCollision < shortestTime) {
 						shortestTime = timeToCollision;
 						newVelocity = Geometry.reflectWall(line, velocity, 1.0);
@@ -54,14 +55,27 @@ public class CollisionManager extends Observable {
 				}
 			} else if (gizmo instanceof CircularBumper) {
 				for (Circle circle : gizmo.getStoredCircles()) {
-					timeToCollision = Geometry.timeUntilCircleCollision(circle,
-												ball.getCircle(), velocity);
-					//System.out.println(timeToCollision);
+					timeToCollision = Geometry.timeUntilCircleCollision(circle, ball.getCircle(), velocity);
 					if (timeToCollision < shortestTime) {
 						shortestTime = timeToCollision;
-						newVelocity = Geometry.reflectCircle(circle.getCenter(), 
-															ball.getCircle().getCenter(),
-															ball.getVelocity());
+						newVelocity = Geometry.reflectCircle(circle.getCenter(), ball.getCircle().getCenter(),
+								velocity,1);
+					}
+				}
+			} else if (gizmo instanceof TriangleBumper) {
+				for (LineSegment line : gizmo.getStoredLines()) {
+					timeToCollision = Geometry.timeUntilWallCollision(line, ball.getCircle(), velocity);
+					if (timeToCollision < shortestTime) {
+						shortestTime = timeToCollision;
+						newVelocity = Geometry.reflectWall(line, velocity, 1.0);
+					}
+				}
+				for (Circle circle : gizmo.getStoredCircles()) {
+					timeToCollision = Geometry.timeUntilCircleCollision(circle, ball.getCircle(), velocity);
+					if (timeToCollision < shortestTime) {
+						shortestTime = timeToCollision;
+						newVelocity = Geometry.reflectCircle(circle.getCenter(), ball.getCircle().getCenter(),
+								velocity,1);
 					}
 				}
 			}

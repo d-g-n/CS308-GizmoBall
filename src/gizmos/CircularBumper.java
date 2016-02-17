@@ -11,10 +11,12 @@ public class CircularBumper extends AbstractGizmo {
 				Color.blue, // colour of gizmo
 				1 // reflection coefficent
 		);
+		
+		double radius = Board.BOARD_WIDTH / Board.X_CELLS / 2;
 
-		addPhysicsCircle( (x * Board.BOARD_WIDTH / Board.X_CELLS) + x,
-				(y * Board.BOARD_HEIGHT / Board.Y_CELLS) + y,
-				Board.BOARD_WIDTH / Board.X_CELLS / 2
+		addPhysicsCircle( (x * Board.BOARD_WIDTH / Board.X_CELLS) + radius,
+				(y * Board.BOARD_HEIGHT / Board.Y_CELLS) + radius,
+				radius
 		);
 	}
 

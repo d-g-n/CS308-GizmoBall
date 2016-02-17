@@ -17,7 +17,7 @@ public class Ball {
 		xpos = x; // Centre coordinates
 		ypos = y;
 		velocity = new Vect(xv, yv);
-		radius = 8;
+		radius = 10;
 		stopped = false;
 	}
 

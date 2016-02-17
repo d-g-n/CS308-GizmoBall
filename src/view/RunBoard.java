@@ -12,6 +12,7 @@ import java.awt.geom.RoundRectangle2D;
 
 public class RunBoard extends JPanel implements Board {
 
+	private static final long serialVersionUID = 1L;
 	private ProjectManager pm;
 
 	public RunBoard(ProjectManager pm) {

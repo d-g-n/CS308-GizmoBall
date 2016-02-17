@@ -6,6 +6,7 @@ import gizmos.OuterWall;
 import gizmos.SquareBumper;
 import gizmos.TriangleBumper;
 import model.ProjectManager;
+import view.Board;
 import view.RunGUI;
 
 /**
@@ -15,12 +16,10 @@ public class MainInit {
 	
     public static void main(String[] args){
 
-    	int totalWidth = 600;
-    	int totalHeight = 600;
         // init model
         ProjectManager pm = new ProjectManager();
 
-        pm.addGizmo(new OuterWall(0,0,totalWidth,totalHeight,0));
+        pm.addGizmo(new OuterWall(0,0,Board.BOARD_WIDTH,Board.BOARD_HEIGHT,0));
         
         pm.addGizmo(new SquareBumper(10, 10, 1, 1, 0));
         pm.addGizmo(new SquareBumper(9, 10, 1, 1, 0));
@@ -34,6 +33,7 @@ public class MainInit {
 
         pm.addGizmo(new TriangleBumper(1, 1, 1, 1, 0));
         pm.addGizmo(new TriangleBumper(2, 1, 1, 1, 90));
+        pm.addGizmo(new TriangleBumper(12, 16, 1, 1, 90));
 
         pm.addGizmo(new CircularBumper(10, 1, 1, 1, 0));
         pm.addGizmo(new CircularBumper(17, 10, 1, 1, 0));
@@ -44,7 +44,7 @@ public class MainInit {
 
         pm.addGizmo(new Absorber(1, 18, 18, 1, 0));
         
-        pm.setBallSpeed(200, 200);
+        pm.setBallSpeed(200, -200);
         
         // init test view and pass ref from model to view
 
