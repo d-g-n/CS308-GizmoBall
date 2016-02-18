@@ -110,23 +110,23 @@ public class RunBoard extends JPanel implements Board {
 			} else if(gizmo.getClass().equals(LeftFlipper.class)
 					|| gizmo.getClass().equals(RightFlipper.class)){
 
+				
 				shape = gizmo.getShape();
 				
 			}
 
 			g.setColor(gizmo.getGizCol());
-		if(gizmo.isMoving()){
+		
 				
 			g2d.rotate(
 					gizmo.getGizAngle().radians(),
 					shape.getBounds2D().getX() + cellWidth,
 					shape.getBounds2D().getY() + cellHeight
 			);
-		}
+		
 			g2d.draw(shape);
 			g2d.fill(shape);
 			g2d.setTransform(pT);
-			
 		}
 
 	}

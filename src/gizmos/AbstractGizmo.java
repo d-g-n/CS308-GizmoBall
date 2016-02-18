@@ -23,7 +23,6 @@ public abstract class AbstractGizmo {
 	protected Color gizCol;
 	protected Vect vector;
 
-
 	public AbstractGizmo(double x, double y, double width, double height, int angDegrees, Color c, double rc) {
 		this.xpos = x * Board.BOARD_WIDTH / Board.X_CELLS;
 		this.ypos = y * Board.BOARD_HEIGHT / Board.Y_CELLS;

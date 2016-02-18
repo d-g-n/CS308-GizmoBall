@@ -7,6 +7,7 @@ import model.ProjectManager;
 
 public class MagicKeyListener implements KeyListener {
 	private ProjectManager pm;
+	int angle = 0;
 	
 	public MagicKeyListener(ProjectManager pm){
 		this.pm = pm;
@@ -14,7 +15,6 @@ public class MagicKeyListener implements KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
 	}
 
 	@Override
@@ -22,22 +22,51 @@ public class MagicKeyListener implements KeyListener {
 		int key = e.getKeyCode();
 		switch(key){
 		case KeyEvent.VK_LEFT :
-			pm.updateFlipper("left",1080);
-			
+			angle = 0;
+			while(angle < 90){
+				angle += 2;
+			pm.updateFlipper("left",angle);
+			System.out.println(angle);
+			}
 			break;
+		case KeyEvent.VK_RIGHT : 
+			angle = 0;
+			while(angle < 90){
+				angle += 2;
+			pm.updateFlipper("right",-angle);
+			System.out.println(-angle);
+			}
+			break;
+			
 		}
-		
 	}
+		
+	
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
 		int key = e.getKeyCode();
 		switch(key){
 		case KeyEvent.VK_LEFT :
-			pm.updateFlipper("left",-1080);
+			angle = 0;
+			while(angle < 90){
+				angle+= 2;
+				System.out.println(-angle);
+				pm.updateFlipper("left",-angle);
+				
+			}
 			break;
+		case KeyEvent.VK_RIGHT : 
+			angle = 0;
+			while(angle < 90){
+				angle += 2;
+			pm.updateFlipper("right",angle);
+			System.out.println(angle);
+			}
+			break;
+			
 		}
 	}
+
 
 }

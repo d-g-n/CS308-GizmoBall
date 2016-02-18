@@ -3,6 +3,7 @@ import gizmos.Ball;
 import gizmos.CircularBumper;
 import gizmos.LeftFlipper;
 import gizmos.OuterWall;
+import gizmos.RightFlipper;
 import gizmos.SquareBumper;
 import gizmos.TriangleBumper;
 import model.ProjectManager;
@@ -25,9 +26,10 @@ public class MainInit {
         pm.addGizmo(new SquareBumper(9, 10, 1, 1, 0));
         pm.addGizmo(new SquareBumper(11, 10, 1, 1, 0));
 
-		pm.addGizmo(new LeftFlipper(10.5, 15.5, 0.5, 2, 0));
+		pm.addGizmo(new LeftFlipper(10, 15, 0.5, 2, 0));
+		pm.addGizmo(new RightFlipper(15, 15, 0.5, 2, 0));
         
-        pm.setBallSpeed(200, -200);
+        ///pm.setBallSpeed(200, -200);
         
         // init test view and pass ref from model to view
 
