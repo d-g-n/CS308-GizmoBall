@@ -19,7 +19,7 @@ public class TestView  {
 
 		gp = new RunBoard(pm);
 
-		gp.setPreferredSize(new Dimension(RunGUI.BOARD_WIDTH, RunGUI.BOARD_HEIGHT));
+		gp.setPreferredSize(new Dimension(Board.BOARD_WIDTH, Board.BOARD_HEIGHT));
 
 
 	}
