@@ -28,7 +28,7 @@ public class MainInit {
 		pm.addGizmo(new OuterWall(0, 0, 0, totalWidth, 0));
 		pm.addGizmo(new OuterWall(totalWidth, 0, totalWidth, 0, 0));
 
-		pm.addGizmo(new LeftFlipper(10, 10, 2, 2, 270));
+		pm.addGizmo(new LeftFlipper(10, 10, 2, 2, 90));
 
 		AbstractGizmo ba = new BallActor(10.5, 5.1, 0, 0, 0, new Vect(Angle.ZERO, 1));
 

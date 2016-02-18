@@ -19,6 +19,7 @@ public class LeftFlipper extends AbstractGizmo {
 	private Point[] points;
 	private Point[] originPoints;
 	private Point center;
+	int angleVel;
 
 	public LeftFlipper(int x, int y, int width, int height, int degrees) {
 
@@ -40,12 +41,14 @@ public class LeftFlipper extends AbstractGizmo {
 				points[i] = originPoints[i];
 			}
 			moving = false;
+			angleVel = 0;
 	}
 	@Override
 	public void rotate(int angle){
 		
-		AffineTransform rotate = AffineTransform.getRotateInstance(Math.toRadians(angle),center.x, center.y);
-		rotate.transform(originPoints, 0, points, 0, 4);
+		AffineTransform at = new AffineTransform();
+		at.rotate(Math.toRadians(90), center.getX(), center.getY());
+		
 		
 	}
 	

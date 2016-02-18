@@ -121,7 +121,8 @@ public class RunBoard extends JPanel implements Board {
 			}
 
 			g.setColor(gizmo.getGizCol());
-			if(!gizmo.isMoving()){
+			if(gizmo.isMoving()){
+				
 			g2d.rotate(
 					gizmo.getGizAngle().radians(),
 					shape.getBounds2D().getX() + cellWidth,
