@@ -5,6 +5,7 @@ import physics.Circle;
 import physics.Geometry;
 import physics.LineSegment;
 import physics.Vect;
+import view.Board;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -20,13 +21,15 @@ public abstract class AbstractGizmo {
 	protected List<Circle> StoredCircles;
 	protected List<LineSegment> StoredLines;
 	protected Color gizCol;
+	protected Vect vector;
 
 
 	public AbstractGizmo(double x, double y, double width, double height, int angDegrees, Color c, double rc) {
-		this.xpos = x;
-		this.ypos = y;
-		this.width = width;
-		this.height = height;
+		this.xpos = x * Board.BOARD_WIDTH / Board.X_CELLS;
+		this.ypos = y * Board.BOARD_HEIGHT / Board.Y_CELLS;
+		this.width = width * Board.BOARD_WIDTH / Board.X_CELLS;
+		this.height = height * Board.BOARD_HEIGHT / Board.Y_CELLS;
+		
 		this.gizAngle = new Angle(Math.toRadians(angDegrees));
 
 		this.gizmoListeners = new ArrayList<AbstractGizmo>();
@@ -34,9 +37,14 @@ public abstract class AbstractGizmo {
 		this.reflectionCoefficient = rc;
 		this.gizCol = c;
 
-		this.StoredCircles = new ArrayList<>();
-		this.StoredLines = new ArrayList<>();
+		this.StoredCircles = new ArrayList<Circle>();
+		this.StoredLines = new ArrayList<LineSegment>();
+		vector = new Vect(x,y);
 
+	}
+	
+	public Vect getVect(){
+		return vector;
 	}
 
 	public double getXpos() {
@@ -69,6 +77,10 @@ public abstract class AbstractGizmo {
 
 	public List<Circle> getStoredCircles() {
 		return StoredCircles;
+	}
+	
+	public void setGizAngle(Angle gizAngle) {
+		this.gizAngle = gizAngle;
 	}
 
 	public List<LineSegment> getStoredLines() {

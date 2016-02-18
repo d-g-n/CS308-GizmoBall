@@ -16,6 +16,8 @@ public class RunGUI implements GBallGui, Observer {
 	private MagicKeyListener keyListener;
 	public static final int BOARD_WIDTH = 1000;
 	public static final int BOARD_HEIGHT = 1000;
+
+
 	
 	private void createMenuBar(Container pane){
 		JMenuBar menuBar = new JMenuBar();
@@ -104,8 +106,9 @@ public class RunGUI implements GBallGui, Observer {
 			}
 		});
 		
-		runListener = new RunListener(this);
 		keyListener = new MagicKeyListener(pm);
+		runListener = new RunListener(pm);
+
 	}
 
 	@Override

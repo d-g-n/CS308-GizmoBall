@@ -12,10 +12,12 @@ import java.awt.geom.RoundRectangle2D;
 
 public class RunBoard extends JPanel implements Board {
 
+	private static final long serialVersionUID = 1L;
 	private ProjectManager pm;
 
 	public RunBoard(ProjectManager pm) {
 		this.pm = pm;
+		
 	}
 
 	public void paintComponent(Graphics g) {
@@ -32,7 +34,7 @@ public class RunBoard extends JPanel implements Board {
 		double cellHeight = boardHeight / Y_CELLS;
 		
 		drawEmptyBoardWithGuidelines(g, boardWidth, boardHeight);
-		
+		drawBall(pm.getBall(),g);
 		for (AbstractGizmo gizmo : pm.getBoardGizmos()) {
 			AffineTransform pT = g2d.getTransform();
 			
@@ -83,8 +85,8 @@ public class RunBoard extends JPanel implements Board {
 				 *  - -
 				 */
 				((Polygon) shape).addPoint(
-						(int) (cellWidth * gizmoXpos),
-						(int) (cellHeight * gizmoYpos)
+						(int) (gizmoXpos),
+						(int) (gizmoYpos)
 				);
 				
 				/*
@@ -92,8 +94,8 @@ public class RunBoard extends JPanel implements Board {
 				 *  - *
 				 */
 				((Polygon) shape).addPoint(
-						(int) ((cellWidth * gizmoXpos) + (cellWidth * gizmoWidth)),
-						(int) ((cellWidth * gizmoYpos) + (cellHeight * gizmoHeight))
+						(int) ((gizmoXpos) + (gizmoWidth)),
+						(int) ((gizmoYpos) + (gizmoHeight))
 				);
 				
 				/*
@@ -101,34 +103,26 @@ public class RunBoard extends JPanel implements Board {
 				 *  * -
 				 */
 				((Polygon) shape).addPoint(
-						(int) (cellWidth * gizmoXpos),
-						(int) ((cellWidth * gizmoYpos) + (cellHeight * gizmoHeight))			
+						(int) (gizmoXpos),
+						(int) ((gizmoYpos) + (gizmoHeight))			
 				);
 
 			} else if(gizmo.getClass().equals(LeftFlipper.class)
 					|| gizmo.getClass().equals(RightFlipper.class)){
 
-				shape = new RoundRectangle2D.Double(
-						(cellWidth * gizmoXpos),
-						(cellHeight * gizmoYpos),
-						(cellWidth * gizmoWidth),
-						(cellHeight * gizmoHeight) * 0.25,
-						25,
-						100
-				);
-				//shape = gizmo.getShape();
+				shape = gizmo.getShape();
 				
 			}
 
 			g.setColor(gizmo.getGizCol());
-			if(gizmo.isMoving()){
+		if(gizmo.isMoving()){
 				
 			g2d.rotate(
 					gizmo.getGizAngle().radians(),
 					shape.getBounds2D().getX() + cellWidth,
 					shape.getBounds2D().getY() + cellHeight
 			);
-			}
+		}
 			g2d.draw(shape);
 			g2d.fill(shape);
 			g2d.setTransform(pT);
@@ -137,6 +131,14 @@ public class RunBoard extends JPanel implements Board {
 
 	}
 
+	private void drawBall(Ball b,Graphics g){
+		Graphics2D g2 = (Graphics2D) g;
+		g2.setColor(Color.white);
+		int x = (int) (b.getXPos() - b.getRadius());
+		int y = (int) (b.getYPos() - b.getRadius());
+		int width = (int) (2 * b.getRadius());
+		g2.fillOval(x, y, width, width);
+	}
 	private void drawEmptyBoardWithGuidelines(Graphics g, int boardWidth, int boardHeight) {
 		// Draw background
 		g.setColor(Color.black);
