@@ -4,6 +4,7 @@ import physics.Angle;
 import physics.Circle;
 import physics.LineSegment;
 import physics.Vect;
+import view.Board;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -23,10 +24,11 @@ public abstract class AbstractGizmo {
 
 
 	public AbstractGizmo(double x, double y, double width, double height, int angDegrees, Color c, double rc) {
-		this.xpos = x;
-		this.ypos = y;
-		this.width = width;
-		this.height = height;
+		this.xpos = x * Board.BOARD_WIDTH / Board.X_CELLS;
+		this.ypos = y * Board.BOARD_HEIGHT / Board.Y_CELLS;
+		this.width = width * Board.BOARD_WIDTH / Board.X_CELLS;
+		this.height = height * Board.BOARD_HEIGHT / Board.Y_CELLS;
+		
 		this.gizAngle = new Angle(Math.toRadians(angDegrees));
 
 		this.gizmoListeners = new ArrayList<AbstractGizmo>();
