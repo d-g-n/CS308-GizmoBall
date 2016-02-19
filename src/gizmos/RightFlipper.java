@@ -17,7 +17,7 @@ public class RightFlipper extends AbstractGizmo {
 
 	public RightFlipper(double x, double y, double w, double h, int degrees) {
 		super(x, y, w, h, degrees,
-				Color.magenta, // colour of gizmo
+				Color.orange, // colour of gizmo
 				0.95 // reflection coefficent
 		);
 		

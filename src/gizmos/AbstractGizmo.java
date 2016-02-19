@@ -124,6 +124,10 @@ public abstract class AbstractGizmo {
 		StoredCircles.add(c);
 	}
 	
+	public void addPhysicsLine(LineSegment line){
+		StoredLines.add(line);
+	}
+	
 	public void rotate(int angle){
 		// there is no default action but needed here to override it.
 	}

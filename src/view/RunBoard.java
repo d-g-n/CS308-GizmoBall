@@ -118,11 +118,11 @@ public class RunBoard extends JPanel implements Board {
 			g.setColor(gizmo.getGizCol());
 		
 				
-			g2d.rotate(
-					gizmo.getGizAngle().radians(),
-					shape.getBounds2D().getX() + cellWidth,
-					shape.getBounds2D().getY() + cellHeight
-			);
+//			g2d.rotate(
+//					gizmo.getGizAngle().radians(),
+//					shape.getBounds2D().getX() + cellWidth,
+//					shape.getBounds2D().getY() + cellHeight
+//			);
 		
 			g2d.draw(shape);
 			g2d.fill(shape);
@@ -139,6 +139,7 @@ public class RunBoard extends JPanel implements Board {
 		int width = (int) (2 * b.getRadius());
 		g2.fillOval(x, y, width, width);
 	}
+	
 	private void drawEmptyBoardWithGuidelines(Graphics g, int boardWidth, int boardHeight) {
 		// Draw background
 		g.setColor(Color.black);
