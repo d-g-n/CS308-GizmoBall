@@ -17,7 +17,6 @@ public class RunBoard extends JPanel implements Board {
 
 	public RunBoard(ProjectManager pm) {
 		this.pm = pm;
-		
 	}
 
 	public void paintComponent(Graphics g) {

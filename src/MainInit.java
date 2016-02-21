@@ -1,4 +1,5 @@
 import gizmos.Absorber;
+import controller.RunListener;
 import gizmos.Ball;
 import gizmos.CircularBumper;
 import gizmos.LeftFlipper;
@@ -21,7 +22,7 @@ public class MainInit {
 
         pm.addGizmo(new OuterWall(0,0,Board.BOARD_WIDTH,Board.BOARD_HEIGHT,0));
         
-        pm.addGizmo(new SquareBumper(10, 10, 1, 1, 0));
+  /*      pm.addGizmo(new SquareBumper(10, 10, 1, 1, 0));
         pm.addGizmo(new SquareBumper(9, 10, 1, 1, 0));
         pm.addGizmo(new SquareBumper(11, 10, 1, 1, 0));
 
@@ -29,7 +30,7 @@ public class MainInit {
         pm.addGizmo(new SquareBumper(8, 9, 1, 1, 0));
 
         pm.addGizmo(new SquareBumper(9, 7, 1, 1, 0));
-        pm.addGizmo(new SquareBumper(11, 7, 1, 1, 0));
+       pm.addGizmo(new SquareBumper(11, 7, 1, 1, 0));
 
         pm.addGizmo(new TriangleBumper(1, 1, 1, 1, 0));
         pm.addGizmo(new TriangleBumper(2, 1, 1, 1, 90));
@@ -38,16 +39,17 @@ public class MainInit {
         pm.addGizmo(new CircularBumper(10, 1, 1, 1, 0));
         pm.addGizmo(new CircularBumper(17, 10, 1, 1, 0));
         pm.addGizmo(new CircularBumper(10, 14, 1, 1, 0));
-        pm.addGizmo(new CircularBumper(11, 1, 1, 1, 0));
+       pm.addGizmo(new CircularBumper(11, 1, 1, 1, 0));
 
         
         pm.addGizmo(new SquareBumper(1, 13, 1, 1, 0));
-        pm.addGizmo(new SquareBumper(1, 12, 1, 1, 0));
-        pm.addGizmo(new SquareBumper(11, 9, 1, 1, 0));
+       pm.addGizmo(new SquareBumper(1, 12, 1, 1, 0));
+        pm.addGizmo(new SquareBumper(11, 9, 1, 1, 0));*/
 
 
         pm.addGizmo(new Absorber(1, 18, 18, 1, 0));  
         
+    //    pm.addGizmo(new Absorber(1,10,17,9,0));
         
   /*      pm.addGizmo(new TriangleBumper(1, 1, 1, 1, 0));
         pm.addGizmo(new TriangleBumper(2, 1, 1, 1, 90));
@@ -68,7 +70,7 @@ public class MainInit {
        
         */
         
-        pm.setBallSpeed(50, -50);
+        pm.setBallSpeed(0, 0);
         
         // init test view and pass ref from model to view
 

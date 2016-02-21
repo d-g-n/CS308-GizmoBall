@@ -69,7 +69,7 @@ public class Ball {
 	
 	public void applyGravityConstant(double tickTime) {
 		
-		Vect gravityApplied = new Vect(velocity.x(), velocity.y() + (250 * tickTime));
+		Vect gravityApplied = new Vect(velocity.x(), velocity.y() + (400 * tickTime));
 		
 		this.setVelocity(gravityApplied);
 	}

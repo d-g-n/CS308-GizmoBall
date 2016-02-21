@@ -3,6 +3,7 @@ package model;
 import java.util.List;
 import java.util.Observable;
 
+import gizmos.Absorber;
 import gizmos.AbstractGizmo;
 import gizmos.Ball;
 import gizmos.BallActor;
@@ -14,12 +15,18 @@ import physics.Circle;
 import physics.Geometry;
 import physics.LineSegment;
 import physics.Vect;
+import view.Board;
 
 public class CollisionManager extends Observable {
 
 	public final double MOVE_TIME = 0.01;
 	private ProjectManager pm;
 	private Ball ball;
+	private boolean absorb = false;
+	double absorberX;
+	double absorberY;
+	double absorberHeight;
+	double absorberWidth;
 
 	public CollisionManager(ProjectManager pm) {
 		this.pm = pm;
@@ -38,7 +45,14 @@ public class CollisionManager extends Observable {
 			// Post collision velocity ...
 			ball.setVelocity(info.getVelocity());
 			ball.applyGravityConstant(MOVE_TIME);
-			ball.applyFriction(MOVE_TIME, 0.025, 0.0025);
+			ball.applyFriction(MOVE_TIME, 0.025, 0.025);
+			if (absorb) {
+				ball.setXPos( (absorberWidth + absorberX - 0.5) * Board.BOARD_WIDTH / Board.X_CELLS);
+				ball.setYPos(absorberY * Board.BOARD_HEIGHT / Board.Y_CELLS);
+				ball.stop();
+			}
+
+			
 		}
 	}
 
@@ -56,6 +70,7 @@ public class CollisionManager extends Observable {
 					if (timeToCollision < shortestTime) {
 						shortestTime = timeToCollision;
 						newVelocity = Geometry.reflectWall(line, velocity, 1.0);
+						absorb = false;
 					}
 				}
 			} else if (gizmo instanceof CircularBumper) {
@@ -65,6 +80,7 @@ public class CollisionManager extends Observable {
 						shortestTime = timeToCollision;
 						newVelocity = Geometry.reflectCircle(circle.getCenter(), ball.getCircle().getCenter(),
 								velocity,1);
+						absorb = false;
 					}
 				}
 			} else if (gizmo instanceof TriangleBumper) {
@@ -73,6 +89,7 @@ public class CollisionManager extends Observable {
 					if (timeToCollision < shortestTime) {
 						shortestTime = timeToCollision;
 						newVelocity = Geometry.reflectWall(line, velocity, 1.0);
+						absorb = false;
 					}
 				}
 				for (Circle circle : gizmo.getStoredCircles()) {
@@ -89,6 +106,7 @@ public class CollisionManager extends Observable {
 					if (timeToCollision < shortestTime) {
 						shortestTime = timeToCollision;
 						newVelocity = Geometry.reflectWall(line, velocity, 1.0);
+						absorb = false;
 					}
 				}
 				for (Circle circle : gizmo.getStoredCircles()) {
@@ -99,6 +117,34 @@ public class CollisionManager extends Observable {
 								velocity,1);
 					}
 				}
+				
+			} else if (gizmo instanceof Absorber) {
+				Absorber a = (Absorber) gizmo;
+				for (LineSegment line : gizmo.getStoredLines()) {
+					timeToCollision = Geometry.timeUntilWallCollision(line, ball.getCircle(), velocity);
+					if (timeToCollision < shortestTime) {
+						shortestTime = timeToCollision;
+						Vect zero = new Vect(0.0,0.0);
+						newVelocity = zero;
+						absorb = true;
+						absorberX = a.getXpos();
+						absorberY = a.getYpos();
+						absorberHeight = a.getHeight();
+						absorberWidth = a.getWidth();
+						
+					}
+				}
+				for (Circle circle : gizmo.getStoredCircles()) {
+					timeToCollision = Geometry.timeUntilCircleCollision(circle, ball.getCircle(), velocity);
+					if (timeToCollision < shortestTime) {
+						shortestTime = timeToCollision;
+						Vect zero = new Vect(0.0,0.0);
+						newVelocity = zero;
+						absorb = true;
+					}
+				}
+				
+				
 				
 			}
 		}

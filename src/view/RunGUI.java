@@ -1,7 +1,9 @@
 package view;
 
+import controller.KeyPressListener;
 import controller.RunListener;
 import model.ProjectManager;
+import physics.Vect;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,6 +15,8 @@ public class RunGUI implements GBallGui, Observer {
 
 	private TestView tv;
 	private RunListener runListener;
+	private ProjectManager pm;
+	private KeyPressListener keyListener;
 	
 	private void createMenuBar(Container pane){
 		JMenuBar menuBar = new JMenuBar();
@@ -31,6 +35,8 @@ public class RunGUI implements GBallGui, Observer {
 	private void addComponentsToPane(Container pane, ProjectManager pm) {
 		pane.setLayout(new BorderLayout());
 		
+		this.pm = pm;
+		
 	    JPanel leftPanel = new JPanel();
 	    leftPanel.setLayout(new GridLayout(4,1));
 	    
@@ -42,7 +48,10 @@ public class RunGUI implements GBallGui, Observer {
 		pane.add(leftPanel, BorderLayout.LINE_START);
 		
 		tv = new TestView(pm);
+		
 		pane.add(tv.getBoard(),BorderLayout.CENTER);
+		
+
 		
 		JPanel rightPanel = new JPanel();
 		rightPanel.setLayout(new GridLayout(3,1));
@@ -64,6 +73,7 @@ public class RunGUI implements GBallGui, Observer {
 		button.setAlignmentX(Component.LEFT_ALIGNMENT);
 		button.addActionListener(runListener);
 		pane.add(button);
+		button.addKeyListener(keyListener);
 		
 	}
 
@@ -76,6 +86,7 @@ public class RunGUI implements GBallGui, Observer {
 		createStatusBar(frame.getContentPane());
 		frame.pack();
         frame.setVisible(true);
+   
 	}
 
 
@@ -95,6 +106,7 @@ public class RunGUI implements GBallGui, Observer {
 		});
 		
 		runListener = new RunListener(pm);
+		keyListener = new KeyPressListener(pm);
 	}
 
 	@Override
@@ -103,4 +115,5 @@ public class RunGUI implements GBallGui, Observer {
 			return;
 		tv.getGizPanel().repaint();
 	}
+
 }

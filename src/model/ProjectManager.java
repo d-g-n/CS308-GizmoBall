@@ -16,8 +16,8 @@ public class ProjectManager extends Observable{
 	private static FileManager fManager;
 	private List<AbstractGizmo> boardGizmos;
 	private Ball ball;
-	private static final double INITIAL_BALL_XPOS = (15 * Board.BOARD_WIDTH /Board.CELL_WIDTH);
-	private static final double INITIAL_BALL_YPOS = (10 * Board.BOARD_HEIGHT /Board.CELL_HEIGHT);
+	private static final double INITIAL_BALL_XPOS = (18.5 * Board.BOARD_WIDTH /Board.CELL_WIDTH);
+	private static final double INITIAL_BALL_YPOS = (17.9 * Board.BOARD_HEIGHT /Board.CELL_HEIGHT);
 	
 	public ProjectManager(){
 		fManager = new FileManager();
