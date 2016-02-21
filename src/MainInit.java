@@ -19,7 +19,7 @@ public class MainInit {
         // init model
         ProjectManager pm = new ProjectManager();
 
-        pm.addGizmo(new OuterWall(0,0,Board.BOARD_WIDTH,Board.BOARD_HEIGHT,0));
+        pm.addGizmo(new OuterWall(0,0,20,20,0));
         
         pm.addGizmo(new SquareBumper(10, 10, 1, 1, 0));
         pm.addGizmo(new SquareBumper(9, 10, 1, 1, 0));
@@ -40,7 +40,7 @@ public class MainInit {
         pm.addGizmo(new CircularBumper(10, 14, 1, 1, 0));
         pm.addGizmo(new CircularBumper(11, 1, 1, 1, 0));
         
-        pm.setBallSpeed(200, -200);
+        pm.setBallSpeed(200, -30);
         
         // init test view and pass ref from model to view
 

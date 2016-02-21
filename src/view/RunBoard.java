@@ -51,20 +51,20 @@ public class RunBoard extends JPanel implements Board {
 					|| gizmo.getClass().equals(BallActor.class)) {
 
 				shape = new Ellipse2D.Double(
-						(cellWidth * gizmoXpos),
-						(cellHeight * gizmoYpos),
-						(cellWidth * gizmoWidth),
-						(cellHeight * gizmoHeight)
+						(gizmoXpos),
+						(gizmoYpos),
+						(gizmoWidth),
+						(gizmoHeight)
 				);
 
 			} else if (gizmo.getClass().equals(Absorber.class) //If it is an absorber or a square
 					|| gizmo.getClass().equals(SquareBumper.class)) { //paint a Rectangle
 
 				shape = new Rectangle2D.Double(
-						(cellWidth * gizmoXpos),
-						(cellHeight * gizmoYpos),
-						(cellWidth * gizmoWidth),
-						(cellHeight * gizmoHeight)
+						(gizmoXpos),
+						(gizmoYpos),
+						(gizmoWidth),
+						(gizmoHeight)
 				);
 
 				g2d.rotate(gizmo.getGizAngle().radians());
@@ -81,8 +81,8 @@ public class RunBoard extends JPanel implements Board {
 				 *  - -
 				 */
 				((Polygon) shape).addPoint(
-						(int) (cellWidth * gizmoXpos),
-						(int) (cellHeight * gizmoYpos)
+						(int) (gizmoXpos),
+						(int) (gizmoYpos)
 				);
 				
 				/*
@@ -90,8 +90,8 @@ public class RunBoard extends JPanel implements Board {
 				 *  - *
 				 */
 				((Polygon) shape).addPoint(
-						(int) ((cellWidth * gizmoXpos) + (cellWidth * gizmoWidth)),
-						(int) ((cellWidth * gizmoYpos) + (cellHeight * gizmoHeight))
+						(int) (gizmoXpos + gizmoWidth),
+						(int) (gizmoYpos + gizmoHeight)
 				);
 				
 				/*
@@ -99,18 +99,18 @@ public class RunBoard extends JPanel implements Board {
 				 *  * -
 				 */
 				((Polygon) shape).addPoint(
-						(int) (cellWidth * gizmoXpos),
-						(int) ((cellWidth * gizmoYpos) + (cellHeight * gizmoHeight))			
+						(int) (gizmoXpos),
+						(int) ( gizmoYpos + gizmoHeight)			
 				);
 
 			} else if(gizmo.getClass().equals(LeftFlipper.class)
 					|| gizmo.getClass().equals(RightFlipper.class)){
 
 				shape = new RoundRectangle2D.Double(
-						(cellWidth * gizmoXpos),
-						(cellHeight * gizmoYpos),
-						(cellWidth * gizmoWidth),
-						(cellHeight * gizmoHeight) * 0.25,
+						(gizmoXpos),
+						(gizmoYpos),
+						(gizmoWidth),
+						(gizmoHeight) * 0.25,
 						25,
 						100
 				);
@@ -140,6 +140,8 @@ public class RunBoard extends JPanel implements Board {
 		int width = (int) (2 * b.getRadius());
 		g2.fillOval(x, y, width, width);
 	}
+	
+	
 	private void drawEmptyBoardWithGuidelines(Graphics g, int boardWidth, int boardHeight) {
 		// Draw background
 		g.setColor(Color.black);
