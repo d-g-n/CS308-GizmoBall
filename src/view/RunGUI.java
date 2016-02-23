@@ -81,7 +81,7 @@ public class RunGUI implements GBallGui, Observer {
 	}
 
 
-	public RunGUI(ProjectManager pm){
+	public RunGUI(final ProjectManager pm){
 		/* Use an appropriate Look and Feel */
 		try {
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");

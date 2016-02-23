@@ -10,31 +10,22 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import gizmos.AbstractGizmo;
-import gizmos.CircleBumper;
-import gizmos.LeftFlipper;
-import gizmos.RightFlipper;
-import gizmos.SquareBumper;
-import gizmos.TriangleBumper;
+import gizmos.*;
 
 public class FileManager {
 
 	private Scanner scan;
 	private File file;
 	private List<AbstractGizmo> boardGizmos;
-	private Map<String, List<Integer>> nameMap = new HashMap<String, List<Integer>>(); // Maps
-																						// gizmo
-																						// names
-																						// to
-																						// coordinates
-																						// stored
-																						// in
-																						// Integer
-																						// LinkedList
+
+	private final String alphanumericName = "([0-9A-Za-z_]+)";
+	private final String coords = "(\\d+) (\\d+)";
 
 	private final Pattern addGizmoCommand = Pattern
-			.compile("(Square|Circle|Triangle|RightFlipper|LeftFlipper) " + "([0-9A-Za-z_]+)" + " " + "(\\d+) (\\d+)");
+			.compile("(Square|Circle|Triangle|RightFlipper|LeftFlipper) " + "([0-9A-Za-z_]+)" + " " + coords);
 	private final Pattern rotateGizmoCommand = Pattern.compile("Rotate " + "([0-9A-Za-z_]+)");
+	private final Pattern addAbsorberCommand = Pattern.compile("Absorber " + alphanumericName + " " + coords + " " + coords);
+
 
 	public FileManager(String fileName, List<AbstractGizmo> boardGizmos) {
 		file = new File(fileName);
@@ -48,68 +39,80 @@ public class FileManager {
 
 	public void loadFile() {
 		String currentLine;
-		Matcher match;
+		Matcher lineMatch;
 
 		while (scan.hasNextLine()) {
 			currentLine = scan.nextLine();
 
-			if ((match = addGizmoCommand.matcher(currentLine)).matches()) {
-				addGizmo(match);
+			if ((lineMatch = addGizmoCommand.matcher(currentLine)).matches()) {
+				addGizmo(lineMatch);
 			}
 
-			if ((match = rotateGizmoCommand.matcher(currentLine)).matches()) {
-				rotateGizmo(match);
+			if ((lineMatch = rotateGizmoCommand.matcher(currentLine)).matches()) {
+				rotateGizmo(lineMatch);
 			}
-			match.reset();
+
+			if ((lineMatch = addAbsorberCommand.matcher(currentLine)).matches()){
+				addAbsorber(lineMatch);
+			}
+			lineMatch.reset();
 		}
 	}
 
-	private void rotateGizmo(Matcher match) {
-		String gizmoName = match.group(1);
+	private void addGizmo(Matcher lineMatch) {
+		String opCode = lineMatch.group(1);
+		String gizmoName = lineMatch.group(2);
+		int x = Integer.parseInt(lineMatch.group(3));
+		int y = Integer.parseInt(lineMatch.group(4));
 
-		List<Integer> coordList = new LinkedList<Integer>();
-		coordList = nameMap.get(gizmoName);
-		int x = coordList.get(0);
-		int y = coordList.get(1);
+		switch (opCode) {
+		case "Square":
+			SquareBumper sb = new SquareBumper(x, y, 1, 1, 0);
+			sb.setName(gizmoName);
+			boardGizmos.add(sb);
+			break;
+		case "Circle":
+			CircleBumper cb = new CircleBumper(x, y, 1, 1, 0);
+			cb.setName(gizmoName);
+			boardGizmos.add(cb);
+			break;
+		case "Triangle":
+			TriangleBumper tb = new TriangleBumper(x, y, 1, 1, 0);
+			tb.setName(gizmoName);
+			boardGizmos.add(tb);
+			break;
+		case "RightFlipper":
+			RightFlipper rf = new RightFlipper(x, y, 1, 1, 0);
+			rf.setName(gizmoName);
+			boardGizmos.add(rf);
+			break;
+		case "LeftFlipper":
+			LeftFlipper lf = new LeftFlipper(x, y, 1, 1, 0);
+			lf.setName(gizmoName);
+			boardGizmos.add(lf);
+			break;
+		}
+
+	}
+
+	private void rotateGizmo(Matcher lineMatch) {
+		String gizmoName = lineMatch.group(1);
 
 		for (AbstractGizmo abGizmo : boardGizmos) {
-			if(abGizmo.getXpos()==x && abGizmo.getYpos()==y){
+			if(abGizmo.getName().equals(gizmoName)){
 				abGizmo.rotateClockwise();
 				break;
 			}
 		}
 	}
 
-	private void addGizmo(Matcher match) {
-		String opCode = match.group(1);
-		String gizmoName = match.group(2);
-		int x = Integer.parseInt(match.group(3));
-		int y = Integer.parseInt(match.group(4));
+	private void addAbsorber(Matcher lineMatch){
+		int x1 = Integer.parseInt(lineMatch.group(2));
+		int y1= Integer.parseInt(lineMatch.group(3));
+		int x2 = Integer.parseInt(lineMatch.group(4));
+		int y2= Integer.parseInt(lineMatch.group(5));
 
-		List<Integer> coordList = new LinkedList<Integer>();
-		coordList.add(x);
-		coordList.add(y);
-
-		nameMap.put(gizmoName, coordList);
-
-		switch (opCode) {
-		case "Square":
-			boardGizmos.add(new SquareBumper(x, y, 1, 1, 0));
-			break;
-		case "Circle":
-			boardGizmos.add(new CircleBumper(x, y, 1, 1, 0));
-			break;
-		case "Triangle":
-			boardGizmos.add(new TriangleBumper(x, y, 1, 1, 0));
-			break;
-		case "RightFlipper":
-			boardGizmos.add(new RightFlipper(x, y, 1, 1, 0));
-			break;
-		case "LeftFlipper":
-			boardGizmos.add(new LeftFlipper(x, y, 1, 1, 0));
-			break;
-		}
-
+		boardGizmos.add(new Absorber(x1,y1,x2,1,0));
 	}
 
 }

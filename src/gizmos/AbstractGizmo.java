@@ -15,6 +15,7 @@ public abstract class AbstractGizmo {
 	protected Angle gizAngle;
 	protected double reflectionCoefficient;
 	protected List<AbstractGizmo> gizmoListeners;
+	protected String name;
 
 	protected List<Circle> StoredCircles;
 	protected List<LineSegment> StoredLines;
@@ -41,6 +42,14 @@ public abstract class AbstractGizmo {
 	public void rotateClockwise(){
 		Angle clockwiseRotate = new Angle(Math.toRadians(90));
 		gizAngle = gizAngle.plus(clockwiseRotate);
+	}
+
+	public void setName(String name){
+		this.name = name;
+	}
+
+	public String getName(){
+		return this.name;
 	}
 
 	public double getXpos() {
