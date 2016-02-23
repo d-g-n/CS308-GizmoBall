@@ -6,6 +6,7 @@ import java.awt.event.KeyListener;
 
 import model.ProjectManager;
 import physics.Vect;
+import view.Board;
 
 public class KeyPressListener implements KeyListener {
 	
@@ -19,7 +20,7 @@ public class KeyPressListener implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		
 		if(pm.getBall().stopped()) {
-			Vect v = new Vect(-50,-485);
+			Vect v = new Vect(0,-(50 * (Board.BOARD_HEIGHT / Board.X_CELLS)));
 			pm.getBall().start();
 			pm.getBall().setVelocity(v);
 		}

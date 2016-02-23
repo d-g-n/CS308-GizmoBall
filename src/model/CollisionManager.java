@@ -19,7 +19,7 @@ import view.Board;
 
 public class CollisionManager extends Observable {
 
-	public final double MOVE_TIME = 0.01;
+	public final double MOVE_TIME = 0.02;
 	private ProjectManager pm;
 	private Ball ball;
 	private boolean absorb = false;
@@ -38,14 +38,14 @@ public class CollisionManager extends Observable {
 		if (info.getTimeToCollision() > MOVE_TIME) {
 			ball = moveBallForTime(ball, MOVE_TIME);
 			ball.applyGravityConstant(MOVE_TIME);
-			ball.applyFriction(MOVE_TIME, 0.025, 0.025);
+			ball.applyFriction(MOVE_TIME, 0.025, 0.025* (Board.BOARD_WIDTH / Board.X_CELLS));
 		} else {
 			// We've got a collision in tuc
 			ball = moveBallForTime(ball, info.getTimeToCollision());
 			// Post collision velocity ...
 			ball.setVelocity(info.getVelocity());
 			ball.applyGravityConstant(MOVE_TIME);
-			ball.applyFriction(MOVE_TIME, 0.025, 0.025);
+			ball.applyFriction(MOVE_TIME, 0.025, 0.025 * (Board.BOARD_WIDTH / Board.X_CELLS));
 			if (absorb) {
 				ball.setXPos( (absorberWidth + absorberX - 0.5) * Board.BOARD_WIDTH / Board.X_CELLS);
 				ball.setYPos(absorberY * Board.BOARD_HEIGHT / Board.Y_CELLS);

@@ -20,7 +20,7 @@ public class MainInit {
         // init model
         ProjectManager pm = new ProjectManager();
 
-        pm.addGizmo(new OuterWall(0,0,Board.BOARD_WIDTH,Board.BOARD_HEIGHT,0));
+        pm.addGizmo(new OuterWall(0, 0, Board.BOARD_WIDTH, Board.BOARD_HEIGHT, 0));
         
   /*      pm.addGizmo(new SquareBumper(10, 10, 1, 1, 0));
         pm.addGizmo(new SquareBumper(9, 10, 1, 1, 0));
@@ -47,12 +47,13 @@ public class MainInit {
         pm.addGizmo(new SquareBumper(11, 9, 1, 1, 0));*/
 
 
-        pm.addGizmo(new Absorber(1, 18, 18, 1, 0));  
+        pm.addGizmo(new Absorber(0, 19, 20, 1, 0));
+        pm.addGizmo(new CircularBumper(19, 0, 1, 1, 180));
         
     //    pm.addGizmo(new Absorber(1,10,17,9,0));
         
   /*      pm.addGizmo(new TriangleBumper(1, 1, 1, 1, 0));
-        pm.addGizmo(new TriangleBumper(2, 1, 1, 1, 90));
+
         pm.addGizmo(new TriangleBumper(2, 2, 1, 1, 0));
         pm.addGizmo(new TriangleBumper(1, 2, 1, 1, 0));
         pm.addGizmo(new TriangleBumper(1, 1, 1, 1, 0));
