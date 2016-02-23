@@ -1,13 +1,5 @@
-import java.util.TimerTask;
 
-import gizmos.Absorber;
-import gizmos.AbstractGizmo;
-import gizmos.BallActor;
-import gizmos.CircularBumper;
-import gizmos.LeftFlipper;
 import gizmos.OuterWall;
-import gizmos.SquareBumper;
-import gizmos.TriangleBumper;
 import model.ProjectManager;
 import view.Board;
 import view.RunGUI;
@@ -21,10 +13,15 @@ public class MainInit {
     	int totalWidth=20;
         // init model
         ProjectManager pm = new ProjectManager();
-        pm.loadFile("boards/gizmos.txt");
+
+        pm.addGizmo(new OuterWall(0,0,Board.BOARD_WIDTH,Board.BOARD_HEIGHT,0));
+
+
 
         RunGUI testGUI = new RunGUI(pm);
 
         pm.addObserver(testGUI);
+
+        pm.loadFile("boards/gizmos.txt");
     }
 }
