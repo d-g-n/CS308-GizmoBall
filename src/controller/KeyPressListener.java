@@ -20,7 +20,7 @@ public class KeyPressListener implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		
 		if(pm.getBall().stopped()) {
-			Vect v = new Vect(0,-(50 * (Board.BOARD_HEIGHT / Board.X_CELLS)));
+			Vect v = new Vect(-300,-(37 * (Board.BOARD_HEIGHT / Board.X_CELLS)));
 			pm.getBall().start();
 			pm.getBall().setVelocity(v);
 		}

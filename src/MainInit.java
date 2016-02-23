@@ -47,8 +47,8 @@ public class MainInit {
         pm.addGizmo(new SquareBumper(11, 9, 1, 1, 0));*/
 
 
-        pm.addGizmo(new Absorber(0, 19, 20, 1, 0));
-        pm.addGizmo(new CircularBumper(19, 0, 1, 1, 180));
+        pm.addGizmo(new Absorber(1, 18, 18, 1, 0));
+      
         
     //    pm.addGizmo(new Absorber(1,10,17,9,0));
         
