@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/CS308-GizmoBall.iml" filepath="$PROJECT_DIR$/.idea/CS308-GizmoBall.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CS308-GizmoBall.iml" filepath="$PROJECT_DIR$/CS308-GizmoBall.iml" />
     </modules>
   </component>
 </project>

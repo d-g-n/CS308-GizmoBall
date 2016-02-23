@@ -16,6 +16,7 @@ public abstract class AbstractGizmo {
 	protected Angle gizAngle;
 	protected double reflectionCoefficient;
 	protected List<AbstractGizmo> gizmoListeners;
+	protected String name;
 
 	protected List<Circle> StoredCircles;
 	protected List<LineSegment> StoredLines;
@@ -28,7 +29,7 @@ public abstract class AbstractGizmo {
 		this.ypos = y * Board.BOARD_HEIGHT / Board.Y_CELLS;
 		this.width = width * Board.BOARD_WIDTH / Board.X_CELLS;
 		this.height = height * Board.BOARD_HEIGHT / Board.Y_CELLS;
-		
+
 		this.gizAngle = new Angle(Math.toRadians(angDegrees));
 
 		this.gizmoListeners = new ArrayList<AbstractGizmo>();
@@ -41,9 +42,22 @@ public abstract class AbstractGizmo {
 		vector = new Vect(x,y);
 
 	}
-	
+
 	public Vect getVect(){
 		return vector;
+	}
+
+	public void rotateClockwise(){
+		Angle clockwiseRotate = new Angle(Math.toRadians(90));
+		gizAngle = gizAngle.plus(clockwiseRotate);
+	}
+
+	public void setName(String name){
+		this.name = name;
+	}
+
+	public String getName(){
+		return this.name;
 	}
 
 	public double getXpos() {
@@ -77,7 +91,7 @@ public abstract class AbstractGizmo {
 	public List<Circle> getStoredCircles() {
 		return StoredCircles;
 	}
-	
+
 	public void setGizAngle(Angle gizAngle) {
 		this.gizAngle = gizAngle;
 	}

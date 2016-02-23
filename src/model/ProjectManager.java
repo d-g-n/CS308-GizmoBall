@@ -1,5 +1,11 @@
 package model;
 
+import controller.MenuListener;
+import gizmos.AbstractGizmo;
+import gizmos.BallActor;
+import physics.Angle;
+import physics.Vect;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -14,11 +20,12 @@ public class ProjectManager extends Observable{
 	
 	private static CollisionManager cManager;
 	private static FileManager fManager;
+	private MenuListener menuListener = new MenuListener();
 	private List<AbstractGizmo> boardGizmos;
 	private Ball ball;
 	private static final double INITIAL_BALL_XPOS = (15 * Board.BOARD_WIDTH /Board.CELL_WIDTH);
 	private static final double INITIAL_BALL_YPOS = (10 * Board.BOARD_HEIGHT /Board.CELL_HEIGHT);
-	
+
 	public ProjectManager(){
 		fManager = new FileManager();
 		boardGizmos = new ArrayList<AbstractGizmo>();
@@ -40,14 +47,20 @@ public class ProjectManager extends Observable{
 
 	public void moveBall(){
 		cManager.moveBall();
+
 		this.setChanged();
 		this.notifyObservers();
 	}
-	
+
+	public void loadFile(String fileName) {
+		fManager = new FileManager(fileName, boardGizmos);
+		fManager.loadFile();
+	}
+
 	public void setBallSpeed(int x, int y) {
 		ball.setVelocity(new Vect(x, y));
 	}
-	
+
 	public Ball getBall(){
 		return ball;
 	}
