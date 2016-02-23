@@ -9,7 +9,7 @@ import java.util.Arrays;
 public class RightFlipper extends AbstractGizmo {
 
 	public RightFlipper(int x, int y, int w, int h, int degrees) {
-		super(x, y, w, h, degrees,
+		super(x, y, 2, 2, degrees,
 				Color.magenta, // colour of gizmo
 				0.95 // reflection coefficent
 		);

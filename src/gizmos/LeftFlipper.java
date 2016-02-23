@@ -10,7 +10,7 @@ public class LeftFlipper extends AbstractGizmo {
 
 	public LeftFlipper(int x, int y, int w, int h, int degrees) {
 
-		super(x, y, w, h, degrees,
+		super(x, y, 2, 2, degrees,
 				Color.blue, // colour of gizmo
 				0.95 // reflection coefficent
 		);

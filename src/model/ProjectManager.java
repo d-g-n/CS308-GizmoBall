@@ -27,10 +27,11 @@ public class ProjectManager extends Observable{
 	private static final double INITIAL_BALL_YPOS = (10 * Board.BOARD_HEIGHT /Board.CELL_HEIGHT);
 
 	public ProjectManager(){
-		fManager = new FileManager();
 		boardGizmos = new ArrayList<AbstractGizmo>();
 		ball = new Ball(INITIAL_BALL_XPOS, INITIAL_BALL_YPOS,50,-50);
 		cManager = new CollisionManager(this);
+
+		this.loadFile("boards/gizmos.txt");
 	}
 
 	public void addGizmo(AbstractGizmo g){
@@ -55,6 +56,9 @@ public class ProjectManager extends Observable{
 	public void loadFile(String fileName) {
 		fManager = new FileManager(fileName, boardGizmos);
 		fManager.loadFile();
+
+		this.setChanged();
+		this.notifyObservers();
 	}
 
 	public void setBallSpeed(int x, int y) {
