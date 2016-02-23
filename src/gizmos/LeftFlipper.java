@@ -1,18 +1,9 @@
 package gizmos;
 
 import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
-import java.awt.geom.GeneralPath;
 import java.awt.geom.RoundRectangle2D;
-
-import physics.Angle;
-import physics.Circle;
-import physics.Geometry;
-import physics.LineSegment;
-import physics.Vect;
 
 public class LeftFlipper extends AbstractGizmo {
 	private boolean moving,forward;
