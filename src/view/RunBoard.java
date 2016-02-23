@@ -12,10 +12,12 @@ import java.awt.geom.RoundRectangle2D;
 
 public class RunBoard extends JPanel implements Board {
 
+	private static final long serialVersionUID = 1L;
 	private ProjectManager pm;
 
 	public RunBoard(ProjectManager pm) {
 		this.pm = pm;
+		
 	}
 
 	public void paintComponent(Graphics g) {
@@ -32,7 +34,7 @@ public class RunBoard extends JPanel implements Board {
 		double cellHeight = boardHeight / Y_CELLS;
 		
 		drawEmptyBoardWithGuidelines(g, boardWidth, boardHeight);
-		
+		drawBall(pm.getBall(),g);
 		for (AbstractGizmo gizmo : pm.getBoardGizmos()) {
 			AffineTransform pT = g2d.getTransform();
 
@@ -45,7 +47,7 @@ public class RunBoard extends JPanel implements Board {
 			Shape shape = new Polygon();
 
 			//If the gizmo is a Circle or a Ball then paint an Ellipse
-			if (gizmo.getClass().equals(CircleBumper.class)
+			if (gizmo.getClass().equals(CircularBumper.class)
 					|| gizmo.getClass().equals(BallActor.class)) {
 
 				shape = new Ellipse2D.Double(
@@ -130,6 +132,14 @@ public class RunBoard extends JPanel implements Board {
 
 	}
 
+	private void drawBall(Ball b,Graphics g){
+		Graphics2D g2 = (Graphics2D) g;
+		g2.setColor(Color.white);
+		int x = (int) (b.getXPos() - b.getRadius());
+		int y = (int) (b.getYPos() - b.getRadius());
+		int width = (int) (2 * b.getRadius());
+		g2.fillOval(x, y, width, width);
+	}
 	private void drawEmptyBoardWithGuidelines(Graphics g, int boardWidth, int boardHeight) {
 		// Draw background
 		g.setColor(Color.black);

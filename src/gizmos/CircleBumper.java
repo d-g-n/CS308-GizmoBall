@@ -2,19 +2,20 @@ package gizmos;
 
 import java.awt.*;
 
-public class CircleBumper extends AbstractGizmo {
+import view.Board;
 
-	public CircleBumper(int x, int y, int width, int height, int degrees) {
-		super(x, y, 1, 1, degrees,
-				Color.blue, // colour of gizmo
-				0.95 // reflection coefficent
+public class CircularBumper extends AbstractGizmo {
+
+	private double radius;
+
+	public CircularBumper(int x, int y, int w, int h, int degrees) {
+		super(x, y, w, h, degrees, Color.blue, // colour of gizmo
+				1 // reflection coefficent
 		);
 
-		this.addPhysicsCircle(
-				x + (this.getWidth() / 2),
-				y + (this.getHeight() / 2),
-				this.getWidth()
-		);
+		this.radius = Board.BOARD_WIDTH / Board.X_CELLS / 2;
+
+		addPhysicsCircle(xpos + radius, ypos + radius, radius);
 	}
 
 }
