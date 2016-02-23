@@ -9,15 +9,17 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.RoundRectangle2D;
+import java.util.Observable;
+import java.util.Observer;
 
 public class RunBoard extends JPanel implements Board {
 
 	private static final long serialVersionUID = 1L;
 	private ProjectManager pm;
+	int count = 0;
 
 	public RunBoard(ProjectManager pm) {
 		this.pm = pm;
-		
 	}
 
 	public void paintComponent(Graphics g) {
@@ -26,110 +28,20 @@ public class RunBoard extends JPanel implements Board {
 
 		RenderingHints ro = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g2d.setRenderingHints(ro);
-
-		//Some information about the board
-		int boardWidth = this.getWidth();
-		int boardHeight = this.getHeight();
-		double cellWidth = boardWidth / X_CELLS;
-		double cellHeight = boardHeight / Y_CELLS;
 		
-		drawEmptyBoardWithGuidelines(g, boardWidth, boardHeight);
-		drawBall(pm.getBall(),g);
-		for (AbstractGizmo gizmo : pm.getBoardGizmos()) {
-			AffineTransform pT = g2d.getTransform();
-			
-
-			double gizmoXpos = gizmo.getXpos();
-			double gizmoYpos = gizmo.getYpos();
-			double gizmoWidth = gizmo.getWidth();
-			double gizmoHeight = gizmo.getHeight();
-
-			Shape shape = new Polygon();
-
-			//If the gizmo is a Circle or a Ball then paint an Ellipse
-			if (gizmo.getClass().equals(CircularBumper.class)
-					|| gizmo.getClass().equals(BallActor.class)) {
-
-				shape = new Ellipse2D.Double(
-						(cellWidth * gizmoXpos),
-						(cellHeight * gizmoYpos),
-						(cellWidth * gizmoWidth),
-						(cellHeight * gizmoHeight)
-				);
-				
-				g2d.rotate(gizmo.getGizAngle().radians());
-				g2d.draw(shape);
-				g2d.fill(shape);
-
-			} else if (gizmo.getClass().equals(Absorber.class) //If it is an absorber or a square
-					|| gizmo.getClass().equals(SquareBumper.class)) { //paint a Rectangle
-
-				shape = new Rectangle2D.Double(
-						(cellWidth * gizmoXpos),
-						(cellHeight * gizmoYpos),
-						(cellWidth * gizmoWidth),
-						(cellHeight * gizmoHeight)
-				);
-
-				g2d.rotate(gizmo.getGizAngle().radians());
-				g2d.draw(shape);
-				g2d.fill(shape);
-
-			}else if(gizmo.getClass().equals(TriangleBumper.class)){
-
-				shape = new Polygon();
-				//Add the three points of the triangle to the shape
-				
-				/*
-				 *  *    
-				 *  - -
-				 */
-				((Polygon) shape).addPoint(
-						(int) (gizmoXpos),
-						(int) (gizmoYpos)
-				);
-				
-				/*
-				 *  -    
-				 *  - *
-				 */
-				((Polygon) shape).addPoint(
-						(int) ((gizmoXpos) + (gizmoWidth)),
-						(int) ((gizmoYpos) + (gizmoHeight))
-				);
-				
-				/*
-				 *  -    
-				 *  * -
-				 */
-				((Polygon) shape).addPoint(
-						(int) (gizmoXpos),
-						(int) ((gizmoYpos) + (gizmoHeight))			
-				);
-
-			} else if(gizmo.getClass().equals(LeftFlipper.class)
-					|| gizmo.getClass().equals(RightFlipper.class)){
-
-				
-				shape = gizmo.getShape();
-				
-			}
-
-			g.setColor(gizmo.getGizCol());
+		drawEmptyBoardWithGuidelines(g,BOARD_WIDTH, BOARD_HEIGHT);
+		//leftFlipper
+		Shape leftFlipper = pm.getLeftFlipper().getShape();
+		g2d.setColor(pm.getLeftFlipper().getColor());
+		g2d.fill(leftFlipper);
 		
-				
-//			g2d.rotate(
-//					gizmo.getGizAngle().radians(),
-//					shape.getBounds2D().getX() + cellWidth,
-//					shape.getBounds2D().getY() + cellHeight
-//			);
-		
-			g2d.draw(shape);
-			g2d.fill(shape);
-			g2d.setTransform(pT);
+		//rightFlipper
+		Shape rightFlipper = pm.getRightFlipper().getShape();
+		g2d.setColor(pm.getRightFlipper().getColor());
+		g2d.fill(rightFlipper);
+
 		}
-
-	}
+		
 
 	private void drawBall(Ball b,Graphics g){
 		Graphics2D g2 = (Graphics2D) g;
@@ -157,4 +69,6 @@ public class RunBoard extends JPanel implements Board {
 			g.drawLine(0, (boardWidth / X_CELLS) * i, boardWidth, (boardHeight / Y_CELLS) * i);
 		}
 	}
+
+	
 }

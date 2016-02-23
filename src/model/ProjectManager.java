@@ -1,5 +1,6 @@
 package model;
 
+
 import controller.MagicKeyListener;
 import controller.MenuListener;
 import gizmos.AbstractGizmo;
@@ -26,18 +27,30 @@ public class ProjectManager extends Observable {
 	private MagicKeyListener keyListener = new MagicKeyListener(this);
 	private List<AbstractGizmo> boardGizmos;
 	private Ball ball;
-	private static final double INITIAL_BALL_XPOS = (15 * Board.BOARD_WIDTH / Board.CELL_WIDTH);
-	private static final double INITIAL_BALL_YPOS = (10 * Board.BOARD_HEIGHT / Board.CELL_HEIGHT);
+	private LeftFlipper leftFlipper;
+	private RightFlipper rightFlipper;
+	private static final double INITIAL_BALL_XPOS = (1 * Board.BOARD_WIDTH / Board.CELL_WIDTH);
+	private static final double INITIAL_BALL_YPOS = (1 * Board.BOARD_HEIGHT / Board.CELL_HEIGHT);
 
 	public ProjectManager() {
 		fManager = new FileManager();
 		boardGizmos = new ArrayList<AbstractGizmo>();
 		ball = new Ball(INITIAL_BALL_XPOS, INITIAL_BALL_YPOS, 50, -50);
 		cManager = new CollisionManager(this);
+		leftFlipper = new LeftFlipper(8, 10, 0.5, 2, 0);
+		rightFlipper = new RightFlipper(10,10,0.5,2,0);
 	}
 
 	public void addGizmo(AbstractGizmo g) {
 		boardGizmos.add(g);
+	}
+	
+	public LeftFlipper getLeftFlipper(){
+		return leftFlipper;
+	}
+	
+	public RightFlipper getRightFlipper(){
+		return rightFlipper;
 	}
 
 	public void addBallActor(Ball ball) {
@@ -54,25 +67,16 @@ public class ProjectManager extends Observable {
 		this.notifyObservers();
 	}
 
-	public void updateFlipper(String string, int ang) {
-		if (string.equals("left")) {
-			for (AbstractGizmo g : boardGizmos) {
-				if (g.getClass().equals(LeftFlipper.class)) {
-					g.rotate(ang);
-				}
-			}
-		} else {
-
-			for (AbstractGizmo g : boardGizmos) {
-				if (g.getClass().equals(RightFlipper.class)) {
-					g.rotate(ang);
-				}
-			}
-		}
+	public void updateFlipper(String string) {
+		if(string.equals("left"))
+		leftFlipper.rotate();
+		else if(string.equals("right"))
+		rightFlipper.rotate();
+		
 		this.setChanged();
 		this.notifyObservers();
 	}
-
+	
 	public void setBallSpeed(int x, int y) {
 		ball.setVelocity(new Vect(x, y));
 	}

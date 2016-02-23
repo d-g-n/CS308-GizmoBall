@@ -1,51 +1,100 @@
 package gizmos;
 
-
-import physics.Angle;
-import physics.Geometry;
-import physics.Vect;
-
-import java.awt.*;
-import java.awt.geom.GeneralPath;
-import java.util.Arrays;
+import java.awt.Color;
+import java.awt.Shape;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.RoundRectangle2D;
 
 public class RightFlipper extends AbstractGizmo {
-	
-	private boolean moving;
-	private Vect[] points;
-	private Vect center;
+	private boolean moving, forward;
+	double angleVel, rotation;
+	Shape flipper;
+	Color color;
 
 	public RightFlipper(double x, double y, double w, double h, int degrees) {
-		super(x, y, w, h, degrees,
-				Color.orange, // colour of gizmo
-				0.95 // reflection coefficent
+
+		super(x + 1.5, y, w, h, degrees, Color.red, // colour of gizmo
+				0.95 // reflection coefficient
 		);
-		
-		center = new Vect(xpos + width / 2, ypos + width / 2);
-		points = new Vect[4];
-		points[0] = new Vect(xpos, ypos);
-		points[1] = new Vect(xpos + width, ypos);
-		points[2] = new Vect(xpos + width, ypos + height);
-		points[3] = new Vect(xpos, ypos + height);
+		initialize();
 	}
-	
+
 	@Override
-	public void rotate(int angle) {
-		for (int i = 0; i < points.length; i++) {
-			points[i] = Geometry.rotateAround(points[i], center, new Angle(Math.toRadians(angle)));
-			System.out.println("x: " + points[i].x() + " y: " + points[i].y());
+	public void rotate() {
+		if (moving) {
+			if (forward) {
+				rotation += angleVel;
+			} else {
+				rotation -= angleVel;
+			}
+
+			if (rotation <= 0) {
+				stop();
+				rotation = 0;
+			}
+			if (rotation >= 90) {
+				stop();
+				rotation = 90;
+			}
+
+			AffineTransform at = new AffineTransform();
+			Shape shape = new RoundRectangle2D.Double(xpos, ypos, width, height, 10, 40);
+			at.setToRotation(Math.toRadians(rotation), xpos + width / 2, ypos + width / 2);
+			Shape path = at.createTransformedShape(shape);
+			this.setShape(path);
 		}
 	}
-	
+
+	public void move() {
+		moving = true;
+	}
+
+	public void stop() {
+		moving = false;
+	}
+
+	public void setShape(Shape s) {
+		flipper = s;
+	}
+
 	@Override
 	public Shape getShape() {
-
-		GeneralPath flipper = new GeneralPath(GeneralPath.WIND_EVEN_ODD);
-		flipper.moveTo(points[0].x(), points[0].y());
-		flipper.lineTo((points[1].x()), (points[1].y()));
-		flipper.lineTo((points[2].x()), points[2].y());
-		flipper.lineTo((points[3].x()), (points[3].y()));
-		flipper.lineTo(points[0].x(), points[0].y());
 		return flipper;
 	}
+
+	@Override
+	public boolean isMoving() {
+		return moving;
+	}
+
+	@Override
+	public void setMoving() {
+		moving = !moving;
+	}
+
+	public Color getColor() {
+		return color;
+	}
+
+	public void updatePhysics() {
+		// update physics...
+	}
+
+	public void initialize() {
+		angleVel = 1080 * 0.05;
+		rotation = 0;
+		flipper = new RoundRectangle2D.Double(xpos, ypos, width, height, 10, 40.0);
+		color = Color.RED;
+		moving = false;
+		forward = false;
+	}
+
+	public void stopForward() {
+		forward = false;
+	}
+
+	public void moveForward() {
+		forward = true;
+	}
+
 }

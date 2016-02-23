@@ -12,6 +12,7 @@ import java.util.Observer;
 public class RunGUI implements GBallGui, Observer {
 
 	private TestView tv;
+	private RunBoard runBoard;
 	private RunListener runListener;
 	private MagicKeyListener keyListener;
 	public static final int BOARD_WIDTH = 1000;
@@ -81,7 +82,7 @@ public class RunGUI implements GBallGui, Observer {
 	private void createAndShowGui(ProjectManager pm) {
 		JFrame frame = new JFrame("Gizmoball");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setPreferredSize(new Dimension(710,600));
+		frame.setPreferredSize(new Dimension(690,567));
 		addComponentsToPane(frame.getContentPane(), pm);
 		createMenuBar(frame.getContentPane());
 		createStatusBar(frame.getContentPane());

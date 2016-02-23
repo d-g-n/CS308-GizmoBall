@@ -20,8 +20,6 @@ public class TestView  {
 		gp = new RunBoard(pm);
 
 		gp.setPreferredSize(new Dimension(Board.BOARD_WIDTH, Board.BOARD_HEIGHT));
-
-
 	}
 
 	public RunBoard getGizPanel(){

@@ -1,8 +1,12 @@
 package gizmos;
 
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Shape;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.GeneralPath;
+import java.awt.geom.RoundRectangle2D;
 
 import physics.Angle;
 import physics.Circle;
@@ -11,10 +15,10 @@ import physics.LineSegment;
 import physics.Vect;
 
 public class LeftFlipper extends AbstractGizmo {
-	private boolean moving;
-	private Vect[] points;
-	private Vect center;
-	int angleVel;
+	private boolean moving,forward;
+	double angleVel, rotation;
+	Shape flipper;
+	Color color;
 
 	public LeftFlipper(double x, double y, double w, double h, int degrees) {
 
@@ -25,25 +29,46 @@ public class LeftFlipper extends AbstractGizmo {
 	}
 
 	@Override
-	public void rotate(int angle) {
-		for (int i = 0; i < points.length; i++) {
-			System.out.println(angle);
-			System.out.println("Before Rotation " + "x: " + points[i].x() + " y: " + points[i].y());
-			points[i] = Geometry.rotateAround(points[i], center, new Angle(Math.toRadians(angle)));
-			System.out.println("AfterRotation " + "x: " + points[i].x() + " y: " + points[i].y());
-			updatePhysics();
+	public void rotate() {
+		if (moving){
+			if(forward){
+				rotation -= angleVel;
+			}else{
+				rotation += angleVel;
+			}
+	
+			if(rotation <= 270){
+				stop();
+				rotation = 270;
+			}
+			if(rotation >= 360){
+				stop();
+				rotation = 360;
+			}
+			
+		AffineTransform at = new AffineTransform();
+		Shape shape = new RoundRectangle2D.Double(xpos, ypos, width, height, 10, 40);
+		at.setToRotation(Math.toRadians(rotation), xpos + width / 2, ypos + width / 2);
+		Shape path = at.createTransformedShape(shape);
+		this.setShape(path);
 		}
+		
+	}
+
+	public void move() {
+		moving = true;
+	}
+
+	public void stop() {
+		moving = false;
+	}
+
+	public void setShape(Shape s) {
+		flipper = s;
 	}
 
 	@Override
 	public Shape getShape() {
-
-		GeneralPath flipper = new GeneralPath(GeneralPath.WIND_EVEN_ODD);
-		flipper.moveTo(points[0].x(), points[0].y());
-		flipper.lineTo((points[1].x()), (points[1].y()));
-		flipper.lineTo((points[2].x()), points[2].y());
-		flipper.lineTo((points[3].x()), (points[3].y()));
-		flipper.lineTo(points[0].x(), points[0].y());
 		return flipper;
 	}
 
@@ -51,46 +76,40 @@ public class LeftFlipper extends AbstractGizmo {
 	public boolean isMoving() {
 		return moving;
 	}
+	
+	public void setForward(){
+		forward = !forward;
+	}
 
 	@Override
 	public void setMoving() {
 		moving = !moving;
 	}
 
+	public Color getColor() {
+		return color;
+	}
+
 	public void updatePhysics() {
-		this.StoredCircles.clear();
-		this.StoredLines.clear();
-		
-		//physics circles
-		this.addPhysicsCircle(new Circle(points[0],0.0));
-		this.addPhysicsCircle(new Circle(points[1],0.0));
-		this.addPhysicsCircle(new Circle(points[2],0.0));
-		this.addPhysicsCircle(new Circle(points[3],0.0));
-		//physics lines
-		this.addPhysicsLine(new LineSegment(points[0],points[1]));
-		this.addPhysicsLine(new LineSegment(points[1],points[2]));
-		this.addPhysicsLine(new LineSegment(points[2],points[3]));
-		this.addPhysicsLine(new LineSegment(points[3],points[0]));
+		// update physics...
 	}
-	
-	public void initialize(){
-		//Initialise origin points of the flipper
-		center = new Vect(xpos + width / 2, ypos + width / 2);
-		points = new Vect[4];
-		points[0] = new Vect(xpos, ypos);
-		points[1] = new Vect(xpos + width, ypos);
-		points[2] = new Vect(xpos + width, ypos + height);
-		points[3] = new Vect(xpos, ypos + height);
-		//physics circles
-		this.addPhysicsCircle(new Circle(points[0],0.0));
-		this.addPhysicsCircle(new Circle(points[1],0.0));
-		this.addPhysicsCircle(new Circle(points[2],0.0));
-		this.addPhysicsCircle(new Circle(points[3],0.0));
-		//physics lines
-		this.addPhysicsLine(new LineSegment(points[0],points[1]));
-		this.addPhysicsLine(new LineSegment(points[1],points[2]));
-		this.addPhysicsLine(new LineSegment(points[2],points[3]));
-		this.addPhysicsLine(new LineSegment(points[3],points[0]));
+
+	public void initialize() {
+		angleVel = 1080 * 0.005;
+		rotation = 360;
+		flipper = new RoundRectangle2D.Double(xpos, ypos, width, height, 10, 40.0);
+		color = Color.RED;
+		moving = false;
+		forward = false;
 	}
-	
+
+	public void stopForward() {
+		// TODO Auto-generated method stub
+		forward = false;
+	}
+
+	public void moveForward() {
+		forward = true;
+	}
+
 }

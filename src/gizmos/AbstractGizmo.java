@@ -24,8 +24,8 @@ public abstract class AbstractGizmo {
 	protected Vect vector;
 
 	public AbstractGizmo(double x, double y, double width, double height, int angDegrees, Color c, double rc) {
-		this.xpos = x * Board.BOARD_WIDTH / Board.X_CELLS;
-		this.ypos = y * Board.BOARD_HEIGHT / Board.Y_CELLS;
+		this.xpos = x * (Board.BOARD_WIDTH / Board.X_CELLS);
+		this.ypos = y * (Board.BOARD_HEIGHT / Board.Y_CELLS);
 		this.width = width * Board.BOARD_WIDTH / Board.X_CELLS;
 		this.height = height * Board.BOARD_HEIGHT / Board.Y_CELLS;
 		
@@ -39,7 +39,6 @@ public abstract class AbstractGizmo {
 		this.StoredCircles = new ArrayList<Circle>();
 		this.StoredLines = new ArrayList<LineSegment>();
 		vector = new Vect(x,y);
-
 	}
 	
 	public Vect getVect(){
@@ -128,7 +127,7 @@ public abstract class AbstractGizmo {
 		StoredLines.add(line);
 	}
 	
-	public void rotate(int angle){
+	public void rotate(){
 		// there is no default action but needed here to override it.
 	}
 	
