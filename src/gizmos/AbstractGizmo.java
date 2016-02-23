@@ -37,6 +37,11 @@ public abstract class AbstractGizmo {
 		this.StoredLines = new ArrayList<>();
 
 	}
+	
+	public void rotateClockwise(){
+		Angle clockwiseRotate = new Angle(Math.toRadians(90));
+		gizAngle = gizAngle.plus(clockwiseRotate);
+	}
 
 	public double getXpos() {
 		return xpos;

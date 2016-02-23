@@ -22,10 +22,19 @@ public class FileManager {
 	private Scanner scan;
 	private File file;
 	private List<AbstractGizmo> boardGizmos;
-	private Map<String, List<Integer>> nameMap = new HashMap<String, List<Integer>>(); //Maps gizmo names to coordinates stored in Integer LinkedList
+	private Map<String, List<Integer>> nameMap = new HashMap<String, List<Integer>>(); // Maps
+																						// gizmo
+																						// names
+																						// to
+																						// coordinates
+																						// stored
+																						// in
+																						// Integer
+																						// LinkedList
 
 	private final Pattern addGizmoCommand = Pattern
 			.compile("(Square|Circle|Triangle|RightFlipper|LeftFlipper) " + "([0-9A-Za-z_]+)" + " " + "(\\d+) (\\d+)");
+	private final Pattern rotateGizmoCommand = Pattern.compile("Rotate " + "([0-9A-Za-z_]+)");
 
 	public FileManager(String fileName, List<AbstractGizmo> boardGizmos) {
 		file = new File(fileName);
@@ -44,12 +53,30 @@ public class FileManager {
 		while (scan.hasNextLine()) {
 			currentLine = scan.nextLine();
 
-			match = addGizmoCommand.matcher(currentLine);
-
-			if (match.matches()) {
+			if ((match = addGizmoCommand.matcher(currentLine)).matches()) {
 				addGizmo(match);
 			}
+
+			if ((match = rotateGizmoCommand.matcher(currentLine)).matches()) {
+				rotateGizmo(match);
+			}
 			match.reset();
+		}
+	}
+
+	private void rotateGizmo(Matcher match) {
+		String gizmoName = match.group(1);
+
+		List<Integer> coordList = new LinkedList<Integer>();
+		coordList = nameMap.get(gizmoName);
+		int x = coordList.get(0);
+		int y = coordList.get(1);
+
+		for (AbstractGizmo abGizmo : boardGizmos) {
+			if(abGizmo.getXpos()==x && abGizmo.getYpos()==y){
+				abGizmo.rotateClockwise();
+				break;
+			}
 		}
 	}
 
@@ -58,11 +85,11 @@ public class FileManager {
 		String gizmoName = match.group(2);
 		int x = Integer.parseInt(match.group(3));
 		int y = Integer.parseInt(match.group(4));
-		
+
 		List<Integer> coordList = new LinkedList<Integer>();
 		coordList.add(x);
 		coordList.add(y);
-		
+
 		nameMap.put(gizmoName, coordList);
 
 		switch (opCode) {
@@ -82,8 +109,7 @@ public class FileManager {
 			boardGizmos.add(new LeftFlipper(x, y, 1, 1, 0));
 			break;
 		}
-		
-		
+
 	}
 
 }
