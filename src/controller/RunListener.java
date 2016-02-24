@@ -17,10 +17,16 @@ public class RunListener implements ActionListener {
 		timer.start();
 	}
 
+	
+	
 	@Override
 	public void actionPerformed(final ActionEvent e) {
 		if (e.getSource() == timer) {
 			pm.moveBall();
+			pm.updateFlipper("right");
+			pm.updateFlipper("left");
+			
+	
 		} else {
 			switch (e.getActionCommand()) {
 			case "Play":

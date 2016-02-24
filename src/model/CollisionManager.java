@@ -5,6 +5,7 @@ import java.util.Observable;
 
 import gizmos.AbstractGizmo;
 import gizmos.Ball;
+
 import physics.Circle;
 import physics.Geometry;
 import physics.LineSegment;
