@@ -2,25 +2,103 @@ package gizmos;
 
 
 import physics.Vect;
-
+import java.awt.Color;
+import java.awt.Shape;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.RoundRectangle2D;
 import java.awt.*;
 import java.util.Arrays;
 
 public class RightFlipper extends AbstractGizmo {
+	private boolean moving, forward;
+	double angleVel, rotation;
+	Shape flipper;
+	Color color;
 
 	public RightFlipper(int x, int y, int w, int h, int degrees) {
-		super(x, y, 2, 2, degrees,
-				Color.magenta, // colour of gizmo
+		super(x + 1.5, y, 2, 2, degrees,
+				Color.red, // colour of gizmo
 				0.95 // reflection coefficent
 		);
-
-		addPhysicsPath(Arrays.asList(
-				new Vect(xpos, ypos), // start at top left
-				new Vect(xpos + width, ypos), // move to top right
-				new Vect(xpos + width, ypos + height), // move to bottom right
-				new Vect(xpos, ypos + height), // move to bottom left
-				new Vect(xpos, ypos) // and back up to top left
-		));
-
+		initialize();
 	}
+
+	@Override
+	public void rotate() {
+		if (moving) {
+			if (forward) {
+				rotation += angleVel;
+			} else {
+				rotation -= angleVel;
+			}
+
+			if (rotation <= 0) {
+				stop();
+				rotation = 0;
+			}
+			if (rotation >= 90) {
+				stop();
+				rotation = 90;
+			}
+
+			AffineTransform at = new AffineTransform();
+			Shape shape = new RoundRectangle2D.Double(xpos, ypos, width, height, 10, 40);
+			at.setToRotation(Math.toRadians(rotation), xpos + width / 2, ypos + width / 2);
+			Shape path = at.createTransformedShape(shape);
+			this.setShape(path);
+		}
+	}
+
+	public void move() {
+		moving = true;
+	}
+
+	public void stop() {
+		moving = false;
+	}
+
+	public void setShape(Shape s) {
+		flipper = s;
+	}
+
+	@Override
+	public Shape getShape() {
+		return flipper;
+	}
+
+	@Override
+	public boolean isMoving() {
+		return moving;
+	}
+
+	@Override
+	public void setMoving() {
+		moving = !moving;
+	}
+
+	public Color getColor() {
+		return color;
+	}
+
+	public void updatePhysics() {
+		// update physics...
+	}
+
+	public void initialize() {
+		angleVel = 1080 * 0.05;
+		rotation = 0;
+		flipper = new RoundRectangle2D.Double(xpos, ypos, width, height, 10, 40.0);
+		color = Color.RED;
+		moving = false;
+		forward = false;
+	}
+
+	public void stopForward() {
+		forward = false;
+	}
+
+	public void moveForward() {
+		forward = true;
+	}
+
 }

@@ -2,6 +2,7 @@ package gizmos;
 
 import physics.Angle;
 import physics.Circle;
+import physics.Geometry;
 import physics.LineSegment;
 import physics.Vect;
 import view.Board;
@@ -23,10 +24,9 @@ public abstract class AbstractGizmo {
 	protected Color gizCol;
 	protected Vect vector;
 
-
 	public AbstractGizmo(double x, double y, double width, double height, int angDegrees, Color c, double rc) {
-		this.xpos = x * Board.BOARD_WIDTH / Board.X_CELLS;
-		this.ypos = y * Board.BOARD_HEIGHT / Board.Y_CELLS;
+		this.xpos = x * (Board.BOARD_WIDTH / Board.X_CELLS);
+		this.ypos = y * (Board.BOARD_HEIGHT / Board.Y_CELLS);
 		this.width = width * Board.BOARD_WIDTH / Board.X_CELLS;
 		this.height = height * Board.BOARD_HEIGHT / Board.Y_CELLS;
 
@@ -40,7 +40,6 @@ public abstract class AbstractGizmo {
 		this.StoredCircles = new ArrayList<Circle>();
 		this.StoredLines = new ArrayList<LineSegment>();
 		vector = new Vect(x,y);
-
 	}
 
 	public Vect getVect(){
@@ -104,13 +103,17 @@ public abstract class AbstractGizmo {
 		this.xpos = xpos;
 		this.ypos = ypos;
 	}
+	
+	public void setGizAngle(int ang) {
+		this.gizAngle = new Angle(Math.toRadians(ang));
+	}
 
 	protected void addPhysicsCircle(double x, double y, double r){
 		StoredCircles.add(new Circle(x, y, r));
 	}
 
 	protected void addPhysicsPath(List<Vect> lv){
-
+		
 		Vect lastVect = null;
 
 		for(Vect curVect : lv){
@@ -124,6 +127,27 @@ public abstract class AbstractGizmo {
 
 			lastVect = curVect;
 		}
+	}
+	
+	public void clearPhysicsCircles(){
+		this.getStoredCircles().clear();
+	}
+	
+	public void addPhysicsCircle(Circle c){
+		StoredCircles.add(c);
+	}
+	
+	public void addPhysicsLine(LineSegment line){
+		StoredLines.add(line);
+	}
+	
+	public void rotate(){
+		// there is no default action but needed here to override it.
+	}
+	
+	public Shape getShape(){
+		// there is no default action but needed here to override it.
+		return null;
 	}
 
 	/**
@@ -143,6 +167,15 @@ public abstract class AbstractGizmo {
 	 */
 	public void onCollision() {
 		// there is no default action but needed here to override it.
+	}
+
+	public boolean isMoving() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	public void setMoving(){
+		
 	}
 
 }

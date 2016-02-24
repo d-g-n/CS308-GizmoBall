@@ -1,6 +1,7 @@
 package view;
 
 import controller.KeyPressListener;
+import controller.MagicKeyListener;
 import controller.RunListener;
 import model.ProjectManager;
 
@@ -12,13 +13,14 @@ import java.util.Observer;
 
 public class RunGUI implements GBallGui, Observer {
 
-	private KeyPressListener keyListener;
+	private MagicKeyListener keyListener;
 	private TestView tv;
+	private RunBoard runBoard;
 	private RunListener runListener;
 	private ProjectManager pm;
-	public static final int BOARD_WIDTH = 1000;
-	public static final int BOARD_HEIGHT = 1000;
-	
+	public static final int BOARD_WIDTH = 500;
+	public static final int BOARD_HEIGHT = 500;
+
 	private void createMenuBar(Container pane){
 		JMenuBar menuBar = new JMenuBar();
 		
@@ -40,7 +42,8 @@ public class RunGUI implements GBallGui, Observer {
 
 	    JPanel leftPanel = new JPanel();
 	    leftPanel.setLayout(new GridLayout(4,1));
-	    
+	    leftPanel.addKeyListener(keyListener);
+
 		addAButton("Play", leftPanel);
 		addAButton("Stop", leftPanel);
 		addAButton("Tick", leftPanel);
@@ -53,26 +56,29 @@ public class RunGUI implements GBallGui, Observer {
 		
 		JPanel rightPanel = new JPanel();
 		rightPanel.setLayout(new GridLayout(3,1));
+		rightPanel.addKeyListener(keyListener);
 		addAButton("Build Mode", rightPanel);
 		addAButton("Settings", rightPanel);
 		addAButton("About", rightPanel);
 		
 		pane.add(rightPanel,BorderLayout.LINE_END);
+		pane.addKeyListener(keyListener);
 	}
 	
 	private void createStatusBar(Container pane){
 		JLabel label = new JLabel("Here will be the status label");
 		pane.add(label,BorderLayout.PAGE_END);
-		
+		pane.addKeyListener(keyListener);
+
 	}
 
 	private void addAButton(String title, Container pane) {
 		JButton button = new JButton(title);
 		button.setAlignmentX(Component.LEFT_ALIGNMENT);
 		button.addActionListener(runListener);
-		pane.add(button);
 		button.addKeyListener(keyListener);
-
+		pane.add(button);
+		
 	}
 
 	private void createAndShowGui(ProjectManager pm) {
@@ -82,6 +88,7 @@ public class RunGUI implements GBallGui, Observer {
 		addComponentsToPane(frame.getContentPane(), pm);
 		createMenuBar(frame.getContentPane());
 		createStatusBar(frame.getContentPane());
+		frame.addKeyListener(keyListener);
 		frame.pack();
         frame.setVisible(true);
 	}
@@ -102,8 +109,8 @@ public class RunGUI implements GBallGui, Observer {
 			}
 		});
 		
+		keyListener = new MagicKeyListener(pm);
 		runListener = new RunListener(pm);
-		keyListener = new KeyPressListener(pm);
 	}
 
 	@Override

@@ -27,13 +27,12 @@ public class RunBoard extends JPanel implements Board {
 		RenderingHints ro = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g2d.setRenderingHints(ro);
 
-		//Some information about the board
-		int boardWidth = this.getWidth();
-		int boardHeight = this.getHeight();
-		double cellWidth = boardWidth / X_CELLS;
-		double cellHeight = boardHeight / Y_CELLS;
-		
-		drawEmptyBoardWithGuidelines(g, boardWidth, boardHeight);
+		drawEmptyBoardWithGuidelines(g,BOARD_WIDTH, BOARD_HEIGHT);
+		//leftFlipper
+		Shape leftFlipper = pm.getLeftFlipper().getShape();
+		g2d.setColor(pm.getLeftFlipper().getColor());
+		g2d.fill(leftFlipper);
+
 		drawBall(pm.getBall(),g);
 		for (AbstractGizmo gizmo : pm.getBoardGizmos()) {
 			AffineTransform pT = g2d.getTransform();
@@ -72,27 +71,27 @@ public class RunBoard extends JPanel implements Board {
 
 				shape = new Polygon();
 				//Add the three points of the triangle to the shape
-				
+
 				/*
-				 *  *    
+				 *  *
 				 *  - -
 				 */
 				((Polygon) shape).addPoint(
 						(int) (gizmoXpos),
 						(int) (gizmoYpos)
 				);
-				
+
 				/*
-				 *  -    
+				 *  -
 				 *  - *
 				 */
 				((Polygon) shape).addPoint(
 						(int) ((gizmoXpos) + (gizmoWidth)),
 						(int) ((gizmoYpos) + (gizmoHeight))
 				);
-				
+
 				/*
-				 *  -    
+				 *  -
 				 *  * -
 				 */
 				((Polygon) shape).addPoint(
@@ -113,14 +112,18 @@ public class RunBoard extends JPanel implements Board {
 						25,
 						100
 				);
+		//rightFlipper
+		Shape rightFlipper = pm.getRightFlipper().getShape();
+		g2d.setColor(pm.getRightFlipper().getColor());
+		g2d.fill(rightFlipper);
 
 			}
 
 			g.setColor(gizmo.getGizCol());
 			g2d.rotate(
 					gizmo.getGizAngle().radians(),
-					shape.getBounds2D().getX() + cellWidth / 2,
-					shape.getBounds2D().getY() + cellHeight / 2
+					shape.getBounds2D().getX() + Board.CELL_WIDTH / 2,
+					shape.getBounds2D().getY() + Board.CELL_HEIGHT / 2
 			);
 			g2d.draw(shape);
 			g2d.fill(shape);
