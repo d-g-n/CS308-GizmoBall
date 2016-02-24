@@ -1,8 +1,5 @@
 
-import gizmos.Absorber;
-import gizmos.Ball;
-import gizmos.CircularBumper;
-import gizmos.LeftFlipper;
+
 import gizmos.OuterWall;
 import model.ProjectManager;
 import view.Board;

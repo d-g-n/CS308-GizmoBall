@@ -12,9 +12,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ba8a27f3-a444-45e2-a0a5-81e76341a790" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/ProjectManager.java" afterPath="$PROJECT_DIR$/src/model/ProjectManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/RunBoard.java" afterPath="$PROJECT_DIR$/src/view/RunBoard.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/RunGUI.java" afterPath="$PROJECT_DIR$/src/view/RunGUI.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MainInit.java" afterPath="$PROJECT_DIR$/src/MainInit.java" />
     </list>
     <ignored path="CS308-GizmoBall.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,21 +35,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="MainInit.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/MainInit.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.26459143">
+              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="RunGUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/view/RunGUI.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GBallGui.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/view/GBallGui.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -119,11 +119,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RunBoard.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RunBoard.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/view/RunBoard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.19066148">
-              <caret line="108" column="36" selection-start-line="108" selection-start-column="36" selection-end-line="108" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -158,12 +158,12 @@
         <option value="$PROJECT_DIR$/src/model/FileManager.java" />
         <option value="$PROJECT_DIR$/src/gizmos/RightFlipper.java" />
         <option value="$PROJECT_DIR$/src/gizmos/LeftFlipper.java" />
-        <option value="$PROJECT_DIR$/src/MainInit.java" />
         <option value="$PROJECT_DIR$/src/gizmos/BallActor.java" />
         <option value="$PROJECT_DIR$/src/gizmos/Ball.java" />
         <option value="$PROJECT_DIR$/src/model/ProjectManager.java" />
         <option value="$PROJECT_DIR$/src/view/RunGUI.java" />
         <option value="$PROJECT_DIR$/src/view/RunBoard.java" />
+        <option value="$PROJECT_DIR$/src/MainInit.java" />
       </list>
     </option>
   </component>
@@ -203,8 +203,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -326,6 +324,8 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -636,6 +636,7 @@
       <workItem from="1456269628587" duration="1500000" />
       <workItem from="1456271756582" duration="317000" />
       <workItem from="1456272546959" duration="194000" />
+      <workItem from="1456273139825" duration="95000" />
     </task>
     <task id="LOCAL-00001" summary="Partial george merge, code is questionable, possible broken in places but loading is integrated with the master branch, will fix collisions when i merge giorgos">
       <created>1456270949321</created>
@@ -655,11 +656,17 @@
       <option name="project" value="LOCAL" />
       <updated>1456272734085</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Merge remote-tracking branch 'remotes/origin/master' into georgios&#10;&#10;# Conflicts:&#10;#&#9;src/MainInit.java&#10;#&#9;src/model/CollisionManager.java&#10;#&#9;src/model/ProjectManager.java&#10;#&#9;src/view/GizmoPanel.java&#10;#&#9;src/view/RunBoard.java&#10;">
+      <created>1456273218594</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1456273218594</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2011000" />
+    <option name="totallyTimeSpent" value="2106000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="284" y="76" width="2249" height="1328" extended-state="0" />
@@ -705,7 +712,8 @@
     <MESSAGE value="Partial george merge, code is questionable, possible broken in places but loading is integrated with the master branch, will fix collisions when i merge giorgos" />
     <MESSAGE value="i do love myself some messy merging" />
     <MESSAGE value="Merge remote-tracking branch 'remotes/origin/master' into Eddie&#10;&#10;# Conflicts:&#10;#&#9;bin/.gitignore&#10;#&#9;src/MainInit.java&#10;#&#9;src/gizmos/LeftFlipper.java&#10;#&#9;src/gizmos/RightFlipper.java&#10;#&#9;src/model/ProjectManager.java&#10;#&#9;src/view/RunBoard.java&#10;#&#9;src/view/RunGUI.java&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'remotes/origin/master' into Eddie&#10;&#10;# Conflicts:&#10;#&#9;bin/.gitignore&#10;#&#9;src/MainInit.java&#10;#&#9;src/gizmos/LeftFlipper.java&#10;#&#9;src/gizmos/RightFlipper.java&#10;#&#9;src/model/ProjectManager.java&#10;#&#9;src/view/RunBoard.java&#10;#&#9;src/view/RunGUI.java&#10;" />
+    <MESSAGE value="Merge remote-tracking branch 'remotes/origin/master' into georgios&#10;&#10;# Conflicts:&#10;#&#9;src/MainInit.java&#10;#&#9;src/model/CollisionManager.java&#10;#&#9;src/model/ProjectManager.java&#10;#&#9;src/view/GizmoPanel.java&#10;#&#9;src/view/RunBoard.java&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'remotes/origin/master' into georgios&#10;&#10;# Conflicts:&#10;#&#9;src/MainInit.java&#10;#&#9;src/model/CollisionManager.java&#10;#&#9;src/model/ProjectManager.java&#10;#&#9;src/view/GizmoPanel.java&#10;#&#9;src/view/RunBoard.java&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -716,6 +724,14 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/model/ProjectManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="47" selection-start-line="34" selection-start-column="47" selection-end-line="34" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/RunGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1040,16 +1056,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainInit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/GBallGui.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1126,9 +1132,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view/RunBoard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19066148">
-          <caret line="108" column="36" selection-start-line="108" selection-start-column="36" selection-end-line="108" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainInit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26459143">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
