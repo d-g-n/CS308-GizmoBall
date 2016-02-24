@@ -89,9 +89,9 @@ public class RunBoard extends JPanel implements Board {
 						(int) ((gizmoXpos) + (gizmoWidth)),
 						(int) ((gizmoYpos) + (gizmoHeight))
 				);
-
+				
 				/*
-				 *  -
+				 *  -    
 				 *  * -
 				 */
 				((Polygon) shape).addPoint(

@@ -1,4 +1,5 @@
 
+
 import gizmos.OuterWall;
 import model.ProjectManager;
 import view.Board;
@@ -10,13 +11,16 @@ import view.RunGUI;
 public class MainInit {
     public static void main(String[] args){
 
-    	int totalWidth=20;
         // init model
         ProjectManager pm = new ProjectManager();
 
-        pm.addGizmo(new OuterWall(0,0,Board.BOARD_WIDTH,Board.BOARD_HEIGHT,0));
+
+        pm.addGizmo(new OuterWall(0, 0, 20, 20, 0));
 
 
+        pm.setBallSpeed(200, -30);
+
+        // init test view and pass ref from model to view
 
         RunGUI testGUI = new RunGUI(pm);
 
