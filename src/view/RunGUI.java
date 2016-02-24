@@ -1,5 +1,6 @@
 package view;
 
+import controller.KeyPressListener;
 import controller.RunListener;
 import model.ProjectManager;
 
@@ -11,8 +12,12 @@ import java.util.Observer;
 
 public class RunGUI implements GBallGui, Observer {
 
+	private KeyPressListener keyListener;
 	private TestView tv;
 	private RunListener runListener;
+	private ProjectManager pm;
+	public static final int BOARD_WIDTH = 1000;
+	public static final int BOARD_HEIGHT = 1000;
 	
 	private void createMenuBar(Container pane){
 		JMenuBar menuBar = new JMenuBar();
@@ -31,6 +36,8 @@ public class RunGUI implements GBallGui, Observer {
 	private void addComponentsToPane(Container pane, ProjectManager pm) {
 		pane.setLayout(new BorderLayout());
 		
+		this.pm = pm;
+
 	    JPanel leftPanel = new JPanel();
 	    leftPanel.setLayout(new GridLayout(4,1));
 	    
@@ -64,7 +71,8 @@ public class RunGUI implements GBallGui, Observer {
 		button.setAlignmentX(Component.LEFT_ALIGNMENT);
 		button.addActionListener(runListener);
 		pane.add(button);
-		
+		button.addKeyListener(keyListener);
+
 	}
 
 	private void createAndShowGui(ProjectManager pm) {
@@ -79,7 +87,7 @@ public class RunGUI implements GBallGui, Observer {
 	}
 
 
-	public RunGUI(final ProjectManager pm){
+	public RunGUI(ProjectManager pm){
 		/* Use an appropriate Look and Feel */
 		try {
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -95,6 +103,7 @@ public class RunGUI implements GBallGui, Observer {
 		});
 		
 		runListener = new RunListener(pm);
+		keyListener = new KeyPressListener(pm);
 	}
 
 	@Override
