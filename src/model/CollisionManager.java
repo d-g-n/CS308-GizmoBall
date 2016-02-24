@@ -32,6 +32,9 @@ public class CollisionManager extends Observable {
 			// Post collision velocity ...
 			ball.setVelocity(info.getVelocity());
 		}
+
+		ball.applyGravityConstant(MOVE_TIME);
+		ball.applyFriction(MOVE_TIME, 0.025, 0.0025);
 	}
 
 	public CollisionDetails shortestTimeUntilCollision() {

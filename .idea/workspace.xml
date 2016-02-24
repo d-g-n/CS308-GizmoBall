@@ -11,8 +11,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba8a27f3-a444-45e2-a0a5-81e76341a790" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MainInit.java" afterPath="$PROJECT_DIR$/src/MainInit.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/CollisionManager.java" afterPath="$PROJECT_DIR$/src/model/CollisionManager.java" />
     </list>
     <ignored path="CS308-GizmoBall.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,14 +35,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainInit.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainInit.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MainInit.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.26459143">
-              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CollisionDetails.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/CollisionDetails.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -57,11 +67,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CollisionManager.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CollisionManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/model/CollisionManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="39" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.19066148">
+              <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -84,16 +94,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="23" column="63" selection-start-line="23" selection-start-column="63" selection-end-line="23" selection-end-column="63" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PlayViewMockup.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/view/PlayViewMockup.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -154,7 +154,6 @@
       <list>
         <option value="$PROJECT_DIR$/src/gizmos/AbstractGizmo.java" />
         <option value="$PROJECT_DIR$/src/gizmos/CircleBumper.java" />
-        <option value="$PROJECT_DIR$/src/model/CollisionManager.java" />
         <option value="$PROJECT_DIR$/src/model/FileManager.java" />
         <option value="$PROJECT_DIR$/src/gizmos/RightFlipper.java" />
         <option value="$PROJECT_DIR$/src/gizmos/LeftFlipper.java" />
@@ -164,6 +163,7 @@
         <option value="$PROJECT_DIR$/src/view/RunGUI.java" />
         <option value="$PROJECT_DIR$/src/view/RunBoard.java" />
         <option value="$PROJECT_DIR$/src/MainInit.java" />
+        <option value="$PROJECT_DIR$/src/model/CollisionManager.java" />
       </list>
     </option>
   </component>
@@ -203,6 +203,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -323,9 +326,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -637,6 +637,7 @@
       <workItem from="1456271756582" duration="317000" />
       <workItem from="1456272546959" duration="194000" />
       <workItem from="1456273139825" duration="95000" />
+      <workItem from="1456273711494" duration="48000" />
     </task>
     <task id="LOCAL-00001" summary="Partial george merge, code is questionable, possible broken in places but loading is integrated with the master branch, will fix collisions when i merge giorgos">
       <created>1456270949321</created>
@@ -666,7 +667,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2106000" />
+    <option name="totallyTimeSpent" value="2154000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="284" y="76" width="2249" height="1328" extended-state="0" />
@@ -1014,14 +1015,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/CollisionDetails.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/FileManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1088,16 +1081,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/CollisionManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="39" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/KeyPressListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1140,8 +1123,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MainInit.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26459143">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/CollisionDetails.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/CollisionManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19066148">
+          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
