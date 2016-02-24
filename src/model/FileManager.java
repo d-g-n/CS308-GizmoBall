@@ -67,27 +67,27 @@ public class FileManager {
 
 		switch (opCode) {
 		case "Square":
-			SquareBumper sb = new SquareBumper(x, y, 1, 1, 0);
+			SquareBumper sb = new SquareBumper(x, y, 1, 1);
 			sb.setName(gizmoName);
 			boardGizmos.add(sb);
 			break;
 		case "Circle":
-			CircleBumper cb = new CircleBumper(x, y, 1, 1, 0);
+			CircleBumper cb = new CircleBumper(x, y, 1, 1);
 			cb.setName(gizmoName);
 			boardGizmos.add(cb);
 			break;
 		case "Triangle":
-			TriangleBumper tb = new TriangleBumper(x, y, 1, 1, 0);
+			TriangleBumper tb = new TriangleBumper(x, y, 1, 1);
 			tb.setName(gizmoName);
 			boardGizmos.add(tb);
 			break;
 		case "RightFlipper":
-			RightFlipper rf = new RightFlipper(x, y, 1, 1, 0);
+			RightFlipper rf = new RightFlipper(x, y, 1, 1);
 			rf.setName(gizmoName);
 			boardGizmos.add(rf);
 			break;
 		case "LeftFlipper":
-			LeftFlipper lf = new LeftFlipper(x, y, 1, 1, 0);
+			LeftFlipper lf = new LeftFlipper(x, y, 1, 1);
 			lf.setName(gizmoName);
 			boardGizmos.add(lf);
 			break;
@@ -112,7 +112,7 @@ public class FileManager {
 		int x2 = Integer.parseInt(lineMatch.group(4));
 		int y2= Integer.parseInt(lineMatch.group(5));
 
-		boardGizmos.add(new Absorber(x1,y1,x2,1,0));
+		boardGizmos.add(new Absorber(x1,y1,x2,1));
 	}
 
 }

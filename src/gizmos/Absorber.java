@@ -1,17 +1,20 @@
 package gizmos;
 
 
+import model.ProjectManager;
 import physics.Vect;
+import view.Board;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.util.Arrays;
+import java.util.Random;
 
 public class Absorber extends AbstractGizmo {
 
-	public Absorber(int x, int y, int w, int h, int degrees) {
+	public Absorber(int x, int y, int w, int h) {
 
-		super(x, y, w, h, degrees,
+		super(x, y, w, h,
 				Color.magenta, // colour of gizmo
 				0.95 // reflection coefficent
 		);
@@ -32,6 +35,10 @@ public class Absorber extends AbstractGizmo {
 				(height)
 		));
 
+		// FOR DEBUGGING, ADD ALL ABSORBERS TO THEIR OWN LISTENER LIST TO ENABLE AUTO FIRING
+
+		this.addGizmoListener(this);
+
 	}
 
 
@@ -40,10 +47,18 @@ public class Absorber extends AbstractGizmo {
 	 */
 	@Override
 	public void onHit() {
-		super.onHit();
-
 		// hold the ball in this
 
+		Ball boardBall = ProjectManager.getBall();
+
+		boardBall.stop();
+
+		boardBall.setPos(xpos + width - boardBall.getRadius(), ypos);
+
+		boardBall.setVelocity(new Vect(0, 0));
+
+
+		super.onHit();
 	}
 
 	/**
@@ -54,6 +69,16 @@ public class Absorber extends AbstractGizmo {
 		super.onCollision();
 
 		// if ball is held, chuck it back out
+
+		Ball boardBall = ProjectManager.getBall();
+
+		if(boardBall.stopped()){
+			boardBall.start();
+
+			Random randNum = new Random();
+
+			boardBall.setVelocity(new Vect(randNum.nextDouble() *  -20 * (Board.BOARD_HEIGHT / Board.Y_CELLS), -50 * (Board.BOARD_HEIGHT / Board.Y_CELLS)));
+		}
 
 	}
 }

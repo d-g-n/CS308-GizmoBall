@@ -14,12 +14,6 @@ public class MainInit {
         // init model
         ProjectManager pm = new ProjectManager();
 
-
-        pm.addGizmo(new OuterWall(0, 0, 20, 20, 0));
-
-
-        pm.setBallSpeed(200, -30);
-
         // init test view and pass ref from model to view
 
         RunGUI testGUI = new RunGUI(pm);

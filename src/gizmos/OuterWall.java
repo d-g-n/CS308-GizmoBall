@@ -9,8 +9,8 @@ import physics.Vect;
 public class OuterWall extends AbstractGizmo {
 	
 
-	public OuterWall(int x, int y, int w, int h, int degrees) {
-		super(x, y, w, h, degrees,
+	public OuterWall(int x, int y, int w, int h) {
+		super(x, y, w, h,
 				Color.black, // colour of gizmo
 				1 // reflection coefficent
 		);

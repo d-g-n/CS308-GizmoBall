@@ -5,10 +5,7 @@ import java.util.List;
 import java.util.Observable;
 
 import controller.MenuListener;
-import gizmos.AbstractGizmo;
-import gizmos.Ball;
-import gizmos.LeftFlipper;
-import gizmos.RightFlipper;
+import gizmos.*;
 import physics.Vect;
 import view.Board;
 import view.RunGUI;
@@ -19,20 +16,32 @@ public class ProjectManager extends Observable{
 	private static FileManager fManager;
 	private MenuListener menuListener = new MenuListener();
 	private List<AbstractGizmo> boardGizmos;
-	private Ball ball;
-	private static final double INITIAL_BALL_XPOS = (15 * Board.BOARD_WIDTH /Board.CELL_WIDTH);
-	private static final double INITIAL_BALL_YPOS = (10 * Board.BOARD_HEIGHT /Board.CELL_HEIGHT);
+	private static Ball ball;
 
 	public ProjectManager(){
 		boardGizmos = new ArrayList<AbstractGizmo>();
-		ball = new Ball(INITIAL_BALL_XPOS, INITIAL_BALL_YPOS,0,50);
+		ball = new Ball(15, 10, new Vect(0,50));
 		cManager = new CollisionManager(this);
 
-		this.loadFile("boards/gizmos.txt");
+		// HARDCODED GIZMO DEFS (mind the outer walls are never supposed to actually be in 0 -> 19)
+
+		addGizmo(new OuterWall(-1, -1, 22, 1)); // start at top left, 20 along x
+		addGizmo(new OuterWall(-1, -1, 1, 22)); // start at top left, 20 down y
+
+		addGizmo(new OuterWall(20, -1, 1, 22)); // start at top right, 22 down y
+		addGizmo(new OuterWall(-1, 20, 22, 1)); // start at bottom left, 22 along x
+
+		this.setChanged();
+		this.notifyObservers();
 
 	}
 
 	public void addGizmo(AbstractGizmo g){
+
+		// ideally we'll give it a random name here but irght now
+
+		g.setName("noname");
+
 		boardGizmos.add(g);
 	}
 
@@ -54,12 +63,16 @@ public class ProjectManager extends Observable{
 		this.setChanged();
 		this.notifyObservers();
 	}
-	
-	public void setBallSpeed(int x, int y) {
-		ball.setVelocity(new Vect(x, y));
-	}
-	
-	public Ball getBall(){
+
+	public static Ball getBall(){
 		return ball;
+	}
+
+	public void fireGizmo(AbstractGizmo hitGizmo) {
+		for(AbstractGizmo giz : boardGizmos){
+			if(giz.equals(hitGizmo)){
+				giz.onHit();
+			}
+		}
 	}
 }

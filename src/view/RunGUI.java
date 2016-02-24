@@ -83,6 +83,7 @@ public class RunGUI implements GBallGui, Observer {
 
 	private void createAndShowGui(ProjectManager pm) {
 		JFrame frame = new JFrame("Gizmoball");
+		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//frame.setPreferredSize(new Dimension(950,800));
 		addComponentsToPane(frame.getContentPane(), pm);

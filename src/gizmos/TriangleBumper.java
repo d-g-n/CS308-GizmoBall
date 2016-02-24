@@ -8,17 +8,17 @@ import java.util.Arrays;
 
 public class TriangleBumper extends AbstractGizmo {
 
-	public TriangleBumper(int x, int y, int w, int h, int degrees) {
-		super(x, y, w, h, degrees,
+	public TriangleBumper(int x, int y, int w, int h) {
+		super(x, y, 1, 1,
 				Color.yellow, // colour of gizmo
 				1// reflection coefficent
 		);
 		
 		addPhysicsPath(Arrays.asList(
-				new Vect(xpos, ypos), // start at top left
-				new Vect(xpos, ypos + height), // move to top right
-				new Vect(xpos + width, ypos), // move to bottom left
-				new Vect(xpos, ypos) // and back up to top left
+				new Vect(xpos, ypos),
+				new Vect(xpos + width, ypos + height),
+				new Vect(xpos, ypos + height),
+				new Vect(xpos, ypos)
 		));
 
 		Shape shape = new Polygon();

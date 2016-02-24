@@ -4,21 +4,24 @@ import physics.Circle;
 import physics.Vect;
 import view.Board;
 
-public class Ball {
+import java.awt.*;
+
+public class Ball extends AbstractGizmo {
 
 	private Vect velocity;
-	private double radius;
-	private double xpos;
-	private double ypos;
+	private final double radius = 10; // what actually is this
 
 	private boolean stopped;
 
 	// x, y coordinates and x,y velocity
-	public Ball(double x, double y, double xv, double yv) {
-		xpos = x; // Centre coordinates
-		ypos = y;
-		velocity = new Vect(xv, yv);
-		radius = 10;
+	public Ball(double x, double y, Vect initialVelocity) {
+
+		super(x, y, 0.5, 0.5,
+				Color.magenta, // colour of gizmo
+				0.95 // reflection coefficent
+		);
+
+		velocity = initialVelocity;
 		stopped = false;
 	}
 
@@ -37,23 +40,6 @@ public class Ball {
 	public Circle getCircle() {
 		return new Circle(xpos, ypos, radius);
 
-	}
-
-	// Ball specific methods that deal with double precision.
-	public double getXPos() {
-		return xpos;
-	}
-
-	public double getYPos() {
-		return ypos;
-	}
-
-	public void setXPos(double x) {
-		xpos = x;
-	}
-
-	public void setYPos(double y) {
-		ypos = y;
 	}
 
 	public void stop() {

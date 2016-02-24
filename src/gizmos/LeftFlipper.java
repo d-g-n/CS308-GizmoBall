@@ -11,9 +11,9 @@ public class LeftFlipper extends AbstractGizmo {
 	Shape flipper;
 	Color color;
 
-	public LeftFlipper(int x, int y, int w, int h, int degrees) {
+	public LeftFlipper(int x, int y, int w, int h) {
 
-		super(x, y, 2, 2, degrees,
+		super(x, y, 2, 2,
 				Color.blue, // colour of gizmo
 				0.95 // reflection coefficent
 		);
@@ -29,7 +29,6 @@ public class LeftFlipper extends AbstractGizmo {
 		));
 	}
 
-	@Override
 	public void rotate() {
 		if (moving){
 			if(forward){
@@ -73,7 +72,6 @@ public class LeftFlipper extends AbstractGizmo {
 		return flipper;
 	}
 
-	@Override
 	public boolean isMoving() {
 		return moving;
 	}
@@ -82,7 +80,6 @@ public class LeftFlipper extends AbstractGizmo {
 		forward = !forward;
 	}
 
-	@Override
 	public void setMoving() {
 		moving = !moving;
 	}

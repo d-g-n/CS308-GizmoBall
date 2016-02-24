@@ -14,7 +14,7 @@ import java.util.List;
 public abstract class AbstractGizmo {
 
 	protected double xpos, ypos, width, height;
-	protected Angle gizAngle;
+	protected int gizAngle;
 	protected double reflectionCoefficient;
 	protected List<AbstractGizmo> gizmoListeners;
 	protected String name;
@@ -22,17 +22,16 @@ public abstract class AbstractGizmo {
 	protected List<Circle> StoredCircles;
 	protected List<LineSegment> StoredLines;
 	protected Color gizCol;
-	protected Vect vector;
 
 	protected Shape gizShape;
 
-	public AbstractGizmo(double x, double y, double width, double height, int angDegrees, Color c, double rc) {
+	public AbstractGizmo(double x, double y, double width, double height, Color c, double rc) {
 		this.xpos = x * (Board.BOARD_WIDTH / Board.X_CELLS);
 		this.ypos = y * (Board.BOARD_HEIGHT / Board.Y_CELLS);
 		this.width = width * Board.BOARD_WIDTH / Board.X_CELLS;
 		this.height = height * Board.BOARD_HEIGHT / Board.Y_CELLS;
 
-		this.gizAngle = new Angle(Math.toRadians(angDegrees));
+		this.gizAngle = 0;
 
 		this.gizmoListeners = new ArrayList<AbstractGizmo>();
 
@@ -41,73 +40,60 @@ public abstract class AbstractGizmo {
 
 		this.StoredCircles = new ArrayList<Circle>();
 		this.StoredLines = new ArrayList<LineSegment>();
-		vector = new Vect(x,y);
 	}
 
-	public Vect getVect(){
-		return vector;
-	}
 
-	public void rotateClockwise(){
-		Angle clockwiseRotate = new Angle(Math.toRadians(90));
-		gizAngle = gizAngle.plus(clockwiseRotate);
+	public void rotateClockwise(){ // this is experimental
+		gizAngle += 90;
+
+		// this needs work
+		/*
+		List<Circle> tempCirc = new ArrayList<>();
+
+		for(Circle c : StoredCircles){
+
+			double x1 = c.getCenter().x() - width/2;
+			double y1 = c.getCenter().y() - height/2;
+
+			tempCirc.add(new Circle(
+					x1 * Math.cos(Math.toRadians(90)) - y1 * Math.sin(Math.toRadians(90)),
+					x1 * Math.sin(Math.toRadians(90)) + y1 * Math.cos(Math.toRadians(90)),
+					c.getRadius()
+			));
+		}
+
+		StoredCircles = tempCirc;
+
+		List<LineSegment> tempLine = new ArrayList<>();
+
+		for(LineSegment ls : StoredLines){
+
+			double x1 = ls.p1().x() - width/2;
+			double y1 = ls.p1().y() - height/2;
+
+			double x2 = ls.p2().x() - width/2;
+			double y2 = ls.p2().y() - height/2;
+
+			tempLine.add(new LineSegment(
+					x1 * Math.cos(Math.toRadians(90)) - y1 * Math.sin(Math.toRadians(90)),
+					x1 * Math.sin(Math.toRadians(90)) + y1 * Math.cos(Math.toRadians(90)),
+					x2 * Math.cos(Math.toRadians(90)) - y2 * Math.sin(Math.toRadians(90)),
+					x2 * Math.sin(Math.toRadians(90)) + y2 * Math.cos(Math.toRadians(90))
+			));
+		}
+
+		StoredLines = tempLine;
+		*/
+
 	}
 
 	public void setName(String name){
 		this.name = name;
 	}
 
-	public String getName(){
-		return this.name;
-	}
-
-	public double getXpos() {
-		return xpos;
-	}
-
-	public double getYpos() {
-		return ypos;
-	}
-
-	public double getWidth() {
-		return width;
-	}
-
-	public double getHeight() {
-		return height;
-	}
-
-	public double getReflectionCoefficient() {
-		return reflectionCoefficient;
-	}
-
-	public Angle getGizAngle() {
-		return gizAngle;
-	}
-
-	public Color getGizCol() {
-		return gizCol;
-	}
-
-	public List<Circle> getStoredCircles() {
-		return StoredCircles;
-	}
-
-	public void setGizAngle(Angle gizAngle) {
-		this.gizAngle = gizAngle;
-	}
-
-	public List<LineSegment> getStoredLines() {
-		return StoredLines;
-	}
-
 	public void setPos(double xpos, double ypos) {
 		this.xpos = xpos;
 		this.ypos = ypos;
-	}
-	
-	public void setGizAngle(int ang) {
-		this.gizAngle = new Angle(Math.toRadians(ang));
 	}
 
 	protected void addPhysicsCircle(double x, double y, double r){
@@ -130,31 +116,17 @@ public abstract class AbstractGizmo {
 			lastVect = curVect;
 		}
 	}
-	
-	public void clearPhysicsCircles(){
-		this.getStoredCircles().clear();
+
+	public void addGizmoListener(AbstractGizmo listener){
+		this.gizmoListeners.add(listener);
 	}
-	
-	public void addPhysicsCircle(Circle c){
-		StoredCircles.add(c);
-	}
-	
-	public void addPhysicsLine(LineSegment line){
-		StoredLines.add(line);
-	}
-	
-	public void rotate(){
-		// there is no default action but needed here to override it.
-	}
+
 
 	public void setShape(Shape gizShape){
 		this.gizShape = gizShape;
 	}
 	
-	public Shape getShape(){
-		// there is no default action but needed here to override it.
-		return gizShape;
-	}
+
 
 	/**
 	 * This method is called by the engine when the ball collides with this
@@ -175,13 +147,47 @@ public abstract class AbstractGizmo {
 		// there is no default action but needed here to override it.
 	}
 
-	public boolean isMoving() {
-		// TODO Auto-generated method stub
-		return false;
+
+	public Shape getShape(){ return gizShape; }
+
+	public String getName(){
+		return this.name;
 	}
-	
-	public void setMoving(){
-		
+
+	public double getXPos() {
+		return xpos;
+	}
+
+	public double getYPos() {
+		return ypos;
+	}
+
+	public double getWidth() {
+		return width;
+	}
+
+	public double getHeight() {
+		return height;
+	}
+
+	public double getReflectionCoefficient() {
+		return reflectionCoefficient;
+	}
+
+	public int getGizAngle() {
+		return gizAngle;
+	}
+
+	public Color getGizCol() {
+		return gizCol;
+	}
+
+	public List<Circle> getStoredCircles() {
+		return StoredCircles;
+	}
+
+	public List<LineSegment> getStoredLines() {
+		return StoredLines;
 	}
 
 }
