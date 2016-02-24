@@ -23,8 +23,6 @@ public class RunListener implements ActionListener {
 	public void actionPerformed(final ActionEvent e) {
 		if (e.getSource() == timer) {
 			pm.moveBall();
-			pm.updateFlipper("right");
-			pm.updateFlipper("left");
 			
 	
 		} else {

@@ -17,13 +17,11 @@ public class ProjectManager extends Observable{
 	
 	private static CollisionManager cManager;
 	private static FileManager fManager;
-	private final RightFlipper rightFlipper;
 	private MenuListener menuListener = new MenuListener();
 	private List<AbstractGizmo> boardGizmos;
 	private Ball ball;
 	private static final double INITIAL_BALL_XPOS = (15 * Board.BOARD_WIDTH /Board.CELL_WIDTH);
 	private static final double INITIAL_BALL_YPOS = (10 * Board.BOARD_HEIGHT /Board.CELL_HEIGHT);
-	private LeftFlipper leftFlipper;
 
 	public ProjectManager(){
 		boardGizmos = new ArrayList<AbstractGizmo>();
@@ -31,24 +29,11 @@ public class ProjectManager extends Observable{
 		cManager = new CollisionManager(this);
 
 		this.loadFile("boards/gizmos.txt");
-		leftFlipper = new LeftFlipper(8, 10, 2, 2, 0);
-		rightFlipper = new RightFlipper(10,10,2,2,0);
+
 	}
 
 	public void addGizmo(AbstractGizmo g){
 		boardGizmos.add(g);
-	}
-
-	public LeftFlipper getLeftFlipper(){
-		return leftFlipper;
-	}
-
-	public RightFlipper getRightFlipper(){
-		return rightFlipper;
-	}
-
-	public void addBallActor(Ball ball){
-		this.ball = ball;
 	}
 
 	public List<AbstractGizmo> getBoardGizmos(){
@@ -65,16 +50,6 @@ public class ProjectManager extends Observable{
 	public void loadFile(String fileName) {
 		fManager = new FileManager(fileName, boardGizmos);
 		fManager.loadFile();
-
-		this.setChanged();
-		this.notifyObservers();
-	}
-
-	public void updateFlipper(String string) {
-		if(string.equals("left"))
-		leftFlipper.rotate();
-		else if(string.equals("right"))
-		rightFlipper.rotate();
 
 		this.setChanged();
 		this.notifyObservers();

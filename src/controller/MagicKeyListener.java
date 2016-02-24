@@ -20,12 +20,10 @@ public class MagicKeyListener implements KeyListener {
 		int key = e.getKeyCode();
 		switch(key){
 		case KeyEvent.VK_LEFT :
-			pm.getLeftFlipper().move();
-			pm.getLeftFlipper().moveForward();
+
 			break;
 		case KeyEvent.VK_RIGHT : 
-			pm.getRightFlipper().move();
-			pm.getRightFlipper().moveForward();
+
 			break;
 		}
 	}
@@ -36,12 +34,10 @@ public class MagicKeyListener implements KeyListener {
 		int key = e.getKeyCode(); 	
 		switch(key){
 		case KeyEvent.VK_LEFT :
-			pm.getLeftFlipper().move();
-			pm.getLeftFlipper().stopForward();
+
 			break;
 		case KeyEvent.VK_RIGHT : 
-			pm.getRightFlipper().move();
-			pm.getRightFlipper().stopForward();
+
 			break;
 			
 		}

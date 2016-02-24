@@ -28,10 +28,6 @@ public class RunBoard extends JPanel implements Board {
 		g2d.setRenderingHints(ro);
 
 		drawEmptyBoardWithGuidelines(g,BOARD_WIDTH, BOARD_HEIGHT);
-		//leftFlipper
-		Shape leftFlipper = pm.getLeftFlipper().getShape();
-		g2d.setColor(pm.getLeftFlipper().getColor());
-		g2d.fill(leftFlipper);
 
 		drawBall(pm.getBall(),g);
 		for (AbstractGizmo gizmo : pm.getBoardGizmos()) {
@@ -47,7 +43,7 @@ public class RunBoard extends JPanel implements Board {
 
 			//If the gizmo is a Circle or a Ball then paint an Ellipse
 			if (gizmo.getClass().equals(CircleBumper.class)
-					|| gizmo.getClass().equals(BallActor.class)) {
+					) {
 
 				shape = new Ellipse2D.Double(
 						(gizmoXpos),
@@ -112,10 +108,6 @@ public class RunBoard extends JPanel implements Board {
 						25,
 						100
 				);
-		//rightFlipper
-		Shape rightFlipper = pm.getRightFlipper().getShape();
-		g2d.setColor(pm.getRightFlipper().getColor());
-		g2d.fill(rightFlipper);
 
 			}
 
