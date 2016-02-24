@@ -1,5 +1,6 @@
 package view;
 
+import controller.KeyPressListener;
 import controller.RunListener;
 import model.ProjectManager;
 
@@ -11,8 +12,10 @@ import java.util.Observer;
 
 public class RunGUI implements GBallGui, Observer {
 
+	private KeyPressListener keyListener;
 	private TestView tv;
 	private RunListener runListener;
+	private ProjectManager pm;
 	public static final int BOARD_WIDTH = 1000;
 	public static final int BOARD_HEIGHT = 1000;
 	

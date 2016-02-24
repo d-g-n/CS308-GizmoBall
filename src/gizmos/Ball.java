@@ -2,6 +2,7 @@ package gizmos;
 
 import physics.Circle;
 import physics.Vect;
+import view.Board;
 
 public class Ball {
 

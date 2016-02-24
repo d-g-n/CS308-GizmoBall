@@ -28,7 +28,7 @@ public class ProjectManager extends Observable{
 
 	public ProjectManager(){
 		boardGizmos = new ArrayList<AbstractGizmo>();
-		ball = new Ball(INITIAL_BALL_XPOS, INITIAL_BALL_YPOS,50,-50);
+		ball = new Ball(INITIAL_BALL_XPOS, INITIAL_BALL_YPOS,0,50);
 		cManager = new CollisionManager(this);
 
 		this.loadFile("boards/gizmos.txt");

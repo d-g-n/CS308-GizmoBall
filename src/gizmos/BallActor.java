@@ -37,14 +37,14 @@ public class BallActor extends AbstractGizmo {
 
 		Vect gravityApplied = new Vect(velocity.x(), velocity.y() + (25 * tickTime));
 
-		this.setVelocity(gravityApplied.x(), gravityApplied.y());
+		this.setVelocity(gravityApplied);
 	}
 
 	public void applyFriction(double tickTime, double mu, double mu2) {
 
 		Vect frictionApplied = new Vect(velocity.x() * (mu * tickTime) - (mu2 * velocity.x()) * tickTime, velocity.y() * (mu * tickTime) - (mu2 * velocity.y()) * tickTime);
 
-		this.setVelocity(frictionApplied.x(), frictionApplied.y());
+		this.setVelocity(frictionApplied);
 
 
 	}
