@@ -9,7 +9,7 @@ import java.awt.*;
 public class Ball extends AbstractGizmo {
 
 	private Vect velocity;
-	private final double radius = 10; // what actually is this
+	private final double radius = 0.25 * (Board.BOARD_WIDTH / Board.X_CELLS);
 
 	private boolean stopped;
 
