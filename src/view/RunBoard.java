@@ -32,8 +32,7 @@ public class RunBoard extends JPanel implements Board {
 		Shape leftFlipper = pm.getLeftFlipper().getShape();
 		g2d.setColor(pm.getLeftFlipper().getColor());
 		g2d.fill(leftFlipper);
-		
-		drawEmptyBoardWithGuidelines(g, boardWidth, boardHeight);
+
 		drawBall(pm.getBall(),g);
 		for (AbstractGizmo gizmo : pm.getBoardGizmos()) {
 			AffineTransform pT = g2d.getTransform();
@@ -123,8 +122,8 @@ public class RunBoard extends JPanel implements Board {
 			g.setColor(gizmo.getGizCol());
 			g2d.rotate(
 					gizmo.getGizAngle().radians(),
-					shape.getBounds2D().getX() + cellWidth / 2,
-					shape.getBounds2D().getY() + cellHeight / 2
+					shape.getBounds2D().getX() + Board.CELL_WIDTH / 2,
+					shape.getBounds2D().getY() + Board.CELL_HEIGHT / 2
 			);
 			g2d.draw(shape);
 			g2d.fill(shape);

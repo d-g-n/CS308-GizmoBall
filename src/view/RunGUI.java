@@ -1,5 +1,7 @@
 package view;
 
+import controller.KeyPressListener;
+import controller.MagicKeyListener;
 import controller.RunListener;
 import model.ProjectManager;
 
@@ -11,7 +13,7 @@ import java.util.Observer;
 
 public class RunGUI implements GBallGui, Observer {
 
-	private KeyPressListener keyListener;
+	private MagicKeyListener keyListener;
 	private TestView tv;
 	private RunBoard runBoard;
 	private RunListener runListener;

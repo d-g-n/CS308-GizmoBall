@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
+import controller.MenuListener;
 import gizmos.AbstractGizmo;
 import gizmos.Ball;
+import gizmos.LeftFlipper;
+import gizmos.RightFlipper;
 import physics.Vect;
 import view.Board;
 import view.RunGUI;
@@ -14,11 +17,13 @@ public class ProjectManager extends Observable{
 	
 	private static CollisionManager cManager;
 	private static FileManager fManager;
+	private final RightFlipper rightFlipper;
 	private MenuListener menuListener = new MenuListener();
 	private List<AbstractGizmo> boardGizmos;
 	private Ball ball;
 	private static final double INITIAL_BALL_XPOS = (15 * Board.BOARD_WIDTH /Board.CELL_WIDTH);
 	private static final double INITIAL_BALL_YPOS = (10 * Board.BOARD_HEIGHT /Board.CELL_HEIGHT);
+	private LeftFlipper leftFlipper;
 
 	public ProjectManager(){
 		boardGizmos = new ArrayList<AbstractGizmo>();
@@ -26,8 +31,8 @@ public class ProjectManager extends Observable{
 		cManager = new CollisionManager(this);
 
 		this.loadFile("boards/gizmos.txt");
-		leftFlipper = new LeftFlipper(8, 10, 0.5, 2, 0);
-		rightFlipper = new RightFlipper(10,10,0.5,2,0);
+		leftFlipper = new LeftFlipper(8, 10, 2, 2, 0);
+		rightFlipper = new RightFlipper(10,10,2,2,0);
 	}
 
 	public void addGizmo(AbstractGizmo g){
