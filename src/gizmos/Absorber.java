@@ -2,37 +2,26 @@ package gizmos;
 
 
 import physics.Vect;
-import view.Board;
-import model.ProjectManager;
 
 import java.awt.*;
 import java.util.Arrays;
 
 public class Absorber extends AbstractGizmo {
-	
-	
 
+	public Absorber(int x, int y, int w, int h, int degrees) {
 
-	public Absorber(int x, int y, int width, int height, int degrees) {
-
-		super(x, y, width, height, degrees,
+		super(x, y, w, h, degrees,
 				Color.magenta, // colour of gizmo
-				1.0 // reflection coefficent
+				0.95 // reflection coefficent
 		);
 
 
-		double pixelsY = (y * Board.BOARD_HEIGHT / Board.Y_CELLS);
-		double pixelsX = (x * Board.BOARD_WIDTH / Board.X_CELLS);
-		double localWidth = (Board.BOARD_WIDTH / Board.X_CELLS);
-		double localHeight = Board.BOARD_HEIGHT/ Board.Y_CELLS;
-		
-
 		addPhysicsPath(Arrays.asList(
-				new Vect(pixelsX, pixelsY), // start at top left
-				new Vect(pixelsX + (localWidth * width), pixelsY), // move to top right
-				new Vect(pixelsX + (localWidth * width), pixelsY + (localHeight * height)), // move to bottom right
-				new Vect(pixelsX, pixelsY + (localHeight * height)), // move to bottom left
-				new Vect(pixelsX, pixelsY) // and back up to top left
+				new Vect(xpos, ypos), // start at top left
+				new Vect(xpos + width, ypos), // move to top right
+				new Vect(xpos + width, ypos + height), // move to bottom right
+				new Vect(xpos, ypos + height), // move to bottom left
+				new Vect(xpos, ypos) // and back up to top left
 		));
 
 	}
@@ -44,8 +33,8 @@ public class Absorber extends AbstractGizmo {
 	@Override
 	public void onHit() {
 		super.onHit();
-		
-		
+
+		// hold the ball in this
 
 	}
 
@@ -54,12 +43,9 @@ public class Absorber extends AbstractGizmo {
 	 */
 	@Override
 	public void onCollision() {
-	
 		super.onCollision();
 
-		
 		// if ball is held, chuck it back out
 
 	}
-	
 }
