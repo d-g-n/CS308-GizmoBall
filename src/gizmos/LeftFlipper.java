@@ -11,10 +11,11 @@ public class LeftFlipper extends AbstractGizmo {
 	Shape flipper;
 	Color color;
 
-	public LeftFlipper(double x, double y, double w, double h, int degrees) {
+	public LeftFlipper(int x, int y, int w, int h, int degrees) {
 
-		super(x, y, w, h, degrees, Color.red, // colour of gizmo
-				0.95 // reflection coefficient
+		super(x, y, 2, 2, degrees,
+				Color.blue, // colour of gizmo
+				0.95 // reflection coefficent
 		);
 		initialize();
 	}
@@ -27,7 +28,7 @@ public class LeftFlipper extends AbstractGizmo {
 			}else{
 				rotation += angleVel;
 			}
-	
+
 			if(rotation <= 270){
 				stop();
 				rotation = 270;
@@ -36,14 +37,14 @@ public class LeftFlipper extends AbstractGizmo {
 				stop();
 				rotation = 360;
 			}
-			
+
 		AffineTransform at = new AffineTransform();
 		Shape shape = new RoundRectangle2D.Double(xpos, ypos, width, height, 10, 40);
 		at.setToRotation(Math.toRadians(rotation), xpos + width / 2, ypos + width / 2);
 		Shape path = at.createTransformedShape(shape);
 		this.setShape(path);
 		}
-		
+
 	}
 
 	public void move() {
@@ -67,7 +68,7 @@ public class LeftFlipper extends AbstractGizmo {
 	public boolean isMoving() {
 		return moving;
 	}
-	
+
 	public void setForward(){
 		forward = !forward;
 	}

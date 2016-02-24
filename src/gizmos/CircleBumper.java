@@ -4,11 +4,11 @@ import java.awt.*;
 
 import view.Board;
 
-public class CircularBumper extends AbstractGizmo {
+public class CircleBumper extends AbstractGizmo {
 
 	private double radius;
 
-	public CircularBumper(int x, int y, int w, int h, int degrees) {
+	public CircleBumper(int x, int y, int w, int h, int degrees) {
 		super(x, y, w, h, degrees, Color.blue, // colour of gizmo
 				1 // reflection coefficent
 		);

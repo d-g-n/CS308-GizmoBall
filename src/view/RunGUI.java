@@ -1,8 +1,8 @@
 package view;
 
-import controller.MagicKeyListener;
 import controller.RunListener;
 import model.ProjectManager;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -11,15 +11,14 @@ import java.util.Observer;
 
 public class RunGUI implements GBallGui, Observer {
 
+	private KeyPressListener keyListener;
 	private TestView tv;
 	private RunBoard runBoard;
 	private RunListener runListener;
-	private MagicKeyListener keyListener;
-	public static final int BOARD_WIDTH = 1000;
-	public static final int BOARD_HEIGHT = 1000;
+	private ProjectManager pm;
+	public static final int BOARD_WIDTH = 500;
+	public static final int BOARD_HEIGHT = 500;
 
-
-	
 	private void createMenuBar(Container pane){
 		JMenuBar menuBar = new JMenuBar();
 		
@@ -37,10 +36,12 @@ public class RunGUI implements GBallGui, Observer {
 	private void addComponentsToPane(Container pane, ProjectManager pm) {
 		pane.setLayout(new BorderLayout());
 		
+		this.pm = pm;
+
 	    JPanel leftPanel = new JPanel();
 	    leftPanel.setLayout(new GridLayout(4,1));
 	    leftPanel.addKeyListener(keyListener);
-	    
+
 		addAButton("Play", leftPanel);
 		addAButton("Stop", leftPanel);
 		addAButton("Tick", leftPanel);
@@ -66,7 +67,7 @@ public class RunGUI implements GBallGui, Observer {
 		JLabel label = new JLabel("Here will be the status label");
 		pane.add(label,BorderLayout.PAGE_END);
 		pane.addKeyListener(keyListener);
-		
+
 	}
 
 	private void addAButton(String title, Container pane) {
@@ -75,14 +76,13 @@ public class RunGUI implements GBallGui, Observer {
 		button.addActionListener(runListener);
 		button.addKeyListener(keyListener);
 		pane.add(button);
-		pane.addKeyListener(keyListener);
 		
 	}
 
 	private void createAndShowGui(ProjectManager pm) {
 		JFrame frame = new JFrame("Gizmoball");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setPreferredSize(new Dimension(690,567));
+		//frame.setPreferredSize(new Dimension(950,800));
 		addComponentsToPane(frame.getContentPane(), pm);
 		createMenuBar(frame.getContentPane());
 		createStatusBar(frame.getContentPane());
@@ -109,7 +109,6 @@ public class RunGUI implements GBallGui, Observer {
 		
 		keyListener = new MagicKeyListener(pm);
 		runListener = new RunListener(pm);
-
 	}
 
 	@Override

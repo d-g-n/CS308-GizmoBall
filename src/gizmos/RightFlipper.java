@@ -1,9 +1,13 @@
 package gizmos;
 
+
+import physics.Vect;
 import java.awt.Color;
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.RoundRectangle2D;
+import java.awt.*;
+import java.util.Arrays;
 
 public class RightFlipper extends AbstractGizmo {
 	private boolean moving, forward;
@@ -11,10 +15,10 @@ public class RightFlipper extends AbstractGizmo {
 	Shape flipper;
 	Color color;
 
-	public RightFlipper(double x, double y, double w, double h, int degrees) {
-
-		super(x + 1.5, y, w, h, degrees, Color.red, // colour of gizmo
-				0.95 // reflection coefficient
+	public RightFlipper(int x, int y, int w, int h, int degrees) {
+		super(x + 1.5, y, 2, 2, degrees,
+				Color.red, // colour of gizmo
+				0.95 // reflection coefficent
 		);
 		initialize();
 	}

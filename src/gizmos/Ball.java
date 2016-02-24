@@ -2,6 +2,7 @@ package gizmos;
 
 import physics.Circle;
 import physics.Vect;
+import view.Board;
 
 public class Ball {
 
@@ -65,5 +66,22 @@ public class Ball {
 
 	public boolean stopped() {
 		return stopped;
+	}
+	
+	public void applyGravityConstant(double tickTime) {
+		
+		Vect gravityApplied = new Vect(velocity.x(), velocity.y() + ((25 * (Board.BOARD_HEIGHT / Board.X_CELLS)) * tickTime));
+		
+		this.setVelocity(gravityApplied);
+	}
+	
+	public void applyFriction(double tickTime, double mu, double mu2) {
+		
+		Vect frictionApplied = new Vect(velocity.x() * (1 - (mu * tickTime)) - (mu2 * velocity.x()) * tickTime, velocity.y() * (1 - (mu * tickTime)) - (mu2 * velocity.y()) * tickTime);  
+		
+		
+		this.setVelocity(frictionApplied);
+		
+		
 	}
 }
