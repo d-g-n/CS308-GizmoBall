@@ -16,11 +16,20 @@ public class RightFlipper extends AbstractGizmo {
 	Color color;
 
 	public RightFlipper(int x, int y, int w, int h, int degrees) {
-		super(x + 1.5, y, 2, 2, degrees,
+		super(x, y, 2, 2, degrees,
 				Color.red, // colour of gizmo
 				0.95 // reflection coefficent
 		);
 		initialize();
+
+		setShape(new RoundRectangle2D.Double(
+				(xpos),
+				(ypos),
+				(width),
+				(height) * 0.25,
+				25,
+				100
+		));
 	}
 
 	@Override

@@ -18,6 +18,15 @@ public class LeftFlipper extends AbstractGizmo {
 				0.95 // reflection coefficent
 		);
 		initialize();
+
+		setShape(new RoundRectangle2D.Double(
+				(xpos),
+				(ypos),
+				(width),
+				(height) * 0.25,
+				25,
+				100
+		));
 	}
 
 	@Override

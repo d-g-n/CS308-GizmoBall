@@ -4,6 +4,7 @@ package gizmos;
 import physics.Vect;
 
 import java.awt.*;
+import java.awt.geom.Rectangle2D;
 import java.util.Arrays;
 
 public class SquareBumper extends AbstractGizmo {
@@ -22,6 +23,13 @@ public class SquareBumper extends AbstractGizmo {
 				new Vect(xpos, ypos) // and back up to top left
 		));
 
+
+		setShape(new Rectangle2D.Double(
+				(xpos),
+				(ypos),
+				(width),
+				(height)
+		));
 	}
 
 }

@@ -2,6 +2,7 @@ package gizmos;
 
 
 import java.awt.Color;
+import java.awt.geom.Rectangle2D;
 import java.util.Arrays;
 import physics.Vect;
 
@@ -21,6 +22,13 @@ public class OuterWall extends AbstractGizmo {
 				new Vect(xpos + width, ypos + height), // move to bottom right
 				new Vect(xpos, ypos + height), // move to bottom left
 				new Vect(xpos, ypos) // and back up to top left
+		));
+
+		setShape(new Rectangle2D.Double(
+				(xpos),
+				(ypos),
+				(0),
+				(0)
 		));
 	}
 }

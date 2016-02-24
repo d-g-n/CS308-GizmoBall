@@ -20,5 +20,37 @@ public class TriangleBumper extends AbstractGizmo {
 				new Vect(xpos + width, ypos), // move to bottom left
 				new Vect(xpos, ypos) // and back up to top left
 		));
+
+		Shape shape = new Polygon();
+		//Add the three points of the triangle to the shape
+
+				/*
+				 *  *
+				 *  - -
+				 */
+		((Polygon) shape).addPoint(
+				(int) (xpos),
+				(int) (ypos)
+		);
+
+				/*
+				 *  -
+				 *  - *
+				 */
+		((Polygon) shape).addPoint(
+				(int) ((xpos) + (width)),
+				(int) ((ypos) + (height))
+		);
+
+				/*
+				 *  -
+				 *  * -
+				 */
+		((Polygon) shape).addPoint(
+				(int) (xpos),
+				(int) ((ypos) + (height))
+		);
+
+		setShape(shape);
 	}
 }

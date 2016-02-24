@@ -24,6 +24,8 @@ public abstract class AbstractGizmo {
 	protected Color gizCol;
 	protected Vect vector;
 
+	protected Shape gizShape;
+
 	public AbstractGizmo(double x, double y, double width, double height, int angDegrees, Color c, double rc) {
 		this.xpos = x * (Board.BOARD_WIDTH / Board.X_CELLS);
 		this.ypos = y * (Board.BOARD_HEIGHT / Board.Y_CELLS);
@@ -144,10 +146,14 @@ public abstract class AbstractGizmo {
 	public void rotate(){
 		// there is no default action but needed here to override it.
 	}
+
+	public void setShape(Shape gizShape){
+		this.gizShape = gizShape;
+	}
 	
 	public Shape getShape(){
 		// there is no default action but needed here to override it.
-		return null;
+		return gizShape;
 	}
 
 	/**
