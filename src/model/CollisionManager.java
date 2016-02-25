@@ -43,8 +43,7 @@ public class CollisionManager extends Observable {
 			pm.fireGizmo(info.getHitGizmo());
 		}
 
-		ball.applyGravityConstant(Board.MOVE_TIME);
-		ball.applyFriction(Board.MOVE_TIME, 0.025, 0.0025);
+
 	}
 
 	public CollisionDetails shortestTimeUntilCollision() {
@@ -123,6 +122,9 @@ public class CollisionManager extends Observable {
 		newYPos = ball.getYPos() + (yVel * time);
 
 		ball.setPos(newXPos, newYPos);
+
+		ball.applyGravityConstant(Board.MOVE_TIME);
+		ball.applyFriction(Board.MOVE_TIME, 0.025, 0.0025);
 
 		return ball;
 	}
