@@ -16,47 +16,25 @@ public class Ball extends AbstractGizmo {
 	// x, y coordinates and x,y velocity
 	public Ball(double x, double y, Vect initialVelocity) {
 
-		super(x, y, 0.5, 0.5,
-				Color.magenta, // colour of gizmo
-				0.95 // reflection coefficent
+		super(x, y, 0, 0,
+				Color.white, // colour of gizmo
+				0 // reflection coefficent
 		);
 
 		velocity = initialVelocity;
 		stopped = false;
-	}
 
-	public Vect getVelocity() {
-		return velocity;
 	}
 
 	public void setVelocity(Vect v) {
 		velocity = v;
 	}
 
-	public double getRadius() {
-		return radius;
-	}
+	public void setStopped(boolean stopped) { this.stopped = stopped; }
 
-	public Circle getCircle() {
-		return new Circle(xpos, ypos, radius);
-
-	}
-
-	public void stop() {
-		stopped = true;
-	}
-
-	public void start() {
-		stopped = false;
-	}
-
-	public boolean stopped() {
-		return stopped;
-	}
-	
 	public void applyGravityConstant(double tickTime) {
 		
-		Vect gravityApplied = new Vect(velocity.x(), velocity.y() + ((25 * (Board.BOARD_HEIGHT / Board.X_CELLS)) * tickTime));
+		Vect gravityApplied = new Vect(velocity.x(), velocity.y() + ((Board.convertLtoPix(25)) * tickTime));
 		
 		this.setVelocity(gravityApplied);
 	}
@@ -69,5 +47,28 @@ public class Ball extends AbstractGizmo {
 		this.setVelocity(frictionApplied);
 		
 		
+	}
+
+
+
+	public boolean isStopped() {
+		return stopped;
+	}
+
+	public Vect getVelocity() {
+		return velocity;
+	}
+
+	public Circle getCircle() {
+		return new Circle(xpos, ypos, radius);
+	}
+
+	@Override
+	public Shape getShape(){
+		return getCircle().toEllipse2D();
+	}
+
+	public double getRadius() {
+		return radius;
 	}
 }

@@ -10,7 +10,7 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.RoundRectangle2D;
 
-public class RunBoard extends JPanel implements Board {
+public class RunBoard extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private ProjectManager pm;
@@ -27,9 +27,9 @@ public class RunBoard extends JPanel implements Board {
 		RenderingHints ro = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g2d.setRenderingHints(ro);
 
-		drawEmptyBoardWithGuidelines(g,BOARD_WIDTH, BOARD_HEIGHT);
+		drawEmptyBoardWithGuidelines(g,Board.BOARD_WIDTH, Board.BOARD_HEIGHT);
 
-		drawBall(pm.getBall(),g);
+		//drawBall(pm.getBall(),g);
 		for (AbstractGizmo gizmo : pm.getBoardGizmos()) {
 			AffineTransform pT = g2d.getTransform();
 
@@ -50,14 +50,6 @@ public class RunBoard extends JPanel implements Board {
 
 	}
 
-	private void drawBall(Ball b,Graphics g){
-		Graphics2D g2 = (Graphics2D) g;
-		g2.setColor(Color.white);
-		int x = (int) (b.getXPos() - b.getRadius());
-		int y = (int) (b.getYPos() - b.getRadius());
-		int width = (int) (2 * b.getRadius());
-		g2.fillOval(x, y, width, width);
-	}
 	private void drawEmptyBoardWithGuidelines(Graphics g, int boardWidth, int boardHeight) {
 		// Draw background
 		g.setColor(Color.black);
@@ -66,13 +58,13 @@ public class RunBoard extends JPanel implements Board {
 		g.setColor(Color.darkGray);
 
 		// Draw guidelines on x axis
-		for (int i = 1; i <= X_CELLS; i++) {
-			g.drawLine((boardWidth / X_CELLS) * i, 0, (boardWidth / Y_CELLS) * i, boardHeight);
+		for (int i = 1; i <= Board.X_CELLS; i++) {
+			g.drawLine((boardWidth / Board.X_CELLS) * i, 0, (boardWidth / Board.Y_CELLS) * i, boardHeight);
 		}
 
 		// Draw Guidelines on y axis
-		for (int i = 1; i <= Y_CELLS; i++) {
-			g.drawLine(0, (boardWidth / X_CELLS) * i, boardWidth, (boardHeight / Y_CELLS) * i);
+		for (int i = 1; i <= Board.Y_CELLS; i++) {
+			g.drawLine(0, (boardWidth / Board.X_CELLS) * i, boardWidth, (boardHeight / Board.Y_CELLS) * i);
 		}
 	}
 }

@@ -10,9 +10,22 @@
     <bookmark url="file://$PROJECT_DIR$/src/model/FileManager.java" line="18" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ba8a27f3-a444-45e2-a0a5-81e76341a790" name="Default" comment="Changed the ball radius to use standardised L's instead of an arbritrary number&#10;&#10;()">
+    <list default="true" id="ba8a27f3-a444-45e2-a0a5-81e76341a790" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/view/DesignViewMockup.form" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/view/DesignViewMockup.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/view/PlayViewMockup.form" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/view/PlayViewMockup.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/KeyPressListener.java" afterPath="$PROJECT_DIR$/src/controller/KeyPressListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gizmos/Absorber.java" afterPath="$PROJECT_DIR$/src/gizmos/Absorber.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gizmos/AbstractGizmo.java" afterPath="$PROJECT_DIR$/src/gizmos/AbstractGizmo.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gizmos/Ball.java" afterPath="$PROJECT_DIR$/src/gizmos/Ball.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gizmos/CircleBumper.java" afterPath="$PROJECT_DIR$/src/gizmos/CircleBumper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/CollisionManager.java" afterPath="$PROJECT_DIR$/src/model/CollisionManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/ProjectManager.java" afterPath="$PROJECT_DIR$/src/model/ProjectManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/Board.java" afterPath="$PROJECT_DIR$/src/view/Board.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/BuildBoard.java" afterPath="$PROJECT_DIR$/src/view/BuildBoard.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/RunBoard.java" afterPath="$PROJECT_DIR$/src/view/RunBoard.java" />
     </list>
     <ignored path="CS308-GizmoBall.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,93 +48,81 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainInit.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MainInit.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="49" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Ball.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/gizmos/Ball.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.17073171">
-              <caret line="11" column="41" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="76" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Absorber.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gizmos/Absorber.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="67" column="31" selection-start-line="67" selection-start-column="31" selection-end-line="67" selection-end-column="31" />
+              <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AbstractGizmo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gizmos/AbstractGizmo.java">
+      <file leaf-file-name="Ball.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gizmos/Ball.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="46" column="23" selection-start-line="46" selection-start-column="23" selection-end-line="46" selection-end-column="23" />
-              <folding>
-                <element signature="e#2319#2320#0" expanded="true" />
-                <element signature="e#2342#2343#0" expanded="true" />
-                <element signature="e#2499#2500#0" expanded="true" />
-                <element signature="e#2544#2545#0" expanded="true" />
-                <element signature="e#2907#2908#0" expanded="true" />
-                <element signature="e#2947#2948#0" expanded="true" />
-                <element signature="e#2988#2989#0" expanded="true" />
-                <element signature="e#3019#3020#0" expanded="true" />
-              </folding>
+              <caret line="43" column="114" selection-start-line="43" selection-start-column="114" selection-end-line="43" selection-end-column="114" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RunBoard.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CircleBumper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gizmos/CircleBumper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="21" column="35" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OuterWall.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gizmos/OuterWall.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RunBoard.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/view/RunBoard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="31" column="33" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.9032258">
+              <caret line="64" column="36" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Math.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/lang/Math.java">
+      <file leaf-file-name="GBallGui.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/view/GBallGui.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="234" column="25" selection-start-line="234" selection-start-column="25" selection-end-line="234" selection-end-column="25" />
-              <folding>
-                <element signature="e#9016#9017#0" expanded="true" />
-                <element signature="e#9058#9059#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FileManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/FileManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="101" column="44" selection-start-line="101" selection-start-column="44" selection-end-line="101" selection-end-column="44" />
+              <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gizmos.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/boards/gizmos.txt">
+      <file leaf-file-name="RunGUI.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/view/RunGUI.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="14" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+              <caret line="84" column="47" selection-start-line="84" selection-start-column="47" selection-end-line="84" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SquareBumper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gizmos/SquareBumper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="11" column="50" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -137,11 +138,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProjectManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/ProjectManager.java">
+      <file leaf-file-name="CollisionManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/CollisionManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="44" selection-start-line="28" selection-start-column="44" selection-end-line="28" selection-end-column="44" />
+              <caret line="83" column="29" selection-start-line="83" selection-start-column="29" selection-end-line="83" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -164,7 +165,6 @@
         <option value="$PROJECT_DIR$/src/controller/RunListener.java" />
         <option value="$PROJECT_DIR$/src/controller/MagicKeyListener.java" />
         <option value="$PROJECT_DIR$/src/model/CollisionDetails.java" />
-        <option value="$PROJECT_DIR$/src/gizmos/CircleBumper.java" />
         <option value="$PROJECT_DIR$/src/gizmos/OuterWall.java" />
         <option value="$PROJECT_DIR$/src/gizmos/SquareBumper.java" />
         <option value="$PROJECT_DIR$/src/view/RunGUI.java" />
@@ -175,12 +175,16 @@
         <option value="$PROJECT_DIR$/src/model/CollisionManager.java" />
         <option value="$PROJECT_DIR$/src/MainInit.java" />
         <option value="$PROJECT_DIR$/src/model/FileManager.java" />
-        <option value="$PROJECT_DIR$/src/model/ProjectManager.java" />
-        <option value="$PROJECT_DIR$/src/gizmos/AbstractGizmo.java" />
         <option value="$PROJECT_DIR$/src/gizmos/TriangleBumper.java" />
-        <option value="$PROJECT_DIR$/src/gizmos/Absorber.java" />
+        <option value="$PROJECT_DIR$/src/controller/KeyPressListener.java" />
+        <option value="$PROJECT_DIR$/src/model/ProjectManager.java" />
+        <option value="$PROJECT_DIR$/src/view/BuildBoard.java" />
         <option value="$PROJECT_DIR$/src/view/RunBoard.java" />
+        <option value="$PROJECT_DIR$/src/view/Board.java" />
+        <option value="$PROJECT_DIR$/src/gizmos/AbstractGizmo.java" />
+        <option value="$PROJECT_DIR$/src/gizmos/CircleBumper.java" />
         <option value="$PROJECT_DIR$/src/gizmos/Ball.java" />
+        <option value="$PROJECT_DIR$/src/gizmos/Absorber.java" />
       </list>
     </option>
   </component>
@@ -220,8 +224,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -269,24 +274,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CS308-GizmoBall" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CS308-GizmoBall" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="physics" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -360,7 +347,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -849,7 +835,9 @@
       <workItem from="1456273139825" duration="95000" />
       <workItem from="1456273711494" duration="360000" />
       <workItem from="1456341585615" duration="5803000" />
-      <workItem from="1456349616030" duration="88000" />
+      <workItem from="1456349616030" duration="119000" />
+      <workItem from="1456415678510" duration="16000" />
+      <workItem from="1456415746237" duration="1227000" />
     </task>
     <task id="LOCAL-00001" summary="Partial george merge, code is questionable, possible broken in places but loading is integrated with the master branch, will fix collisions when i merge giorgos">
       <created>1456270949321</created>
@@ -887,11 +875,17 @@
       <option name="project" value="LOCAL" />
       <updated>1456347381532</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Changed the ball radius to use standardised L's instead of an arbritrary number&#10;&#10;((Board.BOARD_WIDTH / Board.X_CELLS))&#10;&#10;is the pixel representation of one L">
+      <created>1456349723853</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1456349723853</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8357000" />
+    <option name="totallyTimeSpent" value="9631000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="251" y="114" width="1863" height="1215" extended-state="0" />
@@ -904,11 +898,12 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32994455" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32994455" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31281197" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32902032" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -920,7 +915,6 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -941,7 +935,8 @@
     <MESSAGE value="Merge remote-tracking branch 'remotes/origin/master' into georgios&#10;&#10;# Conflicts:&#10;#&#9;src/MainInit.java&#10;#&#9;src/model/CollisionManager.java&#10;#&#9;src/model/ProjectManager.java&#10;#&#9;src/view/GizmoPanel.java&#10;#&#9;src/view/RunBoard.java&#10;" />
     <MESSAGE value="Added gravity and friction back" />
     <MESSAGE value="Started tidying up code.&#10;&#10;Collisions work fine, Absorber works fine (integrated jamies code into the Absorber class), Still need to add eddie's flipper stuff, loading works fine&#10;&#10; rotating the MIT physics lines and circles isn't fine at all, will need to do some mad math stuff for the MIT bit. since the easiest way to do it is to probably recreate the whole physics path when rotate is called, won't be intensive on the system because it's only called on load." />
-    <option name="LAST_COMMIT_MESSAGE" value="Started tidying up code.&#10;&#10;Collisions work fine, Absorber works fine (integrated jamies code into the Absorber class), Still need to add eddie's flipper stuff, loading works fine&#10;&#10; rotating the MIT physics lines and circles isn't fine at all, will need to do some mad math stuff for the MIT bit. since the easiest way to do it is to probably recreate the whole physics path when rotate is called, won't be intensive on the system because it's only called on load." />
+    <MESSAGE value="Changed the ball radius to use standardised L's instead of an arbritrary number&#10;&#10;((Board.BOARD_WIDTH / Board.X_CELLS))&#10;&#10;is the pixel representation of one L" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed the ball radius to use standardised L's instead of an arbritrary number&#10;&#10;((Board.BOARD_WIDTH / Board.X_CELLS))&#10;&#10;is the pixel representation of one L" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -952,13 +947,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/view/PlayViewMockup.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/BuildGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -993,7 +981,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="68" column="22" selection-start-line="68" selection-start-column="22" selection-end-line="68" selection-end-column="22" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1026,7 +1016,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="15" column="39" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1052,7 +1042,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1069,7 +1059,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1077,7 +1069,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1085,16 +1079,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="51" column="25" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
-          <folding>
-            <element signature="e#2319#2320#0" expanded="true" />
-            <element signature="e#2342#2343#0" expanded="true" />
-            <element signature="e#2499#2500#0" expanded="true" />
-            <element signature="e#2544#2545#0" expanded="true" />
-            <element signature="e#2907#2908#0" expanded="true" />
-            <element signature="e#2947#2948#0" expanded="true" />
-            <element signature="e#2988#2989#0" expanded="true" />
-            <element signature="e#3019#3020#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1110,7 +1095,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1122,20 +1109,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/GBallGui.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/PlayViewMockup.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/BuildGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1143,67 +1116,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/BuildBoard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/KeyPressListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="40" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/Board.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="47" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/MagicKeyListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.0020704">
           <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/CollisionDetails.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="57" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gizmos/CircleBumper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="50" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gizmos/OuterWall.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gizmos/SquareBumper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="50" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
           <folding />
         </state>
       </provider>
@@ -1220,30 +1136,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gizmos/LeftFlipper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gizmos/RightFlipper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/RunGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="84" column="47" selection-start-line="84" selection-start-column="47" selection-end-line="84" selection-end-column="47" />
           <folding />
         </state>
       </provider>
@@ -1280,16 +1172,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/CollisionManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="83" column="29" selection-start-line="83" selection-start-column="29" selection-end-line="83" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/boards/gizmos.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1302,7 +1184,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="49" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1310,6 +1194,99 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="101" column="44" selection-start-line="101" selection-start-column="44" selection-end-line="101" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/lang/Math.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="234" column="25" selection-start-line="234" selection-start-column="25" selection-end-line="234" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#92217#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#5367#5368#0" expanded="false" />
+            <element signature="e#5448#5449#0" expanded="false" />
+            <element signature="e#5875#5876#0" expanded="false" />
+            <element signature="e#5956#5957#0" expanded="false" />
+            <element signature="e#6491#6492#0" expanded="false" />
+            <element signature="e#6572#6573#0" expanded="false" />
+            <element signature="e#7218#7219#0" expanded="false" />
+            <element signature="e#7300#7301#0" expanded="false" />
+            <element signature="e#7835#7836#0" expanded="false" />
+            <element signature="e#7917#7918#0" expanded="false" />
+            <element signature="e#8525#8526#0" expanded="false" />
+            <element signature="e#8607#8608#0" expanded="false" />
+            <element signature="e#9571#9572#0" expanded="false" />
+            <element signature="e#9613#9614#0" expanded="false" />
+            <element signature="e#10333#10334#0" expanded="false" />
+            <element signature="e#10414#10415#0" expanded="false" />
+            <element signature="e#11119#11120#0" expanded="false" />
+            <element signature="e#11200#11201#0" expanded="false" />
+            <element signature="e#11999#12000#0" expanded="false" />
+            <element signature="e#12082#12083#0" expanded="false" />
+            <element signature="e#14073#14074#0" expanded="false" />
+            <element signature="e#14114#14115#0" expanded="false" />
+            <element signature="e#16338#16339#0" expanded="false" />
+            <element signature="e#16420#16421#0" expanded="false" />
+            <element signature="e#17181#17182#0" expanded="false" />
+            <element signature="e#17264#17265#0" expanded="false" />
+            <element signature="e#18056#18057#0" expanded="false" />
+            <element signature="e#18138#18139#0" expanded="false" />
+            <element signature="e#32010#32011#0" expanded="false" />
+            <element signature="e#32095#32096#0" expanded="false" />
+            <element signature="e#45577#45578#0" expanded="false" />
+            <element signature="e#45622#45623#0" expanded="false" />
+            <element signature="e#46227#46228#0" expanded="false" />
+            <element signature="e#46266#46267#0" expanded="false" />
+            <element signature="e#46871#46872#0" expanded="false" />
+            <element signature="e#46910#46911#0" expanded="false" />
+            <element signature="e#47714#47715#0" expanded="false" />
+            <element signature="e#47763#47764#0" expanded="false" />
+            <element signature="e#48572#48573#0" expanded="false" />
+            <element signature="e#48621#48622#0" expanded="false" />
+            <element signature="e#49043#49044#0" expanded="false" />
+            <element signature="e#49082#49083#0" expanded="false" />
+            <element signature="e#49505#49506#0" expanded="false" />
+            <element signature="e#49544#49545#0" expanded="false" />
+            <element signature="e#52232#52233#0" expanded="false" />
+            <element signature="e#52271#52272#0" expanded="false" />
+            <element signature="e#52695#52696#0" expanded="false" />
+            <element signature="e#52734#52735#0" expanded="false" />
+            <element signature="e#59392#59393#0" expanded="false" />
+            <element signature="e#59463#59464#0" expanded="false" />
+            <element signature="e#60118#60119#0" expanded="false" />
+            <element signature="e#60190#60191#0" expanded="false" />
+            <element signature="e#61077#61078#0" expanded="false" />
+            <element signature="e#61118#61119#0" expanded="false" />
+            <element signature="e#61947#61948#0" expanded="false" />
+            <element signature="e#61988#61989#0" expanded="false" />
+            <element signature="e#63429#63430#0" expanded="false" />
+            <element signature="e#63470#63471#0" expanded="false" />
+            <element signature="e#64310#64311#0" expanded="false" />
+            <element signature="e#64355#64356#0" expanded="false" />
+            <element signature="e#65701#65702#0" expanded="false" />
+            <element signature="e#65743#65744#0" expanded="false" />
+            <element signature="e#66828#66829#0" expanded="false" />
+            <element signature="e#66870#66871#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/physics/SimpleGeometry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="69" column="13" selection-start-line="69" selection-start-column="13" selection-end-line="69" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/KeyPressListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
           <folding />
         </state>
       </provider>
@@ -1317,25 +1294,91 @@
     <entry file="file://$PROJECT_DIR$/src/model/ProjectManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="44" selection-start-line="28" selection-start-column="44" selection-end-line="28" selection-end-column="44" />
+          <caret line="78" column="5" selection-start-line="78" selection-start-column="5" selection-end-line="78" selection-end-column="5" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/BuildBoard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+          <folding>
+            <element signature="e#263#264#0" expanded="true" />
+            <element signature="e#309#310#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gizmos/AbstractGizmo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="46" column="23" selection-start-line="46" selection-start-column="23" selection-end-line="46" selection-end-column="23" />
-          <folding>
-            <element signature="e#2319#2320#0" expanded="true" />
-            <element signature="e#2342#2343#0" expanded="true" />
-            <element signature="e#2499#2500#0" expanded="true" />
-            <element signature="e#2544#2545#0" expanded="true" />
-            <element signature="e#2907#2908#0" expanded="true" />
-            <element signature="e#2947#2948#0" expanded="true" />
-            <element signature="e#2988#2989#0" expanded="true" />
-            <element signature="e#3019#3020#0" expanded="true" />
-          </folding>
+          <caret line="31" column="48" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gizmos/LeftFlipper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gizmos/RightFlipper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/CollisionDetails.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="57" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/CollisionManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="83" column="29" selection-start-line="83" selection-start-column="29" selection-end-line="83" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gizmos/Ball.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="43" column="114" selection-start-line="43" selection-start-column="114" selection-end-line="43" selection-end-column="114" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gizmos/CircleBumper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="35" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gizmos/SquareBumper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="50" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1350,34 +1393,39 @@
     <entry file="file://$PROJECT_DIR$/src/gizmos/Absorber.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="67" column="31" selection-start-line="67" selection-start-column="31" selection-end-line="67" selection-end-column="31" />
+          <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/lang/Math.java">
+    <entry file="file://$PROJECT_DIR$/src/gizmos/OuterWall.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="234" column="25" selection-start-line="234" selection-start-column="25" selection-end-line="234" selection-end-column="25" />
-          <folding>
-            <element signature="e#9016#9017#0" expanded="true" />
-            <element signature="e#9058#9059#0" expanded="true" />
-          </folding>
+          <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/RunGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="84" column="47" selection-start-line="84" selection-start-column="47" selection-end-line="84" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/GBallGui.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view/RunBoard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="33" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gizmos/Ball.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17073171">
-          <caret line="11" column="41" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="76" />
+        <state vertical-scroll-proportion="0.9032258">
+          <caret line="64" column="36" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
           <folding />
         </state>
       </provider>

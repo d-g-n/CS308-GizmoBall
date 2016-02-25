@@ -20,7 +20,7 @@ public class ProjectManager extends Observable{
 
 	public ProjectManager(){
 		boardGizmos = new ArrayList<AbstractGizmo>();
-		ball = new Ball(15, 10, new Vect(0,50));
+		ball = new Ball(15, 10, new Vect(0,0));
 		cManager = new CollisionManager(this);
 
 		// HARDCODED GIZMO DEFS (mind the outer walls are never supposed to actually be in 0 -> 19)
@@ -30,6 +30,8 @@ public class ProjectManager extends Observable{
 
 		addGizmo(new OuterWall(20, -1, 1, 22)); // start at top right, 22 down y
 		addGizmo(new OuterWall(-1, 20, 22, 1)); // start at bottom left, 22 along x
+
+		addGizmo(ball);
 
 		this.setChanged();
 		this.notifyObservers();

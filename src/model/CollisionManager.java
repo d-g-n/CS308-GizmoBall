@@ -24,7 +24,7 @@ public class CollisionManager extends Observable {
 
 	public void moveBall() {
 
-		if(ball.stopped())
+		if(ball.isStopped())
 			return;
 
 

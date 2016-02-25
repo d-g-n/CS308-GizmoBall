@@ -16,7 +16,7 @@ public class Absorber extends AbstractGizmo {
 
 		super(x, y, w, h,
 				Color.magenta, // colour of gizmo
-				0.95 // reflection coefficent
+				0 // reflection coefficent
 		);
 
 
@@ -51,11 +51,13 @@ public class Absorber extends AbstractGizmo {
 
 		Ball boardBall = ProjectManager.getBall();
 
-		boardBall.stop();
+		boardBall.setStopped(true);
+
+		boardBall.setVelocity(new Vect(0, 0));
 
 		boardBall.setPos(xpos + width - boardBall.getRadius(), ypos);
 
-		boardBall.setVelocity(new Vect(0, 0));
+
 
 
 		super.onHit();
@@ -72,12 +74,12 @@ public class Absorber extends AbstractGizmo {
 
 		Ball boardBall = ProjectManager.getBall();
 
-		if(boardBall.stopped()){
-			boardBall.start();
+		if(boardBall.isStopped()){
+			boardBall.setStopped(false);
 
 			Random randNum = new Random();
 
-			boardBall.setVelocity(new Vect(randNum.nextDouble() *  -20 * (Board.BOARD_HEIGHT / Board.Y_CELLS), -50 * (Board.BOARD_HEIGHT / Board.Y_CELLS)));
+			boardBall.setVelocity(new Vect(randNum.nextDouble() *  Board.convertLtoPix(-20), Board.convertLtoPix(-50)));
 		}
 
 	}
