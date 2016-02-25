@@ -37,7 +37,12 @@ public class LeftFlipper extends Flipper {
 
 				AffineTransform at = new AffineTransform();
 
+				if((flipRotation - angleVel) < 90)
+					angleVel = flipRotation - 90;
+
 				at.rotate(Math.toRadians(-angleVel), xpos + (width * 0.125), ypos + (height * 0.125));
+
+				super.rotatePhysicsAroundPoint(xpos + (width * 0.125), ypos + (height * 0.125), -angleVel);
 
 
 				Shape path = at.createTransformedShape(super.getShape());

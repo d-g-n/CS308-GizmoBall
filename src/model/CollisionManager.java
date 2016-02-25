@@ -60,7 +60,7 @@ public class CollisionManager extends Observable {
 				timeToCollision = Geometry.timeUntilWallCollision(line, ball.getCircle(), velocity);
 				if (timeToCollision < shortestTime) {
 					shortestTime = timeToCollision;
-					newVelocity = Geometry.reflectWall(line, velocity, 1.0);
+					newVelocity = Geometry.reflectWall(line, velocity, gizmo.getReflectionCoefficient());
 					hitGiz = gizmo;
 				}
 			}
@@ -69,7 +69,7 @@ public class CollisionManager extends Observable {
 				if (timeToCollision < shortestTime) {
 					shortestTime = timeToCollision;
 					newVelocity = Geometry.reflectCircle(circle.getCenter(), ball.getCircle().getCenter(),
-							velocity,1);
+							velocity, gizmo.getReflectionCoefficient());
 					hitGiz = gizmo;
 				}
 			}

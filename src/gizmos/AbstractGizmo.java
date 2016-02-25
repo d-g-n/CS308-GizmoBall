@@ -44,18 +44,24 @@ public abstract class AbstractGizmo {
 	public void rotateClockwise(){ // this is experimental
 		gizAngle += 90;
 
-		// this needs work
-		/*
+		rotatePhysicsAroundPoint(xpos + (width/2), ypos + (height/2), 90);
+
+	}
+
+	public void rotatePhysicsAroundPoint(double pivotX, double pivotY, double degrees){
+
+		double rad = Math.toRadians(degrees);
+
 		List<Circle> tempCirc = new ArrayList<>();
 
 		for(Circle c : StoredCircles){
 
-			double x1 = c.getCenter().x() - width/2;
-			double y1 = c.getCenter().y() - height/2;
+			double x1 = c.getCenter().x();
+			double y1 = c.getCenter().y();
 
 			tempCirc.add(new Circle(
-					x1 * Math.cos(Math.toRadians(90)) - y1 * Math.sin(Math.toRadians(90)),
-					x1 * Math.sin(Math.toRadians(90)) + y1 * Math.cos(Math.toRadians(90)),
+					Math.cos(rad) * (x1 - pivotX) - Math.sin(rad) * (y1 - pivotY) + pivotX,
+					Math.sin(rad) * (x1 - pivotX) + Math.cos(rad) * (y1 - pivotY) + pivotY,
 					c.getRadius()
 			));
 		}
@@ -66,23 +72,21 @@ public abstract class AbstractGizmo {
 
 		for(LineSegment ls : StoredLines){
 
-			double x1 = ls.p1().x() - width/2;
-			double y1 = ls.p1().y() - height/2;
+			double x1 = ls.p1().x();
+			double y1 = ls.p1().y();
 
-			double x2 = ls.p2().x() - width/2;
-			double y2 = ls.p2().y() - height/2;
+			double x2 = ls.p2().x();
+			double y2 = ls.p2().y();
 
 			tempLine.add(new LineSegment(
-					x1 * Math.cos(Math.toRadians(90)) - y1 * Math.sin(Math.toRadians(90)),
-					x1 * Math.sin(Math.toRadians(90)) + y1 * Math.cos(Math.toRadians(90)),
-					x2 * Math.cos(Math.toRadians(90)) - y2 * Math.sin(Math.toRadians(90)),
-					x2 * Math.sin(Math.toRadians(90)) + y2 * Math.cos(Math.toRadians(90))
+					Math.cos(rad) * (x1 - pivotX) - Math.sin(rad) * (y1 - pivotY) + pivotX,
+					Math.sin(rad) * (x1 - pivotX) + Math.cos(rad) * (y1 - pivotY) + pivotY,
+					Math.cos(rad) * (x2 - pivotX) - Math.sin(rad) * (y2 - pivotY) + pivotX,
+					Math.sin(rad) * (x2 - pivotX) + Math.cos(rad) * (y2 - pivotY) + pivotY
 			));
 		}
 
 		StoredLines = tempLine;
-		*/
-
 	}
 
 	public void setName(String name){
@@ -145,6 +149,11 @@ public abstract class AbstractGizmo {
 		// there is no default action but needed here to override it.
 	}
 
+
+
+	public Vect getCenter() {
+		return new Vect(xpos + (width / 2), ypos + (height / 2));
+	}
 
 	public Shape getShape(){ return gizShape; }
 

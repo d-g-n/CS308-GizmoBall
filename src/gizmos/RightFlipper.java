@@ -36,7 +36,14 @@ public class RightFlipper extends Flipper {
 
 				AffineTransform at = new AffineTransform();
 
+				if((flipRotation + angleVel) > 270)
+					angleVel = 270 - flipRotation;
+
+				// note anglevel is the degrees to rotate this draw iteration
+
 				at.rotate(Math.toRadians(angleVel), xpos + (width * 0.125), ypos + (height * 0.125));
+
+				super.rotatePhysicsAroundPoint(xpos + (width * 0.125), ypos + (height * 0.125), angleVel);
 
 
 				Shape path = at.createTransformedShape(super.getShape());
@@ -48,6 +55,10 @@ public class RightFlipper extends Flipper {
 			}
 
 		}
+
+		// set the physics to map to the bounding box of the 2d shape
+
+
 
 		return super.getShape();
 	}
