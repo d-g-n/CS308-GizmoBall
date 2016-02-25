@@ -10,14 +10,11 @@
     <bookmark url="file://$PROJECT_DIR$/src/model/FileManager.java" line="18" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ba8a27f3-a444-45e2-a0a5-81e76341a790" name="Default" comment="">
+    <list default="true" id="ba8a27f3-a444-45e2-a0a5-81e76341a790" name="Default" comment="Finished flipper collisions, works as intended in the spec now.&#10;&#10;Flips to the other point when it's triggered, right now it's just triggered on touch but with keypresses hooked in it should be triggered both on push down and release">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gizmos/Absorber.java" afterPath="$PROJECT_DIR$/src/gizmos/Absorber.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gizmos/AbstractGizmo.java" afterPath="$PROJECT_DIR$/src/gizmos/AbstractGizmo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gizmos/Flipper.java" afterPath="$PROJECT_DIR$/src/gizmos/Flipper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gizmos/LeftFlipper.java" afterPath="$PROJECT_DIR$/src/gizmos/LeftFlipper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gizmos/RightFlipper.java" afterPath="$PROJECT_DIR$/src/gizmos/RightFlipper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/CollisionManager.java" afterPath="$PROJECT_DIR$/src/model/CollisionManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/ProjectManager.java" afterPath="$PROJECT_DIR$/src/model/ProjectManager.java" />
     </list>
     <ignored path="CS308-GizmoBall.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,11 +37,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Absorber.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Absorber.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gizmos/Absorber.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.68292683">
-              <caret line="77" column="40" selection-start-line="77" selection-start-column="40" selection-end-line="77" selection-end-column="40" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -77,11 +74,8 @@
         <entry file="file://$PROJECT_DIR$/src/gizmos/LeftFlipper.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="44" column="97" selection-start-line="44" selection-start-column="97" selection-end-line="44" selection-end-column="97" />
-              <folding>
-                <element signature="e#518#519#0" expanded="true" />
-                <element signature="e#550#551#0" expanded="true" />
-              </folding>
+              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -110,21 +104,23 @@
         <entry file="file://$PROJECT_DIR$/src/gizmos/RightFlipper.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="45" column="16" selection-start-line="45" selection-start-column="16" selection-end-line="46" selection-end-column="0" />
-              <folding>
-                <element signature="e#351#352#0" expanded="true" />
-                <element signature="e#383#384#0" expanded="true" />
-              </folding>
+              <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Flipper.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Flipper.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/gizmos/Flipper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="42" column="31" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
-              <folding />
+            <state vertical-scroll-proportion="0.4878049">
+              <caret line="69" column="53" selection-start-line="69" selection-start-column="53" selection-end-line="69" selection-end-column="53" />
+              <folding>
+                <element signature="e#1370#1371#0" expanded="true" />
+                <element signature="e#1402#1403#0" expanded="true" />
+                <element signature="e#2950#2951#0" expanded="true" />
+                <element signature="e#2972#2973#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -180,13 +176,13 @@
         <option value="$PROJECT_DIR$/src/gizmos/Ball.java" />
         <option value="$PROJECT_DIR$/src/model/FileManager.java" />
         <option value="$PROJECT_DIR$/src/view/Board.java" />
-        <option value="$PROJECT_DIR$/src/gizmos/Flipper.java" />
         <option value="$PROJECT_DIR$/src/model/ProjectManager.java" />
         <option value="$PROJECT_DIR$/src/model/CollisionManager.java" />
-        <option value="$PROJECT_DIR$/src/gizmos/RightFlipper.java" />
-        <option value="$PROJECT_DIR$/src/gizmos/LeftFlipper.java" />
         <option value="$PROJECT_DIR$/src/gizmos/AbstractGizmo.java" />
         <option value="$PROJECT_DIR$/src/gizmos/Absorber.java" />
+        <option value="$PROJECT_DIR$/src/gizmos/RightFlipper.java" />
+        <option value="$PROJECT_DIR$/src/gizmos/LeftFlipper.java" />
+        <option value="$PROJECT_DIR$/src/gizmos/Flipper.java" />
       </list>
     </option>
   </component>
@@ -844,7 +840,7 @@
       <workItem from="1456341585615" duration="5803000" />
       <workItem from="1456349616030" duration="119000" />
       <workItem from="1456415678510" duration="16000" />
-      <workItem from="1456415746237" duration="8266000" />
+      <workItem from="1456415746237" duration="9631000" />
     </task>
     <task id="LOCAL-00001" summary="Partial george merge, code is questionable, possible broken in places but loading is integrated with the master branch, will fix collisions when i merge giorgos">
       <created>1456270949321</created>
@@ -900,11 +896,17 @@
       <option name="project" value="LOCAL" />
       <updated>1456420812120</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Physics rotations work now. note that the collisions do actually work with flippers-in-motion but the angular velocity of the flipper in motion needs to be used in the collision code to actually punt the ball properly, right now it just bounces off wherever the linesegment is in the flippers current rotation and continues falling">
+      <created>1456428344217</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1456428344217</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16670000" />
+    <option name="totallyTimeSpent" value="18035000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="108" y="144" width="1863" height="1215" extended-state="0" />
@@ -957,7 +959,8 @@
     <MESSAGE value="Changed the ball radius to use standardised L's instead of an arbritrary number&#10;&#10;((Board.BOARD_WIDTH / Board.X_CELLS))&#10;&#10;is the pixel representation of one L" />
     <MESSAGE value="More tidying, added helper function Board.convertLtoPixels to convert L values into pixel values, changed board from interface to just a standard static value storing class because it was fairly redundant as an interface.&#10;could probably consider renaming it to indicate it's a helper class and add another interface that Runboard and buildboard would actually use implemented methods for.&#10;&#10;Ball is an abstractgizmo again, still works with everything and code is mostly unchanged.&#10;&#10;Flippers still need work, will need to implement what eddie said about having a flipper superclass that gets extended by the left and right flipper class" />
     <MESSAGE value="Made a start converting eddies existing prototype code to stuff that fits better with the current onHit, doTrigger, listener system thing. works for the most part but it keeps overshooting 90 degrees, dunno why, might be something to do with applying at.rotate on the last iteration but not setting the shape to be 90 degrees after the full rotate or something. needs work&#10;&#10;uses the flipper superclass for flipper specific storage of stuff like angular velocity and how to differentate between drawing right and left flippers with an xpos modifier in the constructor.&#10;&#10;still need to make it update the physics path on every iteration but i'll do that later&#10;&#10;&#10;also affinetransform is the devil" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made a start converting eddies existing prototype code to stuff that fits better with the current onHit, doTrigger, listener system thing. works for the most part but it keeps overshooting 90 degrees, dunno why, might be something to do with applying at.rotate on the last iteration but not setting the shape to be 90 degrees after the full rotate or something. needs work&#10;&#10;uses the flipper superclass for flipper specific storage of stuff like angular velocity and how to differentate between drawing right and left flippers with an xpos modifier in the constructor.&#10;&#10;still need to make it update the physics path on every iteration but i'll do that later&#10;&#10;&#10;also affinetransform is the devil" />
+    <MESSAGE value="Physics rotations work now. note that the collisions do actually work with flippers-in-motion but the angular velocity of the flipper in motion needs to be used in the collision code to actually punt the ball properly, right now it just bounces off wherever the linesegment is in the flippers current rotation and continues falling" />
+    <option name="LAST_COMMIT_MESSAGE" value="Physics rotations work now. note that the collisions do actually work with flippers-in-motion but the angular velocity of the flipper in motion needs to be used in the collision code to actually punt the ball properly, right now it just bounces off wherever the linesegment is in the flippers current rotation and continues falling" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1373,14 +1376,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gizmos/OuterWall.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/RunListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1393,14 +1388,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="44" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gizmos/Flipper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="42" column="31" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
           <folding />
         </state>
       </provider>
@@ -1421,28 +1408,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gizmos/RightFlipper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="45" column="16" selection-start-line="45" selection-start-column="16" selection-end-line="46" selection-end-column="0" />
-          <folding>
-            <element signature="e#351#352#0" expanded="true" />
-            <element signature="e#383#384#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gizmos/LeftFlipper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="97" selection-start-line="44" selection-start-column="97" selection-end-line="44" selection-end-column="97" />
-          <folding>
-            <element signature="e#518#519#0" expanded="true" />
-            <element signature="e#550#551#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gizmos/AbstractGizmo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1456,9 +1421,46 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gizmos/Absorber.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.68292683">
-          <caret line="77" column="40" selection-start-line="77" selection-start-column="40" selection-end-line="77" selection-end-column="40" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gizmos/OuterWall.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gizmos/LeftFlipper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gizmos/RightFlipper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gizmos/Flipper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4878049">
+          <caret line="69" column="53" selection-start-line="69" selection-start-column="53" selection-end-line="69" selection-end-column="53" />
+          <folding>
+            <element signature="e#1370#1371#0" expanded="true" />
+            <element signature="e#1402#1403#0" expanded="true" />
+            <element signature="e#2950#2951#0" expanded="true" />
+            <element signature="e#2972#2973#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

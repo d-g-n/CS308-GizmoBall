@@ -8,7 +8,7 @@ import java.awt.geom.RoundRectangle2D;
 import java.util.Arrays;
 
 public class Flipper extends AbstractGizmo {
-	boolean flipperMoving;
+	boolean flipperMoving, rotateClockwise;
 	double angleVel, flipRotation;
 
 	public Flipper(int x, int y, double xmod) {
@@ -46,6 +46,76 @@ public class Flipper extends AbstractGizmo {
 		// FOR DEBUGGING, ADD ALL FLIPPERS TO THEIR OWN LISTENER LIST TO ENABLE AUTO FLIPPING
 
 		this.addGizmoListener(this);
+	}
+
+	// note to whoever, this is fired whenever a button that's linked to this gizmo is pressed or if
+	// the ball touches another gizmo that's linked to this gizmo
+	// to debug all flippers are linked to themselves as in the Flipper class
+	@Override
+	public void doTrigger(){
+		this.flipperMoving = true;
+	}
+
+	public void flipClockwise(int toDegrees){
+		if (flipRotation >= toDegrees) {
+
+			rotateClockwise = !rotateClockwise;
+			flipperMoving = false;
+			flipRotation = toDegrees; // make it start going in reverse or something
+
+		} else {
+
+			AffineTransform at = new AffineTransform();
+
+			if((flipRotation + angleVel) > toDegrees)
+				angleVel = toDegrees - flipRotation;
+
+			// note anglevel is the degrees to rotate this draw iteration
+
+			at.rotate(Math.toRadians(angleVel), xpos + (width * 0.125), ypos + (height * 0.125));
+
+			super.rotatePhysicsAroundPoint(xpos + (width * 0.125), ypos + (height * 0.125), angleVel);
+
+
+			Shape path = at.createTransformedShape(super.getShape());
+
+			super.setShape(path);
+
+			flipRotation += angleVel; // because it rotates counterclockwise
+
+		}
+	}
+
+	public void flipAntiClockwise(int toDegrees){
+		if (flipRotation <= toDegrees) {
+
+			rotateClockwise = !rotateClockwise;
+			flipperMoving = false;
+			flipRotation = toDegrees; // make it start going in reverse or something
+
+		} else {
+
+			AffineTransform at = new AffineTransform();
+
+			if((flipRotation - angleVel) < toDegrees)
+				angleVel = flipRotation - toDegrees;
+
+			at.rotate(Math.toRadians(-angleVel), xpos + (width * 0.125), ypos + (height * 0.125));
+
+			super.rotatePhysicsAroundPoint(xpos + (width * 0.125), ypos + (height * 0.125), -angleVel);
+
+
+			Shape path = at.createTransformedShape(super.getShape());
+
+			super.setShape(path);
+
+			flipRotation -= angleVel; // because it rotates counterclockwise
+
+		}
+	}
+
+	public double getAngularVelocity(){
+		return angleVel;
 	}
 
 

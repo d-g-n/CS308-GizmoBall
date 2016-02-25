@@ -11,46 +11,20 @@ public class LeftFlipper extends Flipper {
 
 		super(x, y, 0);
 
-
+		rotateClockwise = false;
 
 	}
 
-	// note to whoever, this is fired whenever a button that's linked to this gizmo is pressed or if
-	// the ball touches another gizmo that's linked to this gizmo
-	// to debug all flippers are linked to themselves as in the Flipper class
-	@Override
-	public void doTrigger(){
-		this.flipperMoving = true;
-	}
 
 	@Override
 	public Shape getShape() {
 
 		if(flipperMoving){
 
-			if (flipRotation <= 90) {
-
-				flipperMoving = false;
-				flipRotation = 90; // make it start going in reverse or something
-
+			if(!rotateClockwise) {
+				flipAntiClockwise(90);
 			} else {
-
-				AffineTransform at = new AffineTransform();
-
-				if((flipRotation - angleVel) < 90)
-					angleVel = flipRotation - 90;
-
-				at.rotate(Math.toRadians(-angleVel), xpos + (width * 0.125), ypos + (height * 0.125));
-
-				super.rotatePhysicsAroundPoint(xpos + (width * 0.125), ypos + (height * 0.125), -angleVel);
-
-
-				Shape path = at.createTransformedShape(super.getShape());
-
-				super.setShape(path);
-
-				flipRotation -= angleVel; // because it rotates counterclockwise
-
+				flipClockwise(180);
 			}
 
 		}

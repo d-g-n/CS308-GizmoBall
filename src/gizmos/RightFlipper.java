@@ -15,11 +15,8 @@ public class RightFlipper extends Flipper {
 	public RightFlipper(int x, int y) {
 		super(x, y, 0.75);
 
-	}
+		rotateClockwise = true;
 
-	@Override
-	public void doTrigger(){
-		this.flipperMoving = true;
 	}
 
 	@Override
@@ -27,38 +24,13 @@ public class RightFlipper extends Flipper {
 
 		if(flipperMoving){
 
-			if (flipRotation >= 270) {
-
-				flipperMoving = false;
-				flipRotation = 270; // make it start going in reverse or something
-
+			if(rotateClockwise) {
+				flipClockwise(270);
 			} else {
-
-				AffineTransform at = new AffineTransform();
-
-				if((flipRotation + angleVel) > 270)
-					angleVel = 270 - flipRotation;
-
-				// note anglevel is the degrees to rotate this draw iteration
-
-				at.rotate(Math.toRadians(angleVel), xpos + (width * 0.125), ypos + (height * 0.125));
-
-				super.rotatePhysicsAroundPoint(xpos + (width * 0.125), ypos + (height * 0.125), angleVel);
-
-
-				Shape path = at.createTransformedShape(super.getShape());
-
-				super.setShape(path);
-
-				flipRotation += angleVel; // because it rotates counterclockwise
-
+				flipAntiClockwise(180);
 			}
 
 		}
-
-		// set the physics to map to the bounding box of the 2d shape
-
-
 
 		return super.getShape();
 	}
