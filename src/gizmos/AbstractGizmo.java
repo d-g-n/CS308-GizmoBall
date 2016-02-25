@@ -1,8 +1,6 @@
 package gizmos;
 
-import physics.Circle;
-import physics.LineSegment;
-import physics.Vect;
+import physics.*;
 import view.Board;
 
 import java.awt.*;
@@ -50,20 +48,14 @@ public abstract class AbstractGizmo {
 
 	public void rotatePhysicsAroundPoint(double pivotX, double pivotY, double degrees){
 
-		double rad = Math.toRadians(degrees);
+		Angle rad = new Angle(Math.toRadians(degrees));
 
 		List<Circle> tempCirc = new ArrayList<>();
 
 		for(Circle c : StoredCircles){
 
-			double x1 = c.getCenter().x();
-			double y1 = c.getCenter().y();
+			tempCirc.add(Geometry.rotateAround(c, new Vect(pivotX, pivotY), rad));
 
-			tempCirc.add(new Circle(
-					Math.cos(rad) * (x1 - pivotX) - Math.sin(rad) * (y1 - pivotY) + pivotX,
-					Math.sin(rad) * (x1 - pivotX) + Math.cos(rad) * (y1 - pivotY) + pivotY,
-					c.getRadius()
-			));
 		}
 
 		StoredCircles = tempCirc;
@@ -72,18 +64,7 @@ public abstract class AbstractGizmo {
 
 		for(LineSegment ls : StoredLines){
 
-			double x1 = ls.p1().x();
-			double y1 = ls.p1().y();
-
-			double x2 = ls.p2().x();
-			double y2 = ls.p2().y();
-
-			tempLine.add(new LineSegment(
-					Math.cos(rad) * (x1 - pivotX) - Math.sin(rad) * (y1 - pivotY) + pivotX,
-					Math.sin(rad) * (x1 - pivotX) + Math.cos(rad) * (y1 - pivotY) + pivotY,
-					Math.cos(rad) * (x2 - pivotX) - Math.sin(rad) * (y2 - pivotY) + pivotX,
-					Math.sin(rad) * (x2 - pivotX) + Math.cos(rad) * (y2 - pivotY) + pivotY
-			));
+			tempLine.add(Geometry.rotateAround(ls, new Vect(pivotX, pivotY), rad));
 		}
 
 		StoredLines = tempLine;
