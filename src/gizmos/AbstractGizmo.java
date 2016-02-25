@@ -23,10 +23,10 @@ public abstract class AbstractGizmo {
 	protected Shape gizShape;
 
 	public AbstractGizmo(double x, double y, double width, double height, Color c, double rc) {
-		this.xpos = Board.convertLtoPix(x);
-		this.ypos = Board.convertLtoPix(y);
-		this.width = Board.convertLtoPix(width);
-		this.height = Board.convertLtoPix(height);
+		this.xpos = x;
+		this.ypos = y;
+		this.width = width;
+		this.height = height;
 
 		this.gizAngle = 0;
 

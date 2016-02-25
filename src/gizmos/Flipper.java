@@ -34,8 +34,8 @@ public class Flipper extends AbstractGizmo {
 				(ypos),
 				(width) * 0.25,
 				(height),
-				100,
-				25
+				25,
+				100
 		));
 
 		// flipper specific things

@@ -9,8 +9,4 @@ public final class Board {
 	public static final int BOARD_HEIGHT = 800;
 	public static final double MOVE_TIME = 0.01; // this is one frame every 0.01 seconds
 
-
-	public static double convertLtoPix(double lValue){
-		return lValue * (BOARD_WIDTH / X_CELLS);
-	}
 }

@@ -9,7 +9,7 @@ import java.awt.*;
 public class Ball extends AbstractGizmo {
 
 	private Vect velocity;
-	private final double radius = 0.25 * (Board.BOARD_WIDTH / Board.X_CELLS);
+	private final double radius = 0.25;
 
 	private boolean stopped;
 
@@ -34,7 +34,7 @@ public class Ball extends AbstractGizmo {
 
 	public void applyGravityConstant(double tickTime) {
 		
-		Vect gravityApplied = new Vect(velocity.x(), velocity.y() + ((Board.convertLtoPix(25)) * tickTime));
+		Vect gravityApplied = new Vect(velocity.x(), velocity.y() + ((25) * tickTime));
 		
 		this.setVelocity(gravityApplied);
 	}

@@ -33,7 +33,14 @@ public class RunBoard extends JPanel {
 		for (AbstractGizmo gizmo : pm.getBoardGizmos()) {
 			AffineTransform pT = g2d.getTransform();
 
+
 			Shape shape = gizmo.getShape();
+			AffineTransform shapeT = new AffineTransform();
+
+			double scaleFactor = (Board.BOARD_WIDTH / Board.X_CELLS);
+			shapeT.scale(scaleFactor, scaleFactor);
+
+			shape = shapeT.createTransformedShape(shape);
 
 			g.setColor(gizmo.getGizCol());
 			g2d.rotate(

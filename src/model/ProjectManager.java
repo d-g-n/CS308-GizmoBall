@@ -20,7 +20,7 @@ public class ProjectManager extends Observable{
 
 	public ProjectManager(){
 		boardGizmos = new ArrayList<AbstractGizmo>();
-		ball = new Ball(5, 1, new Vect(100, 0));
+		ball = new Ball(5, 1, new Vect(10, 0));
 		cManager = new CollisionManager(this);
 
 		// HARDCODED GIZMO DEFS (mind the outer walls are never supposed to actually be in 0 -> 19)

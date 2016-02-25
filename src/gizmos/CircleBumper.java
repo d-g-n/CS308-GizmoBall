@@ -15,7 +15,7 @@ public class CircleBumper extends AbstractGizmo {
 				1 // reflection coefficent
 		);
 
-		this.radius = Board.convertLtoPix(0.5);
+		this.radius = 0.5;
 
 		addPhysicsCircle(xpos + radius, ypos + radius, radius);
 

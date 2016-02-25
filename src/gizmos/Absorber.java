@@ -77,7 +77,7 @@ public class Absorber extends AbstractGizmo {
 		if(boardBall.isStopped()){
 			boardBall.setStopped(false);
 
-			boardBall.setVelocity(new Vect(0, Board.convertLtoPix(-50)));
+			boardBall.setVelocity(new Vect(0, -50));
 		}
 
 	}
