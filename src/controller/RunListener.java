@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 import model.ProjectManager;
+import view.Board;
 
 public class RunListener implements ActionListener {
 
@@ -13,7 +14,7 @@ public class RunListener implements ActionListener {
 
 	public RunListener(ProjectManager model) {
 		this.pm = model;
-		timer = new Timer(25, this);
+		timer = new Timer((int) (Board.MOVE_TIME * 1000), this);
 		timer.start();
 	}
 

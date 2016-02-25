@@ -10,10 +10,9 @@
     <bookmark url="file://$PROJECT_DIR$/src/model/FileManager.java" line="18" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ba8a27f3-a444-45e2-a0a5-81e76341a790" name="Default" comment="in motion collisions with the flippers kinda work, bit dodgy though because it can't differentiate between clockwise angular velocity and anti-clockwise angular velocity but works for the most part i think&#10;&#10;flippers work">
+    <list default="true" id="ba8a27f3-a444-45e2-a0a5-81e76341a790" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gizmos/AbstractGizmo.java" afterPath="$PROJECT_DIR$/src/gizmos/AbstractGizmo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gizmos/Flipper.java" afterPath="$PROJECT_DIR$/src/gizmos/Flipper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/RunListener.java" afterPath="$PROJECT_DIR$/src/controller/RunListener.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/CollisionManager.java" afterPath="$PROJECT_DIR$/src/model/CollisionManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/Board.java" afterPath="$PROJECT_DIR$/src/view/Board.java" />
     </list>
@@ -68,6 +67,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Ball.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/gizmos/Ball.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6585366">
+              <caret line="43" column="114" selection-start-line="43" selection-start-column="114" selection-end-line="43" selection-end-column="114" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="CollisionDetails.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/CollisionDetails.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -95,21 +104,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Angle.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/physics/Angle.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="94" column="9" selection-start-line="94" selection-start-column="9" selection-end-line="94" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="CollisionManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/CollisionManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="31" column="58" selection-start-line="31" selection-start-column="58" selection-end-line="31" selection-end-column="58" />
+              <caret line="45" column="35" selection-start-line="45" selection-start-column="35" selection-end-line="45" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -119,7 +118,17 @@
         <entry file="file://$PROJECT_DIR$/src/view/Board.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RunListener.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controller/RunListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="31" column="30" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -145,20 +154,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RightFlipper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gizmos/RightFlipper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Flipper.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Flipper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gizmos/Flipper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3902439">
+            <state vertical-scroll-proportion="0.0">
               <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
               <folding>
                 <element signature="e#1470#1471#0" expanded="true" />
@@ -182,7 +181,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/gizmos/BallActor.java" />
-        <option value="$PROJECT_DIR$/src/controller/RunListener.java" />
         <option value="$PROJECT_DIR$/src/controller/MagicKeyListener.java" />
         <option value="$PROJECT_DIR$/src/model/CollisionDetails.java" />
         <option value="$PROJECT_DIR$/src/gizmos/OuterWall.java" />
@@ -203,9 +201,10 @@
         <option value="$PROJECT_DIR$/src/gizmos/RightFlipper.java" />
         <option value="$PROJECT_DIR$/src/gizmos/LeftFlipper.java" />
         <option value="$PROJECT_DIR$/src/gizmos/AbstractGizmo.java" />
-        <option value="$PROJECT_DIR$/src/model/CollisionManager.java" />
-        <option value="$PROJECT_DIR$/src/view/Board.java" />
         <option value="$PROJECT_DIR$/src/gizmos/Flipper.java" />
+        <option value="$PROJECT_DIR$/src/controller/RunListener.java" />
+        <option value="$PROJECT_DIR$/src/view/Board.java" />
+        <option value="$PROJECT_DIR$/src/model/CollisionManager.java" />
       </list>
     </option>
   </component>
@@ -881,7 +880,7 @@
       <workItem from="1456341585615" duration="5803000" />
       <workItem from="1456349616030" duration="119000" />
       <workItem from="1456415678510" duration="16000" />
-      <workItem from="1456415746237" duration="12029000" />
+      <workItem from="1456415746237" duration="12989000" />
     </task>
     <task id="LOCAL-00001" summary="Partial george merge, code is questionable, possible broken in places but loading is integrated with the master branch, will fix collisions when i merge giorgos">
       <created>1456270949321</created>
@@ -955,11 +954,17 @@
       <option name="project" value="LOCAL" />
       <updated>1456430184947</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="in motion collisions with the flippers kinda work, bit dodgy though because it can't differentiate between clockwise angular velocity and anti-clockwise angular velocity but works for the most part i think&#10;&#10;flippers work for the most part but sometimes they move too fast and clip through into the ball, probs something to do with the rotation code i dunno i'll take a look at it">
+      <created>1456432056287</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1456432056287</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20433000" />
+    <option name="totallyTimeSpent" value="21393000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="108" y="144" width="1863" height="1215" extended-state="0" />
@@ -1015,7 +1020,8 @@
     <MESSAGE value="Physics rotations work now. note that the collisions do actually work with flippers-in-motion but the angular velocity of the flipper in motion needs to be used in the collision code to actually punt the ball properly, right now it just bounces off wherever the linesegment is in the flippers current rotation and continues falling" />
     <MESSAGE value="Finished flipper collisions, works as intended in the spec now.&#10;&#10;Flips to the other point when it's triggered, right now it's just triggered on touch but with keypresses hooked in it should be triggered both on push down and release.&#10;&#10;note that this waits until fully flipped to either position before listening to another trigger event which still matches spec but is not true pinball machine as in hold key=rotate" />
     <MESSAGE value="i didn't even realise the Geometry library already had a rotate around function oops, rotatePhysicsAroundPoint uses that now" />
-    <option name="LAST_COMMIT_MESSAGE" value="i didn't even realise the Geometry library already had a rotate around function oops, rotatePhysicsAroundPoint uses that now" />
+    <MESSAGE value="in motion collisions with the flippers kinda work, bit dodgy though because it can't differentiate between clockwise angular velocity and anti-clockwise angular velocity but works for the most part i think&#10;&#10;flippers work for the most part but sometimes they move too fast and clip through into the ball, probs something to do with the rotation code i dunno i'll take a look at it" />
+    <option name="LAST_COMMIT_MESSAGE" value="in motion collisions with the flippers kinda work, bit dodgy though because it can't differentiate between clockwise angular velocity and anti-clockwise angular velocity but works for the most part i think&#10;&#10;flippers work for the most part but sometimes they move too fast and clip through into the ball, probs something to do with the rotation code i dunno i'll take a look at it" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1347,14 +1353,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gizmos/Ball.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="43" column="114" selection-start-line="43" selection-start-column="114" selection-end-line="43" selection-end-column="114" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gizmos/CircleBumper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1407,14 +1405,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="84" column="51" selection-start-line="84" selection-start-column="51" selection-end-line="84" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/RunListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
           <folding />
         </state>
       </provider>
@@ -1490,22 +1480,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/Board.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/CollisionManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="58" selection-start-line="31" selection-start-column="58" selection-end-line="31" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gizmos/LeftFlipper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1516,12 +1490,44 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gizmos/Flipper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3902439">
+        <state vertical-scroll-proportion="0.0">
           <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
           <folding>
             <element signature="e#1470#1471#0" expanded="true" />
             <element signature="e#1502#1503#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/RunListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="31" column="30" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/CollisionManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="45" column="35" selection-start-line="45" selection-start-column="35" selection-end-line="45" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gizmos/Ball.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6585366">
+          <caret line="43" column="114" selection-start-line="43" selection-start-column="114" selection-end-line="43" selection-end-column="114" />
+          <folding />
         </state>
       </provider>
     </entry>

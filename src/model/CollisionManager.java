@@ -37,6 +37,7 @@ public class CollisionManager extends Observable {
 			// Post collision velocity ...
 			ball.setVelocity(info.getVelocity());
 
+
 			// fire onhit method on the gizmo it's hitting
 
 			pm.fireGizmo(info.getHitGizmo());
