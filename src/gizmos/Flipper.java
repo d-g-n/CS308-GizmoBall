@@ -1,6 +1,7 @@
 package gizmos;
 
 import physics.Vect;
+import view.Board;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;
@@ -9,7 +10,7 @@ import java.util.Arrays;
 
 public class Flipper extends AbstractGizmo {
 	boolean flipperMoving, rotateClockwise;
-	double angleVel, flipRotation;
+	double flipRotation;
 
 	public Flipper(int x, int y, double xmod) {
 
@@ -39,8 +40,9 @@ public class Flipper extends AbstractGizmo {
 
 		// flipper specific things
 
+		rotateAroundPoint = new Vect(xpos + (width * 0.125), ypos + (height * 0.125));
 		flipperMoving = false;
-		angleVel = 1080 * 0.025;
+		angleVel = 1080 * Board.MOVE_TIME;
 		flipRotation = 180; // because it starts pointing down and the pivot point is above it i guess
 
 		// FOR DEBUGGING, ADD ALL FLIPPERS TO THEIR OWN LISTENER LIST TO ENABLE AUTO FLIPPING
@@ -59,7 +61,7 @@ public class Flipper extends AbstractGizmo {
 	public void flipClockwise(int toDegrees){
 		if (flipRotation >= toDegrees) {
 
-			rotateClockwise = !rotateClockwise;
+			rotateClockwise = false;
 			flipperMoving = false;
 			flipRotation = toDegrees; // make it start going in reverse or something
 
@@ -72,9 +74,9 @@ public class Flipper extends AbstractGizmo {
 
 			// note anglevel is the degrees to rotate this draw iteration
 
-			at.rotate(Math.toRadians(angleVel), xpos + (width * 0.125), ypos + (height * 0.125));
+			at.rotate(Math.toRadians(angleVel), rotateAroundPoint.x(), rotateAroundPoint.y());
 
-			super.rotatePhysicsAroundPoint(xpos + (width * 0.125), ypos + (height * 0.125), angleVel);
+			super.rotatePhysicsAroundPoint(rotateAroundPoint, angleVel);
 
 
 			Shape path = at.createTransformedShape(super.getShape());
@@ -89,7 +91,7 @@ public class Flipper extends AbstractGizmo {
 	public void flipAntiClockwise(int toDegrees){
 		if (flipRotation <= toDegrees) {
 
-			rotateClockwise = !rotateClockwise;
+			rotateClockwise = true;
 			flipperMoving = false;
 			flipRotation = toDegrees; // make it start going in reverse or something
 
@@ -100,9 +102,9 @@ public class Flipper extends AbstractGizmo {
 			if((flipRotation - angleVel) < toDegrees)
 				angleVel = flipRotation - toDegrees;
 
-			at.rotate(Math.toRadians(-angleVel), xpos + (width * 0.125), ypos + (height * 0.125));
+			at.rotate(Math.toRadians(-angleVel), rotateAroundPoint.x(), rotateAroundPoint.y());
 
-			super.rotatePhysicsAroundPoint(xpos + (width * 0.125), ypos + (height * 0.125), -angleVel);
+			super.rotatePhysicsAroundPoint(rotateAroundPoint, -angleVel);
 
 
 			Shape path = at.createTransformedShape(super.getShape());
@@ -114,9 +116,6 @@ public class Flipper extends AbstractGizmo {
 		}
 	}
 
-	public double getAngularVelocity(){
-		return angleVel;
-	}
 
 
 }

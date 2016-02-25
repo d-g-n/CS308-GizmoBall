@@ -11,7 +11,8 @@ public abstract class AbstractGizmo {
 
 	protected double xpos, ypos, width, height;
 	protected int gizAngle;
-	protected double reflectionCoefficient;
+	protected double reflectionCoefficient, angleVel;
+	protected Vect rotateAroundPoint;
 	protected List<AbstractGizmo> gizmoListeners;
 	protected String name;
 
@@ -29,6 +30,9 @@ public abstract class AbstractGizmo {
 
 		this.gizAngle = 0;
 
+		this.angleVel = 0;
+		this.rotateAroundPoint = this.getCenter();
+
 		this.gizmoListeners = new ArrayList<AbstractGizmo>();
 
 		this.reflectionCoefficient = rc;
@@ -44,6 +48,10 @@ public abstract class AbstractGizmo {
 
 		rotatePhysicsAroundPoint(xpos + (width/2), ypos + (height/2), 90);
 
+	}
+
+	public void rotatePhysicsAroundPoint(Vect pivot, double degrees){
+		rotatePhysicsAroundPoint(pivot.x(), pivot.y(), degrees);
 	}
 
 	public void rotatePhysicsAroundPoint(double pivotX, double pivotY, double degrees){
@@ -176,6 +184,14 @@ public abstract class AbstractGizmo {
 
 	public List<LineSegment> getStoredLines() {
 		return StoredLines;
+	}
+	
+	public double getAngularVelocity(){
+		return angleVel;
+	}
+
+	public Vect getRotateAroundPoint(){
+		return rotateAroundPoint;
 	}
 
 }
