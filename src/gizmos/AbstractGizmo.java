@@ -1,8 +1,6 @@
 package gizmos;
 
-import physics.Angle;
 import physics.Circle;
-import physics.Geometry;
 import physics.LineSegment;
 import physics.Vect;
 import view.Board;
@@ -135,7 +133,7 @@ public abstract class AbstractGizmo {
 	 */
 	public void onHit() {
 		for (AbstractGizmo g : gizmoListeners) {
-			g.onCollision();
+			g.doTrigger();
 		}
 	}
 
@@ -143,7 +141,7 @@ public abstract class AbstractGizmo {
 	 * This method is called by the gizmo that has been hit Will likely need to
 	 * extend this method to provide desired functionality
 	 */
-	public void onCollision() {
+	public void doTrigger() {
 		// there is no default action but needed here to override it.
 	}
 

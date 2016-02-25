@@ -11,21 +11,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba8a27f3-a444-45e2-a0a5-81e76341a790" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/view/DesignViewMockup.form" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/view/DesignViewMockup.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/view/PlayViewMockup.form" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/view/PlayViewMockup.java" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/gizmos/Flipper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/KeyPressListener.java" afterPath="$PROJECT_DIR$/src/controller/KeyPressListener.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gizmos/Absorber.java" afterPath="$PROJECT_DIR$/src/gizmos/Absorber.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gizmos/AbstractGizmo.java" afterPath="$PROJECT_DIR$/src/gizmos/AbstractGizmo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gizmos/Ball.java" afterPath="$PROJECT_DIR$/src/gizmos/Ball.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gizmos/CircleBumper.java" afterPath="$PROJECT_DIR$/src/gizmos/CircleBumper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/CollisionManager.java" afterPath="$PROJECT_DIR$/src/model/CollisionManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/ProjectManager.java" afterPath="$PROJECT_DIR$/src/model/ProjectManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gizmos/LeftFlipper.java" afterPath="$PROJECT_DIR$/src/gizmos/LeftFlipper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gizmos/RightFlipper.java" afterPath="$PROJECT_DIR$/src/gizmos/RightFlipper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/FileManager.java" afterPath="$PROJECT_DIR$/src/model/FileManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/Board.java" afterPath="$PROJECT_DIR$/src/view/Board.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/BuildBoard.java" afterPath="$PROJECT_DIR$/src/view/BuildBoard.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/RunBoard.java" afterPath="$PROJECT_DIR$/src/view/RunBoard.java" />
     </list>
     <ignored path="CS308-GizmoBall.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,27 +45,40 @@
         <entry file="file://$PROJECT_DIR$/src/gizmos/Absorber.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+              <caret line="37" column="8" selection-start-line="37" selection-start-column="8" selection-end-line="39" selection-end-column="36" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Ball.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gizmos/Ball.java">
+      <file leaf-file-name="AbstractGizmo.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gizmos/AbstractGizmo.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="43" column="114" selection-start-line="43" selection-start-column="114" selection-end-line="43" selection-end-column="114" />
+              <caret line="142" column="7" selection-start-line="142" selection-start-column="7" selection-end-line="142" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CircleBumper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gizmos/CircleBumper.java">
+      <file leaf-file-name="LeftFlipper.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/gizmos/LeftFlipper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.58536583">
+              <caret line="39" column="42" selection-start-line="39" selection-start-column="42" selection-end-line="39" selection-end-column="42" />
+              <folding>
+                <element signature="e#518#519#0" expanded="true" />
+                <element signature="e#550#551#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Board.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/view/Board.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="21" column="35" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
+              <caret line="8" column="44" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -88,31 +94,44 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RunBoard.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/view/RunBoard.java">
+      <file leaf-file-name="RightFlipper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gizmos/RightFlipper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9032258">
-              <caret line="64" column="36" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+              <folding>
+                <element signature="e#351#352#0" expanded="true" />
+                <element signature="e#383#384#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FileManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/FileManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="84" column="51" selection-start-line="84" selection-start-column="51" selection-end-line="84" selection-end-column="51" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GBallGui.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/view/GBallGui.java">
+      <file leaf-file-name="Flipper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gizmos/Flipper.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+              <caret line="42" column="31" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RunGUI.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/view/RunGUI.java">
+      <file leaf-file-name="RunListener.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controller/RunListener.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="84" column="47" selection-start-line="84" selection-start-column="47" selection-end-line="84" selection-end-column="47" />
+              <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -122,27 +141,7 @@
         <entry file="file://$PROJECT_DIR$/src/gizmos/SquareBumper.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="50" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TriangleBumper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gizmos/TriangleBumper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CollisionManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/CollisionManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="83" column="29" selection-start-line="83" selection-start-column="29" selection-end-line="83" selection-end-column="29" />
+              <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="23" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -168,23 +167,24 @@
         <option value="$PROJECT_DIR$/src/gizmos/OuterWall.java" />
         <option value="$PROJECT_DIR$/src/gizmos/SquareBumper.java" />
         <option value="$PROJECT_DIR$/src/view/RunGUI.java" />
-        <option value="$PROJECT_DIR$/src/gizmos/LeftFlipper.java" />
-        <option value="$PROJECT_DIR$/src/gizmos/RightFlipper.java" />
         <option value="$PROJECT_DIR$/boards/gizmos.txt" />
         <option value="C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/lang/Math.java" />
         <option value="$PROJECT_DIR$/src/model/CollisionManager.java" />
         <option value="$PROJECT_DIR$/src/MainInit.java" />
-        <option value="$PROJECT_DIR$/src/model/FileManager.java" />
         <option value="$PROJECT_DIR$/src/gizmos/TriangleBumper.java" />
         <option value="$PROJECT_DIR$/src/controller/KeyPressListener.java" />
         <option value="$PROJECT_DIR$/src/model/ProjectManager.java" />
         <option value="$PROJECT_DIR$/src/view/BuildBoard.java" />
         <option value="$PROJECT_DIR$/src/view/RunBoard.java" />
-        <option value="$PROJECT_DIR$/src/view/Board.java" />
-        <option value="$PROJECT_DIR$/src/gizmos/AbstractGizmo.java" />
         <option value="$PROJECT_DIR$/src/gizmos/CircleBumper.java" />
         <option value="$PROJECT_DIR$/src/gizmos/Ball.java" />
         <option value="$PROJECT_DIR$/src/gizmos/Absorber.java" />
+        <option value="$PROJECT_DIR$/src/gizmos/AbstractGizmo.java" />
+        <option value="$PROJECT_DIR$/src/model/FileManager.java" />
+        <option value="$PROJECT_DIR$/src/view/Board.java" />
+        <option value="$PROJECT_DIR$/src/gizmos/Flipper.java" />
+        <option value="$PROJECT_DIR$/src/gizmos/RightFlipper.java" />
+        <option value="$PROJECT_DIR$/src/gizmos/LeftFlipper.java" />
       </list>
     </option>
   </component>
@@ -358,6 +358,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="dynamic.classpath" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="gizmos" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.MainInit">
     <configuration default="false" name="MainInit" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -837,7 +842,7 @@
       <workItem from="1456341585615" duration="5803000" />
       <workItem from="1456349616030" duration="119000" />
       <workItem from="1456415678510" duration="16000" />
-      <workItem from="1456415746237" duration="1227000" />
+      <workItem from="1456415746237" duration="4864000" />
     </task>
     <task id="LOCAL-00001" summary="Partial george merge, code is questionable, possible broken in places but loading is integrated with the master branch, will fix collisions when i merge giorgos">
       <created>1456270949321</created>
@@ -881,11 +886,17 @@
       <option name="project" value="LOCAL" />
       <updated>1456349723853</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="More tidying, added helper function Board.convertLtoPixels to convert L values into pixel values, changed board from interface to just a standard static value storing class because it was fairly redundant as an interface.&#10;could probably consider renaming it to indicate it's a helper class and add another interface that Runboard and buildboard would actually use implemented methods for.&#10;&#10;Ball is an abstractgizmo again, still works with everything and code is mostly unchanged.&#10;&#10;Flippers still need work, will need to implement what eddie said about having a flipper superclass that gets extended by the left and right flipper class">
+      <created>1456417105498</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1456417105498</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9631000" />
+    <option name="totallyTimeSpent" value="13268000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="251" y="114" width="1863" height="1215" extended-state="0" />
@@ -898,7 +909,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32994455" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32994455" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31281197" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -936,7 +947,8 @@
     <MESSAGE value="Added gravity and friction back" />
     <MESSAGE value="Started tidying up code.&#10;&#10;Collisions work fine, Absorber works fine (integrated jamies code into the Absorber class), Still need to add eddie's flipper stuff, loading works fine&#10;&#10; rotating the MIT physics lines and circles isn't fine at all, will need to do some mad math stuff for the MIT bit. since the easiest way to do it is to probably recreate the whole physics path when rotate is called, won't be intensive on the system because it's only called on load." />
     <MESSAGE value="Changed the ball radius to use standardised L's instead of an arbritrary number&#10;&#10;((Board.BOARD_WIDTH / Board.X_CELLS))&#10;&#10;is the pixel representation of one L" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed the ball radius to use standardised L's instead of an arbritrary number&#10;&#10;((Board.BOARD_WIDTH / Board.X_CELLS))&#10;&#10;is the pixel representation of one L" />
+    <MESSAGE value="More tidying, added helper function Board.convertLtoPixels to convert L values into pixel values, changed board from interface to just a standard static value storing class because it was fairly redundant as an interface.&#10;could probably consider renaming it to indicate it's a helper class and add another interface that Runboard and buildboard would actually use implemented methods for.&#10;&#10;Ball is an abstractgizmo again, still works with everything and code is mostly unchanged.&#10;&#10;Flippers still need work, will need to implement what eddie said about having a flipper superclass that gets extended by the left and right flipper class" />
+    <option name="LAST_COMMIT_MESSAGE" value="More tidying, added helper function Board.convertLtoPixels to convert L values into pixel values, changed board from interface to just a standard static value storing class because it was fairly redundant as an interface.&#10;could probably consider renaming it to indicate it's a helper class and add another interface that Runboard and buildboard would actually use implemented methods for.&#10;&#10;Ball is an abstractgizmo again, still works with everything and code is mostly unchanged.&#10;&#10;Flippers still need work, will need to implement what eddie said about having a flipper superclass that gets extended by the left and right flipper class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -981,9 +993,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="68" column="22" selection-start-line="68" selection-start-column="22" selection-end-line="68" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1069,9 +1079,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1132,14 +1140,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/RunListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/physics/Angle.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1184,16 +1184,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="49" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/FileManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="101" column="44" selection-start-line="101" selection-start-column="44" selection-end-line="101" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="false" />
           </folding>
@@ -1307,41 +1297,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/Board.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-          <folding>
-            <element signature="e#263#264#0" expanded="true" />
-            <element signature="e#309#310#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gizmos/AbstractGizmo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="48" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gizmos/LeftFlipper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gizmos/RightFlipper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/CollisionDetails.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1374,34 +1329,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gizmos/SquareBumper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="50" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gizmos/TriangleBumper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gizmos/Absorber.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gizmos/OuterWall.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
           <folding />
         </state>
       </provider>
@@ -1424,9 +1355,95 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view/RunBoard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9032258">
-          <caret line="64" column="36" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gizmos/SquareBumper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="23" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/FileManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="84" column="51" selection-start-line="84" selection-start-column="51" selection-end-line="84" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gizmos/OuterWall.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gizmos/Absorber.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="8" selection-start-line="37" selection-start-column="8" selection-end-line="39" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/RunListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="44" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gizmos/AbstractGizmo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="142" column="7" selection-start-line="142" selection-start-column="7" selection-end-line="142" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gizmos/Flipper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="42" column="31" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gizmos/RightFlipper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding>
+            <element signature="e#351#352#0" expanded="true" />
+            <element signature="e#383#384#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gizmos/LeftFlipper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.58536583">
+          <caret line="39" column="42" selection-start-line="39" selection-start-column="42" selection-end-line="39" selection-end-column="42" />
+          <folding>
+            <element signature="e#518#519#0" expanded="true" />
+            <element signature="e#550#551#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

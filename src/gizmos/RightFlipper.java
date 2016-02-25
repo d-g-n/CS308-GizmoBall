@@ -9,102 +9,48 @@ import java.awt.geom.RoundRectangle2D;
 import java.awt.*;
 import java.util.Arrays;
 
-public class RightFlipper extends AbstractGizmo {
-	private boolean moving, forward;
-	double angleVel, rotation;
-	Shape flipper;
-	Color color;
+public class RightFlipper extends Flipper {
 
-	public RightFlipper(int x, int y, int w, int h) {
-		super(x, y, 2, 2,
-				Color.red, // colour of gizmo
-				0.95 // reflection coefficent
-		);
-		initialize();
 
-		setShape(new RoundRectangle2D.Double(
-				(xpos),
-				(ypos),
-				(width),
-				(height) * 0.25,
-				25,
-				100
-		));
+	public RightFlipper(int x, int y) {
+		super(x, y, 0.75);
+
 	}
 
-	public void rotate() {
-		if (moving) {
-			if (forward) {
-				rotation += angleVel;
-			} else {
-				rotation -= angleVel;
-			}
-
-			if (rotation <= 0) {
-				stop();
-				rotation = 0;
-			}
-			if (rotation >= 90) {
-				stop();
-				rotation = 90;
-			}
-
-			AffineTransform at = new AffineTransform();
-			Shape shape = new RoundRectangle2D.Double(xpos, ypos, width, height, 10, 40);
-			at.setToRotation(Math.toRadians(rotation), xpos + width / 2, ypos + width / 2);
-			Shape path = at.createTransformedShape(shape);
-			this.setShape(path);
-		}
-	}
-
-	public void move() {
-		moving = true;
-	}
-
-	public void stop() {
-		moving = false;
-	}
-
-	public void setShape(Shape s) {
-		flipper = s;
+	@Override
+	public void doTrigger(){
+		this.flipperMoving = true;
 	}
 
 	@Override
 	public Shape getShape() {
-		return flipper;
+
+		if(flipperMoving){
+
+			if (flipRotation >= 270) {
+
+				flipperMoving = false;
+				flipRotation = 270; // make it start going in reverse or something
+
+			} else {
+
+				AffineTransform at = new AffineTransform();
+
+				at.rotate(Math.toRadians(angleVel), xpos + (width * 0.125), ypos + (height * 0.125));
+
+
+				Shape path = at.createTransformedShape(super.getShape());
+
+				super.setShape(path);
+
+				flipRotation += angleVel; // because it rotates counterclockwise
+
+			}
+
+		}
+
+		return super.getShape();
 	}
 
-	public boolean isMoving() {
-		return moving;
-	}
-
-	public void setMoving() {
-		moving = !moving;
-	}
-
-	public Color getColor() {
-		return color;
-	}
-
-	public void updatePhysics() {
-		// update physics...
-	}
-
-	public void initialize() {
-		angleVel = 1080 * 0.05;
-		rotation = 0;
-		flipper = new RoundRectangle2D.Double(xpos, ypos, width, height, 10, 40.0);
-		color = Color.RED;
-		moving = false;
-		forward = false;
-	}
-
-	public void stopForward() {
-		forward = false;
-	}
-
-	public void moveForward() {
-		forward = true;
-	}
 
 }

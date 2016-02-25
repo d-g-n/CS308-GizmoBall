@@ -5,109 +5,55 @@ import java.awt.Shape;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.RoundRectangle2D;
 
-public class LeftFlipper extends AbstractGizmo {
-	private boolean moving,forward;
-	double angleVel, rotation;
-	Shape flipper;
-	Color color;
+public class LeftFlipper extends Flipper {
 
-	public LeftFlipper(int x, int y, int w, int h) {
+	public LeftFlipper(int x, int y) {
 
-		super(x, y, 2, 2,
-				Color.blue, // colour of gizmo
-				0.95 // reflection coefficent
-		);
-		initialize();
+		super(x, y, 0);
 
-		setShape(new RoundRectangle2D.Double(
-				(xpos),
-				(ypos),
-				(width),
-				(height) * 0.25,
-				25,
-				100
-		));
-	}
 
-	public void rotate() {
-		if (moving){
-			if(forward){
-				rotation -= angleVel;
-			}else{
-				rotation += angleVel;
-			}
-
-			if(rotation <= 270){
-				stop();
-				rotation = 270;
-			}
-			if(rotation >= 360){
-				stop();
-				rotation = 360;
-			}
-
-		AffineTransform at = new AffineTransform();
-		Shape shape = new RoundRectangle2D.Double(xpos, ypos, width, height, 10, 40);
-		at.setToRotation(Math.toRadians(rotation), xpos + width / 2, ypos + width / 2);
-		Shape path = at.createTransformedShape(shape);
-		this.setShape(path);
-		}
 
 	}
 
-	public void move() {
-		moving = true;
-	}
-
-	public void stop() {
-		moving = false;
-	}
-
-	public void setShape(Shape s) {
-		flipper = s;
+	// note to whoever, this is fired whenever a button that's linked to this gizmo is pressed or if
+	// the ball touches another gizmo that's linked to this gizmo
+	// to debug all flippers are linked to themselves as in the Flipper class
+	@Override
+	public void doTrigger(){
+		this.flipperMoving = true;
 	}
 
 	@Override
 	public Shape getShape() {
-		return flipper;
+
+		if(flipperMoving){
+
+			if (flipRotation <= 90) {
+
+				flipperMoving = false;
+				flipRotation = 90; // make it start going in reverse or something
+
+			} else {
+
+				AffineTransform at = new AffineTransform();
+
+				at.rotate(Math.toRadians(-angleVel), xpos + (width * 0.125), ypos + (height * 0.125));
+
+
+				Shape path = at.createTransformedShape(super.getShape());
+
+				super.setShape(path);
+
+				flipRotation -= angleVel; // because it rotates counterclockwise
+
+			}
+
+		}
+
+		return super.getShape();
 	}
 
-	public boolean isMoving() {
-		return moving;
-	}
 
-	public void setForward(){
-		forward = !forward;
-	}
 
-	public void setMoving() {
-		moving = !moving;
-	}
-
-	public Color getColor() {
-		return color;
-	}
-
-	public void updatePhysics() {
-		// update physics...
-	}
-
-	public void initialize() {
-		angleVel = 1080 * 0.005;
-		rotation = 360;
-		flipper = new RoundRectangle2D.Double(xpos, ypos, width, height, 10, 40.0);
-		color = Color.RED;
-		moving = false;
-		forward = false;
-	}
-
-	public void stopForward() {
-		// TODO Auto-generated method stub
-		forward = false;
-	}
-
-	public void moveForward() {
-		forward = true;
-	}
 
 }

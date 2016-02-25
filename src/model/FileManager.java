@@ -82,12 +82,12 @@ public class FileManager {
 			boardGizmos.add(tb);
 			break;
 		case "RightFlipper":
-			RightFlipper rf = new RightFlipper(x, y, 1, 1);
+			RightFlipper rf = new RightFlipper(x, y);
 			rf.setName(gizmoName);
 			boardGizmos.add(rf);
 			break;
 		case "LeftFlipper":
-			LeftFlipper lf = new LeftFlipper(x, y, 1, 1);
+			LeftFlipper lf = new LeftFlipper(x, y);
 			lf.setName(gizmoName);
 			boardGizmos.add(lf);
 			break;
