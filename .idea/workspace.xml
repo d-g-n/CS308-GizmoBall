@@ -82,7 +82,7 @@
         <entry file="file://$PROJECT_DIR$/src/model/CollisionManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="126" column="59" selection-start-line="126" selection-start-column="59" selection-end-line="126" selection-end-column="59" />
+              <caret line="126" column="71" selection-start-line="126" selection-start-column="71" selection-end-line="126" selection-end-column="71" />
               <folding />
             </state>
           </provider>
@@ -108,11 +108,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Board.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Board.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/view/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2195122">
-              <caret line="9" column="47" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="9" column="76" selection-start-line="9" selection-start-column="76" selection-end-line="9" selection-end-column="76" />
               <folding />
             </state>
           </provider>
@@ -128,15 +128,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Flipper.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Flipper.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/gizmos/Flipper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-              <folding>
-                <element signature="e#1470#1471#0" expanded="true" />
-                <element signature="e#1502#1503#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.3902439">
+              <caret line="27" column="46" selection-start-line="27" selection-start-column="46" selection-end-line="27" selection-end-column="46" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -172,13 +169,13 @@
         <option value="$PROJECT_DIR$/src/gizmos/RightFlipper.java" />
         <option value="$PROJECT_DIR$/src/gizmos/LeftFlipper.java" />
         <option value="$PROJECT_DIR$/src/gizmos/AbstractGizmo.java" />
-        <option value="$PROJECT_DIR$/src/gizmos/Flipper.java" />
         <option value="$PROJECT_DIR$/src/controller/RunListener.java" />
         <option value="$PROJECT_DIR$/src/gizmos/Absorber.java" />
         <option value="$PROJECT_DIR$/src/gizmos/Ball.java" />
         <option value="$PROJECT_DIR$/src/model/ProjectManager.java" />
-        <option value="$PROJECT_DIR$/src/model/CollisionManager.java" />
         <option value="$PROJECT_DIR$/src/view/Board.java" />
+        <option value="$PROJECT_DIR$/src/model/CollisionManager.java" />
+        <option value="$PROJECT_DIR$/src/gizmos/Flipper.java" />
       </list>
     </option>
   </component>
@@ -855,7 +852,7 @@
       <workItem from="1456349616030" duration="119000" />
       <workItem from="1456415678510" duration="16000" />
       <workItem from="1456415746237" duration="13073000" />
-      <workItem from="1456433943153" duration="2662000" />
+      <workItem from="1456433943153" duration="4839000" />
     </task>
     <task id="LOCAL-00001" summary="Partial george merge, code is questionable, possible broken in places but loading is integrated with the master branch, will fix collisions when i merge giorgos">
       <created>1456270949321</created>
@@ -941,11 +938,17 @@
       <option name="project" value="LOCAL" />
       <updated>1456433054547</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Changed where the gravity and friction code goes, not major.&#10;&#10;there's some really strange stuff going on through. if you set the movetime to 0.05 which should work absolutely fine as per the mit demo and the gif on the page but nah, it goes too fast, triggers stuff to early and just generally bugs out. needs some serious work">
+      <created>1456436680184</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1456436680184</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24139000" />
+    <option name="totallyTimeSpent" value="26316000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="108" y="144" width="1863" height="1215" extended-state="0" />
@@ -1003,7 +1006,8 @@
     <MESSAGE value="i didn't even realise the Geometry library already had a rotate around function oops, rotatePhysicsAroundPoint uses that now" />
     <MESSAGE value="in motion collisions with the flippers kinda work, bit dodgy though because it can't differentiate between clockwise angular velocity and anti-clockwise angular velocity but works for the most part i think&#10;&#10;flippers work for the most part but sometimes they move too fast and clip through into the ball, probs something to do with the rotation code i dunno i'll take a look at it" />
     <MESSAGE value="Attempted to standardise ticktime into Board to make it neater. might need looking at later because i think gravity and friction are screwing with the flipper collisions a bit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Attempted to standardise ticktime into Board to make it neater. might need looking at later because i think gravity and friction are screwing with the flipper collisions a bit" />
+    <MESSAGE value="Changed where the gravity and friction code goes, not major.&#10;&#10;there's some really strange stuff going on through. if you set the movetime to 0.05 which should work absolutely fine as per the mit demo and the gif on the page but nah, it goes too fast, triggers stuff to early and just generally bugs out. needs some serious work" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed where the gravity and friction code goes, not major.&#10;&#10;there's some really strange stuff going on through. if you set the movetime to 0.05 which should work absolutely fine as per the mit demo and the gif on the page but nah, it goes too fast, triggers stuff to early and just generally bugs out. needs some serious work" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1407,17 +1411,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gizmos/Flipper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-          <folding>
-            <element signature="e#1470#1471#0" expanded="true" />
-            <element signature="e#1502#1503#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/physics/Geometry.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1442,14 +1435,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/CollisionDetails.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="57" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gizmos/AbstractGizmo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1466,6 +1451,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/ProjectManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="76" selection-start-line="9" selection-start-column="76" selection-end-line="9" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/CollisionDetails.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="57" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/CollisionManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="126" column="71" selection-start-line="126" selection-start-column="71" selection-end-line="126" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/gizmos/Ball.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1477,26 +1494,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/ProjectManager.java">
+    <entry file="file://$PROJECT_DIR$/src/gizmos/Flipper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/CollisionManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="126" column="59" selection-start-line="126" selection-start-column="59" selection-end-line="126" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/Board.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2195122">
-          <caret line="9" column="47" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.3902439">
+          <caret line="27" column="46" selection-start-line="27" selection-start-column="46" selection-end-line="27" selection-end-column="46" />
           <folding />
         </state>
       </provider>

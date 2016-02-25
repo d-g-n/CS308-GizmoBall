@@ -124,7 +124,7 @@ public class CollisionManager extends Observable {
 		ball.setPos(newXPos, newYPos);
 
 		ball.applyGravityConstant(Board.MOVE_TIME);
-		ball.applyFriction(Board.MOVE_TIME, 0.025, 0.0025);
+		ball.applyFriction(Board.MOVE_TIME, 0.025 * Board.MOVE_TIME, 0.25);
 
 		return ball;
 	}
