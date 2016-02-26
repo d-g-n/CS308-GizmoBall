@@ -1,5 +1,6 @@
 package gizmos;
 
+import model.ProjectManager;
 import physics.*;
 import view.Board;
 
@@ -126,7 +127,7 @@ public abstract class AbstractGizmo {
 	 */
 	public void onHit() {
 		for (AbstractGizmo g : gizmoListeners) {
-			g.doTrigger();
+			ProjectManager.addGizToFire(g);
 		}
 	}
 

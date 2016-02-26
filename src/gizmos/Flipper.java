@@ -118,7 +118,7 @@ public class Flipper extends AbstractGizmo {
 
 	@Override
 	public double getAngularVelocity(){
-		return (rotateClockwise ? angleVel : -angleVel);
+		return (rotateClockwise ? 1080 * Board.MOVE_TIME : -1080 * Board.MOVE_TIME);
 	}
 
 

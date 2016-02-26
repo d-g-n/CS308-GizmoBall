@@ -16,10 +16,12 @@ public class ProjectManager extends Observable{
 	private static FileManager fManager;
 	private MenuListener menuListener = new MenuListener();
 	private List<AbstractGizmo> boardGizmos;
+	private static List<AbstractGizmo> gizToFire;
 	private static Ball ball;
 
 	public ProjectManager(){
 		boardGizmos = new ArrayList<AbstractGizmo>();
+		gizToFire = new ArrayList<>();
 		ball = new Ball(5, 7, new Vect(0, 0));
 		cManager = new CollisionManager(this);
 
@@ -52,7 +54,14 @@ public class ProjectManager extends Observable{
 	}
 
 	public void moveBall(){
+
 		cManager.moveBall();
+
+		for(AbstractGizmo giz : gizToFire){
+			giz.doTrigger();
+		}
+
+		gizToFire.clear();
 
 		this.setChanged();
 		this.notifyObservers();
@@ -71,10 +80,10 @@ public class ProjectManager extends Observable{
 	}
 
 	public void fireGizmo(AbstractGizmo hitGizmo) {
-		for(AbstractGizmo giz : boardGizmos){
-			if(giz.equals(hitGizmo)){
-				giz.onHit();
-			}
-		}
+		hitGizmo.onHit();
+	}
+
+	public static void addGizToFire(AbstractGizmo giz){
+		gizToFire.add(giz);
 	}
 }

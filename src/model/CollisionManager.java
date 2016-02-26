@@ -29,22 +29,27 @@ public class CollisionManager extends Observable {
 			return;
 
 		CollisionDetails info = shortestTimeUntilCollision();
+
 		if (info.getTimeToCollision() > Board.MOVE_TIME) {
+
 			ball = moveBallForTime(ball, Board.MOVE_TIME);
+
 		} else {
 
-
-			// We've got a collision in tuc
-			ball = moveBallForTime(ball, info.getTimeToCollision());
-
-			// Post collision velocity ...
 			ball.setVelocity(info.getVelocity());
 
 			// fire onhit method on the gizmo it's hitting
 
 			pm.fireGizmo(info.getHitGizmo());
 
+			// We've got a collision in tuc
+
+			ball = moveBallForTime(ball, info.getTimeToCollision());
+
+
+
 		}
+
 
 
 
@@ -62,7 +67,7 @@ public class CollisionManager extends Observable {
 
 		for (AbstractGizmo gizmo : gizmos) {
 
-			//if(gizmo.getAngularVelocity() == 0.0) { // this has issues
+			if(gizmo.getAngularVelocity() == 0.0) { // this has issues
 				for (LineSegment line : gizmo.getStoredLines()) {
 
 					timeToCollision = Geometry.timeUntilWallCollision(
@@ -104,7 +109,9 @@ public class CollisionManager extends Observable {
 
 					}
 				}
-			/* else { // do rotating wall stuff
+			} else { // do rotating wall stuff
+
+
 
 				for (LineSegment line : gizmo.getStoredLines()) {
 
@@ -161,7 +168,7 @@ public class CollisionManager extends Observable {
 				}
 
 
-			}*/
+			}
 		}
 
 		return new CollisionDetails(newVelocity, shortestTime, hitGiz);
@@ -169,8 +176,7 @@ public class CollisionManager extends Observable {
 
 	public Ball moveBallForTime(Ball ball, double time) {
 
-		ball.applyGravityConstant(time, 25);
-		ball.applyFriction(time, 0.025, 0.025);
+
 
 		double newXPos = 0.0;
 		double newYPos = 0.0;
@@ -181,6 +187,9 @@ public class CollisionManager extends Observable {
 		newYPos = ball.getYPos() + (yVel * time);
 
 		ball.setPos(newXPos, newYPos);
+
+		ball.applyGravityConstant( time, 25);
+		ball.applyFriction( time, 0.025 * time, 0.025 * 20);
 
 		return ball;
 	}
