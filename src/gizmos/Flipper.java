@@ -34,8 +34,8 @@ public class Flipper extends AbstractGizmo {
 				(ypos),
 				(width) * 0.25,
 				(height),
-				25,
-				100
+				0.25,
+				0.25
 		));
 
 		// flipper specific things
@@ -116,6 +116,10 @@ public class Flipper extends AbstractGizmo {
 		}
 	}
 
+	@Override
+	public double getAngularVelocity(){
+		return (rotateClockwise ? angleVel : -angleVel);
+	}
 
 
 }

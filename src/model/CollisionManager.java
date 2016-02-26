@@ -6,6 +6,7 @@ import java.util.Observable;
 import gizmos.AbstractGizmo;
 import gizmos.Ball;
 
+import gizmos.Flipper;
 import physics.Circle;
 import physics.Geometry;
 import physics.LineSegment;
@@ -32,16 +33,21 @@ public class CollisionManager extends Observable {
 		if (info.getTimeToCollision() > Board.MOVE_TIME) {
 			ball = moveBallForTime(ball, Board.MOVE_TIME);
 		} else {
+
+
 			// We've got a collision in tuc
 			ball = moveBallForTime(ball, info.getTimeToCollision());
+
 			// Post collision velocity ...
 			ball.setVelocity(info.getVelocity());
-
 
 			// fire onhit method on the gizmo it's hitting
 
 			pm.fireGizmo(info.getHitGizmo());
+
 		}
+
+
 
 
 	}
@@ -56,62 +62,116 @@ public class CollisionManager extends Observable {
 		AbstractGizmo hitGiz = null;
 
 		for (AbstractGizmo gizmo : gizmos) {
-			for (LineSegment line : gizmo.getStoredLines()) {
 
-				timeToCollision = Geometry.timeUntilRotatingWallCollision(
-						line,
-						gizmo.getRotateAroundPoint(),
-						gizmo.getAngularVelocity(),
-						ball.getCircle(),
-						velocity
-				);
+			//if(gizmo.getAngularVelocity() == 0.0) { // this has issues
+				for (LineSegment line : gizmo.getStoredLines()) {
 
-				if (timeToCollision < shortestTime) {
+					timeToCollision = Geometry.timeUntilWallCollision(
+							line,
+							ball.getCircle(),
+							velocity
+					);
 
-					shortestTime = timeToCollision;
-					newVelocity = Geometry.reflectRotatingWall(
+					if (timeToCollision < shortestTime) {
+
+						shortestTime = timeToCollision;
+						newVelocity = Geometry.reflectWall(
+								line,
+								velocity,
+								gizmo.getReflectionCoefficient()
+						);
+						hitGiz = gizmo;
+
+					}
+				}
+				for (Circle circle : gizmo.getStoredCircles()) {
+
+					timeToCollision = Geometry.timeUntilCircleCollision(
+							circle,
+							ball.getCircle(),
+							velocity
+					);
+
+					if (timeToCollision < shortestTime) {
+
+						shortestTime = timeToCollision;
+						newVelocity = Geometry.reflectCircle(
+								circle.getCenter(),
+								ball.getCircle().getCenter(),
+								velocity,
+								gizmo.getReflectionCoefficient()
+						);
+						hitGiz = gizmo;
+
+					}
+				}
+			/* else { // do rotating wall stuff
+
+				for (LineSegment line : gizmo.getStoredLines()) {
+
+					timeToCollision = Geometry.timeUntilRotatingWallCollision(
 							line,
 							gizmo.getRotateAroundPoint(),
-							gizmo.getAngularVelocity(),
+							Math.toRadians(gizmo.getAngularVelocity()),
 							ball.getCircle(),
-							velocity,
-							gizmo.getReflectionCoefficient()
+							velocity
 					);
-					hitGiz = gizmo;
 
+					if (timeToCollision < shortestTime) {
+
+						shortestTime = timeToCollision;
+						newVelocity = Geometry.reflectRotatingWall(
+								line,
+								gizmo.getRotateAroundPoint(),
+								Math.toRadians(gizmo.getAngularVelocity()),
+								ball.getCircle(),
+								velocity,
+								gizmo.getReflectionCoefficient()
+						);
+						hitGiz = gizmo;
+
+					}
 				}
-			}
-			for (Circle circle : gizmo.getStoredCircles()) {
+				for (Circle circle : gizmo.getStoredCircles()) {
 
-				timeToCollision = Geometry.timeUntilRotatingCircleCollision(
-						circle,
-						gizmo.getRotateAroundPoint(),
-						gizmo.getAngularVelocity(),
-						ball.getCircle(),
-						velocity
-				);
-
-				if (timeToCollision < shortestTime) {
-
-					shortestTime = timeToCollision;
-					newVelocity = Geometry.reflectRotatingCircle(
+					timeToCollision = Geometry.timeUntilRotatingCircleCollision(
 							circle,
 							gizmo.getRotateAroundPoint(),
-							gizmo.getAngularVelocity(),
+							Math.toRadians(gizmo.getAngularVelocity()),
 							ball.getCircle(),
-							velocity,
-							gizmo.getReflectionCoefficient()
+							velocity
 					);
-					hitGiz = gizmo;
+
+					if (timeToCollision < shortestTime) {
+
+						shortestTime = timeToCollision;
+						newVelocity = Geometry.reflectRotatingCircle(
+								circle,
+								gizmo.getRotateAroundPoint(),
+								Math.toRadians(gizmo.getAngularVelocity()),
+								ball.getCircle(),
+								velocity,
+								gizmo.getReflectionCoefficient()
+						);
+						hitGiz = gizmo;
+
+					}
+
+
 
 				}
-			}
+
+
+			}*/
 		}
 
 		return new CollisionDetails(newVelocity, shortestTime, hitGiz);
 	}
 
 	public Ball moveBallForTime(Ball ball, double time) {
+
+		ball.applyGravityConstant(time, 25);
+		ball.applyFriction(time, 0.025, 0.025);
 
 		double newXPos = 0.0;
 		double newYPos = 0.0;
@@ -122,9 +182,6 @@ public class CollisionManager extends Observable {
 		newYPos = ball.getYPos() + (yVel * time);
 
 		ball.setPos(newXPos, newYPos);
-
-		ball.applyGravityConstant(Board.MOVE_TIME);
-		ball.applyFriction(Board.MOVE_TIME, 0.025, 0.25);
 
 		return ball;
 	}

@@ -32,16 +32,16 @@ public class Ball extends AbstractGizmo {
 
 	public void setStopped(boolean stopped) { this.stopped = stopped; }
 
-	public void applyGravityConstant(double tickTime) {
+	public void applyGravityConstant(double tickTime, double gravity) {
 		
-		Vect gravityApplied = new Vect(velocity.x(), velocity.y() + ((25) * tickTime));
+		Vect gravityApplied = new Vect(velocity.x(), velocity.y() + ((gravity) * tickTime));
 		
 		this.setVelocity(gravityApplied);
 	}
 	
 	public void applyFriction(double tickTime, double mu, double mu2) {
 		
-		Vect frictionApplied = new Vect(velocity.x() * (1 - (mu * tickTime)) - (mu2 * velocity.x()) * tickTime, velocity.y() * (1 - (mu * tickTime)) - (mu2 * velocity.y()) * tickTime);  
+		Vect frictionApplied = new Vect(velocity.x() * (1 - (mu * tickTime)) - (mu2 * velocity.x()) * tickTime, velocity.y() * (1 - (mu * tickTime)) - (mu2 * velocity.y()) * tickTime);
 		
 		
 		this.setVelocity(frictionApplied);
