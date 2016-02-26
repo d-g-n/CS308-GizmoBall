@@ -14,7 +14,7 @@ public class RunListener implements ActionListener {
 
 	public RunListener(ProjectManager model) {
 		this.pm = model;
-		timer = new Timer((int) (Board.MOVE_TIME * 1000), this);
+		timer = new Timer((int) (1000 * Board.MOVE_TIME), this);
 		timer.start();
 	}
 

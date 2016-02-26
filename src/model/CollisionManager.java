@@ -28,7 +28,6 @@ public class CollisionManager extends Observable {
 		if(ball.isStopped())
 			return;
 
-
 		CollisionDetails info = shortestTimeUntilCollision();
 		if (info.getTimeToCollision() > Board.MOVE_TIME) {
 			ball = moveBallForTime(ball, Board.MOVE_TIME);
