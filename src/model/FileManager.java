@@ -11,6 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import gizmos.*;
+import physics.Vect;
 
 public class FileManager {
 
@@ -18,14 +19,24 @@ public class FileManager {
 	private File file;
 	private ProjectManager pm;
 
-	private final String alphanumericName = "([0-9A-Za-z_]+)";
-	private final String coords = "(\\d+) (\\d+)";
+	private final String INTEGER = "([0-9]+)";
+	private final String FLOAT = "(\\d+\\.\\d+)";
+	private final String KEYNUM = INTEGER; // kinda redundant but it keeps the naming convention consistent
+	private final String IDENTIFIER = "([0-9A-Za-z_]+)";
 
-	private final Pattern addGizmoCommand = Pattern
-			.compile("(Square|Circle|Triangle|RightFlipper|LeftFlipper) " + alphanumericName + " " + coords);
-	private final Pattern rotateGizmoCommand = Pattern.compile("Rotate " + alphanumericName);
-	private final Pattern addAbsorberCommand = Pattern.compile("Absorber " + alphanumericName + " " + coords + " " + coords);
-	private final Pattern connectGizmoCommand = Pattern.compile("Connect " + alphanumericName + " " + alphanumericName);
+	private final String NUMBER_PAIR = INTEGER + " " + INTEGER;
+	private final String FLOAT_PAIR = FLOAT + " " + FLOAT;
+	private final String GIZMO_OP = "(Square|Circle|Triangle|RightFlipper|LeftFlipper)";
+	private final String KEYID = "key" + " " + KEYNUM + " " + "(down|up)";
+
+
+	private final Pattern addBallCommand = Pattern.compile("Ball" + " " + IDENTIFIER + " " + FLOAT_PAIR + " " + FLOAT_PAIR);
+	private final Pattern addGizmoCommand = Pattern.compile(GIZMO_OP + " " + IDENTIFIER + " " + NUMBER_PAIR);
+	private final Pattern rotateGizmoCommand = Pattern.compile("Rotate" + " " + IDENTIFIER);
+	private final Pattern addAbsorberCommand = Pattern.compile("Absorber" + " " + IDENTIFIER + " " + NUMBER_PAIR + " " + NUMBER_PAIR);
+	private final Pattern connectGizmoCommand = Pattern.compile("Connect" + " " + IDENTIFIER + " " + IDENTIFIER);
+	private final Pattern keyConnectGizmoCommand = Pattern.compile("KeyConnect" + " " + KEYID + " " + IDENTIFIER);
+
 
 
 	public FileManager(ProjectManager projectManager, String fileName ) {
@@ -60,8 +71,31 @@ public class FileManager {
 			if ((lineMatch = connectGizmoCommand.matcher(currentLine)).matches()){
 				connectGizmos(lineMatch);
 			}
+
+			if ((lineMatch = keyConnectGizmoCommand.matcher(currentLine)).matches()){
+				keyConnectGizmos(lineMatch);
+			}
+
+			if ((lineMatch = addBallCommand.matcher(currentLine)).matches()){
+				addBall(lineMatch);
+			}
+
 			lineMatch.reset();
 		}
+	}
+
+	private void addBall(Matcher lineMatch){
+		String ballName = lineMatch.group(1);
+		double initX = Double.parseDouble(lineMatch.group(2));
+		double initY = Double.parseDouble(lineMatch.group(3));
+		double velX = Double.parseDouble(lineMatch.group(4));
+		double velY = Double.parseDouble(lineMatch.group(5));
+
+		AbstractGizmo ball = new Ball(initX, initY, new Vect(velX, velY));
+		ball.setName(ballName);
+
+		pm.setBall((Ball) ball);
+		pm.addGizmo(ball);
 	}
 
 	private void addGizmo(Matcher lineMatch) {
@@ -127,6 +161,14 @@ public class FileManager {
 		AbstractGizmo listener = pm.getGizmoByName(lineMatch.group(2));
 
 		shouter.addGizmoListener(listener);
+	}
+
+	public void keyConnectGizmos(Matcher lineMatch){
+		int keyNum = Integer.parseInt(lineMatch.group(1));
+		String activateOnDownOrUp = lineMatch.group(2);
+		String gizmoName = lineMatch.group(3);
+
+		pm.addKeyConnect(gizmoName, keyNum, activateOnDownOrUp);
 	}
 
 }

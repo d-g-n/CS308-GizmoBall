@@ -1,8 +1,6 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Observable;
+import java.util.*;
 
 import controller.MenuListener;
 import gizmos.*;
@@ -16,11 +14,12 @@ public class ProjectManager extends Observable{
 	private FileManager fManager;
 	private MenuListener menuListener = new MenuListener();
 	private List<AbstractGizmo> boardGizmos;
+	private Map<Map.Entry<String, Integer>, AbstractGizmo> gizmoKeyPressMap;
 	private static Ball ball;
 
 	public ProjectManager(){
-		boardGizmos = new ArrayList<AbstractGizmo>();
-		ball = new Ball(5, 7, new Vect(0, 0));
+		boardGizmos = new ArrayList<>();
+		gizmoKeyPressMap = new HashMap<>();
 		cManager = new CollisionManager(this);
 
 		// HARDCODED GIZMO DEFS (mind the outer walls are never supposed to actually be in 0 -> 19)
@@ -31,11 +30,15 @@ public class ProjectManager extends Observable{
 		addGizmo(new OuterWall(20, -1, 1, 22)); // start at top right, 22 down y
 		addGizmo(new OuterWall(-1, 20, 22, 1)); // start at bottom left, 22 along x
 
-		addGizmo(ball);
-
 		this.setChanged();
 		this.notifyObservers();
 
+	}
+
+	public void addKeyConnect(String gizName, int keyNum, String onDownOrUp){
+		AbstractGizmo giz = getGizmoByName(gizName);
+
+		gizmoKeyPressMap.put(new AbstractMap.SimpleEntry<String, Integer>(onDownOrUp, keyNum), giz);
 	}
 
 	public void addGizmo(AbstractGizmo g){
@@ -58,6 +61,7 @@ public class ProjectManager extends Observable{
 	public List<AbstractGizmo> getBoardGizmos(){
 		return boardGizmos;
 	}
+	public Map<Map.Entry<String, Integer>, AbstractGizmo> getKeyConnects() { return gizmoKeyPressMap; }
 
 	public void moveBall(){
 
@@ -73,6 +77,10 @@ public class ProjectManager extends Observable{
 
 		this.setChanged();
 		this.notifyObservers();
+	}
+
+	public void setBall(Ball ball){
+		this.ball = ball;
 	}
 
 	public static Ball getBall(){

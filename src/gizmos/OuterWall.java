@@ -30,5 +30,7 @@ public class OuterWall extends AbstractGizmo {
 				(0),
 				(0)
 		));
+
+		this.setName("OuterWalls");
 	}
 }

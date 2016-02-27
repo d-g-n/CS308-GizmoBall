@@ -2,6 +2,9 @@ package controller;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Map;
+
+import gizmos.AbstractGizmo;
 import model.ProjectManager;
 
 public class MagicKeyListener implements KeyListener {
@@ -18,28 +21,34 @@ public class MagicKeyListener implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
-		switch(key){
-		case KeyEvent.VK_LEFT :
 
-			break;
-		case KeyEvent.VK_RIGHT : 
+		for(Map.Entry<Map.Entry<String, Integer>, AbstractGizmo> ent : pm.getKeyConnects().entrySet()){
+			Map.Entry<String, Integer> inEnt = ent.getKey();
+			AbstractGizmo giz = ent.getValue();
 
-			break;
+			if(!inEnt.getKey().equals("down"))
+				continue;
+
+			if(key == inEnt.getValue())
+				giz.doTrigger();
 		}
+
 	}
 		
 	@Override
 	public void keyReleased(KeyEvent e) {
 		
-		int key = e.getKeyCode(); 	
-		switch(key){
-		case KeyEvent.VK_LEFT :
+		int key = e.getKeyCode();
 
-			break;
-		case KeyEvent.VK_RIGHT : 
+		for(Map.Entry<Map.Entry<String, Integer>, AbstractGizmo> ent : pm.getKeyConnects().entrySet()){
+			Map.Entry<String, Integer> inEnt = ent.getKey();
+			AbstractGizmo giz = ent.getValue();
 
-			break;
-			
+			if(!inEnt.getKey().equals("up"))
+				continue;
+
+			if(key == inEnt.getValue())
+				giz.doTrigger();
 		}
 	}
 

@@ -18,12 +18,21 @@ public class CollisionManager extends Observable {
 	private ProjectManager pm;
 	private Ball ball;
 
+	private double SETTINGS_GRAVITY = 25;
+	private double SETTINGS_FRICTION_MU = 0.025;
+	private double SETTINGS_FRICTION_MU2 = 0.025;
+
 	public CollisionManager(ProjectManager pm) {
 		this.pm = pm;
 		this.ball = pm.getBall();
 	}
 
 	public void moveBall() {
+
+		if(ball == null){
+			this.ball = pm.getBall();
+			return;
+		}
 
 		if(ball.isStopped())
 			return;
@@ -192,9 +201,18 @@ public class CollisionManager extends Observable {
 
 		ball.setPos(newXPos, newYPos);
 
-		ball.applyGravityConstant( time, 25);
-		ball.applyFriction( time, 0.025 * time, 0.025 * 20);
+		ball.applyGravityConstant( time, SETTINGS_GRAVITY);
+		ball.applyFriction( time, SETTINGS_FRICTION_MU * time, SETTINGS_FRICTION_MU2 * Board.X_CELLS);
 
 		return ball;
+	}
+
+	public void setGravity(double grav){
+		this.SETTINGS_GRAVITY = grav;
+	}
+
+	public void setFriction(double mu, double mu2){
+		this.SETTINGS_FRICTION_MU = mu;
+		this.SETTINGS_FRICTION_MU2 = mu2;
 	}
 }
