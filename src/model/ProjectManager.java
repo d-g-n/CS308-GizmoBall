@@ -12,16 +12,14 @@ import view.RunGUI;
 
 public class ProjectManager extends Observable{
 	
-	private static CollisionManager cManager;
-	private static FileManager fManager;
+	private CollisionManager cManager;
+	private FileManager fManager;
 	private MenuListener menuListener = new MenuListener();
 	private List<AbstractGizmo> boardGizmos;
-	private static List<AbstractGizmo> gizToFire;
 	private static Ball ball;
 
 	public ProjectManager(){
 		boardGizmos = new ArrayList<AbstractGizmo>();
-		gizToFire = new ArrayList<>();
 		ball = new Ball(5, 7, new Vect(0, 0));
 		cManager = new CollisionManager(this);
 
@@ -43,10 +41,18 @@ public class ProjectManager extends Observable{
 	public void addGizmo(AbstractGizmo g){
 
 		// ideally we'll give it a random name here but irght now
-
-		g.setName("noname");
+		// also need to do square checking in here to prevent overlapping gizmos
 
 		boardGizmos.add(g);
+	}
+
+	public AbstractGizmo getGizmoByName(String name){
+		for(AbstractGizmo giz : boardGizmos){
+			if(giz.getName().equals(name))
+				return giz;
+		}
+
+		return null;
 	}
 
 	public List<AbstractGizmo> getBoardGizmos(){
@@ -57,18 +63,12 @@ public class ProjectManager extends Observable{
 
 		cManager.moveBall();
 
-		for(AbstractGizmo giz : gizToFire){
-			giz.doTrigger();
-		}
-
-		gizToFire.clear();
-
 		this.setChanged();
 		this.notifyObservers();
 	}
 
 	public void loadFile(String fileName) {
-		fManager = new FileManager(fileName, boardGizmos);
+		fManager = new FileManager(this, fileName);
 		fManager.loadFile();
 
 		this.setChanged();
@@ -79,11 +79,4 @@ public class ProjectManager extends Observable{
 		return ball;
 	}
 
-	public void fireGizmo(AbstractGizmo hitGizmo) {
-		hitGizmo.onHit();
-	}
-
-	public static void addGizToFire(AbstractGizmo giz){
-		gizToFire.add(giz);
-	}
 }

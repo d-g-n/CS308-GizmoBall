@@ -16,20 +16,21 @@ public class FileManager {
 
 	private Scanner scan;
 	private File file;
-	private List<AbstractGizmo> boardGizmos;
+	private ProjectManager pm;
 
 	private final String alphanumericName = "([0-9A-Za-z_]+)";
 	private final String coords = "(\\d+) (\\d+)";
 
 	private final Pattern addGizmoCommand = Pattern
-			.compile("(Square|Circle|Triangle|RightFlipper|LeftFlipper) " + "([0-9A-Za-z_]+)" + " " + coords);
-	private final Pattern rotateGizmoCommand = Pattern.compile("Rotate " + "([0-9A-Za-z_]+)");
+			.compile("(Square|Circle|Triangle|RightFlipper|LeftFlipper) " + alphanumericName + " " + coords);
+	private final Pattern rotateGizmoCommand = Pattern.compile("Rotate " + alphanumericName);
 	private final Pattern addAbsorberCommand = Pattern.compile("Absorber " + alphanumericName + " " + coords + " " + coords);
+	private final Pattern connectGizmoCommand = Pattern.compile("Connect " + alphanumericName + " " + alphanumericName);
 
 
-	public FileManager(String fileName, List<AbstractGizmo> boardGizmos) {
+	public FileManager(ProjectManager projectManager, String fileName ) {
 		file = new File(fileName);
-		this.boardGizmos = boardGizmos;
+		this.pm = projectManager;
 		try {
 			this.scan = new Scanner(file);
 		} catch (FileNotFoundException e) {
@@ -55,6 +56,10 @@ public class FileManager {
 			if ((lineMatch = addAbsorberCommand.matcher(currentLine)).matches()){
 				addAbsorber(lineMatch);
 			}
+
+			if ((lineMatch = connectGizmoCommand.matcher(currentLine)).matches()){
+				connectGizmos(lineMatch);
+			}
 			lineMatch.reset();
 		}
 	}
@@ -69,27 +74,27 @@ public class FileManager {
 		case "Square":
 			SquareBumper sb = new SquareBumper(x, y, 1, 1);
 			sb.setName(gizmoName);
-			boardGizmos.add(sb);
+			pm.addGizmo(sb);
 			break;
 		case "Circle":
 			CircleBumper cb = new CircleBumper(x, y, 1, 1);
 			cb.setName(gizmoName);
-			boardGizmos.add(cb);
+			pm.addGizmo(cb);
 			break;
 		case "Triangle":
 			TriangleBumper tb = new TriangleBumper(x, y, 1, 1);
 			tb.setName(gizmoName);
-			boardGizmos.add(tb);
+			pm.addGizmo(tb);
 			break;
 		case "RightFlipper":
 			RightFlipper rf = new RightFlipper(x, y);
 			rf.setName(gizmoName);
-			boardGizmos.add(rf);
+			pm.addGizmo(rf);
 			break;
 		case "LeftFlipper":
 			LeftFlipper lf = new LeftFlipper(x, y);
 			lf.setName(gizmoName);
-			boardGizmos.add(lf);
+			pm.addGizmo(lf);
 			break;
 		}
 
@@ -98,21 +103,30 @@ public class FileManager {
 	private void rotateGizmo(Matcher lineMatch) {
 		String gizmoName = lineMatch.group(1);
 
-		for (AbstractGizmo abGizmo : boardGizmos) {
-			if(abGizmo.getName().equals(gizmoName)){
-				abGizmo.rotateClockwise();
-				break;
-			}
-		}
+		pm.getGizmoByName(gizmoName).rotateClockwise();
+
 	}
 
 	private void addAbsorber(Matcher lineMatch){
+		String gizName = lineMatch.group(1);
 		int x1 = Integer.parseInt(lineMatch.group(2));
 		int y1= Integer.parseInt(lineMatch.group(3));
 		int x2 = Integer.parseInt(lineMatch.group(4));
 		int y2= Integer.parseInt(lineMatch.group(5));
 
-		boardGizmos.add(new Absorber(x1,y1,x2,1));
+		AbstractGizmo giz = new Absorber(x1,y1,x2,1);
+
+		giz.setName(gizName);
+
+		pm.addGizmo(giz);
+	}
+
+	// for connections, the first match should be
+	public void connectGizmos(Matcher lineMatch){
+		AbstractGizmo shouter = pm.getGizmoByName(lineMatch.group(1));
+		AbstractGizmo listener = pm.getGizmoByName(lineMatch.group(2));
+
+		shouter.addGizmoListener(listener);
 	}
 
 }

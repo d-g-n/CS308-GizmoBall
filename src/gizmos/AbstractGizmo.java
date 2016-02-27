@@ -30,6 +30,7 @@ public abstract class AbstractGizmo {
 		this.height = height;
 
 		this.gizAngle = 0;
+		this.name = "";
 
 		this.angleVel = 0;
 		this.rotateAroundPoint = this.getCenter();
@@ -127,7 +128,7 @@ public abstract class AbstractGizmo {
 	 */
 	public void onHit() {
 		for (AbstractGizmo g : gizmoListeners) {
-			ProjectManager.addGizToFire(g);
+			g.doTrigger();
 		}
 	}
 

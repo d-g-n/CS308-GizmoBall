@@ -35,10 +35,6 @@ public class Absorber extends AbstractGizmo {
 				(height)
 		));
 
-		// FOR DEBUGGING, ADD ALL ABSORBERS TO THEIR OWN LISTENER LIST TO ENABLE AUTO FIRING
-
-		this.addGizmoListener(this);
-
 	}
 
 
@@ -55,7 +51,7 @@ public class Absorber extends AbstractGizmo {
 
 		boardBall.setVelocity(new Vect(0, 0));
 
-		boardBall.setPos(xpos + width - boardBall.getRadius(), ypos);
+		boardBall.setPos(xpos + width - boardBall.getRadius()*2, ypos);
 
 
 

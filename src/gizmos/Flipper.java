@@ -45,10 +45,8 @@ public class Flipper extends AbstractGizmo {
 		angleVel = 1080 * Board.MOVE_TIME;
 		flipRotation = 180; // because it starts pointing down and the pivot point is above it i guess
 
-		// FOR DEBUGGING, ADD ALL FLIPPERS TO THEIR OWN LISTENER LIST TO ENABLE AUTO FLIPPING
-
-		this.addGizmoListener(this);
 	}
+
 
 	// note to whoever, this is fired whenever a button that's linked to this gizmo is pressed or if
 	// the ball touches another gizmo that's linked to this gizmo
@@ -67,23 +65,25 @@ public class Flipper extends AbstractGizmo {
 
 		} else {
 
+			double localAngVel = angleVel;
+
 			AffineTransform at = new AffineTransform();
 
-			if((flipRotation + angleVel) > toDegrees)
-				angleVel = toDegrees - flipRotation;
+			if((flipRotation + localAngVel) > toDegrees)
+				localAngVel = toDegrees - flipRotation;
 
 			// note anglevel is the degrees to rotate this draw iteration
 
-			at.rotate(Math.toRadians(angleVel), rotateAroundPoint.x(), rotateAroundPoint.y());
+			at.rotate(Math.toRadians(localAngVel), rotateAroundPoint.x(), rotateAroundPoint.y());
 
-			super.rotatePhysicsAroundPoint(rotateAroundPoint, angleVel);
+			super.rotatePhysicsAroundPoint(rotateAroundPoint, localAngVel);
 
 
 			Shape path = at.createTransformedShape(super.getShape());
 
 			super.setShape(path);
 
-			flipRotation += angleVel; // because it rotates counterclockwise
+			flipRotation += localAngVel; // because it rotates counterclockwise
 
 		}
 	}
@@ -97,28 +97,30 @@ public class Flipper extends AbstractGizmo {
 
 		} else {
 
+			double localAngVel = angleVel;
+
 			AffineTransform at = new AffineTransform();
 
-			if((flipRotation - angleVel) < toDegrees)
-				angleVel = flipRotation - toDegrees;
+			if((flipRotation - localAngVel) < toDegrees)
+				localAngVel = flipRotation - toDegrees;
 
-			at.rotate(Math.toRadians(-angleVel), rotateAroundPoint.x(), rotateAroundPoint.y());
+			at.rotate(Math.toRadians(-localAngVel), rotateAroundPoint.x(), rotateAroundPoint.y());
 
-			super.rotatePhysicsAroundPoint(rotateAroundPoint, -angleVel);
+			super.rotatePhysicsAroundPoint(rotateAroundPoint, -localAngVel);
 
 
 			Shape path = at.createTransformedShape(super.getShape());
 
 			super.setShape(path);
 
-			flipRotation -= angleVel; // because it rotates counterclockwise
+			flipRotation -= localAngVel; // because it rotates counterclockwise
 
 		}
 	}
 
 	@Override
 	public double getAngularVelocity(){
-		return (rotateClockwise ? 1080 * Board.MOVE_TIME : -1080 * Board.MOVE_TIME);
+		return (flipperMoving ? Math.toRadians(rotateClockwise ? angleVel : -angleVel) : 0.0);
 	}
 
 

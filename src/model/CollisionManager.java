@@ -30,24 +30,28 @@ public class CollisionManager extends Observable {
 
 		CollisionDetails info = shortestTimeUntilCollision();
 
+		if (info.getTimeToCollision() <= Board.MOVE_TIME) {
+			// collision going to occur so fire any gizmos now so that the angular velocity of flippers and other
+			// moving things will be posted to the next shortesttimecall
+
+			// fire onhit method on the gizmo it's hitting
+
+			info.getHitGizmo().onHit();
+		}
+
+
+		info = shortestTimeUntilCollision();
 		if (info.getTimeToCollision() > Board.MOVE_TIME) {
 
 			ball = moveBallForTime(ball, Board.MOVE_TIME);
 
 		} else {
 
-			ball.setVelocity(info.getVelocity());
-
-			// fire onhit method on the gizmo it's hitting
-
-			pm.fireGizmo(info.getHitGizmo());
-
 			// We've got a collision in tuc
 
 			ball = moveBallForTime(ball, info.getTimeToCollision());
 
-
-
+			ball.setVelocity(info.getVelocity());
 		}
 
 
@@ -118,7 +122,7 @@ public class CollisionManager extends Observable {
 					timeToCollision = Geometry.timeUntilRotatingWallCollision(
 							line,
 							gizmo.getRotateAroundPoint(),
-							Math.toRadians(gizmo.getAngularVelocity()),
+							gizmo.getAngularVelocity(),
 							ball.getCircle(),
 							velocity
 					);
@@ -129,7 +133,7 @@ public class CollisionManager extends Observable {
 						newVelocity = Geometry.reflectRotatingWall(
 								line,
 								gizmo.getRotateAroundPoint(),
-								Math.toRadians(gizmo.getAngularVelocity()),
+								gizmo.getAngularVelocity(),
 								ball.getCircle(),
 								velocity,
 								gizmo.getReflectionCoefficient()
@@ -143,7 +147,7 @@ public class CollisionManager extends Observable {
 					timeToCollision = Geometry.timeUntilRotatingCircleCollision(
 							circle,
 							gizmo.getRotateAroundPoint(),
-							Math.toRadians(gizmo.getAngularVelocity()),
+							gizmo.getAngularVelocity(),
 							ball.getCircle(),
 							velocity
 					);
@@ -154,7 +158,7 @@ public class CollisionManager extends Observable {
 						newVelocity = Geometry.reflectRotatingCircle(
 								circle,
 								gizmo.getRotateAroundPoint(),
-								Math.toRadians(gizmo.getAngularVelocity()),
+								gizmo.getAngularVelocity(),
 								ball.getCircle(),
 								velocity,
 								gizmo.getReflectionCoefficient()
