@@ -67,6 +67,15 @@ public class ProjectManager extends Observable{
 
 		cManager.moveBall();
 
+		for (AbstractGizmo giz : boardGizmos){
+			giz.getShape(); // have to simulate a getshape operation per tick to seperate physics from visual
+			// to be honest should probably seperate the stuff in getShape to like a .updatePhysics object or something
+			// and have getShape just be a dummy return object
+		}
+
+	}
+
+	public void pushVisualUpdate(){
 		this.setChanged();
 		this.notifyObservers();
 	}
