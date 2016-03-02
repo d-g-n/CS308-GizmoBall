@@ -18,12 +18,7 @@ public class KeyPressListener implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		
-		if(pm.getBall().isStopped()) {
-			Vect v = new Vect(-300,-(37 * (Board.BOARD_HEIGHT / Board.X_CELLS)));
-			pm.getBall().setStopped(false);
-			pm.getBall().setVelocity(v);
-		}
+
 		
 	}
 
