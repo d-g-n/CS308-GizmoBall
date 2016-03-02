@@ -47,11 +47,14 @@ public class CollisionManager extends Observable {
 
 				// fire onhit method on the gizmo it's hitting
 
+
+				// maybe just change the onHit method to always take in the Ball object hitting it then we can just
+				// choose not to use the ball object if we don't want to
 				if(info.getHitGizmo().getClass().equals(Absorber.class)) { // must be a better way to do this
 					((Absorber)info.getHitGizmo()).setHeldBall(ball);
 				}
 
-				info.getHitGizmo().onHit();
+				info.getHitGizmo().onHit(ball);
 			}
 
 

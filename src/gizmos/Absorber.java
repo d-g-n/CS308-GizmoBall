@@ -48,8 +48,10 @@ public class Absorber extends AbstractGizmo {
 	 * This is an example of how to extend abstract behaviour to provide additional behaviour
 	 */
 	@Override
-	public void onHit() {
+	public void onHit(AbstractGizmo hit) {
 		// hold the ball in this
+
+		boardBall = ((Ball) hit);
 
 		if(boardBall != null) {
 
@@ -61,7 +63,7 @@ public class Absorber extends AbstractGizmo {
 
 		}
 
-		super.onHit();
+		super.onHit(hit);
 	}
 
 	/**
@@ -78,6 +80,8 @@ public class Absorber extends AbstractGizmo {
 			boardBall.setStopped(false);
 
 			boardBall.setVelocity(new Vect(0, -50));
+
+			boardBall = null;
 
 		}
 

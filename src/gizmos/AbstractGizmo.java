@@ -126,7 +126,7 @@ public abstract class AbstractGizmo {
 	 * gizmo Can also be extended to provide the ball-holding functionality seen
 	 * in the Absorber.
 	 */
-	public void onHit() {
+	public void onHit(AbstractGizmo hitGiz) {
 		for (AbstractGizmo g : gizmoListeners) {
 			g.doTrigger();
 		}
