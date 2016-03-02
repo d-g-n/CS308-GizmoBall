@@ -91,15 +91,12 @@ public class CollisionManager extends Observable {
 
 		for (AbstractGizmo gizmo : gizmos) {
 
-			if(gizmo.equals(ball))
+			if(gizmo.equals(ball)) // skip collision checking if the gizmo to collide with is itself
 				continue;
 
 			if(gizmo.getClass().equals(Ball.class)){ // if the collidable is another ball
 
 				Ball otherB = ((Ball) gizmo);
-
-				System.out.println(otherB.getVelocity());
-
 
 				timeToCollision = Geometry.timeUntilBallBallCollision(
 						ball.getCircle(),
@@ -123,7 +120,6 @@ public class CollisionManager extends Observable {
 					newVelocity = vectPair.v1;
 
 					otherVelocity = vectPair.v2;
-
 
 					hitGiz = gizmo;
 
