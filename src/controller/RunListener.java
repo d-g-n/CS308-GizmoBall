@@ -2,10 +2,12 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.Timer;
 
 import model.ProjectManager;
 import view.Board;
+import view.BuildGUI;
 
 public class RunListener implements ActionListener {
 
@@ -14,7 +16,6 @@ public class RunListener implements ActionListener {
 
 	public RunListener(ProjectManager model) {
 		this.pm = model;
-
 		visualTimer = new Timer((int) (1000 * (1/Board.FRAME_RATE)), this);
 		visualTimer.start();
 	}
@@ -59,7 +60,10 @@ public class RunListener implements ActionListener {
 
 				break;
 			case "Build Mode":
-				/* Switch to build mode view */ break;
+				visualTimer.stop(); 
+				BuildGUI buildMode = new BuildGUI(visualTimer);
+				buildMode.showPalette();
+				break;
 			case "Settings":
 				/* Change the settings of the project */ break;
 			case "About":

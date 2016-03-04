@@ -1,40 +1,56 @@
 package view;
 
-import java.util.Set;
-import java.util.HashSet;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import javax.swing.Timer;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
 import controller.BuildListener;
 
 public class BuildGUI implements GBallGui {
-   /**
-    * <pre>
-    *           1..1     0..*
-    * BuildGUI ------------------------> BuildBoard
-    *           &gt;       buildBoard
-    * </pre>
-    */
-   private Set<BuildBoard> buildBoard;
-   
-   public Set<BuildBoard> getBuildBoard() {
-      if (this.buildBoard == null) {
-         this.buildBoard = new HashSet<BuildBoard>();
-      }
-      return this.buildBoard;
-   }
-   
-   /**
-    * <pre>
-    *           1..1     0..*
-    * BuildGUI ------------------------> BuildListener
-    *           &lt;       buildListener
-    * </pre>
-    */
-   private Set<BuildListener> buildListener;
-   
-   public Set<BuildListener> getBuildListener() {
-      if (this.buildListener == null) {
-         this.buildListener = new HashSet<BuildListener>();
-      }
-      return this.buildListener;
-   }
-   
-   }
+
+	private JFrame frame;
+	private BuildListener controller;
+
+	public BuildGUI(Timer visualTimer) {
+		frame = new JFrame("Palette");
+		controller = new BuildListener(this, visualTimer);
+		
+	}
+
+	public void showPalette() {
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLayout(new GridLayout(5,1));
+		frame.setPreferredSize(new Dimension(200,500));
+		addButtons(frame.getContentPane());
+		frame.pack();
+		frame.setVisible(true);
+	}
+	
+	private void addButtons(Container pane){
+		addAButton("Square", pane);
+		addAButton("Circle", pane);
+		addAButton("Triangle", pane);
+		addAButton("LFlipper", pane);
+		addAButton("RFlipper", pane);
+		addAButton("Connect", pane);
+		addAButton("Close", pane);
+	}
+	
+	private void addAButton(String title, Container pane) {
+		JButton button = new JButton(title);
+		button.setPreferredSize(new Dimension(100,100));
+		button.setAlignmentX(Component.LEFT_ALIGNMENT);
+		button.addActionListener(controller);
+		pane.add(button);
+	}
+	
+	public void disposeFrame(){
+		frame.dispose();
+		frame.setVisible(false);
+	}
+}
