@@ -39,6 +39,9 @@ public class BuildGUI implements GBallGui {
 		addAButton("LFlipper", pane);
 		addAButton("RFlipper", pane);
 		addAButton("Connect", pane);
+		addAButton("Add Ball", pane);
+		addAButton("Add Absorber", pane);
+		addAButton("Clear Board", pane);
 		addAButton("Close", pane);
 	}
 	

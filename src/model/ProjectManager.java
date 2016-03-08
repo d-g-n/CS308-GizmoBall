@@ -114,5 +114,20 @@ public class ProjectManager extends Observable{
 	public void setBuildModeOn(boolean buildModeOn) {
 		this.buildModeOn = buildModeOn;
 	}
+	
+	public void clearAllBoardGizmos () {
+		boardGizmos.clear();
+		
+		// this is required along with boardGizmos.clear() as otherwise we have invisible balls roaming around the board
+		ProjectManager.ballList.clear();
+		
+		// re add the outwalls, maybe a silly way of doing things, could change it
+		
+		addGizmo(new OuterWall(-1, -1, 22, 1)); // start at top left, 20 along x
+		addGizmo(new OuterWall(-1, -1, 1, 22)); // start at top left, 20 down y
+
+		addGizmo(new OuterWall(20, -1, 1, 22)); // start at top right, 22 down y
+		addGizmo(new OuterWall(-1, 20, 22, 1)); // start at bottom left, 22 along x
+	}
 
 }

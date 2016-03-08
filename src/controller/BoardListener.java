@@ -3,11 +3,18 @@ package controller;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import gizmos.Absorber;
+import gizmos.Ball;
+import gizmos.CircleBumper;
+import gizmos.LeftFlipper;
+import gizmos.RightFlipper;
 import gizmos.SquareBumper;
 import gizmos.TriangleBumper;
 import model.ProjectManager;
+import physics.Vect;
 import view.Board;
 
 public class BoardListener implements MouseListener {
@@ -35,6 +42,25 @@ public class BoardListener implements MouseListener {
 			}else if(pm.getFocusedButton().equals("Triangle")){
 				pm.addGizmo(new TriangleBumper(x, y,width , width));
 				pm.pushVisualUpdate();
+			} else if(pm.getFocusedButton().equals("Circle")){
+				pm.addGizmo(new CircleBumper(x, y,width , width));
+				pm.pushVisualUpdate();
+			} else if(pm.getFocusedButton().equals("LFlipper")){
+				pm.addGizmo(new LeftFlipper(x, y));
+				pm.pushVisualUpdate();
+			} else if(pm.getFocusedButton().equals("RFlipper")){
+				pm.addGizmo(new RightFlipper(x, y));
+				pm.pushVisualUpdate();
+			} else if(pm.getFocusedButton().equals("Add Ball")){
+				Vect initialVelocity = new Vect(0.0, 0.0);
+				Ball ball = new Ball((double)x, (double)y, initialVelocity);
+				pm.addGizmo(ball);
+				pm.addBall(ball);
+				pm.pushVisualUpdate();
+			}  else if(pm.getFocusedButton().equals("Add Absorber")){
+				
+				/* Need to implement Absorber properly. User should be able to choose it's width and height. MouseDragged Listener maybe?   */
+				
 			}
 		}
 	}
