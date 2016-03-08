@@ -20,7 +20,7 @@ public class FileManager {
 	private ProjectManager pm;
 
 	private final String INTEGER = "([0-9]+)";
-	private final String FLOAT = "(\\d+\\.\\d+)";
+	private final String FLOAT = "([-+]?\\d+\\.\\d+)";
 	private final String KEYNUM = INTEGER; // kinda redundant but it keeps the naming convention consistent
 	private final String IDENTIFIER = "([0-9A-Za-z_]+)";
 
@@ -94,7 +94,7 @@ public class FileManager {
 		AbstractGizmo ball = new Ball(initX, initY, new Vect(velX, velY));
 		ball.setName(ballName);
 
-		pm.setBall((Ball) ball);
+		pm.addBall((Ball) ball);
 		pm.addGizmo(ball);
 	}
 
