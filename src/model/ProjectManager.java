@@ -121,6 +121,9 @@ public class ProjectManager extends Observable{
 		// this is required along with boardGizmos.clear() as otherwise we have invisible balls roaming around the board
 		ProjectManager.ballList.clear();
 		
+		// forgot this first time round, need to clear the key connect map too
+		gizmoKeyPressMap.clear();
+		
 		// re add the outwalls, maybe a silly way of doing things, could change it
 		
 		addGizmo(new OuterWall(-1, -1, 22, 1)); // start at top left, 20 along x
