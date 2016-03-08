@@ -1,14 +1,16 @@
 package view;
 
-import gizmos.*;
-import model.ProjectManager;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.Shape;
 import java.awt.geom.AffineTransform;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Rectangle2D;
-import java.awt.geom.RoundRectangle2D;
+
+import javax.swing.JPanel;
+
+import gizmos.AbstractGizmo;
+import model.ProjectManager;
 
 public class RunBoard extends JPanel {
 
@@ -17,7 +19,6 @@ public class RunBoard extends JPanel {
 
 	public RunBoard(ProjectManager pm) {
 		this.pm = pm;
-		
 	}
 
 	public void paintComponent(Graphics g) {

@@ -16,12 +16,14 @@ public class ProjectManager extends Observable{
 	private List<AbstractGizmo> boardGizmos;
 	private Map<Map.Entry<String, Integer>, AbstractGizmo> gizmoKeyPressMap;
 	private static Ball ball;
+	private String focusedButton;
+	private boolean buildModeOn = false;
 
 	public ProjectManager(){
 		boardGizmos = new ArrayList<>();
 		gizmoKeyPressMap = new HashMap<>();
 		cManager = new CollisionManager(this);
-
+		focusedButton = "Square";
 		// HARDCODED GIZMO DEFS (mind the outer walls are never supposed to actually be in 0 -> 19)
 
 		addGizmo(new OuterWall(-1, -1, 22, 1)); // start at top left, 20 along x
@@ -33,6 +35,14 @@ public class ProjectManager extends Observable{
 		this.setChanged();
 		this.notifyObservers();
 
+	}
+
+	public String getFocusedButton() {
+		return focusedButton;
+	}
+
+	public void setFocusedButton(String focusedButton) {
+		this.focusedButton = focusedButton;
 	}
 
 	public void addKeyConnect(String gizName, int keyNum, String onDownOrUp){
@@ -94,6 +104,14 @@ public class ProjectManager extends Observable{
 
 	public static Ball getBall(){
 		return ball;
+	}
+
+	public boolean isBuildModeOn() {
+		return buildModeOn;
+	}
+
+	public void setBuildModeOn(boolean buildModeOn) {
+		this.buildModeOn = buildModeOn;
 	}
 
 }

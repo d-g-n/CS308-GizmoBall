@@ -61,7 +61,8 @@ public class RunListener implements ActionListener {
 				break;
 			case "Build Mode":
 				visualTimer.stop(); 
-				BuildGUI buildMode = new BuildGUI(visualTimer);
+				BuildGUI buildMode = new BuildGUI(visualTimer,pm);
+				pm.setBuildModeOn(true);
 				buildMode.showPalette();
 				break;
 			case "Settings":

@@ -4,21 +4,22 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import javax.swing.Timer;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.Timer;
 
 import controller.BuildListener;
+import model.ProjectManager;
 
 public class BuildGUI implements GBallGui {
 
 	private JFrame frame;
 	private BuildListener controller;
 
-	public BuildGUI(Timer visualTimer) {
+	public BuildGUI(Timer visualTimer,ProjectManager pm) {
 		frame = new JFrame("Palette");
-		controller = new BuildListener(this, visualTimer);
+		controller = new BuildListener(this, visualTimer,pm);
 		
 	}
 
