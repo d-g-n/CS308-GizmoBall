@@ -1,15 +1,25 @@
 package view;
 
-import controller.KeyPressListener;
-import controller.MagicKeyListener;
-import controller.RunListener;
-import model.ProjectManager;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.util.Observable;
 import java.util.Observer;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import controller.MagicKeyListener;
+import controller.RunListener;
+import model.ProjectManager;
 
 public class RunGUI implements GBallGui, Observer {
 
@@ -51,7 +61,6 @@ public class RunGUI implements GBallGui, Observer {
 		
 		pane.add(leftPanel, BorderLayout.LINE_START);
 		
-		tv = new TestView(pm);
 		pane.add(tv.getBoard(),BorderLayout.CENTER);
 		
 		JPanel rightPanel = new JPanel();
@@ -109,7 +118,8 @@ public class RunGUI implements GBallGui, Observer {
 				createAndShowGui(pm);
 			}
 		});
-		
+		tv = new TestView(pm);
+		this.pm = pm;
 		keyListener = new MagicKeyListener(pm);
 		runListener = new RunListener(pm);
 	}

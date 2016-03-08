@@ -5,6 +5,7 @@ import java.awt.Dimension;
 
 import javax.swing.JPanel;
 
+import controller.BoardListener;
 import model.ProjectManager;
 
 /**
@@ -18,7 +19,7 @@ public class TestView  {
 	public TestView(ProjectManager pm){
 
 		gp = new RunBoard(pm);
-
+		gp.addMouseListener(new BoardListener(pm, this.getBoard()));
 		gp.setPreferredSize(new Dimension(Board.BOARD_WIDTH, Board.BOARD_HEIGHT));
 	}
 

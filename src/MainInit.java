@@ -1,8 +1,4 @@
-
-
-import gizmos.OuterWall;
 import model.ProjectManager;
-import view.Board;
 import view.RunGUI;
 
 /**

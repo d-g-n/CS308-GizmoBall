@@ -1,7 +1,8 @@
 package view;
-import java.util.HashSet;
-import java.util.Set;
+
+import javax.swing.JFrame;
 
 public class BuildBoard {
 
+	
 }
