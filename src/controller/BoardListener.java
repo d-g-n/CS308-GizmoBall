@@ -5,6 +5,10 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
 
+import com.sun.org.apache.xml.internal.security.utils.IgnoreAllErrorHandler;
+
+import gizmos.LeftFlipper;
+import gizmos.RightFlipper;
 import gizmos.SquareBumper;
 import gizmos.TriangleBumper;
 import model.ProjectManager;
@@ -29,12 +33,23 @@ public class BoardListener implements MouseListener {
 			int x =  e.getX() / (Board.BOARD_WIDTH / Board.X_CELLS);
 			int y =  e.getY() / (Board.BOARD_HEIGHT / Board.Y_CELLS);
 			int width = 1;
-			if(pm.getFocusedButton().equals("Square")){
-				pm.addGizmo(new SquareBumper(x, y,width , width));
+			switch(pm.getFocusedButton()){
+			case "Square": 
+				pm.addGizmo(new SquareBumper(x, y, width , width));
 				pm.pushVisualUpdate();
-			}else if(pm.getFocusedButton().equals("Triangle")){
+				break;
+			case "Triangle":
 				pm.addGizmo(new TriangleBumper(x, y,width , width));
 				pm.pushVisualUpdate();
+				break;
+			case "LFlipper":
+				pm.addGizmo(new LeftFlipper(x, y));
+				pm.pushVisualUpdate();
+				break;
+			case "RFlipper":
+				pm.addGizmo(new RightFlipper(x, y));
+				pm.pushVisualUpdate();
+				break;
 			}
 		}
 	}

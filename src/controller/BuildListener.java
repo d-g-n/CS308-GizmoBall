@@ -24,14 +24,29 @@ public class BuildListener implements ActionListener{
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
-		if (e.getActionCommand().equals("Close")){
+		switch (e.getActionCommand()){
+		case "Close":
 			view.disposeFrame();
 			visualTimer.start();
-		}else if(e.getActionCommand().equals("Triangle")){
+			break;
+		case "Triangle":
 			pm.setFocusedButton("Triangle");
-		}else if(e.getActionCommand().equals("Square")){
+			break;
+		case "Square":
 			pm.setFocusedButton("Square");
+			break;
+		case "LFlipper":
+			pm.setFocusedButton("LFlipper");
+			break;
+		case "RFlipper":
+			pm.setFocusedButton("RFlipper");
+			break;
+		case "Circle":
+			pm.setFocusedButton("Circle");
+			break;
+		case "Connect":
+			pm.setFocusedButton("Connect");
+			break;
 		}
 	}
    }
