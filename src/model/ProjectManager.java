@@ -1,18 +1,20 @@
 package model;
 
-import java.util.*;
+import java.util.AbstractMap;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Observable;
 
-import controller.MenuListener;
-import gizmos.*;
-import physics.Vect;
-import view.Board;
-import view.RunGUI;
+import gizmos.AbstractGizmo;
+import gizmos.Ball;
+import gizmos.OuterWall;
 
 public class ProjectManager extends Observable{
 	
 	private CollisionManager cManager;
 	private FileManager fManager;
-	private MenuListener menuListener = new MenuListener();
 	private List<AbstractGizmo> boardGizmos;
 	private Map<Map.Entry<String, Integer>, AbstractGizmo> gizmoKeyPressMap;
 	private static List<Ball> ballList;

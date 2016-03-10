@@ -1,18 +1,35 @@
 package controller;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashSet;
-import java.util.Set;
-import view.RunGUI;
+
+import model.ProjectManager;
+import view.FileManagerGUI;
 
 //Implements ActionListener unless a different listener is needed. 
-public class MenuListener implements ActionListener{
+public class MenuListener implements ActionListener {
+	FileManagerGUI fmGUI;
+	ProjectManager pm;
+
+	public MenuListener(ProjectManager pm) {
+		this.pm = pm;
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
+		switch (e.getActionCommand()) {
+		case "Load...":
+			fmGUI = new FileManagerGUI();
+			String filePath = fmGUI.getLoadFilePath();
+			if (!filePath.isEmpty()) {
+				pm.clearAllBoardGizmos();
+				pm.loadFile(filePath);
+			}
+			break;
+		case "Exit":
+			System.exit(0);
+		}
+
 	}
 
-   
 }
