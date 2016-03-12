@@ -148,7 +148,10 @@ public class FileManager {
 		int x2 = Integer.parseInt(lineMatch.group(4));
 		int y2= Integer.parseInt(lineMatch.group(5));
 
-		AbstractGizmo giz = new Absorber(x1,y1,x2,1);
+		int width = x2 - x1;
+		int height = y2 - y1;
+
+		AbstractGizmo giz = new Absorber(x1,y1,width,height);
 
 		giz.setName(gizName);
 

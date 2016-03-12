@@ -19,18 +19,18 @@ public class Flipper extends AbstractGizmo {
 				0.95 // reflection coefficent
 		);
 
-		xpos = xpos + (xmod * width);
+		double localxpos = xpos + (xmod * width);
 
 		addPhysicsPath(Arrays.asList(
-				new Vect(xpos, ypos),
-				new Vect(xpos + (width * 0.25), ypos),
-				new Vect(xpos + (width * 0.25), ypos + height),
-				new Vect(xpos, ypos + height),
-				new Vect(xpos, ypos)
+				new Vect(localxpos, ypos),
+				new Vect(localxpos + (width * 0.25), ypos),
+				new Vect(localxpos + (width * 0.25), ypos + height),
+				new Vect(localxpos, ypos + height),
+				new Vect(localxpos, ypos)
 		));
 
 		setShape(new RoundRectangle2D.Double(
-				(xpos),
+				(localxpos),
 				(ypos),
 				(width) * 0.25,
 				(height),
@@ -40,7 +40,7 @@ public class Flipper extends AbstractGizmo {
 
 		// flipper specific things
 
-		rotateAroundPoint = new Vect(xpos + (width * 0.125), ypos + (height * 0.125));
+		rotateAroundPoint = new Vect(localxpos + (width * 0.125), ypos + (height * 0.125));
 		flipperMoving = false;
 		angleVel = 1080 * Board.MOVE_TIME;
 		flipRotation = 180; // because it starts pointing down and the pivot point is above it i guess

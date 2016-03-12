@@ -10,6 +10,8 @@ import java.util.Observable;
 import gizmos.AbstractGizmo;
 import gizmos.Ball;
 import gizmos.OuterWall;
+import physics.Vect;
+import view.Board;
 
 public class ProjectManager extends Observable{
 	
@@ -58,8 +60,47 @@ public class ProjectManager extends Observable{
 
 		// ideally we'll give it a random name here but irght now
 		// also need to do square checking in here to prevent overlapping gizmos
+		if(canPlaceGizmoAt(g) || g.getClass().equals(OuterWall.class))
+			boardGizmos.add(g);
+	}
 
-		boardGizmos.add(g);
+	public boolean canPlaceGizmoAt(AbstractGizmo sg){
+
+		double x = sg.getXPos();
+		double y = sg.getYPos();
+		double w = sg.getWidth();
+		double h = sg.getHeight();
+
+		if((x < 0 || x > 19) || (y < 0 || y > 19)){
+			return false;
+		}
+
+		List<Vect> requestedPoints = new ArrayList<>();
+
+		for(double ix = x; ix < (x+w); ix++){
+			for(double iy = y; iy < (y+h); iy++){
+				requestedPoints.add(new Vect(ix, iy));
+			}
+		}
+
+		for(AbstractGizmo giz : this.boardGizmos){
+
+			double gx = giz.getXPos();
+			double gy = giz.getYPos();
+			double gw = giz.getWidth();
+			double gh = giz.getHeight();
+
+			for(double ix = gx; ix < (gx+gw); ix++){
+				for(double iy = gy; iy < (gy+gh); iy++){
+					if(requestedPoints.contains(new Vect(ix, iy)))
+						return false;
+				}
+			}
+
+		}
+
+		return true;
+
 	}
 
 	public AbstractGizmo getGizmoByName(String name){
