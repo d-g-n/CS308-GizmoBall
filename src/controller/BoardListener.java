@@ -34,7 +34,16 @@ public class BoardListener implements MouseListener {
 			int width = 1;
 			for(AbstractGizmo a : pm.getBoardGizmos()){
 				if(a.getXPos() == x && a.getYPos() == y){
-					return;
+					if(pm.getFocusedButton().equals("Connect")){
+						if(pm.getGizmoToConnect() == null){
+							pm.setGizmoToConnect(a);
+						}else{
+							a.addGizmoListener(pm.getGizmoToConnect());
+							pm.setGizmoToConnect(null);
+						}
+					}else{
+						return;
+					}
 				}
 			}
 			switch(pm.getFocusedButton()){
@@ -58,6 +67,7 @@ public class BoardListener implements MouseListener {
 					pm.getGizmoByName("Triangle").rotateClockwise();
 					pm.pushVisualUpdate();
 					break;
+				case "Connect":
 			}
 		}
 	}

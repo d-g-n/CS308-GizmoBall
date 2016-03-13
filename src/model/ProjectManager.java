@@ -18,6 +18,7 @@ public class ProjectManager extends Observable{
 	private static Ball ball;
 	private String focusedButton;
 	private boolean buildModeOn = false;
+	private AbstractGizmo gizmoToConnect;
 
 	public ProjectManager(){
 		boardGizmos = new ArrayList<>();
@@ -112,6 +113,14 @@ public class ProjectManager extends Observable{
 
 	public void setBuildModeOn(boolean buildModeOn) {
 		this.buildModeOn = buildModeOn;
+	}
+
+	public AbstractGizmo getGizmoToConnect() {
+		return gizmoToConnect;
+	}
+
+	public void setGizmoToConnect(AbstractGizmo gizmoToConnect) {
+		this.gizmoToConnect = gizmoToConnect;
 	}
 
 }
