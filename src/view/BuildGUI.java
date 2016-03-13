@@ -39,6 +39,7 @@ public class BuildGUI implements GBallGui {
 		addAButton("LFlipper", pane);
 		addAButton("RFlipper", pane);
 		addAButton("Connect", pane);
+		addAButton("Rotate",pane);
 		addAButton("Close", pane);
 	}
 	

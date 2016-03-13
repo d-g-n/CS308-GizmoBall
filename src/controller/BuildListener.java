@@ -47,6 +47,8 @@ public class BuildListener implements ActionListener{
 		case "Connect":
 			pm.setFocusedButton("Connect");
 			break;
+		case "Rotate":
+			pm.setFocusedButton("Rotate");
 		}
 	}
    }

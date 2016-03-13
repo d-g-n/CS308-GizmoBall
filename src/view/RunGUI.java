@@ -25,9 +25,7 @@ public class RunGUI implements GBallGui, Observer {
 
 	private MagicKeyListener keyListener;
 	private TestView tv;
-	private RunBoard runBoard;
 	private RunListener runListener;
-	private ProjectManager pm;
 	public static final int BOARD_WIDTH = 500;
 	public static final int BOARD_HEIGHT = 500;
 
@@ -47,8 +45,6 @@ public class RunGUI implements GBallGui, Observer {
 	}
 	private void addComponentsToPane(Container pane, ProjectManager pm) {
 		pane.setLayout(new BorderLayout());
-		
-		this.pm = pm;
 
 	    JPanel leftPanel = new JPanel();
 	    leftPanel.setLayout(new GridLayout(4,1));
@@ -119,7 +115,6 @@ public class RunGUI implements GBallGui, Observer {
 			}
 		});
 		tv = new TestView(pm);
-		this.pm = pm;
 		keyListener = new MagicKeyListener(pm);
 		runListener = new RunListener(pm);
 	}
