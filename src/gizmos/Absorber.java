@@ -77,4 +77,31 @@ public class Absorber extends AbstractGizmo {
 		}
 
 	}
+	
+	@Override
+	public void moveGiz(int x,int y) {
+		
+		
+		setShape(new Rectangle2D.Double(
+				(x),
+				(y),
+				(width),
+				(height)
+		));
+		
+	}
+	
+	@Override
+	public void movePhysics(int x,int y) {
+		
+		
+		addPhysicsPath(Arrays.asList(
+				new Vect(x, y), // start at top left
+				new Vect(x + width, y), // move to top right
+				new Vect(x + width, y + height), // move to bottom right
+				new Vect(x, y + height), // move to bottom left
+				new Vect(x, y) // and back up to top left
+		));
+		
+	}
 }

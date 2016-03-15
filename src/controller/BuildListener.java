@@ -44,11 +44,24 @@ public class BuildListener implements ActionListener{
 		case "Circle":
 			pm.setFocusedButton("Circle");
 			break;
-		case "Connect":
-			pm.setFocusedButton("Connect");
+		case "Connect Gizmos":
+			pm.setFocusedButton("Connect Gizmos");
+			break;
+		case "Delete":
+			pm.setFocusedButton("Delete");
+			break;
+		case "Move":
+			pm.setFocusedButton("Move");
+			break;
+		case "Absorber":
+			pm.setFocusedButton("Absorber");
+			break;
+		case "Disconnect Gizmos":
+			pm.setFocusedButton("Disconnect Gizmos");
 			break;
 		case "Rotate":
 			pm.setFocusedButton("Rotate");
+			break;
 		}
 	}
    }

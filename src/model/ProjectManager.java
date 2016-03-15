@@ -18,7 +18,12 @@ public class ProjectManager extends Observable{
 	private static Ball ball;
 	private String focusedButton;
 	private boolean buildModeOn = false;
-	private AbstractGizmo gizmoToConnect;
+	private AbstractGizmo gizmoToConnect = null;
+	private AbstractGizmo gizmoToMove = null;
+	private AbstractGizmo gizmoToDisconnect = null;
+	private int absorberToBeAddedX = -1, absorberToBeAddedY = -1;
+
+
 
 	public ProjectManager(){
 		boardGizmos = new ArrayList<>();
@@ -52,12 +57,89 @@ public class ProjectManager extends Observable{
 		gizmoKeyPressMap.put(new AbstractMap.SimpleEntry<String, Integer>(onDownOrUp, keyNum), giz);
 	}
 
+
 	public void addGizmo(AbstractGizmo g){
 
 		// ideally we'll give it a random name here but irght now
 		// also need to do square checking in here to prevent overlapping gizmos
+		if(canPlaceGizmoAt(g) || g.getClass().equals(OuterWall.class))
+			boardGizmos.add(g);
+	}
 
-		boardGizmos.add(g);
+	public boolean canPlaceGizmoAt(AbstractGizmo sg){
+
+		double x = sg.getXPos();
+		double y = sg.getYPos();
+		double w = sg.getWidth();
+		double h = sg.getHeight();
+
+		if((x < 0 || x > 19) || (y < 0 || y > 19)){
+			return false;
+		}
+
+		List<Vect> requestedPoints = new ArrayList<>();
+
+		for(double ix = x; ix < (x+w); ix++){
+			for(double iy = y; iy < (y+h); iy++){
+				requestedPoints.add(new Vect(ix, iy));
+			}
+		}
+
+		for(AbstractGizmo giz : this.boardGizmos){
+
+			double gx = giz.getXPos();
+			double gy = giz.getYPos();
+			double gw = giz.getWidth();
+			double gh = giz.getHeight();
+
+			for(double ix = gx; ix < (gx+gw); ix++){
+				for(double iy = gy; iy < (gy+gh); iy++){
+					if(requestedPoints.contains(new Vect(ix, iy)))
+						return false;
+				}
+			}
+
+		}
+
+		return true;
+
+	}
+	
+	public boolean canPlaceGizmoAt(AbstractGizmo sg, int x, int y){
+
+		double w = sg.getWidth();
+		double h = sg.getHeight();
+
+		if((x < 0 || x > 19) || (y < 0 || y > 19)){
+			return false;
+		}
+
+		List<Vect> requestedPoints = new ArrayList<>();
+
+		for(double ix = x; ix < (x+w); ix++){
+			for(double iy = y; iy < (y+h); iy++){
+				requestedPoints.add(new Vect(ix, iy));
+			}
+		}
+
+		for(AbstractGizmo giz : this.boardGizmos){
+
+			double gx = giz.getXPos();
+			double gy = giz.getYPos();
+			double gw = giz.getWidth();
+			double gh = giz.getHeight();
+
+			for(double ix = gx; ix < (gx+gw); ix++){
+				for(double iy = gy; iy < (gy+gh); iy++){
+					if(requestedPoints.contains(new Vect(ix, iy)))
+						return false;
+				}
+			}
+
+		}
+
+		return true;
+
 	}
 
 	public AbstractGizmo getGizmoByName(String name){
@@ -122,5 +204,44 @@ public class ProjectManager extends Observable{
 	public void setGizmoToConnect(AbstractGizmo gizmoToConnect) {
 		this.gizmoToConnect = gizmoToConnect;
 	}
+	
+	public void deleteGizmo(AbstractGizmo a) {
+		boardGizmos.remove(a);
+		
+	}
+	
+	public AbstractGizmo getGizmoToMove() {
+		return gizmoToMove;
+	}
+
+	public void setGizmoToMove(AbstractGizmo gizmoToMove) {
+		this.gizmoToMove = gizmoToMove;
+	}
+
+	public AbstractGizmo getGizmoToDisconnect() {
+		return gizmoToDisconnect;
+	}
+
+	public void setGizmoToDisconnect(AbstractGizmo gizmoToDisconnect) {
+		this.gizmoToDisconnect = gizmoToDisconnect;
+	}
+
+	public int getAbsorberToBeAddedX() {
+		return absorberToBeAddedX;
+	}
+
+	public void setAbsorberToBeAddedX(int absorberToBeAddedX) {
+		this.absorberToBeAddedX = absorberToBeAddedX;
+	}
+
+	public int getAbsorberToBeAddedY() {
+		return absorberToBeAddedY;
+	}
+
+	public void setAbsorberToBeAddedY(int absorberToBeAddedY) {
+		this.absorberToBeAddedY = absorberToBeAddedY;
+	}
+	
+
 
 }

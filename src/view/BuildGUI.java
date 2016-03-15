@@ -26,7 +26,7 @@ public class BuildGUI implements GBallGui {
 	public void showPalette() {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLayout(new GridLayout(5,1));
-		frame.setPreferredSize(new Dimension(200,500));
+		frame.setPreferredSize(new Dimension(500,500));
 		addButtons(frame.getContentPane());
 		frame.pack();
 		frame.setVisible(true);
@@ -38,8 +38,12 @@ public class BuildGUI implements GBallGui {
 		addAButton("Triangle", pane);
 		addAButton("LFlipper", pane);
 		addAButton("RFlipper", pane);
-		addAButton("Connect", pane);
+		addAButton("Connect Gizmos", pane);
+		addAButton("Absorber", pane);
 		addAButton("Rotate",pane);
+		addAButton("Delete", pane);
+		addAButton("Move", pane);
+		addAButton("Disconnect Gizmos", pane);
 		addAButton("Close", pane);
 	}
 	

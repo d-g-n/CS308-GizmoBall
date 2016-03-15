@@ -2,7 +2,10 @@ package gizmos;
 
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
+import java.util.Arrays;
 
+import physics.Vect;
 import view.Board;
 
 public class CircleBumper extends AbstractGizmo {
@@ -25,6 +28,27 @@ public class CircleBumper extends AbstractGizmo {
 				(width),
 				(height)
 		));
+	}
+	
+	@Override
+	public void moveGiz(int x,int y) {
+		
+		
+		setShape(new Ellipse2D.Double(
+				(x),
+				(y),
+				(width),
+				(height)
+		));
+		
+	}
+	
+	@Override
+	public void movePhysics(int x,int y) {
+		
+		
+		addPhysicsCircle(x + radius, y + radius, radius);
+		
 	}
 
 }
