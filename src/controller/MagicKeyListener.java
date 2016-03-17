@@ -2,6 +2,7 @@ package controller;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.List;
 import java.util.Map;
 
 import gizmos.AbstractGizmo;
@@ -22,15 +23,18 @@ public class MagicKeyListener implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
 
-		for(Map.Entry<Map.Entry<String, Integer>, AbstractGizmo> ent : pm.getKeyConnects().entrySet()){
+		for(Map.Entry<Map.Entry<String, Integer>, List<AbstractGizmo>> ent : pm.getKeyConnects().entrySet()){
 			Map.Entry<String, Integer> inEnt = ent.getKey();
-			AbstractGizmo giz = ent.getValue();
+			List<AbstractGizmo> gizList = ent.getValue();
 
 			if(!inEnt.getKey().equals("down"))
 				continue;
 
-			if(key == inEnt.getValue())
-				giz.doTrigger();
+			if(key == inEnt.getValue()) {
+				for(AbstractGizmo g : gizList){
+					g.doTrigger();
+				}
+			}
 		}
 
 	}
@@ -40,15 +44,18 @@ public class MagicKeyListener implements KeyListener {
 		
 		int key = e.getKeyCode();
 
-		for(Map.Entry<Map.Entry<String, Integer>, AbstractGizmo> ent : pm.getKeyConnects().entrySet()){
+		for(Map.Entry<Map.Entry<String, Integer>, List<AbstractGizmo>> ent : pm.getKeyConnects().entrySet()){
 			Map.Entry<String, Integer> inEnt = ent.getKey();
-			AbstractGizmo giz = ent.getValue();
+			List<AbstractGizmo> gizList = ent.getValue();
 
 			if(!inEnt.getKey().equals("up"))
 				continue;
 
-			if(key == inEnt.getValue())
-				giz.doTrigger();
+			if(key == inEnt.getValue()) {
+				for(AbstractGizmo g : gizList){
+					g.doTrigger();
+				}
+			}
 		}
 	}
 

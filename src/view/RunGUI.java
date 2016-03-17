@@ -131,6 +131,7 @@ public class RunGUI implements GBallGui, Observer {
 	}
 	
 	private void changeStatusLabel(String status){
-		statusLabel.setText(status);
+		if(statusLabel != null)
+			statusLabel.setText(status);
 	}
 }

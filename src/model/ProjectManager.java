@@ -1,6 +1,7 @@
 package model;
 
 import java.util.*;
+import java.util.concurrent.ArrayBlockingQueue;
 
 import controller.MenuListener;
 import gizmos.*;
@@ -14,7 +15,7 @@ public class ProjectManager extends Observable{
 	private FileManager fManager;
 	private MenuListener menuListener = new MenuListener();
 	private List<AbstractGizmo> boardGizmos;
-	private Map<Map.Entry<String, Integer>, AbstractGizmo> gizmoKeyPressMap;
+	private Map<Map.Entry<String, Integer>, List<AbstractGizmo>> gizmoKeyPressMap;
 	private static Ball ball;
 	private String focusedButton;
 	private boolean buildModeOn = false;
@@ -56,7 +57,15 @@ public class ProjectManager extends Observable{
 	public void addKeyConnect(String gizName, int keyNum, String onDownOrUp){
 		AbstractGizmo giz = getGizmoByName(gizName);
 
-		gizmoKeyPressMap.put(new AbstractMap.SimpleEntry<String, Integer>(onDownOrUp, keyNum), giz);
+		Map.Entry<String, Integer> key = new AbstractMap.SimpleEntry<String, Integer>(onDownOrUp, keyNum);
+
+		if(gizmoKeyPressMap.containsKey(key)) {
+			List<AbstractGizmo> tempList = gizmoKeyPressMap.get(key);
+			tempList.add(giz);
+			gizmoKeyPressMap.put(key, tempList);
+		} else {
+			gizmoKeyPressMap.put(key, new ArrayList<>(Arrays.asList(giz)));
+		}
 	}
 
 
@@ -156,7 +165,7 @@ public class ProjectManager extends Observable{
 	public List<AbstractGizmo> getBoardGizmos(){
 		return boardGizmos;
 	}
-	public Map<Map.Entry<String, Integer>, AbstractGizmo> getKeyConnects() { return gizmoKeyPressMap; }
+	public Map<Map.Entry<String, Integer>, List<AbstractGizmo>> getKeyConnects() { return gizmoKeyPressMap; }
 
 	public void moveBall(){
 

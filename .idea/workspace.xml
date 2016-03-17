@@ -8,9 +8,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ba8a27f3-a444-45e2-a0a5-81e76341a790" name="Default" comment="Seperated physics calculations from view calculations, seems to give better results with multiple collisions in one frame as the increased calculation fps is more than enough to keep up with collisions&#10;&#10;Basically i thought it was weird that we had both the physics being calculated at whatever it was being drawn at so, thanks to the whole move for time thing it would look different for both 20fps and 60fps.&#10;&#10;Now the physics calculations has a set fps which it calculates those at and then the visual part just draws the shapes dumbly.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/RunListener.java" afterPath="$PROJECT_DIR$/src/controller/RunListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/MagicKeyListener.java" afterPath="$PROJECT_DIR$/src/controller/MagicKeyListener.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/ProjectManager.java" afterPath="$PROJECT_DIR$/src/model/ProjectManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/Board.java" afterPath="$PROJECT_DIR$/src/view/Board.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/RunGUI.java" afterPath="$PROJECT_DIR$/src/view/RunGUI.java" />
     </list>
     <ignored path="CS308-GizmoBall.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,31 +33,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AbstractGizmo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gizmos/AbstractGizmo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="32" column="23" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="CollisionManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/CollisionManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="191" column="0" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
+              <caret line="152" column="0" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Board.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Board.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/view/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2560241">
-              <caret line="10" column="45" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -67,7 +57,7 @@
         <entry file="file://$PROJECT_DIR$/src/controller/RunListener.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+              <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -87,8 +77,10 @@
         <entry file="file://$PROJECT_DIR$/src/model/ProjectManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="71" column="31" selection-start-line="71" selection-start-column="31" selection-end-line="71" selection-end-column="31" />
-              <folding />
+              <caret line="167" column="61" selection-start-line="167" selection-start-column="61" selection-end-line="167" selection-end-column="61" />
+              <folding>
+                <element signature="e#1806#1823#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -97,7 +89,17 @@
         <entry file="file://$PROJECT_DIR$/src/controller/MagicKeyListener.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="38" column="41" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="41" />
+              <caret line="46" column="68" selection-start-line="46" selection-start-column="68" selection-end-line="46" selection-end-column="68" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RunGUI.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/view/RunGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.79518074">
+              <caret line="134" column="12" selection-start-line="134" selection-start-column="12" selection-end-line="134" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -127,7 +129,7 @@
         <entry file="file://$PROJECT_DIR$/src/gizmos/Absorber.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="47" column="47" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
+              <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -149,7 +151,6 @@
         <option value="$PROJECT_DIR$/src/gizmos/BallActor.java" />
         <option value="$PROJECT_DIR$/src/model/CollisionDetails.java" />
         <option value="$PROJECT_DIR$/src/gizmos/SquareBumper.java" />
-        <option value="$PROJECT_DIR$/src/view/RunGUI.java" />
         <option value="$PROJECT_DIR$/boards/gizmos.txt" />
         <option value="C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/lang/Math.java" />
         <option value="$PROJECT_DIR$/src/MainInit.java" />
@@ -166,11 +167,12 @@
         <option value="$PROJECT_DIR$/src/gizmos/Flipper.java" />
         <option value="$PROJECT_DIR$/src/gizmos/OuterWall.java" />
         <option value="$PROJECT_DIR$/src/model/FileManager.java" />
-        <option value="$PROJECT_DIR$/src/controller/MagicKeyListener.java" />
         <option value="$PROJECT_DIR$/src/model/CollisionManager.java" />
-        <option value="$PROJECT_DIR$/src/model/ProjectManager.java" />
         <option value="$PROJECT_DIR$/src/controller/RunListener.java" />
         <option value="$PROJECT_DIR$/src/view/Board.java" />
+        <option value="$PROJECT_DIR$/src/model/ProjectManager.java" />
+        <option value="$PROJECT_DIR$/src/controller/MagicKeyListener.java" />
+        <option value="$PROJECT_DIR$/src/view/RunGUI.java" />
       </list>
     </option>
   </component>
@@ -180,9 +182,9 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="286" />
-    <option name="y" value="154" />
-    <option name="width" value="1865" />
+    <option name="x" value="253" />
+    <option name="y" value="114" />
+    <option name="width" value="2032" />
     <option name="height" value="1181" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -210,6 +212,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -348,9 +353,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -367,6 +369,140 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="gizmos" />
     </key>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/controller/BuildListener.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/controller/RunListener.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/model/CollisionManager.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/model/ProjectManager.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/view/Board.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/view/BuildGUI.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/view/RunBoard.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/view/RunGUI$1.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/view/RunGUI.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/view/TestView.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/controller/BuildListener.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/controller/RunListener.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/gizmos/Absorber.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/gizmos/AbstractGizmo.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/gizmos/CircleBumper.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/gizmos/SquareBumper.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/gizmos/TriangleBumper.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/CollisionManager.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/ProjectManager.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/view/Board.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/view/BuildGUI.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/view/RunBoard.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/view/RunGUI.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/view/TestView.java</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/controller/BoardListener.java</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunManager" selected="Application.MainInit">
     <configuration default="false" name="MainInit" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -855,6 +991,7 @@
       <workItem from="1456579994836" duration="4322000" />
       <workItem from="1456604480869" duration="2911000" />
       <workItem from="1456653708592" duration="2029000" />
+      <workItem from="1458230534835" duration="523000" />
     </task>
     <task id="LOCAL-00001" summary="Partial george merge, code is questionable, possible broken in places but loading is integrated with the master branch, will fix collisions when i merge giorgos">
       <created>1456270949321</created>
@@ -992,23 +1129,23 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49893000" />
+    <option name="totallyTimeSpent" value="50416000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="286" y="154" width="1865" height="1181" extended-state="0" />
+    <frame x="253" y="114" width="2032" height="1181" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3271719" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32633588" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970712" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919848" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33969465" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31246537" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31237322" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1088,7 +1225,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
-          <folding />
+          <folding>
+            <element signature="e#1806#1823#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1160,7 +1299,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="49" column="28" selection-start-line="49" selection-start-column="28" selection-end-line="49" selection-end-column="28" />
-          <folding />
+          <folding>
+            <element signature="e#1806#1823#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1184,7 +1325,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="51" column="25" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
-          <folding />
+          <folding>
+            <element signature="e#4300#4301#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1224,7 +1367,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1232,7 +1374,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="58" column="17" selection-start-line="58" selection-start-column="17" selection-end-line="58" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1240,7 +1381,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="69" column="13" selection-start-line="69" selection-start-column="13" selection-end-line="69" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1264,7 +1404,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="94" column="9" selection-start-line="94" selection-start-column="9" selection-end-line="94" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1335,15 +1474,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="758" column="19" selection-start-line="758" selection-start-column="19" selection-end-line="758" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/RunGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="84" column="47" selection-start-line="84" selection-start-column="47" selection-end-line="84" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1391,15 +1521,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="63" column="18" selection-start-line="63" selection-start-column="18" selection-end-line="63" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gizmos/AbstractGizmo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="23" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
-          <folding />
+          <caret line="34" column="23" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
+          <folding>
+            <element signature="e#4300#4301#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1430,15 +1561,7 @@
     <entry file="file://$PROJECT_DIR$/src/gizmos/Absorber.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="47" column="47" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/MagicKeyListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="41" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="41" />
+          <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1446,7 +1569,7 @@
     <entry file="file://$PROJECT_DIR$/src/model/CollisionManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="191" column="0" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
+          <caret line="152" column="0" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1454,7 +1577,15 @@
     <entry file="file://$PROJECT_DIR$/src/controller/RunListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+          <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1462,15 +1593,25 @@
     <entry file="file://$PROJECT_DIR$/src/model/ProjectManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="71" column="31" selection-start-line="71" selection-start-column="31" selection-end-line="71" selection-end-column="31" />
+          <caret line="167" column="61" selection-start-line="167" selection-start-column="61" selection-end-line="167" selection-end-column="61" />
+          <folding>
+            <element signature="e#1806#1823#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/MagicKeyListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="46" column="68" selection-start-line="46" selection-start-column="68" selection-end-line="46" selection-end-column="68" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/Board.java">
+    <entry file="file://$PROJECT_DIR$/src/view/RunGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2560241">
-          <caret line="10" column="45" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
+        <state vertical-scroll-proportion="0.79518074">
+          <caret line="134" column="12" selection-start-line="134" selection-start-column="12" selection-end-line="134" selection-end-column="12" />
           <folding />
         </state>
       </provider>
