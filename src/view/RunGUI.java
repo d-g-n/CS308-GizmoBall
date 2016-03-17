@@ -28,7 +28,9 @@ public class RunGUI implements GBallGui, Observer {
 	private RunListener runListener;
 	public static final int BOARD_WIDTH = 500;
 	public static final int BOARD_HEIGHT = 500;
-
+	private JLabel statusLabel;
+	private ProjectManager pm ;
+	
 	private void createMenuBar(Container pane){
 		JMenuBar menuBar = new JMenuBar();
 		
@@ -71,8 +73,8 @@ public class RunGUI implements GBallGui, Observer {
 	}
 	
 	private void createStatusBar(Container pane){
-		JLabel label = new JLabel("Here will be the status label");
-		pane.add(label,BorderLayout.PAGE_END);
+		statusLabel = new JLabel("Here will be the status label");
+		pane.add(statusLabel,BorderLayout.PAGE_END);
 		pane.addKeyListener(keyListener);
 
 	}
@@ -114,6 +116,7 @@ public class RunGUI implements GBallGui, Observer {
 				createAndShowGui(pm);
 			}
 		});
+		this.pm = pm;
 		tv = new TestView(pm);
 		keyListener = new MagicKeyListener(pm);
 		runListener = new RunListener(pm);
@@ -123,6 +126,11 @@ public class RunGUI implements GBallGui, Observer {
 	public void update(Observable o, Object arg) {
 		if(tv == null)
 			return;
+		changeStatusLabel(pm.getStatusLabel());
 		tv.getGizPanel().repaint();
+	}
+	
+	private void changeStatusLabel(String status){
+		statusLabel.setText(status);
 	}
 }

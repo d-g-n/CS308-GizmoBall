@@ -29,6 +29,7 @@ public class BuildListener implements ActionListener, ChangeListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		String statusLabel = "";
 		switch (e.getActionCommand()) {
 		case "Close":
 			view.disposeFrame();
@@ -36,38 +37,62 @@ public class BuildListener implements ActionListener, ChangeListener {
 			break;
 		case "Triangle":
 			pm.setFocusedButton("Triangle");
+			statusLabel = "Now click anywhere inside the canvas to draw the triangle";
+			pm.setStatusLabel(statusLabel);
 			break;
 		case "Square":
 			pm.setFocusedButton("Square");
+			statusLabel = "Now click anywhere inside the canvas to draw the square";
+			pm.setStatusLabel(statusLabel);
 			break;
 		case "LFlipper":
 			pm.setFocusedButton("LFlipper");
+			statusLabel = "Now click anywhere inside the canvas to draw the left flipper";
+			pm.setStatusLabel(statusLabel);
 			break;
 		case "RFlipper":
 			pm.setFocusedButton("RFlipper");
+			statusLabel = "Now click anywhere inside the canvas to draw the right flipper";
+			pm.setStatusLabel(statusLabel);
 			break;
 		case "Circle":
 			pm.setFocusedButton("Circle");
+			statusLabel = "Now click anywhere inside the canvas to draw the circle";
+			pm.setStatusLabel(statusLabel);
 			break;
 		case "Connect Gizmos":
 			pm.setFocusedButton("Connect Gizmos");
+			statusLabel = "Click on the two gizmos you want to connect";
+			pm.setStatusLabel(statusLabel);
 			break;
 		case "Delete":
 			pm.setFocusedButton("Delete");
+			statusLabel = "Click on the gizmo you want to delete ";
+			pm.setStatusLabel(statusLabel);
 			break;
 		case "Move":
 			pm.setFocusedButton("Move");
+			statusLabel = "Click the gizmo you want to move and then click on the new position";
+			pm.setStatusLabel(statusLabel);
 			break;
 		case "Absorber":
 			pm.setFocusedButton("Absorber");
+			statusLabel = "Click on the two points you want to draw the absorber";
+			pm.setStatusLabel(statusLabel);
 			break;
 		case "Disconnect Gizmos":
 			pm.setFocusedButton("Disconnect Gizmos");
+			statusLabel = "Click on the two gizmos you want to disconnect";
+			pm.setStatusLabel(statusLabel);
+			
 			break;
 		case "Rotate":
 			pm.setFocusedButton("Rotate");
+			statusLabel = "Click on the gizmo you want to rotate";
+			pm.setStatusLabel(statusLabel);
 			break;
 		}
+		pm.pushVisualUpdate();
 	}
 
 	@Override

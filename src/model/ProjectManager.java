@@ -22,6 +22,7 @@ public class ProjectManager extends Observable{
 	private AbstractGizmo gizmoToMove = null;
 	private AbstractGizmo gizmoToDisconnect = null;
 	private int absorberToBeAddedX = -1, absorberToBeAddedY = -1;
+	private String statusLabel;
 
 
 
@@ -30,6 +31,7 @@ public class ProjectManager extends Observable{
 		gizmoKeyPressMap = new HashMap<>();
 		cManager = new CollisionManager(this);
 		focusedButton = "Square";
+		setStatusLabel("");
 		// HARDCODED GIZMO DEFS (mind the outer walls are never supposed to actually be in 0 -> 19)
 
 		addGizmo(new OuterWall(-1, -1, 22, 1)); // start at top left, 20 along x
@@ -260,6 +262,14 @@ public class ProjectManager extends Observable{
 	public double getFriction() {
 		
 		return cManager.getFriction();
+	}
+
+	public String getStatusLabel() {
+		return statusLabel;
+	}
+
+	public void setStatusLabel(String statusLabel) {
+		this.statusLabel = statusLabel;
 	}
 	
 
