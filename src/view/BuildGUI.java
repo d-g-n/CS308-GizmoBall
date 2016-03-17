@@ -29,7 +29,7 @@ public class BuildGUI implements GBallGui {
 	public void showPalette() {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLayout(new GridLayout(5, 1));
-		frame.setPreferredSize(new Dimension(500, 500));
+		frame.setPreferredSize(new Dimension(700, 500));
 		addButtons(frame.getContentPane());
 		addSliders(frame.getContentPane());
 		frame.pack();
@@ -48,6 +48,8 @@ public class BuildGUI implements GBallGui {
 		addAButton("Delete", pane);
 		addAButton("Move", pane);
 		addAButton("Disconnect Gizmos", pane);
+		addAButton("Key Connect", pane);
+		addAButton("Key Disconnect", pane);
 		addAButton("Close", pane);
 	}
 

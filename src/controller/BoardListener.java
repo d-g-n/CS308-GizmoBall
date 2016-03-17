@@ -187,6 +187,40 @@ public class BoardListener implements MouseListener {
 				}
 
 				break;
+				
+			case "Key Connect":
+
+
+				if (pm.getGizmoToKeyConnect() == null) {
+					
+					for (AbstractGizmo a : pm.getBoardGizmos()) {
+						if ((int) a.getXPos() == x && a.getYPos() == y) {
+							
+								pm.setGizmoToKeyConnect(a);
+								break;
+						}
+					}
+
+				}
+
+				break;
+				
+			case "Key Disconnect":
+
+
+				if (pm.getGizmoToKeyDisconnect() == null) {
+					
+					for (AbstractGizmo a : pm.getBoardGizmos()) {
+						if ((int) a.getXPos() == x && a.getYPos() == y) {
+							
+								pm.setGizmoToKeyDisconnect(a);
+								break;
+						}
+					}
+
+				}
+
+				break;
 
 			}
 		}

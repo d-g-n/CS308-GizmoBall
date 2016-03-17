@@ -32,7 +32,7 @@ public abstract class AbstractGizmo {
 		this.height = height;
 
 		this.gizAngle = 0;
-		this.name = "";
+		this.name = ""+(int)x+"_"+(int)y; // Added Very Basic naming to new gizmos that have not been read in from file
 
 		this.angleVel = 0;
 		this.rotateAroundPoint = this.getCenter();

@@ -85,6 +85,16 @@ public class BuildListener implements ActionListener, ChangeListener {
 			statusLabel = "Click on the two gizmos you want to disconnect";
 			pm.setStatusLabel(statusLabel);
 			
+			break;	
+		case "Key Connect":
+			pm.setFocusedButton("Key Connect");
+			statusLabel = "Click on the Gizmo you want to conenct a key to; then press the keyboard key";
+			pm.setStatusLabel(statusLabel);
+			break;
+		case "Key Disconnect":
+			pm.setFocusedButton("Key Disconnect");
+			statusLabel = "Click on the Gizmo you want to disconnect a key from; then press the keyboard key";
+			pm.setStatusLabel(statusLabel);
 			break;
 		case "Rotate":
 			pm.setFocusedButton("Rotate");

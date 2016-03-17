@@ -20,8 +20,10 @@ public class ProjectManager extends Observable{
 	private String focusedButton;
 	private boolean buildModeOn = false;
 	private AbstractGizmo gizmoToConnect = null;
-	private AbstractGizmo gizmoToMove = null;
 	private AbstractGizmo gizmoToDisconnect = null;
+	private AbstractGizmo gizmoToKeyConnect = null;
+	private AbstractGizmo gizmoToKeyDisconnect = null;
+	private AbstractGizmo gizmoToMove = null;
 	private int absorberToBeAddedX = -1, absorberToBeAddedY = -1;
 	private String statusLabel;
 
@@ -51,6 +53,15 @@ public class ProjectManager extends Observable{
 	}
 
 	public void setFocusedButton(String focusedButton) {
+		
+		// reset all projectmanager build mode gizmos 
+		setAbsorberToBeAddedX(-1);
+		setAbsorberToBeAddedY(-1);
+		setGizmoToConnect(null);
+		setGizmoToKeyConnect(null);
+		setGizmoToMove(null);
+		setGizmoToKeyConnect(null);
+		setGizmoToKeyDisconnect(null);
 		this.focusedButton = focusedButton;
 	}
 
@@ -66,6 +77,18 @@ public class ProjectManager extends Observable{
 		} else {
 			gizmoKeyPressMap.put(key, new ArrayList<>(Arrays.asList(giz)));
 		}
+	}
+	
+	
+	public void removeKeyConnect(String gizName, int keyNum, String onDownOrUp) {
+		
+		try {
+		Map.Entry<String, Integer> key = new AbstractMap.SimpleEntry<String, Integer>(onDownOrUp, keyNum);
+		gizmoKeyPressMap.get(key).remove(getGizmoByName(gizName));
+		} catch (NullPointerException e) {
+			
+		}
+
 	}
 
 
@@ -278,6 +301,24 @@ public class ProjectManager extends Observable{
 	public void setStatusLabel(String statusLabel) {
 		this.statusLabel = statusLabel;
 	}
+	
+	public AbstractGizmo getGizmoToKeyConnect() {
+		return gizmoToKeyConnect;
+	}
+
+	public void setGizmoToKeyConnect(AbstractGizmo gizmoToKeyConnect) {
+		this.gizmoToKeyConnect = gizmoToKeyConnect;
+	}
+
+	public AbstractGizmo getGizmoToKeyDisconnect() {
+		return gizmoToKeyDisconnect;
+	}
+
+	public void setGizmoToKeyDisconnect(AbstractGizmo gizmoToKeyDisconnect) {
+		this.gizmoToKeyDisconnect = gizmoToKeyDisconnect;
+	}
+	
+	
 	
 
 
