@@ -15,10 +15,8 @@ public class LeftFlipper extends Flipper {
 
 	}
 
-
 	@Override
-	public Shape getShape() {
-
+	public void doPhysicsCalculations(){
 		if(flipperMoving){
 
 			if(!rotateClockwise) {
@@ -28,11 +26,6 @@ public class LeftFlipper extends Flipper {
 			}
 
 		}
-
-		return super.getShape();
 	}
-
-
-
 
 }

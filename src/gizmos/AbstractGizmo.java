@@ -154,6 +154,8 @@ public abstract class AbstractGizmo {
 
 	public Shape getShape(){ return gizShape; }
 
+	public void doPhysicsCalculations() {}
+
 	public String getName(){
 		return this.name;
 	}
