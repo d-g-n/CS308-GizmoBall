@@ -5,26 +5,31 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JSlider;
 import javax.swing.Timer;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import gizmos.SquareBumper;
 import model.ProjectManager;
 import view.Board;
 import view.BuildGUI;
 
-public class BuildListener implements ActionListener{
+public class BuildListener implements ActionListener, ChangeListener {
 
 	private BuildGUI view;
 	private ProjectManager pm;
 	private Timer visualTimer;
-	public BuildListener(BuildGUI view, Timer visualTimer, ProjectManager pm){
+
+	public BuildListener(BuildGUI view, Timer visualTimer, ProjectManager pm) {
 		this.view = view;
 		this.visualTimer = visualTimer;
 		this.pm = pm;
 	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		switch (e.getActionCommand()){
+		switch (e.getActionCommand()) {
 		case "Close":
 			view.disposeFrame();
 			visualTimer.start();
@@ -64,4 +69,21 @@ public class BuildListener implements ActionListener{
 			break;
 		}
 	}
-   }
+
+	@Override
+	public void stateChanged(ChangeEvent c) {
+
+		JSlider source = (JSlider) c.getSource();
+
+		if (source.getName() == "Gravity") {
+
+			pm.setGravity(source.getValue());
+
+		} else if (source.getName() == "Friction") {
+
+			pm.setFriction(source.getValue() / 1000.0);
+
+		}
+
+	}
+}

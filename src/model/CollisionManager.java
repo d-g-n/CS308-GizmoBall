@@ -29,25 +29,25 @@ public class CollisionManager extends Observable {
 
 	public void moveBall() {
 
-		if(ball == null){
+		if (ball == null) {
 			this.ball = pm.getBall();
 			return;
 		}
 
-		if(ball.isStopped())
+		if (ball.isStopped())
 			return;
 
 		CollisionDetails info = shortestTimeUntilCollision();
 
 		if (info.getTimeToCollision() <= Board.MOVE_TIME) {
-			// collision going to occur so fire any gizmos now so that the angular velocity of flippers and other
+			// collision going to occur so fire any gizmos now so that the
+			// angular velocity of flippers and other
 			// moving things will be posted to the next shortesttimecall
 
 			// fire onhit method on the gizmo it's hitting
 
 			info.getHitGizmo().onHit();
 		}
-
 
 		info = shortestTimeUntilCollision();
 		if (info.getTimeToCollision() > Board.MOVE_TIME) {
@@ -63,10 +63,6 @@ public class CollisionManager extends Observable {
 			ball.setVelocity(info.getVelocity());
 		}
 
-
-
-
-
 	}
 
 	public CollisionDetails shortestTimeUntilCollision() {
@@ -80,106 +76,65 @@ public class CollisionManager extends Observable {
 
 		for (AbstractGizmo gizmo : gizmos) {
 
-			if(gizmo.getAngularVelocity() == 0.0) { // this has issues
+			if (gizmo.getAngularVelocity() == 0.0) { // this has issues
 				for (LineSegment line : gizmo.getStoredLines()) {
 
-					timeToCollision = Geometry.timeUntilWallCollision(
-							line,
-							ball.getCircle(),
-							velocity
-					);
+					timeToCollision = Geometry.timeUntilWallCollision(line, ball.getCircle(), velocity);
 
 					if (timeToCollision < shortestTime) {
 
 						shortestTime = timeToCollision;
-						newVelocity = Geometry.reflectWall(
-								line,
-								velocity,
-								gizmo.getReflectionCoefficient()
-						);
+						newVelocity = Geometry.reflectWall(line, velocity, gizmo.getReflectionCoefficient());
 						hitGiz = gizmo;
 
 					}
 				}
 				for (Circle circle : gizmo.getStoredCircles()) {
 
-					timeToCollision = Geometry.timeUntilCircleCollision(
-							circle,
-							ball.getCircle(),
-							velocity
-					);
+					timeToCollision = Geometry.timeUntilCircleCollision(circle, ball.getCircle(), velocity);
 
 					if (timeToCollision < shortestTime) {
 
 						shortestTime = timeToCollision;
-						newVelocity = Geometry.reflectCircle(
-								circle.getCenter(),
-								ball.getCircle().getCenter(),
-								velocity,
-								gizmo.getReflectionCoefficient()
-						);
+						newVelocity = Geometry.reflectCircle(circle.getCenter(), ball.getCircle().getCenter(), velocity,
+								gizmo.getReflectionCoefficient());
 						hitGiz = gizmo;
 
 					}
 				}
 			} else { // do rotating wall stuff
 
-
-
 				for (LineSegment line : gizmo.getStoredLines()) {
 
-					timeToCollision = Geometry.timeUntilRotatingWallCollision(
-							line,
-							gizmo.getRotateAroundPoint(),
-							gizmo.getAngularVelocity(),
-							ball.getCircle(),
-							velocity
-					);
+					timeToCollision = Geometry.timeUntilRotatingWallCollision(line, gizmo.getRotateAroundPoint(),
+							gizmo.getAngularVelocity(), ball.getCircle(), velocity);
 
 					if (timeToCollision < shortestTime) {
 
 						shortestTime = timeToCollision;
-						newVelocity = Geometry.reflectRotatingWall(
-								line,
-								gizmo.getRotateAroundPoint(),
-								gizmo.getAngularVelocity(),
-								ball.getCircle(),
-								velocity,
-								gizmo.getReflectionCoefficient()
-						);
+						newVelocity = Geometry.reflectRotatingWall(line, gizmo.getRotateAroundPoint(),
+								gizmo.getAngularVelocity(), ball.getCircle(), velocity,
+								gizmo.getReflectionCoefficient());
 						hitGiz = gizmo;
 
 					}
 				}
 				for (Circle circle : gizmo.getStoredCircles()) {
 
-					timeToCollision = Geometry.timeUntilRotatingCircleCollision(
-							circle,
-							gizmo.getRotateAroundPoint(),
-							gizmo.getAngularVelocity(),
-							ball.getCircle(),
-							velocity
-					);
+					timeToCollision = Geometry.timeUntilRotatingCircleCollision(circle, gizmo.getRotateAroundPoint(),
+							gizmo.getAngularVelocity(), ball.getCircle(), velocity);
 
 					if (timeToCollision < shortestTime) {
 
 						shortestTime = timeToCollision;
-						newVelocity = Geometry.reflectRotatingCircle(
-								circle,
-								gizmo.getRotateAroundPoint(),
-								gizmo.getAngularVelocity(),
-								ball.getCircle(),
-								velocity,
-								gizmo.getReflectionCoefficient()
-						);
+						newVelocity = Geometry.reflectRotatingCircle(circle, gizmo.getRotateAroundPoint(),
+								gizmo.getAngularVelocity(), ball.getCircle(), velocity,
+								gizmo.getReflectionCoefficient());
 						hitGiz = gizmo;
 
 					}
 
-
-
 				}
-
 
 			}
 		}
@@ -188,8 +143,6 @@ public class CollisionManager extends Observable {
 	}
 
 	public Ball moveBallForTime(Ball ball, double time) {
-
-
 
 		double newXPos = 0.0;
 		double newYPos = 0.0;
@@ -201,18 +154,26 @@ public class CollisionManager extends Observable {
 
 		ball.setPos(newXPos, newYPos);
 
-		ball.applyGravityConstant( time, SETTINGS_GRAVITY);
-		ball.applyFriction( time, SETTINGS_FRICTION_MU * time, SETTINGS_FRICTION_MU2 * Board.X_CELLS);
+		ball.applyGravityConstant(time, SETTINGS_GRAVITY);
+		ball.applyFriction(time, SETTINGS_FRICTION_MU * time, SETTINGS_FRICTION_MU2 * Board.X_CELLS);
 
 		return ball;
 	}
 
-	public void setGravity(double grav){
+	public void setGravity(double grav) {
 		this.SETTINGS_GRAVITY = grav;
 	}
 
-	public void setFriction(double mu, double mu2){
+	public void setFriction(double mu, double mu2) {
 		this.SETTINGS_FRICTION_MU = mu;
 		this.SETTINGS_FRICTION_MU2 = mu2;
+	}
+
+	public double getGravity() {
+		return this.SETTINGS_GRAVITY;
+	}
+
+	public double getFriction() {
+		return this.SETTINGS_FRICTION_MU;
 	}
 }

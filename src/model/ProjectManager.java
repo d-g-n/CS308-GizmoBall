@@ -242,6 +242,26 @@ public class ProjectManager extends Observable{
 		this.absorberToBeAddedY = absorberToBeAddedY;
 	}
 	
+	public void setGravity(double newGravity) {
+		
+		cManager.setGravity(newGravity);
+	}
+	
+	public void setFriction(double newFriction) {
+		
+		cManager.setFriction(newFriction, newFriction);
+	}
+
+	public double getGravity() {
+		
+		return cManager.getGravity();
+	}
+	
+	public double getFriction() {
+		
+		return cManager.getFriction();
+	}
+	
 
 
 }
