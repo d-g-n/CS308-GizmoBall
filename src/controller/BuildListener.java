@@ -91,6 +91,19 @@ public class BuildListener implements ActionListener, ChangeListener {
 			statusLabel = "Click on the gizmo you want to delete ";
 			pm.setStatusLabel(statusLabel);
 			break;
+		case "Reload Board":
+			pm.setFocusedButton("Reload Board");
+			statusLabel = "Restoring Board...";
+			pm.setStatusLabel(statusLabel);
+			int confirmation1 = JOptionPane.YES_NO_OPTION;
+			int result1 = JOptionPane.showConfirmDialog(null, "Are you sure you want to restore the board?",
+					"Warning", confirmation1);
+			if (result1 == 0) {
+				pm.clearAllBoardGizmos();
+				pm.restartGame();
+			}
+			
+			break;
 		case "Move":
 			pm.setFocusedButton("Move");
 			statusLabel = "Click the gizmo you want to move and then click on the new position";

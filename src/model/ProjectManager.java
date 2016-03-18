@@ -20,7 +20,8 @@ public class ProjectManager extends Observable{
 	private AbstractGizmo gizmoToKeyDisconnect = null;
 	private AbstractGizmo gizmoToMove = null;
 	private int absorberToBeAddedX = -1, absorberToBeAddedY = -1;
-	private String statusLabel;
+	private String statusLabel,currentBoard;
+
 
 
 
@@ -29,7 +30,7 @@ public class ProjectManager extends Observable{
 		ballList = new ArrayList<>();
 		gizmoKeyPressMap = new HashMap<>();
 		cManager = new CollisionManager(this);
-
+		currentBoard = null;
 		focusedButton = "Square";
 		setStatusLabel("");
 		// HARDCODED GIZMO DEFS (mind the outer walls are never supposed to actually be in 0 -> 19)
@@ -203,16 +204,24 @@ public class ProjectManager extends Observable{
 	}
 
 	public void loadFile(String fileName) {
-		fManager = new FileManager(this, fileName);
-		fManager.loadFile();
+		currentBoard = fileName;
+		fManager = new FileManager(this);
+		fManager.loadFile(fileName);
 
 		this.setChanged();
 		this.notifyObservers();
+	}
+	
+	public void restartGame(){
+		if(currentBoard != null)
+		fManager.loadFile(currentBoard);
 	}
 
 	public void addBall(Ball ball){
 		this.ballList.add(ball);
 	}
+	
+	
 
 	public List<Ball> getBallList(){
 		return ballList;

@@ -39,20 +39,20 @@ public class FileManager {
 
 
 
-	public FileManager(ProjectManager projectManager, String fileName ) {
-		file = new File(fileName);
+	public FileManager(ProjectManager projectManager) {
 		this.pm = projectManager;
-		try {
-			this.scan = new Scanner(file);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
 	}
 
-	public void loadFile() {
+	public void loadFile(String fileName) {
+		file = new File(fileName);
 		String currentLine;
 		Matcher lineMatch;
-
+		try {
+			scan = new Scanner(file);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		while (scan.hasNextLine()) {
 			currentLine = scan.nextLine();
 

@@ -55,6 +55,7 @@ public class BuildGUI implements GBallGui {
 		addAButton("Disconnect Gizmos", pane);
 		addAButton("Key Connect", pane);
 		addAButton("Key Disconnect", pane);
+		addAButton("Reload Board", pane);
 		addAButton("Close", pane);
 	}
 

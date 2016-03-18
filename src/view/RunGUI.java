@@ -58,18 +58,19 @@ public class RunGUI implements GBallGui, Observer {
 		addAButton("Play", leftPanel);
 		addAButton("Stop", leftPanel);
 		addAButton("Tick", leftPanel);
-		addAButton("Exit", leftPanel);
+		addAButton("Restart", leftPanel);
 		
 		pane.add(leftPanel, BorderLayout.LINE_START);
 		
 		pane.add(tv.getBoard(),BorderLayout.CENTER);
 		
 		JPanel rightPanel = new JPanel();
-		rightPanel.setLayout(new GridLayout(3,1));
+		rightPanel.setLayout(new GridLayout(4,1));
 		rightPanel.addKeyListener(keyListener);
 		addAButton("Build Mode", rightPanel);
 		addAButton("Settings", rightPanel);
 		addAButton("About", rightPanel);
+		addAButton("Exit", rightPanel);
 		
 		pane.add(rightPanel,BorderLayout.LINE_END);
 		pane.addKeyListener(keyListener);
