@@ -37,19 +37,25 @@ public class BuildGUI implements GBallGui {
 	}
 
 	private void addButtons(Container pane) {
+		addAButton("Ball", pane);
 		addAButton("Square", pane);
 		addAButton("Circle", pane);
 		addAButton("Triangle", pane);
 		addAButton("LFlipper", pane);
 		addAButton("RFlipper", pane);
-		addAButton("Connect Gizmos", pane);
 		addAButton("Absorber", pane);
+		addAButton("Booster", pane);
+		addAButton("Death Sqaure", pane);
+		addAButton("Teleporter", pane);
+		addAButton("Move", pane);
 		addAButton("Rotate", pane);
 		addAButton("Delete", pane);
-		addAButton("Move", pane);
+		addAButton("Clear Board", pane);
+		addAButton("Connect Gizmos", pane);
 		addAButton("Disconnect Gizmos", pane);
 		addAButton("Key Connect", pane);
 		addAButton("Key Disconnect", pane);
+		addAButton("Reload Board", pane);
 		addAButton("Close", pane);
 	}
 

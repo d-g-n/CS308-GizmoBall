@@ -9,11 +9,8 @@ public class MainInit {
 
         // init model
         ProjectManager pm = new ProjectManager();
-
         // init test view and pass ref from model to view
-
         RunGUI testGUI = new RunGUI(pm);
-
         pm.addObserver(testGUI);
     }
 }

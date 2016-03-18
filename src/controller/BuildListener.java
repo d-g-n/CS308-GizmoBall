@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JOptionPane;
 import javax.swing.JSlider;
 import javax.swing.Timer;
 import javax.swing.event.ChangeEvent;
@@ -35,6 +36,11 @@ public class BuildListener implements ActionListener, ChangeListener {
 			view.disposeFrame();
 			visualTimer.start();
 			break;
+		case "Ball":
+			pm.setFocusedButton("Ball");
+			statusLabel = "Now click anywhere inside the canvas to draw the ball";
+			pm.setStatusLabel(statusLabel);
+			break;
 		case "Triangle":
 			pm.setFocusedButton("Triangle");
 			statusLabel = "Now click anywhere inside the canvas to draw the triangle";
@@ -60,6 +66,21 @@ public class BuildListener implements ActionListener, ChangeListener {
 			statusLabel = "Now click anywhere inside the canvas to draw the circle";
 			pm.setStatusLabel(statusLabel);
 			break;
+		case "Booster":
+			pm.setFocusedButton("Booster");
+			statusLabel = "Now click anywhere inside the canvas to draw the booster";
+			pm.setStatusLabel(statusLabel);
+			break;
+		case "Death Sqaure":
+			pm.setFocusedButton("Death Sqaure");
+			statusLabel = "Now click anywhere inside the canvas to draw the death square";
+			pm.setStatusLabel(statusLabel);
+			break;
+		case "Teleporter":
+			pm.setFocusedButton("Teleporter");
+			statusLabel = "Now click anywhere inside the canvas to draw the teleporter";
+			pm.setStatusLabel(statusLabel);
+			break;
 		case "Connect Gizmos":
 			pm.setFocusedButton("Connect Gizmos");
 			statusLabel = "Click on the two gizmos you want to connect";
@@ -69,6 +90,19 @@ public class BuildListener implements ActionListener, ChangeListener {
 			pm.setFocusedButton("Delete");
 			statusLabel = "Click on the gizmo you want to delete ";
 			pm.setStatusLabel(statusLabel);
+			break;
+		case "Reload Board":
+			pm.setFocusedButton("Reload Board");
+			statusLabel = "Restoring Board...";
+			pm.setStatusLabel(statusLabel);
+			int confirmation1 = JOptionPane.YES_NO_OPTION;
+			int result1 = JOptionPane.showConfirmDialog(null, "Are you sure you want to restore the board?",
+					"Warning", confirmation1);
+			if (result1 == 0) {
+				pm.clearAllBoardGizmos();
+				pm.restartGame();
+			}
+			
 			break;
 		case "Move":
 			pm.setFocusedButton("Move");
@@ -84,7 +118,6 @@ public class BuildListener implements ActionListener, ChangeListener {
 			pm.setFocusedButton("Disconnect Gizmos");
 			statusLabel = "Click on the two gizmos you want to disconnect";
 			pm.setStatusLabel(statusLabel);
-			
 			break;	
 		case "Key Connect":
 			pm.setFocusedButton("Key Connect");
@@ -100,6 +133,17 @@ public class BuildListener implements ActionListener, ChangeListener {
 			pm.setFocusedButton("Rotate");
 			statusLabel = "Click on the gizmo you want to rotate";
 			pm.setStatusLabel(statusLabel);
+			break;
+		case "Clear Board":
+			pm.setFocusedButton("Clear Board");
+			statusLabel = "Clearing Board..";
+			pm.setStatusLabel(statusLabel);
+			int confirmation = JOptionPane.YES_NO_OPTION;
+			int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to clear the entire board?",
+					"Warning", confirmation);
+			if (result == 0) {
+				pm.clearAllBoardGizmos();
+			}
 			break;
 		}
 		pm.pushVisualUpdate();

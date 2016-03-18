@@ -13,7 +13,7 @@ public class RightFlipper extends Flipper {
 
 
 	public RightFlipper(int x, int y) {
-		super(x, y, 0.75);
+		super(x, y);
 
 		rotateClockwise = true;
 

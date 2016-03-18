@@ -59,6 +59,10 @@ public class RunListener implements ActionListener {
 				pm.pushVisualUpdate();
 
 				break;
+			case "Restart":
+				pm.clearAllBoardGizmos();
+				pm.restartGame();
+				break;
 			case "Build Mode":
 				visualTimer.stop(); 
 				BuildGUI buildMode = new BuildGUI(visualTimer,pm);

@@ -2,18 +2,12 @@ package controller;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.geom.Rectangle2D;
 
 import javax.swing.JPanel;
 
-import gizmos.Absorber;
-import gizmos.AbstractGizmo;
-import gizmos.CircleBumper;
-import gizmos.LeftFlipper;
-import gizmos.RightFlipper;
-import gizmos.SquareBumper;
-import gizmos.TriangleBumper;
+import gizmos.*;
 import model.ProjectManager;
+import physics.Vect;
 import view.Board;
 
 public class BoardListener implements MouseListener {
@@ -39,6 +33,12 @@ public class BoardListener implements MouseListener {
 			int width = 1;
 
 			switch (pm.getFocusedButton()) {
+			case "Ball":
+				Ball b = new Ball(x + 0.5, y + 0.5, new Vect(0, 0));
+				pm.addGizmo(b);
+				pm.addBall(b);
+				pm.pushVisualUpdate();
+				break;
 			case "Square":
 				pm.addGizmo(new SquareBumper(x, y, width, width));
 				pm.pushVisualUpdate();
@@ -87,6 +87,18 @@ public class BoardListener implements MouseListener {
 				pm.addGizmo(new RightFlipper(x, y));
 				pm.pushVisualUpdate();
 				break;
+			case "Booster":
+				pm.addGizmo(new BoosterGizmo(x, y, width, width));
+				pm.pushVisualUpdate();
+				break;
+			case "Death Sqaure":
+				pm.addGizmo(new DeathSquare(x, y, width, width));
+				pm.pushVisualUpdate();
+				break;
+			case "Teleporter":
+				pm.addGizmo(new Teleporter(x, y, width, width));
+				pm.pushVisualUpdate();
+				break;
 			case "Rotate":
 				for (AbstractGizmo a : pm.getBoardGizmos()) {
 					/*
@@ -94,7 +106,7 @@ public class BoardListener implements MouseListener {
 					 * also; we will need to override the rotate method for the
 					 * flippers
 					 */
-					if ((int) a.getXPos() == x && a.getYPos() == y && a instanceof TriangleBumper) {
+					if ((int) a.getXPos() == x && a.getYPos() == y && (a instanceof TriangleBumper || a instanceof BoosterGizmo)) {
 
 						a.rotateClockwise();
 						break;
@@ -134,10 +146,10 @@ public class BoardListener implements MouseListener {
 
 					if (pm.canPlaceGizmoAt(pm.getGizmoToMove(), x, y)) {
 
-						pm.getGizmoToMove().moveGiz(x, y);
-						pm.getGizmoToMove().setPos(x, y);
-						pm.getGizmoToMove().deletePhysics();
-						pm.getGizmoToMove().movePhysics(x, y);
+						pm.getGizmoToMove().moveGizmo(x, y);
+						// Added to update a Gizmos name when it is moved to a new position on the board
+						pm.getGizmoToMove().setName(""+pm.getGizmoToMove().getXPos()+"_"+pm.getGizmoToMove().getYPos());
+						
 
 						int numberOfRotations = pm.getGizmoToMove().getGizAngle() / 90;
 
