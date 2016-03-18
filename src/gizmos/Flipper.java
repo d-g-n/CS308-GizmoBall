@@ -5,29 +5,34 @@ import view.Board;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Rectangle2D;
 import java.awt.geom.RoundRectangle2D;
 import java.util.Arrays;
 
 public class Flipper extends AbstractGizmo {
 	boolean flipperMoving, rotateClockwise;
-	double flipRotation;
+	double flipRotation, localxpos;
 
-	public Flipper(int x, int y, double xmod) {
+	public Flipper(int x, int y) {
 
 		super(x, y, 2, 2,
 				Color.blue, // colour of gizmo
 				0.95 // reflection coefficent
 		);
 
-		double localxpos = xpos + (xmod * width);
+		// flipper specific things
 
-		addPhysicsPath(Arrays.asList(
-				new Vect(localxpos, ypos),
-				new Vect(localxpos + (width * 0.25), ypos),
-				new Vect(localxpos + (width * 0.25), ypos + height),
-				new Vect(localxpos, ypos + height),
-				new Vect(localxpos, ypos)
-		));
+		rotateAroundPoint = new Vect(localxpos + (width * 0.125), ypos + (height * 0.125));
+		flipperMoving = false;
+		angleVel = 1080 * Board.MOVE_TIME;
+		flipRotation = 180; // because it starts pointing down and the pivot point is above it i guess
+
+	}
+
+	@Override
+	public void setGizShape(double x, double y) {
+
+		localxpos = xpos + ((this.getClass().equals(LeftFlipper.class) ? 0 : 0.75) * width); // this is really bad
 
 		setShape(new RoundRectangle2D.Double(
 				(localxpos),
@@ -38,12 +43,20 @@ public class Flipper extends AbstractGizmo {
 				0.25
 		));
 
-		// flipper specific things
+	}
 
-		rotateAroundPoint = new Vect(localxpos + (width * 0.125), ypos + (height * 0.125));
-		flipperMoving = false;
-		angleVel = 1080 * Board.MOVE_TIME;
-		flipRotation = 180; // because it starts pointing down and the pivot point is above it i guess
+	@Override
+	public void setGizPhysics(double x, double y) {
+
+		localxpos = xpos + ((this.getClass().equals(LeftFlipper.class) ? 0 : 0.75) * width); // really really really bad
+
+		addPhysicsPath(Arrays.asList(
+				new Vect(localxpos, ypos),
+				new Vect(localxpos + (width * 0.25), ypos),
+				new Vect(localxpos + (width * 0.25), ypos + height),
+				new Vect(localxpos, ypos + height),
+				new Vect(localxpos, ypos)
+		));
 
 	}
 

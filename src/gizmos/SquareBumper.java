@@ -14,26 +14,11 @@ public class SquareBumper extends AbstractGizmo {
 				Color.red, // colour of gizmo
 				1 // reflection coefficent
 		);
-		
-		addPhysicsPath(Arrays.asList(
-				new Vect(xpos, ypos), // start at top left
-				new Vect(xpos + width, ypos), // move to top right
-				new Vect(xpos + width, ypos + height), // move to bottom right
-				new Vect(xpos, ypos + height), // move to bottom left
-				new Vect(xpos, ypos) // and back up to top left
-		));
 
-
-		setShape(new Rectangle2D.Double(
-				(xpos),
-				(ypos),
-				(width),
-				(height)
-		));
 	}
 	
 	@Override
-	public void moveGiz(int x,int y) {
+	public void setGizShape(double x, double y) {
 		
 		
 		setShape(new Rectangle2D.Double(
@@ -46,7 +31,7 @@ public class SquareBumper extends AbstractGizmo {
 	}
 	
 	@Override
-	public void movePhysics(int x,int y) {
+	public void setGizPhysics(double x, double y) {
 		
 		
 		addPhysicsPath(Arrays.asList(

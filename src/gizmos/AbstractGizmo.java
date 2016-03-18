@@ -44,6 +44,9 @@ public abstract class AbstractGizmo {
 
 		this.StoredCircles = new ArrayList<Circle>();
 		this.StoredLines = new ArrayList<LineSegment>();
+
+		setGizPhysics(xpos, ypos);
+		setGizShape(xpos, ypos);
 	}
 
 
@@ -124,6 +127,26 @@ public abstract class AbstractGizmo {
 	public void setShape(Shape gizShape){
 		this.gizShape = gizShape;
 	}
+
+	public void setGizShape(double x, double y) {}
+
+	public void setGizPhysics(double x, double y) {}
+
+	public void deletePhysics() {
+
+		this.StoredLines.clear();
+		this.StoredCircles.clear();
+
+	}
+
+	public void moveGizmo(int x, int y){
+
+		this.setPos(x, y);
+		this.deletePhysics();
+		this.setGizShape(x, y);
+		this.setGizPhysics(x, y);
+
+	}
 	
 
 
@@ -203,24 +226,6 @@ public abstract class AbstractGizmo {
 	public Vect getRotateAroundPoint(){
 		return rotateAroundPoint;
 	}
-	
-	public void moveGiz(int x,int y) {
-		
-		
-		
-	}
-	
-	public void movePhysics(int x,int y) {
-		
-		
 
-		
-	}
-	
-	public void deletePhysics() {
-		
-		this.StoredLines.clear();
-		this.StoredCircles.clear();
-	}
 
 }

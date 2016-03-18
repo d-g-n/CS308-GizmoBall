@@ -31,7 +31,7 @@ public class CircleBumper extends AbstractGizmo {
 	}
 	
 	@Override
-	public void moveGiz(int x,int y) {
+	public void setGizShape(double x, double y) {
 		
 		
 		setShape(new Ellipse2D.Double(
@@ -44,7 +44,7 @@ public class CircleBumper extends AbstractGizmo {
 	}
 	
 	@Override
-	public void movePhysics(int x,int y) {
+	public void setGizPhysics(double x, double y) {
 		
 		
 		addPhysicsCircle(x + radius, y + radius, radius);

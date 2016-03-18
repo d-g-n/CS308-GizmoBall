@@ -35,7 +35,7 @@ public class DeathSquare extends AbstractGizmo {
 	}
 	
 	@Override
-	public void moveGiz(int x,int y) {
+	public void setGizShape(double x, double y) {
 		
 		
 		setShape(new Rectangle2D.Double(
@@ -48,7 +48,7 @@ public class DeathSquare extends AbstractGizmo {
 	}
 	
 	@Override
-	public void movePhysics(int x,int y) {
+	public void setGizPhysics(double x, double y) {
 		
 		
 		addPhysicsPath(Arrays.asList(

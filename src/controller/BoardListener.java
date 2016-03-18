@@ -2,7 +2,6 @@ package controller;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.geom.Rectangle2D;
 
 import javax.swing.JPanel;
 
@@ -149,10 +148,7 @@ public class BoardListener implements MouseListener {
 
 					if (pm.canPlaceGizmoAt(pm.getGizmoToMove(), x, y)) {
 
-						pm.getGizmoToMove().moveGiz(x, y);
-						pm.getGizmoToMove().setPos(x, y);
-						pm.getGizmoToMove().deletePhysics();
-						pm.getGizmoToMove().movePhysics(x, y);
+						pm.getGizmoToMove().moveGizmo(x, y);
 						// Added to update a Gizmos name when it is moved to a new position on the board
 						pm.getGizmoToMove().setName(""+pm.getGizmoToMove().getXPos()+"_"+pm.getGizmoToMove().getYPos());
 						

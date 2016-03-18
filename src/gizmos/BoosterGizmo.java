@@ -59,7 +59,7 @@ public class BoosterGizmo extends AbstractGizmo {
 	
 	
 	@Override
-	public void moveGiz(int x,int y) {
+	public void setGizShape(double x, double y) {
 		
 		
 		Shape shape = new Polygon();
@@ -97,7 +97,7 @@ public class BoosterGizmo extends AbstractGizmo {
 	}
 	
 	@Override
-	public void movePhysics(int x,int y) {
+	public void setGizPhysics(double x, double y) {
 		
 		
 		addPhysicsPath(Arrays.asList(

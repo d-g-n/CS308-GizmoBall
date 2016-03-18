@@ -21,19 +21,10 @@ public class Teleporter extends AbstractGizmo {
 
 		this.radius = 0.5;
 
-		addPhysicsCircle(xpos + radius, ypos + radius, radius);
-
-		setShape(new Ellipse2D.Double(
-				(xpos),
-				(ypos),
-				(width),
-				(height)
-		));
 	}
 	
 	@Override
-	public void moveGiz(int x,int y) {
-		
+	public void setGizShape(double x, double y) {
 		
 		setShape(new Ellipse2D.Double(
 				(x),
@@ -45,8 +36,7 @@ public class Teleporter extends AbstractGizmo {
 	}
 	
 	@Override
-	public void movePhysics(int x,int y) {
-		
+	public void setGizPhysics(double x, double y) {
 		
 		addPhysicsCircle(x + radius, y + radius, radius);
 		
