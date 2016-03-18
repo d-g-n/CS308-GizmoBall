@@ -1,22 +1,17 @@
 package model;
 
 import java.util.*;
-import java.util.concurrent.ArrayBlockingQueue;
 
-import controller.MenuListener;
 import gizmos.*;
 import physics.Vect;
-import view.Board;
-import view.RunGUI;
 
 public class ProjectManager extends Observable{
 	
 	private CollisionManager cManager;
 	private FileManager fManager;
-	private MenuListener menuListener = new MenuListener();
 	private List<AbstractGizmo> boardGizmos;
 	private Map<Map.Entry<String, Integer>, List<AbstractGizmo>> gizmoKeyPressMap;
-	private static Ball ball;
+	private List<Ball> ballList;
 	private String focusedButton;
 	private boolean buildModeOn = false;
 	private AbstractGizmo gizmoToConnect = null;
@@ -31,8 +26,10 @@ public class ProjectManager extends Observable{
 
 	public ProjectManager(){
 		boardGizmos = new ArrayList<>();
+		ballList = new ArrayList<>();
 		gizmoKeyPressMap = new HashMap<>();
 		cManager = new CollisionManager(this);
+
 		focusedButton = "Square";
 		setStatusLabel("");
 		// HARDCODED GIZMO DEFS (mind the outer walls are never supposed to actually be in 0 -> 19)
@@ -213,12 +210,12 @@ public class ProjectManager extends Observable{
 		this.notifyObservers();
 	}
 
-	public void setBall(Ball ball){
-		this.ball = ball;
+	public void addBall(Ball ball){
+		this.ballList.add(ball);
 	}
 
-	public static Ball getBall(){
-		return ball;
+	public List<Ball> getBallList(){
+		return ballList;
 	}
 
 	public boolean isBuildModeOn() {
@@ -317,9 +314,23 @@ public class ProjectManager extends Observable{
 	public void setGizmoToKeyDisconnect(AbstractGizmo gizmoToKeyDisconnect) {
 		this.gizmoToKeyDisconnect = gizmoToKeyDisconnect;
 	}
-	
-	
-	
 
 
+	public void clearAllBoardGizmos () {
+		boardGizmos.clear();
+
+		// this is required along with boardGizmos.clear() as otherwise we have invisible balls roaming around the board
+		this.ballList.clear();
+
+		// forgot this first time round, need to clear the key connect map too
+		gizmoKeyPressMap.clear();
+
+		// re add the outwalls, maybe a silly way of doing things, could change it
+
+		addGizmo(new OuterWall(-1, -1, 22, 1)); // start at top left, 20 along x
+		addGizmo(new OuterWall(-1, -1, 1, 22)); // start at top left, 20 down y
+
+		addGizmo(new OuterWall(20, -1, 1, 22)); // start at top right, 22 down y
+		addGizmo(new OuterWall(-1, 20, 22, 1)); // start at bottom left, 22 along x
+	}
 }

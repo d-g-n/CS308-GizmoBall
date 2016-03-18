@@ -30,7 +30,7 @@ public class RunBoard extends JPanel {
 
 		drawEmptyBoardWithGuidelines(g,Board.BOARD_WIDTH, Board.BOARD_HEIGHT);
 
-		//drawBall(pm.getBall(),g);
+		//drawBall(pm.getBallList(),g);
 		for (AbstractGizmo gizmo : pm.getBoardGizmos()) {
 			AffineTransform pT = g2d.getTransform();
 

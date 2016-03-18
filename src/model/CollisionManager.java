@@ -3,10 +3,10 @@ package model;
 import java.util.List;
 import java.util.Observable;
 
+import gizmos.Absorber;
 import gizmos.AbstractGizmo;
 import gizmos.Ball;
 
-import gizmos.Flipper;
 import physics.Circle;
 import physics.Geometry;
 import physics.LineSegment;
@@ -24,13 +24,13 @@ public class CollisionManager extends Observable {
 
 	public CollisionManager(ProjectManager pm) {
 		this.pm = pm;
-		this.ballList = pm.getBall();
+		this.ballList = pm.getBallList();
 	}
 
 	public void moveBall() {
 
 		if(ballList.size() == 0){
-			this.ballList = pm.getBall();
+			this.ballList = pm.getBallList();
 			return;
 		}
 

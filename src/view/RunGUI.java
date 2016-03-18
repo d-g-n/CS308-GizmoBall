@@ -17,6 +17,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+
+import controller.MenuFileListener;
 import controller.MagicKeyListener;
 import controller.RunListener;
 import model.ProjectManager;
@@ -40,6 +42,7 @@ public class RunGUI implements GBallGui, Observer {
 				"The file menu");
 		menuBar.add(menu);
 		JMenuItem fileItem1 = new JMenuItem("Load...");
+		fileItem1.addActionListener(new MenuFileListener(pm));
 		JMenuItem fileItem2 = new JMenuItem("Exit");
 		menu.add(fileItem1);
 		menu.add(fileItem2);
