@@ -43,6 +43,9 @@ public class BuildGUI implements GBallGui {
 		addAButton("LFlipper", pane);
 		addAButton("RFlipper", pane);
 		addAButton("Absorber", pane);
+		addAButton("Booster", pane);
+		addAButton("Death Sqaure", pane);
+		addAButton("Teleporter", pane);
 		addAButton("Move", pane);
 		addAButton("Rotate", pane);
 		addAButton("Delete", pane);

@@ -61,6 +61,21 @@ public class BuildListener implements ActionListener, ChangeListener {
 			statusLabel = "Now click anywhere inside the canvas to draw the circle";
 			pm.setStatusLabel(statusLabel);
 			break;
+		case "Booster":
+			pm.setFocusedButton("Booster");
+			statusLabel = "Now click anywhere inside the canvas to draw the booster";
+			pm.setStatusLabel(statusLabel);
+			break;
+		case "Death Sqaure":
+			pm.setFocusedButton("Death Sqaure");
+			statusLabel = "Now click anywhere inside the canvas to draw the death square";
+			pm.setStatusLabel(statusLabel);
+			break;
+		case "Teleporter":
+			pm.setFocusedButton("Teleporter");
+			statusLabel = "Now click anywhere inside the canvas to draw the teleporter";
+			pm.setStatusLabel(statusLabel);
+			break;
 		case "Connect Gizmos":
 			pm.setFocusedButton("Connect Gizmos");
 			statusLabel = "Click on the two gizmos you want to connect";

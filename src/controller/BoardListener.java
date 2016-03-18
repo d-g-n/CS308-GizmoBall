@@ -8,10 +8,13 @@ import javax.swing.JPanel;
 
 import gizmos.Absorber;
 import gizmos.AbstractGizmo;
+import gizmos.BoosterGizmo;
 import gizmos.CircleBumper;
+import gizmos.DeathSquare;
 import gizmos.LeftFlipper;
 import gizmos.RightFlipper;
 import gizmos.SquareBumper;
+import gizmos.Teleporter;
 import gizmos.TriangleBumper;
 import model.ProjectManager;
 import view.Board;
@@ -87,6 +90,18 @@ public class BoardListener implements MouseListener {
 				pm.addGizmo(new RightFlipper(x, y));
 				pm.pushVisualUpdate();
 				break;
+			case "Booster":
+				pm.addGizmo(new BoosterGizmo(x, y, width, width));
+				pm.pushVisualUpdate();
+				break;
+			case "Death Sqaure":
+				pm.addGizmo(new DeathSquare(x, y, width, width));
+				pm.pushVisualUpdate();
+				break;
+			case "Teleporter":
+				pm.addGizmo(new Teleporter(x, y, width, width));
+				pm.pushVisualUpdate();
+				break;
 			case "Rotate":
 				for (AbstractGizmo a : pm.getBoardGizmos()) {
 					/*
@@ -94,7 +109,7 @@ public class BoardListener implements MouseListener {
 					 * also; we will need to override the rotate method for the
 					 * flippers
 					 */
-					if ((int) a.getXPos() == x && a.getYPos() == y && a instanceof TriangleBumper) {
+					if ((int) a.getXPos() == x && a.getYPos() == y && (a instanceof TriangleBumper || a instanceof BoosterGizmo)) {
 
 						a.rotateClockwise();
 						break;
