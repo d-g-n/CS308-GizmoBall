@@ -36,6 +36,11 @@ public class BuildListener implements ActionListener, ChangeListener {
 			view.disposeFrame();
 			visualTimer.start();
 			break;
+		case "Ball":
+			pm.setFocusedButton("Ball");
+			statusLabel = "Now click anywhere inside the canvas to draw the ball";
+			pm.setStatusLabel(statusLabel);
+			break;
 		case "Triangle":
 			pm.setFocusedButton("Triangle");
 			statusLabel = "Now click anywhere inside the canvas to draw the triangle";

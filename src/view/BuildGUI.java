@@ -37,6 +37,7 @@ public class BuildGUI implements GBallGui {
 	}
 
 	private void addButtons(Container pane) {
+		addAButton("Ball", pane);
 		addAButton("Square", pane);
 		addAButton("Circle", pane);
 		addAButton("Triangle", pane);

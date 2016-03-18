@@ -5,17 +5,9 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
 
-import gizmos.Absorber;
-import gizmos.AbstractGizmo;
-import gizmos.BoosterGizmo;
-import gizmos.CircleBumper;
-import gizmos.DeathSquare;
-import gizmos.LeftFlipper;
-import gizmos.RightFlipper;
-import gizmos.SquareBumper;
-import gizmos.Teleporter;
-import gizmos.TriangleBumper;
+import gizmos.*;
 import model.ProjectManager;
+import physics.Vect;
 import view.Board;
 
 public class BoardListener implements MouseListener {
@@ -41,6 +33,12 @@ public class BoardListener implements MouseListener {
 			int width = 1;
 
 			switch (pm.getFocusedButton()) {
+			case "Ball":
+				Ball b = new Ball(x + 0.5, y + 0.5, new Vect(0, 0));
+				pm.addGizmo(b);
+				pm.addBall(b);
+				pm.pushVisualUpdate();
+				break;
 			case "Square":
 				pm.addGizmo(new SquareBumper(x, y, width, width));
 				pm.pushVisualUpdate();
