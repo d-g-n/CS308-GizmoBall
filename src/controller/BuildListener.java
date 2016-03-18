@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JOptionPane;
 import javax.swing.JSlider;
 import javax.swing.Timer;
 import javax.swing.event.ChangeEvent;
@@ -84,7 +85,6 @@ public class BuildListener implements ActionListener, ChangeListener {
 			pm.setFocusedButton("Disconnect Gizmos");
 			statusLabel = "Click on the two gizmos you want to disconnect";
 			pm.setStatusLabel(statusLabel);
-			
 			break;	
 		case "Key Connect":
 			pm.setFocusedButton("Key Connect");
@@ -100,6 +100,17 @@ public class BuildListener implements ActionListener, ChangeListener {
 			pm.setFocusedButton("Rotate");
 			statusLabel = "Click on the gizmo you want to rotate";
 			pm.setStatusLabel(statusLabel);
+			break;
+		case "Clear Board":
+			pm.setFocusedButton("Clear Board");
+			statusLabel = "Clearing Board..";
+			pm.setStatusLabel(statusLabel);
+			int confirmation = JOptionPane.YES_NO_OPTION;
+			int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to clear the entire board?",
+					"Warning", confirmation);
+			if (result == 0) {
+				pm.clearAllBoardGizmos();
+			}
 			break;
 		}
 		pm.pushVisualUpdate();

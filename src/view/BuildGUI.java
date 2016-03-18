@@ -42,11 +42,12 @@ public class BuildGUI implements GBallGui {
 		addAButton("Triangle", pane);
 		addAButton("LFlipper", pane);
 		addAButton("RFlipper", pane);
-		addAButton("Connect Gizmos", pane);
 		addAButton("Absorber", pane);
+		addAButton("Move", pane);
 		addAButton("Rotate", pane);
 		addAButton("Delete", pane);
-		addAButton("Move", pane);
+		addAButton("Clear Board", pane);
+		addAButton("Connect Gizmos", pane);
 		addAButton("Disconnect Gizmos", pane);
 		addAButton("Key Connect", pane);
 		addAButton("Key Disconnect", pane);
