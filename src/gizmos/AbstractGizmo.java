@@ -5,7 +5,9 @@ import physics.*;
 import view.Board;
 
 import java.awt.*;
+import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public abstract class AbstractGizmo {
@@ -30,7 +32,7 @@ public abstract class AbstractGizmo {
 		this.height = height;
 
 		this.gizAngle = 0;
-		this.name = "";
+		this.name = ""+(int)x+"_"+(int)y; // Added Very Basic naming to new gizmos that have not been read in from file
 
 		this.angleVel = 0;
 		this.rotateAroundPoint = this.getCenter();
@@ -113,6 +115,10 @@ public abstract class AbstractGizmo {
 	public void addGizmoListener(AbstractGizmo listener){
 		this.gizmoListeners.add(listener);
 	}
+	
+	public void removeGizmoListener(AbstractGizmo listener){
+		this.gizmoListeners.remove(listener);
+	}
 
 
 	public void setShape(Shape gizShape){
@@ -147,6 +153,8 @@ public abstract class AbstractGizmo {
 	}
 
 	public Shape getShape(){ return gizShape; }
+
+	public void doPhysicsCalculations() {}
 
 	public String getName(){
 		return this.name;
@@ -194,6 +202,25 @@ public abstract class AbstractGizmo {
 
 	public Vect getRotateAroundPoint(){
 		return rotateAroundPoint;
+	}
+	
+	public void moveGiz(int x,int y) {
+		
+		
+		
+	}
+	
+	public void movePhysics(int x,int y) {
+		
+		
+
+		
+	}
+	
+	public void deletePhysics() {
+		
+		this.StoredLines.clear();
+		this.StoredCircles.clear();
 	}
 
 }

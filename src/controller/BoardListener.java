@@ -2,65 +2,226 @@ package controller;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.geom.Rectangle2D;
 
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import gizmos.Absorber;
-import gizmos.Ball;
+import gizmos.AbstractGizmo;
 import gizmos.CircleBumper;
 import gizmos.LeftFlipper;
 import gizmos.RightFlipper;
 import gizmos.SquareBumper;
 import gizmos.TriangleBumper;
 import model.ProjectManager;
-import physics.Vect;
 import view.Board;
 
 public class BoardListener implements MouseListener {
 
 	private JPanel board;
 	private ProjectManager pm;
-	public BoardListener(ProjectManager pm, JPanel board){
+
+	public BoardListener(ProjectManager pm, JPanel board) {
 		this.board = board;
 		this.pm = pm;
 	}
+
 	@Override
 	public void mouseClicked(MouseEvent e) {
-	
+
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		if(pm.isBuildModeOn()){
-			int x =  e.getX() / (Board.BOARD_WIDTH / Board.X_CELLS);
-			int y =  e.getY() / (Board.BOARD_HEIGHT / Board.Y_CELLS);
+		if (pm.isBuildModeOn()) {
+			int x = e.getX() / (Board.BOARD_WIDTH / Board.X_CELLS);
+			int y = e.getY() / (Board.BOARD_HEIGHT / Board.Y_CELLS);
 			int width = 1;
-			if(pm.getFocusedButton().equals("Square")){
-				pm.addGizmo(new SquareBumper(x, y,width , width));
+
+			switch (pm.getFocusedButton()) {
+			case "Square":
+				pm.addGizmo(new SquareBumper(x, y, width, width));
 				pm.pushVisualUpdate();
-			}else if(pm.getFocusedButton().equals("Triangle")){
-				pm.addGizmo(new TriangleBumper(x, y,width , width));
+				break;
+			case "Triangle":
+				pm.addGizmo(new TriangleBumper(x, y, width, width));
 				pm.pushVisualUpdate();
-			} else if(pm.getFocusedButton().equals("Circle")){
-				pm.addGizmo(new CircleBumper(x, y,width , width));
+				break;
+			case "Circle":
+				pm.addGizmo(new CircleBumper(x, y, width, width));
 				pm.pushVisualUpdate();
-			} else if(pm.getFocusedButton().equals("LFlipper")){
+				break;
+			case "Absorber":
+
+				if (pm.getAbsorberToBeAddedX() == -1) {
+
+					pm.setAbsorberToBeAddedX(x);
+					pm.setAbsorberToBeAddedY(y);
+
+				} else {
+
+					if (x < pm.getAbsorberToBeAddedX() || y < pm.getAbsorberToBeAddedY()) {
+
+						pm.setAbsorberToBeAddedX(-1);
+						pm.setAbsorberToBeAddedY(-1);
+
+					} else {
+
+						int absorberWidth = x - pm.getAbsorberToBeAddedX() + 1;
+						int absorberHeight = y - pm.getAbsorberToBeAddedY() + 1;
+						pm.addGizmo(new Absorber(pm.getAbsorberToBeAddedX(), pm.getAbsorberToBeAddedY(), absorberWidth,
+								absorberHeight));
+						pm.setAbsorberToBeAddedX(-1);
+						pm.setAbsorberToBeAddedY(-1);
+						pm.pushVisualUpdate();
+
+					}
+
+				}
+				break;
+			case "LFlipper":
 				pm.addGizmo(new LeftFlipper(x, y));
 				pm.pushVisualUpdate();
-			} else if(pm.getFocusedButton().equals("RFlipper")){
+				break;
+			case "RFlipper":
 				pm.addGizmo(new RightFlipper(x, y));
 				pm.pushVisualUpdate();
-			} else if(pm.getFocusedButton().equals("Add Ball")){
-				Vect initialVelocity = new Vect(0.0, 0.0);
-				Ball ball = new Ball((double)x, (double)y, initialVelocity);
-				pm.addGizmo(ball);
-				pm.addBall(ball);
+				break;
+			case "Rotate":
+				for (AbstractGizmo a : pm.getBoardGizmos()) {
+					/*
+					 * This will need to change to allow for flipper rotation
+					 * also; we will need to override the rotate method for the
+					 * flippers
+					 */
+					if ((int) a.getXPos() == x && a.getYPos() == y && a instanceof TriangleBumper) {
+
+						a.rotateClockwise();
+						break;
+					}
+				}
 				pm.pushVisualUpdate();
-			}  else if(pm.getFocusedButton().equals("Add Absorber")){
+				break;
+			case "Delete":
+				AbstractGizmo del = null;
+				for (AbstractGizmo a : pm.getBoardGizmos()) {
+					if ((int) a.getXPos() == x && a.getYPos() == y) {
+
+						del = a;
+						break;
+					}
+				}
+				pm.deleteGizmo(del);
+				pm.pushVisualUpdate();
+
+				break;
+			case "Move":
+
+				if (pm.getGizmoToMove() == null) {
+					AbstractGizmo move = null;
+					for (AbstractGizmo a : pm.getBoardGizmos()) {
+
+						if ((int) a.getXPos() == x && a.getYPos() == y) {
+
+							move = a;
+							break;
+						}
+
+					}
+					pm.setGizmoToMove(move);
+
+				} else {
+
+					if (pm.canPlaceGizmoAt(pm.getGizmoToMove(), x, y)) {
+
+						pm.getGizmoToMove().moveGiz(x, y);
+						pm.getGizmoToMove().setPos(x, y);
+						pm.getGizmoToMove().deletePhysics();
+						pm.getGizmoToMove().movePhysics(x, y);
+
+						int numberOfRotations = pm.getGizmoToMove().getGizAngle() / 90;
+
+						for (int i = 0; i < numberOfRotations; i++) {
+
+							pm.getGizmoToMove().rotatePhysicsAroundPoint(
+									pm.getGizmoToMove().getXPos() + pm.getGizmoToMove().getWidth() / 2,
+									pm.getGizmoToMove().getYPos() + (pm.getGizmoToMove().getHeight() / 2), 90.0);
+
+						}
+						pm.setGizmoToMove(null);
+
+						pm.pushVisualUpdate();
+					}
+				}
+
+				break;
+			case "Connect Gizmos":
+
+				for (AbstractGizmo a : pm.getBoardGizmos()) {
+					if ((int) a.getXPos() == x && a.getYPos() == y) {
+						if (pm.getGizmoToConnect() == null) {
+							pm.setGizmoToConnect(a);
+						} else {
+							a.addGizmoListener(pm.getGizmoToConnect());
+							pm.setGizmoToConnect(null);
+						}
+
+						break;
+					}
+				}
+				break;
+
+			case "Disconnect Gizmos":
+
+				for (AbstractGizmo a : pm.getBoardGizmos()) {
+					if ((int) a.getXPos() == x && a.getYPos() == y) {
+						if (pm.getGizmoToDisconnect() == null) {
+							pm.setGizmoToDisconnect(a);
+						} else {
+							a.removeGizmoListener(pm.getGizmoToDisconnect());
+							pm.setGizmoToDisconnect(null);
+						}
+
+						break;
+					}
+				}
+
+				break;
 				
-				/* Need to implement Absorber properly. User should be able to choose it's width and height. MouseDragged Listener maybe?   */
+			case "Key Connect":
+
+
+				if (pm.getGizmoToKeyConnect() == null) {
+					
+					for (AbstractGizmo a : pm.getBoardGizmos()) {
+						if ((int) a.getXPos() == x && a.getYPos() == y) {
+							
+								pm.setGizmoToKeyConnect(a);
+								break;
+						}
+					}
+
+				}
+
+				break;
 				
+			case "Key Disconnect":
+
+
+				if (pm.getGizmoToKeyDisconnect() == null) {
+					
+					for (AbstractGizmo a : pm.getBoardGizmos()) {
+						if ((int) a.getXPos() == x && a.getYPos() == y) {
+							
+								pm.setGizmoToKeyDisconnect(a);
+								break;
+						}
+					}
+
+				}
+
+				break;
+
 			}
 		}
 	}

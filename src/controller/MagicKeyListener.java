@@ -2,6 +2,7 @@ package controller;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.List;
 import java.util.Map;
 
 import gizmos.AbstractGizmo;
@@ -21,16 +22,34 @@ public class MagicKeyListener implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
+		
+		if (pm.getFocusedButton() == "Key Connect" && pm.getGizmoToKeyConnect() != null) {
+			
+		pm.addKeyConnect(pm.getGizmoToKeyConnect().getName(), key, "down");
+		pm.setGizmoToKeyConnect(null);
+	
+		}
+		
+		if (pm.getFocusedButton() == "Key Disconnect" && pm.getGizmoToKeyDisconnect() != null) {
+			
+		pm.removeKeyConnect(pm.getGizmoToKeyDisconnect().getName(), key, "down");
+		pm.removeKeyConnect(pm.getGizmoToKeyDisconnect().getName(), key, "up");
+		pm.setGizmoToKeyDisconnect(null);
+	
+		}
 
-		for(Map.Entry<Map.Entry<String, Integer>, AbstractGizmo> ent : pm.getKeyConnects().entrySet()){
+		for(Map.Entry<Map.Entry<String, Integer>, List<AbstractGizmo>> ent : pm.getKeyConnects().entrySet()){
 			Map.Entry<String, Integer> inEnt = ent.getKey();
-			AbstractGizmo giz = ent.getValue();
+			List<AbstractGizmo> gizList = ent.getValue();
 
 			if(!inEnt.getKey().equals("down"))
 				continue;
 
-			if(key == inEnt.getValue())
-				giz.doTrigger();
+			if(key == inEnt.getValue()) {
+				for(AbstractGizmo g : gizList){
+					g.doTrigger();
+				}
+			}
 		}
 
 	}
@@ -39,16 +58,27 @@ public class MagicKeyListener implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 		
 		int key = e.getKeyCode();
+		
+		
+		/*if (pm.getFocusedButton() == "Key Connect" && pm.getGizmoToKeyConnect() != null) {
+			
+		pm.addKeyConnect(pm.getGizmoToKeyConnect().getName(), key, "down");
+		pm.setGizmoToKeyConnect(null);
+	
+		} */
 
-		for(Map.Entry<Map.Entry<String, Integer>, AbstractGizmo> ent : pm.getKeyConnects().entrySet()){
+		for(Map.Entry<Map.Entry<String, Integer>, List<AbstractGizmo>> ent : pm.getKeyConnects().entrySet()){
 			Map.Entry<String, Integer> inEnt = ent.getKey();
-			AbstractGizmo giz = ent.getValue();
+			List<AbstractGizmo> gizList = ent.getValue();
 
 			if(!inEnt.getKey().equals("up"))
 				continue;
 
-			if(key == inEnt.getValue())
-				giz.doTrigger();
+			if(key == inEnt.getValue()) {
+				for(AbstractGizmo g : gizList){
+					g.doTrigger();
+				}
+			}
 		}
 	}
 

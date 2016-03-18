@@ -24,13 +24,13 @@ public class CollisionManager extends Observable {
 
 	public CollisionManager(ProjectManager pm) {
 		this.pm = pm;
-		this.ballList = pm.getBall();
+		this.ballList = pm.getBallList();
 	}
 
 	public void moveBall() {
 
 		if(ballList.size() == 0){
-			this.ballList = pm.getBall();
+			this.ballList = pm.getBallList();
 			return;
 		}
 
@@ -262,5 +262,13 @@ public class CollisionManager extends Observable {
 	public void setFriction(double mu, double mu2){
 		this.SETTINGS_FRICTION_MU = mu;
 		this.SETTINGS_FRICTION_MU2 = mu2;
+	}
+
+	public double getGravity() {
+		return this.SETTINGS_GRAVITY;
+	}
+
+	public double getFriction() {
+		return this.SETTINGS_FRICTION_MU;
 	}
 }

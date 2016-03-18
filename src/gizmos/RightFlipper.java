@@ -20,7 +20,7 @@ public class RightFlipper extends Flipper {
 	}
 
 	@Override
-	public Shape getShape() {
+	public void doPhysicsCalculations() {
 
 		if(flipperMoving){
 
@@ -31,8 +31,6 @@ public class RightFlipper extends Flipper {
 			}
 
 		}
-
-		return super.getShape();
 	}
 
 
