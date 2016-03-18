@@ -12,6 +12,8 @@ import java.util.Random;
 
 public class Absorber extends AbstractGizmo {
 
+	Ball boardBall = null;
+
 	public Absorber(int x, int y, int w, int h) {
 
 		super(x, y, w, h,
@@ -37,26 +39,31 @@ public class Absorber extends AbstractGizmo {
 
 	}
 
+	public void setHeldBall(Ball b){
+		this.boardBall = b;
+	}
+
 
 	/**
 	 * This is an example of how to extend abstract behaviour to provide additional behaviour
 	 */
 	@Override
-	public void onHit() {
+	public void onHit(AbstractGizmo hit) {
 		// hold the ball in this
 
-		Ball boardBall = ProjectManager.getBall();
+		boardBall = ((Ball) hit);
 
-		boardBall.setStopped(true);
+		if(boardBall != null) {
 
-		boardBall.setVelocity(new Vect(0, 0));
+			boardBall.setStopped(true);
 
-		boardBall.setPos(xpos + width - boardBall.getRadius()*2, ypos);
+			boardBall.setVelocity(new Vect(0, 0));
 
+			boardBall.setPos(xpos + width - boardBall.getRadius() * 2, ypos);
 
+		}
 
-
-		super.onHit();
+		super.onHit(hit);
 	}
 
 	/**
@@ -68,12 +75,14 @@ public class Absorber extends AbstractGizmo {
 
 		// if ball is held, chuck it back out
 
-		Ball boardBall = ProjectManager.getBall();
+		if(boardBall != null && boardBall.isStopped()){
 
-		if(boardBall.isStopped()){
 			boardBall.setStopped(false);
 
 			boardBall.setVelocity(new Vect(0, -50));
+
+			boardBall = null;
+
 		}
 
 	}

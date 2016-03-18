@@ -15,7 +15,5 @@ public class MainInit {
         RunGUI testGUI = new RunGUI(pm);
 
         pm.addObserver(testGUI);
-
-        pm.loadFile("boards/gizmos.txt");
     }
 }
