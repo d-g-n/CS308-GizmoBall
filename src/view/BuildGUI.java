@@ -56,6 +56,7 @@ public class BuildGUI implements GBallGui {
 		addAButton("Key Connect", pane);
 		addAButton("Key Disconnect", pane);
 		addAButton("Reload Board", pane);
+		addAButton("Dynamic Play",pane);
 		addAButton("Close", pane);
 	}
 
