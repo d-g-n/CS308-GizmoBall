@@ -144,7 +144,7 @@ public class BoardListener implements MouseListener {
 
 				} else {
 
-					if (pm.canPlaceGizmoAt(pm.getGizmoToMove(), x, y)) {
+					if (pm.canPlaceGizmoAt(x, y, pm.getGizmoToMove().getWidth(), pm.getGizmoToMove().getHeight())) {
 
 						pm.getGizmoToMove().moveGizmo(x, y);
 						// Added to update a Gizmos name when it is moved to a new position on the board

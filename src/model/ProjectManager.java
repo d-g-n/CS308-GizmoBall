@@ -98,12 +98,7 @@ public class ProjectManager extends Observable{
 			boardGizmos.add(g);
 	}
 
-	public boolean canPlaceGizmoAt(AbstractGizmo sg){
-
-		double x = sg.getXPos();
-		double y = sg.getYPos();
-		double w = sg.getWidth();
-		double h = sg.getHeight();
+	public boolean canPlaceGizmoAt(double x, double y, double w, double h){
 
 		if((x < 0 || x >= 20) || (y < 0 || y >= 20)){
 			return false;
@@ -136,42 +131,9 @@ public class ProjectManager extends Observable{
 		return true;
 
 	}
-	
-	public boolean canPlaceGizmoAt(AbstractGizmo sg, int x, int y){
 
-		double w = sg.getWidth();
-		double h = sg.getHeight();
-
-		if((x < 0 || x >= 20) || (y < 0 || y >= 20)){
-			return false;
-		}
-
-		List<Vect> requestedPoints = new ArrayList<>();
-
-		for(double ix = x; ix < (x+w); ix++){
-			for(double iy = y; iy < (y+h); iy++){
-				requestedPoints.add(new Vect(ix, iy));
-			}
-		}
-
-		for(AbstractGizmo giz : this.boardGizmos){
-
-			double gx = giz.getXPos();
-			double gy = giz.getYPos();
-			double gw = giz.getWidth();
-			double gh = giz.getHeight();
-
-			for(double ix = gx; ix < (gx+gw); ix++){
-				for(double iy = gy; iy < (gy+gh); iy++){
-					if(requestedPoints.contains(new Vect(ix, iy)))
-						return false;
-				}
-			}
-
-		}
-
-		return true;
-
+	public boolean canPlaceGizmoAt(AbstractGizmo g){
+		return canPlaceGizmoAt(g.getXPos(), g.getYPos(), g.getWidth(), g.getHeight());
 	}
 
 	public AbstractGizmo getGizmoByName(String name){
