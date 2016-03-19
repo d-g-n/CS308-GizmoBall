@@ -45,6 +45,20 @@ public class ProjectManager extends Observable{
 		this.notifyObservers();
 
 	}
+	
+	public void loadFile(String fileName) {
+		currentBoard = fileName;
+		fManager = new FileManager(this);
+		fManager.loadFile(fileName);
+
+		this.setChanged();
+		this.notifyObservers();
+	}
+	
+	public void saveAs(String filePath) {
+		fManager = new FileManager(this);
+		fManager.saveFile(filePath);		
+	}
 
 	public String getFocusedButton() {
 		return focusedButton;
@@ -199,15 +213,6 @@ public class ProjectManager extends Observable{
 	}
 
 	public void pushVisualUpdate(){
-		this.setChanged();
-		this.notifyObservers();
-	}
-
-	public void loadFile(String fileName) {
-		currentBoard = fileName;
-		fManager = new FileManager(this);
-		fManager.loadFile(fileName);
-
 		this.setChanged();
 		this.notifyObservers();
 	}

@@ -2,15 +2,20 @@ package model;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import gizmos.*;
+import gizmos.Absorber;
+import gizmos.AbstractGizmo;
+import gizmos.Ball;
+import gizmos.CircleBumper;
+import gizmos.LeftFlipper;
+import gizmos.RightFlipper;
+import gizmos.SquareBumper;
+import gizmos.TriangleBumper;
 import physics.Vect;
 
 public class FileManager {
@@ -41,6 +46,23 @@ public class FileManager {
 
 	public FileManager(ProjectManager projectManager) {
 		this.pm = projectManager;
+	}
+	
+	public void saveFile(String filePath){
+		System.out.println(filePath);
+		PrintWriter writer;
+		try {
+			writer = new PrintWriter(filePath, "UTF-8");
+			writer.println("First line");
+			writer.println("Second line");
+			writer.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void loadFile(String fileName) {

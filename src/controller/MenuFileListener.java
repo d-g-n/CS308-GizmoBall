@@ -6,9 +6,6 @@ import java.awt.event.ActionListener;
 import model.ProjectManager;
 import view.FileManagerGUI;
 
-import javax.swing.event.MenuEvent;
-import javax.swing.event.MenuListener;
-
 //Implements ActionListener unless a different listener is needed. 
 public class MenuFileListener implements ActionListener {
 	FileManagerGUI fmGUI;
@@ -34,7 +31,9 @@ public class MenuFileListener implements ActionListener {
 	public void fileSave() {
 		fmGUI = new FileManagerGUI();
 		String filePath = fmGUI.getSaveFilePath();
-		System.out.println(filePath);
+		if (!filePath.isEmpty()) {
+			pm.saveAs(filePath);
+		}
 	}
 
 	public void fileLoad() {
