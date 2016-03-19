@@ -18,7 +18,8 @@ public abstract class AbstractGizmo {
 	protected Vect rotateAroundPoint;
 	protected List<AbstractGizmo> gizmoListeners;
 	protected String name;
-
+	protected int score;
+	
 	protected List<Circle> StoredCircles;
 	protected List<LineSegment> StoredLines;
 	protected Color gizCol;
@@ -147,8 +148,6 @@ public abstract class AbstractGizmo {
 		this.setGizPhysics(x, y);
 
 	}
-	
-
 
 	/**
 	 * This method is called by the engine when the ball collides with this
@@ -226,6 +225,4 @@ public abstract class AbstractGizmo {
 	public Vect getRotateAroundPoint(){
 		return rotateAroundPoint;
 	}
-
-
 }

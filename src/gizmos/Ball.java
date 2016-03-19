@@ -49,8 +49,6 @@ public class Ball extends AbstractGizmo {
 		
 	}
 
-
-
 	public boolean isStopped() {
 		return stopped;
 	}

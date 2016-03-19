@@ -5,8 +5,8 @@ import java.util.*;
 import gizmos.*;
 import physics.Vect;
 
-public class ProjectManager extends Observable{
-	
+public class ProjectManager extends Observable {
+
 	private CollisionManager cManager;
 	private FileManager fManager;
 	private List<AbstractGizmo> boardGizmos;
@@ -20,26 +20,32 @@ public class ProjectManager extends Observable{
 	private AbstractGizmo gizmoToKeyDisconnect = null;
 	private AbstractGizmo gizmoToMove = null;
 	private int absorberToBeAddedX = -1, absorberToBeAddedY = -1;
-	private String statusLabel,currentBoard;
+	private String statusLabel, currentBoard;
+	private int totalScore,highestScore,numLives;
+	private boolean gameOver,dynamicMode;
 
-
-
-
-	public ProjectManager(){
+	public ProjectManager() {
 		boardGizmos = new ArrayList<>();
 		ballList = new ArrayList<>();
 		gizmoKeyPressMap = new HashMap<>();
 		cManager = new CollisionManager(this);
 		currentBoard = null;
 		focusedButton = "Square";
-		setStatusLabel("");
-		// HARDCODED GIZMO DEFS (mind the outer walls are never supposed to actually be in 0 -> 19)
+		totalScore = 0;
+		highestScore = 0;
+		setLives(10);
+		setStatusLabel("Score: " + totalScore + " High Score: " + getHighScore() + " Lives: " + getLives());
+		gameOver = false;
+		dynamicMode = false;
+		// HARDCODED GIZMO DEFS (mind the outer walls are never supposed to
+		// actually be in 0 -> 19)
 
 		addGizmo(new OuterWall(-1, -1, 22, 1)); // start at top left, 20 along x
 		addGizmo(new OuterWall(-1, -1, 1, 22)); // start at top left, 20 down y
 
 		addGizmo(new OuterWall(20, -1, 1, 22)); // start at top right, 22 down y
-		addGizmo(new OuterWall(-1, 20, 22, 1)); // start at bottom left, 22 along x
+		addGizmo(new OuterWall(-1, 20, 22, 1)); // start at bottom left, 22
+												// along x
 
 		this.setChanged();
 		this.notifyObservers();
@@ -51,8 +57,8 @@ public class ProjectManager extends Observable{
 	}
 
 	public void setFocusedButton(String focusedButton) {
-		
-		// reset all projectmanager build mode gizmos 
+
+		// reset all projectmanager build mode gizmos
 		setAbsorberToBeAddedX(-1);
 		setAbsorberToBeAddedY(-1);
 		setGizmoToConnect(null);
@@ -63,12 +69,12 @@ public class ProjectManager extends Observable{
 		this.focusedButton = focusedButton;
 	}
 
-	public void addKeyConnect(String gizName, int keyNum, String onDownOrUp){
+	public void addKeyConnect(String gizName, int keyNum, String onDownOrUp) {
 		AbstractGizmo giz = getGizmoByName(gizName);
 
 		Map.Entry<String, Integer> key = new AbstractMap.SimpleEntry<String, Integer>(onDownOrUp, keyNum);
 
-		if(gizmoKeyPressMap.containsKey(key)) {
+		if (gizmoKeyPressMap.containsKey(key)) {
 			List<AbstractGizmo> tempList = gizmoKeyPressMap.get(key);
 			tempList.add(giz);
 			gizmoKeyPressMap.put(key, tempList);
@@ -76,52 +82,50 @@ public class ProjectManager extends Observable{
 			gizmoKeyPressMap.put(key, new ArrayList<>(Arrays.asList(giz)));
 		}
 	}
-	
-	
+
 	public void removeKeyConnect(String gizName, int keyNum, String onDownOrUp) {
-		
+
 		try {
-		Map.Entry<String, Integer> key = new AbstractMap.SimpleEntry<String, Integer>(onDownOrUp, keyNum);
-		gizmoKeyPressMap.get(key).remove(getGizmoByName(gizName));
+			Map.Entry<String, Integer> key = new AbstractMap.SimpleEntry<String, Integer>(onDownOrUp, keyNum);
+			gizmoKeyPressMap.get(key).remove(getGizmoByName(gizName));
 		} catch (NullPointerException e) {
-			
+
 		}
 
 	}
 
-
-	public void addGizmo(AbstractGizmo g){
+	public void addGizmo(AbstractGizmo g) {
 
 		// ideally we'll give it a random name here but irght now
 		// also need to do square checking in here to prevent overlapping gizmos
-		if(canPlaceGizmoAt(g) || g.getClass().equals(OuterWall.class))
+		if (canPlaceGizmoAt(g) || g.getClass().equals(OuterWall.class))
 			boardGizmos.add(g);
 	}
 
-	public boolean canPlaceGizmoAt(double x, double y, double w, double h){
+	public boolean canPlaceGizmoAt(double x, double y, double w, double h) {
 
-		if((x < 0 || x >= 20) || (y < 0 || y >= 20)){
+		if ((x < 0 || x >= 20) || (y < 0 || y >= 20)) {
 			return false;
 		}
 
 		List<Vect> requestedPoints = new ArrayList<>();
 
-		for(double ix = x; ix < (x+w); ix++){
-			for(double iy = y; iy < (y+h); iy++){
+		for (double ix = x; ix < (x + w); ix++) {
+			for (double iy = y; iy < (y + h); iy++) {
 				requestedPoints.add(new Vect(ix, iy));
 			}
 		}
 
-		for(AbstractGizmo giz : this.boardGizmos){
+		for (AbstractGizmo giz : this.boardGizmos) {
 
 			double gx = giz.getXPos();
 			double gy = giz.getYPos();
 			double gw = giz.getWidth();
 			double gh = giz.getHeight();
 
-			for(double ix = gx; ix < (gx+gw); ix++){
-				for(double iy = gy; iy < (gy+gh); iy++){
-					if(requestedPoints.contains(new Vect(ix, iy)))
+			for (double ix = gx; ix < (gx + gw); ix++) {
+				for (double iy = gy; iy < (gy + gh); iy++) {
+					if (requestedPoints.contains(new Vect(ix, iy)))
 						return false;
 				}
 			}
@@ -132,35 +136,38 @@ public class ProjectManager extends Observable{
 
 	}
 
-	public boolean canPlaceGizmoAt(AbstractGizmo g){
+	public boolean canPlaceGizmoAt(AbstractGizmo g) {
 		return canPlaceGizmoAt(g.getXPos(), g.getYPos(), g.getWidth(), g.getHeight());
 	}
 
-	public AbstractGizmo getGizmoByName(String name){
-		for(AbstractGizmo giz : boardGizmos){
-			if(giz.getName().equals(name))
+	public AbstractGizmo getGizmoByName(String name) {
+		for (AbstractGizmo giz : boardGizmos) {
+			if (giz.getName().equals(name))
 				return giz;
 		}
 
 		return null;
 	}
 
-	public List<AbstractGizmo> getBoardGizmos(){
+	public List<AbstractGizmo> getBoardGizmos() {
 		return boardGizmos;
 	}
-	public Map<Map.Entry<String, Integer>, List<AbstractGizmo>> getKeyConnects() { return gizmoKeyPressMap; }
 
-	public void moveBall(){
+	public Map<Map.Entry<String, Integer>, List<AbstractGizmo>> getKeyConnects() {
+		return gizmoKeyPressMap;
+	}
+
+	public void moveBall() {
 
 		cManager.moveBall();
 
-		for (AbstractGizmo giz : boardGizmos){
+		for (AbstractGizmo giz : boardGizmos) {
 			giz.doPhysicsCalculations();
 		}
 
 	}
 
-	public void pushVisualUpdate(){
+	public void pushVisualUpdate() {
 		this.setChanged();
 		this.notifyObservers();
 	}
@@ -173,19 +180,21 @@ public class ProjectManager extends Observable{
 		this.setChanged();
 		this.notifyObservers();
 	}
-	
-	public void restartGame(){
-		if(currentBoard != null)
-		fManager.loadFile(currentBoard);
+
+	public void restartGame() {
+		if (currentBoard != null){
+			resetScore();
+			gameOver = false;
+			fManager.loadFile(currentBoard);
+		}
+		
 	}
 
-	public void addBall(Ball ball){
+	public void addBall(Ball ball) {
 		this.ballList.add(ball);
 	}
-	
-	
 
-	public List<Ball> getBallList(){
+	public List<Ball> getBallList() {
 		return ballList;
 	}
 
@@ -204,12 +213,12 @@ public class ProjectManager extends Observable{
 	public void setGizmoToConnect(AbstractGizmo gizmoToConnect) {
 		this.gizmoToConnect = gizmoToConnect;
 	}
-	
+
 	public void deleteGizmo(AbstractGizmo a) {
 		boardGizmos.remove(a);
-		
+
 	}
-	
+
 	public AbstractGizmo getGizmoToMove() {
 		return gizmoToMove;
 	}
@@ -241,24 +250,24 @@ public class ProjectManager extends Observable{
 	public void setAbsorberToBeAddedY(int absorberToBeAddedY) {
 		this.absorberToBeAddedY = absorberToBeAddedY;
 	}
-	
+
 	public void setGravity(double newGravity) {
-		
+
 		cManager.setGravity(newGravity);
 	}
-	
+
 	public void setFriction(double newFriction) {
-		
+
 		cManager.setFriction(newFriction, newFriction);
 	}
 
 	public double getGravity() {
-		
+
 		return cManager.getGravity();
 	}
-	
+
 	public double getFriction() {
-		
+
 		return cManager.getFriction();
 	}
 
@@ -269,7 +278,7 @@ public class ProjectManager extends Observable{
 	public void setStatusLabel(String statusLabel) {
 		this.statusLabel = statusLabel;
 	}
-	
+
 	public AbstractGizmo getGizmoToKeyConnect() {
 		return gizmoToKeyConnect;
 	}
@@ -285,23 +294,87 @@ public class ProjectManager extends Observable{
 	public void setGizmoToKeyDisconnect(AbstractGizmo gizmoToKeyDisconnect) {
 		this.gizmoToKeyDisconnect = gizmoToKeyDisconnect;
 	}
+	
+	public int getScore(){
+		return totalScore;
+	}
+	
+	public void updateScore(AbstractGizmo giz){
+		if(giz != null && !dynamicMode){
+			
+		if(giz.getClass().equals(SquareBumper.class))
+			totalScore+=1;
+		else if(giz.getClass().equals(CircleBumper.class))
+			totalScore+=2;
+		else if(giz.getClass().equals(TriangleBumper.class))
+			totalScore+=3;
+		else if(giz.getClass().equals(Absorber.class))
+			numLives--;
+		
+		if(getLives() < 0){
+		gameOver = true;
+		return;
+		}
+		if(highestScore <= totalScore)
+			highestScore = totalScore;
+		
+		setStatusLabel("Score: " + totalScore + " High Score: " + getHighScore() + " Lives: " + getLives());
+		}	
+	}
+	
+	public void startGame(){
+		gameOver = false;
+	}
+	
+	public void resetScore(){
+		totalScore = 0;
+		numLives = 10;
+		setStatusLabel("Score: " + totalScore + "HighScore: " + highestScore + " Lives: " + getLives());
+	}
+	
+	public boolean gameOver(){
+		return gameOver;
+	}
+	public boolean isDynamicMode(){
+		return dynamicMode;
+	}
+	public void dynamicModeOn(){
+		dynamicMode = true;
+	}
+	public void dynamicModeOff(){
+		dynamicMode = false;
+	}
+	
+	public void setLives(int lives){
+		numLives = lives;
+	}
+	
+	public int getLives(){
+		return numLives;
+	}
+	
+	public int getHighScore(){
+		return highestScore;
+	}
 
-
-	public void clearAllBoardGizmos () {
+	public void clearAllBoardGizmos() {
 		boardGizmos.clear();
 
-		// this is required along with boardGizmos.clear() as otherwise we have invisible balls roaming around the board
+		// this is required along with boardGizmos.clear() as otherwise we have
+		// invisible balls roaming around the board
 		this.ballList.clear();
 
 		// forgot this first time round, need to clear the key connect map too
 		gizmoKeyPressMap.clear();
 
-		// re add the outwalls, maybe a silly way of doing things, could change it
+		// re add the outwalls, maybe a silly way of doing things, could change
+		// it
 
 		addGizmo(new OuterWall(-1, -1, 22, 1)); // start at top left, 20 along x
 		addGizmo(new OuterWall(-1, -1, 1, 22)); // start at top left, 20 down y
 
 		addGizmo(new OuterWall(20, -1, 1, 22)); // start at top right, 22 down y
-		addGizmo(new OuterWall(-1, 20, 22, 1)); // start at bottom left, 22 along x
+		addGizmo(new OuterWall(-1, 20, 22, 1)); // start at bottom left, 22
+												// along x
 	}
 }

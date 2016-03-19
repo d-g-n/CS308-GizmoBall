@@ -3,6 +3,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 import model.ProjectManager;
@@ -24,6 +25,7 @@ public class RunListener implements ActionListener {
 	
 	@Override
 	public void actionPerformed(final ActionEvent e) {
+		if(!pm.gameOver()){
 		if (e.getSource().equals(visualTimer)){
 
 			// for every visual update we should have physics_fps / view_fps
@@ -75,6 +77,17 @@ public class RunListener implements ActionListener {
 				/* Some general information about the project */ break;
 			}
 		}
+	}else {
+		
+		int confirmation = JOptionPane.YES_NO_OPTION;
+		int result = JOptionPane.showConfirmDialog(null, " HighScore: " + pm.getScore() + " \nDo you want to start Again?",
+				"GameOver", confirmation);
+		if (result == 0) {
+			pm.clearAllBoardGizmos();
+			pm.restartGame();
+		}else {
+			System.exit(0);
+		}
 	}
-
+	}
 }

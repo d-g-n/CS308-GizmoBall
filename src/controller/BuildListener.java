@@ -42,12 +42,14 @@ public class BuildListener implements ActionListener, ChangeListener {
 			pm.setStatusLabel(gizmoMap.get(action));
 			break;
 		case "Close":
+			pm.dynamicModeOff();
 			pm.setFocusedButton("");
-			pm.setStatusLabel(" ");
+			pm.setStatusLabel("Score: " + pm.getScore() + " HighScore " + pm.getHighScore() + " Lives: " + pm.getLives());
 			view.disposeFrame();
 			visualTimer.start();
 			break;
 		case "Dynamic Play":
+			pm.dynamicModeOn();
 			pm.setStatusLabel("You can now add Gizmos in real time!");
 			visualTimer.start();
 			break;

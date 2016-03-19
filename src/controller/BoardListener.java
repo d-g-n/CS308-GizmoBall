@@ -4,6 +4,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
+import javax.swing.event.MouseInputListener;
 
 import gizmos.*;
 import model.ProjectManager;
@@ -14,6 +15,7 @@ public class BoardListener implements MouseListener {
 
 	private JPanel board;
 	private ProjectManager pm;
+	private int x,y;
 
 	public BoardListener(ProjectManager pm, JPanel board) {
 		this.board = board;
@@ -28,8 +30,8 @@ public class BoardListener implements MouseListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		if (pm.isBuildModeOn()) {
-			int x = e.getX() / (Board.BOARD_WIDTH / Board.X_CELLS);
-			int y = e.getY() / (Board.BOARD_HEIGHT / Board.Y_CELLS);
+			x = e.getX() / (Board.BOARD_WIDTH / Board.X_CELLS);
+			y = e.getY() / (Board.BOARD_HEIGHT / Board.Y_CELLS);
 			int width = 1;
 
 			switch (pm.getFocusedButton()) {
@@ -257,5 +259,5 @@ public class BoardListener implements MouseListener {
 		// TODO Auto-generated method stub
 
 	}
-
+	
 }
