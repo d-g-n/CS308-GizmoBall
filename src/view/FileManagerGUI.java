@@ -7,6 +7,15 @@ public class FileManagerGUI {
 	public FileManagerGUI() {
 
 	}
+	
+	public String getSaveFilePath(){
+	    JFileChooser chooser = new JFileChooser("boards");
+	    if (chooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+	        return chooser.getSelectedFile().getPath()+".txt";
+	    }
+	    return null;
+		
+	}
 
 	public String getLoadFilePath() {
 		JFileChooser chooser = new JFileChooser("boards");

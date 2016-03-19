@@ -20,6 +20,24 @@ public class MenuFileListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		switch (e.getActionCommand()) {
+		case "Save As...":
+			fileSave();
+			break;
+
+		case "Load...":
+			fileLoad();
+			break;
+		}
+	}
+
+	public void fileSave() {
+		fmGUI = new FileManagerGUI();
+		String filePath = fmGUI.getSaveFilePath();
+		System.out.println(filePath);
+	}
+
+	public void fileLoad() {
 		fmGUI = new FileManagerGUI();
 		String filePath = fmGUI.getLoadFilePath();
 		if (!filePath.isEmpty()) {
