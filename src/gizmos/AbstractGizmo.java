@@ -169,7 +169,9 @@ public abstract class AbstractGizmo {
 		// there is no default action but needed here to override it.
 	}
 
-
+	public List<AbstractGizmo> getGizmoListeners() {
+		return gizmoListeners;
+	}
 
 	public Vect getCenter() {
 		return new Vect(xpos + (width / 2), ypos + (height / 2));
