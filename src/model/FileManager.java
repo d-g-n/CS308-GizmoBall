@@ -12,10 +12,13 @@ import java.util.regex.Pattern;
 import gizmos.Absorber;
 import gizmos.AbstractGizmo;
 import gizmos.Ball;
+import gizmos.BoosterGizmo;
 import gizmos.CircleBumper;
+import gizmos.DeathSquare;
 import gizmos.LeftFlipper;
 import gizmos.RightFlipper;
 import gizmos.SquareBumper;
+import gizmos.Teleporter;
 import gizmos.TriangleBumper;
 import physics.Vect;
 
@@ -32,7 +35,7 @@ public class FileManager {
 
 	private final String NUMBER_PAIR = INTEGER + " " + INTEGER;
 	private final String FLOAT_PAIR = FLOAT + " " + FLOAT;
-	private final String GIZMO_OP = "(Square|Circle|Triangle|RightFlipper|LeftFlipper)";
+	private final String GIZMO_OP = "(Square|Circle|Triangle|RightFlipper|LeftFlipper|Booster|DeathSquare|Teleporter)";
 	private final String KEYID = "key" + " " + KEYNUM + " " + "(down|up)";
 
 
@@ -176,25 +179,46 @@ public class FileManager {
 			sb.setName(gizmoName);
 			pm.addGizmo(sb);
 			break;
+			
 		case "Circle":
 			CircleBumper cb = new CircleBumper(x, y, 1, 1);
 			cb.setName(gizmoName);
 			pm.addGizmo(cb);
 			break;
+			
 		case "Triangle":
 			TriangleBumper tb = new TriangleBumper(x, y, 1, 1);
 			tb.setName(gizmoName);
 			pm.addGizmo(tb);
 			break;
+			
 		case "RightFlipper":
 			RightFlipper rf = new RightFlipper(x, y);
 			rf.setName(gizmoName);
 			pm.addGizmo(rf);
 			break;
+			
 		case "LeftFlipper":
 			LeftFlipper lf = new LeftFlipper(x, y);
 			lf.setName(gizmoName);
 			pm.addGizmo(lf);
+			break;
+			
+		case "Booster":
+			BoosterGizmo boost = new BoosterGizmo(x, y, 1, 1);
+			boost.setName(gizmoName);
+			pm.addGizmo(boost);
+			break;
+		case "DeathSquare":
+			DeathSquare ds = new DeathSquare(x, y, 1, 1);
+			ds.setName(gizmoName);
+			pm.addGizmo(ds);
+			break;
+			
+		case "Teleporter":
+			Teleporter tele = new Teleporter(x, y, 1, 1);
+			tele.setName(gizmoName);
+			pm.addGizmo(tele);
 			break;
 		}
 
@@ -202,9 +226,7 @@ public class FileManager {
 
 	private void rotateGizmo(Matcher lineMatch) {
 		String gizmoName = lineMatch.group(1);
-
 		pm.getGizmoByName(gizmoName).rotateClockwise();
-
 	}
 
 	private void addAbsorber(Matcher lineMatch){

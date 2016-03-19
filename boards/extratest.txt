@@ -1,0 +1,3 @@
+Booster 5_8 5 8
+DeathSquare 8_8 8 8
+Teleporter 11_8 11 8
