@@ -105,7 +105,7 @@ public class ProjectManager extends Observable{
 		double w = sg.getWidth();
 		double h = sg.getHeight();
 
-		if((x < 0 || x > 19) || (y < 0 || y > 19)){
+		if((x < 0 || x >= 20) || (y < 0 || y >= 20)){
 			return false;
 		}
 
@@ -142,7 +142,7 @@ public class ProjectManager extends Observable{
 		double w = sg.getWidth();
 		double h = sg.getHeight();
 
-		if((x < 0 || x > 19) || (y < 0 || y > 19)){
+		if((x < 0 || x >= 20) || (y < 0 || y >= 20)){
 			return false;
 		}
 
