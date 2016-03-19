@@ -19,7 +19,6 @@ public class Teleporter extends AbstractGizmo {
 				1 // reflection coefficent
 		);
 
-		this.radius = 0.5;
 
 	}
 	
@@ -37,6 +36,8 @@ public class Teleporter extends AbstractGizmo {
 	
 	@Override
 	public void setGizPhysics(double x, double y) {
+
+		this.radius = 0.5;
 		
 		addPhysicsCircle(x + radius, y + radius, radius);
 		
