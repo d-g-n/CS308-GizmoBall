@@ -35,9 +35,11 @@ public class BoardListener implements MouseListener {
 			switch (pm.getFocusedButton()) {
 			case "Ball":
 				Ball b = new Ball(x + 0.5, y + 0.5, new Vect(0, 0));
-				pm.addGizmo(b);
-				pm.addBall(b);
-				pm.pushVisualUpdate();
+				if(pm.canPlaceGizmoAt(new CircleBumper(x, y, 1, 1))) {
+					pm.addGizmo(b);
+					pm.addBall(b);
+					pm.pushVisualUpdate();
+				}
 				break;
 			case "Square":
 				pm.addGizmo(new SquareBumper(x, y, width, width));
