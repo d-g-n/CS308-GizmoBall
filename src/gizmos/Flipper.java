@@ -22,7 +22,7 @@ public class Flipper extends AbstractGizmo {
 
 		// flipper specific things
 
-		rotateAroundPoint = new Vect(localxpos + (width * 0.125), ypos + (height * 0.125));
+
 		flipperMoving = false;
 		angleVel = 1080 * Board.MOVE_TIME;
 		flipRotation = 180; // because it starts pointing down and the pivot point is above it i guess
@@ -33,6 +33,8 @@ public class Flipper extends AbstractGizmo {
 	public void setGizShape(double x, double y) {
 
 		localxpos = xpos + ((this.getClass().equals(LeftFlipper.class) ? 0 : 0.75) * width); // this is really bad
+
+		rotateAroundPoint = new Vect(localxpos + (width * 0.125), ypos + (height * 0.125));
 
 		setShape(new RoundRectangle2D.Double(
 				(localxpos),
@@ -49,6 +51,8 @@ public class Flipper extends AbstractGizmo {
 	public void setGizPhysics(double x, double y) {
 
 		localxpos = xpos + ((this.getClass().equals(LeftFlipper.class) ? 0 : 0.75) * width); // really really really bad
+
+		rotateAroundPoint = new Vect(localxpos + (width * 0.125), ypos + (height * 0.125));
 
 		addPhysicsPath(Arrays.asList(
 				new Vect(localxpos, ypos),
