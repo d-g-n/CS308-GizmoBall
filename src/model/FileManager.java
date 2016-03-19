@@ -54,6 +54,8 @@ public class FileManager {
 	
 	public void saveFile(String filePath){
 		List<AbstractGizmo> boardGizmos = pm.getBoardGizmos();
+		List<Ball> ballList = pm.getBallList();
+		
 		String gizmoType;		
 		PrintWriter writer;
 		try {
@@ -61,6 +63,7 @@ public class FileManager {
 			
 			for(AbstractGizmo gizmo: boardGizmos){
 				gizmoType = gizmo.getType();
+				
 				switch(gizmoType){
 				case "Square":
 					commandSave(gizmo, writer, gizmoType);
@@ -93,9 +96,20 @@ public class FileManager {
 				case "Teleporter":
 					commandSave(gizmo, writer, gizmoType);
 					break;
-				}
+					
+				case "Absorber":					
+					absorberSave((Absorber)gizmo, writer);
+					break;
 			}
+				
+			for(Ball ball: ballList){
+				ballSave(ball, writer);
+			}
+			
+			//writer.println("Gravity " + pm.getGravity());
+			//writer.println("Friction " + pm.getFriction() + " " + );
 			writer.close();
+			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -103,6 +117,15 @@ public class FileManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	private String ballSave(Ball ball, PrintWriter writer) {
+		writer.println("Ball " + ball.getName() + " " + ball.getXPos() + " " + ball.getYPos() + " " + "0.0" + " " + "0.0");
+		return null;
+	}
+
+	private void absorberSave(Absorber abs, PrintWriter writer) {
+		writer.println("Absorber " + abs.getName() + " " + (int)abs.getXPos() + " " + (int)abs.getYPos() + " " + (int)abs.getWidth() + " " + (int)abs.getHeight());		
 	}
 
 	private void commandSave(AbstractGizmo gizmo, PrintWriter writer, String gizmoType) {
