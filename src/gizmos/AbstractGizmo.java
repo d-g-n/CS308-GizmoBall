@@ -1,14 +1,15 @@
 package gizmos;
 
-import model.ProjectManager;
-import physics.*;
-import view.Board;
-
-import java.awt.*;
-import java.awt.geom.Rectangle2D;
+import java.awt.Color;
+import java.awt.Shape;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
+import physics.Angle;
+import physics.Circle;
+import physics.Geometry;
+import physics.LineSegment;
+import physics.Vect;
 
 public abstract class AbstractGizmo {
 
@@ -32,7 +33,9 @@ public abstract class AbstractGizmo {
 		this.height = height;
 
 		this.gizAngle = 0;
-		this.name = ""+(int)x+"_"+(int)y; // Added Very Basic naming to new gizmos that have not been read in from file
+		this.name = "" + (int) x + "_" + (int) y; // Added Very Basic naming to
+													// new gizmos that have not
+													// been read in from file
 
 		this.angleVel = 0;
 		this.rotateAroundPoint = this.getCenter();
@@ -49,25 +52,24 @@ public abstract class AbstractGizmo {
 		setGizShape(xpos, ypos);
 	}
 
-
-	public void rotateClockwise(){ // this is experimental
+	public void rotateClockwise() { // this is experimental
 		gizAngle += 90;
 
-		rotatePhysicsAroundPoint(xpos + (width/2), ypos + (height/2), 90);
+		rotatePhysicsAroundPoint(xpos + (width / 2), ypos + (height / 2), 90);
 
 	}
 
-	public void rotatePhysicsAroundPoint(Vect pivot, double degrees){
+	public void rotatePhysicsAroundPoint(Vect pivot, double degrees) {
 		rotatePhysicsAroundPoint(pivot.x(), pivot.y(), degrees);
 	}
 
-	public void rotatePhysicsAroundPoint(double pivotX, double pivotY, double degrees){
+	public void rotatePhysicsAroundPoint(double pivotX, double pivotY, double degrees) {
 
 		Angle rad = new Angle(Math.toRadians(degrees));
 
 		List<Circle> tempCirc = new ArrayList<>();
 
-		for(Circle c : StoredCircles){
+		for (Circle c : StoredCircles) {
 
 			tempCirc.add(Geometry.rotateAround(c, new Vect(pivotX, pivotY), rad));
 
@@ -77,7 +79,7 @@ public abstract class AbstractGizmo {
 
 		List<LineSegment> tempLine = new ArrayList<>();
 
-		for(LineSegment ls : StoredLines){
+		for (LineSegment ls : StoredLines) {
 
 			tempLine.add(Geometry.rotateAround(ls, new Vect(pivotX, pivotY), rad));
 		}
@@ -85,7 +87,7 @@ public abstract class AbstractGizmo {
 		StoredLines = tempLine;
 	}
 
-	public void setName(String name){
+	public void setName(String name) {
 		this.name = name;
 	}
 
@@ -94,16 +96,16 @@ public abstract class AbstractGizmo {
 		this.ypos = ypos;
 	}
 
-	protected void addPhysicsCircle(double x, double y, double r){
+	protected void addPhysicsCircle(double x, double y, double r) {
 		StoredCircles.add(new Circle(x, y, r));
 	}
 
-	protected void addPhysicsPath(List<Vect> lv){
-		
+	protected void addPhysicsPath(List<Vect> lv) {
+
 		Vect lastVect = null;
 
-		for(Vect curVect : lv){
-			if(lastVect == null){
+		for (Vect curVect : lv) {
+			if (lastVect == null) {
 				lastVect = curVect;
 				continue;
 			}
@@ -115,22 +117,23 @@ public abstract class AbstractGizmo {
 		}
 	}
 
-	public void addGizmoListener(AbstractGizmo listener){
+	public void addGizmoListener(AbstractGizmo listener) {
 		this.gizmoListeners.add(listener);
 	}
-	
-	public void removeGizmoListener(AbstractGizmo listener){
+
+	public void removeGizmoListener(AbstractGizmo listener) {
 		this.gizmoListeners.remove(listener);
 	}
 
-
-	public void setShape(Shape gizShape){
+	public void setShape(Shape gizShape) {
 		this.gizShape = gizShape;
 	}
 
-	public void setGizShape(double x, double y) {}
+	public void setGizShape(double x, double y) {
+	}
 
-	public void setGizPhysics(double x, double y) {}
+	public void setGizPhysics(double x, double y) {
+	}
 
 	public void deletePhysics() {
 
@@ -139,7 +142,7 @@ public abstract class AbstractGizmo {
 
 	}
 
-	public void moveGizmo(int x, int y){
+	public void moveGizmo(int x, int y) {
 
 		this.setPos(x, y);
 		this.deletePhysics();
@@ -147,8 +150,6 @@ public abstract class AbstractGizmo {
 		this.setGizPhysics(x, y);
 
 	}
-	
-
 
 	/**
 	 * This method is called by the engine when the ball collides with this
@@ -169,17 +170,18 @@ public abstract class AbstractGizmo {
 		// there is no default action but needed here to override it.
 	}
 
-
-
 	public Vect getCenter() {
 		return new Vect(xpos + (width / 2), ypos + (height / 2));
 	}
 
-	public Shape getShape(){ return gizShape; }
+	public Shape getShape() {
+		return gizShape;
+	}
 
-	public void doPhysicsCalculations() {}
+	public void doPhysicsCalculations() {
+	}
 
-	public String getName(){
+	public String getName() {
 		return this.name;
 	}
 
@@ -218,14 +220,15 @@ public abstract class AbstractGizmo {
 	public List<LineSegment> getStoredLines() {
 		return StoredLines;
 	}
-	
-	public double getAngularVelocity(){
+
+	public double getAngularVelocity() {
 		return angleVel;
 	}
 
-	public Vect getRotateAroundPoint(){
+	public Vect getRotateAroundPoint() {
 		return rotateAroundPoint;
 	}
 
+	public abstract String getType();
 
 }

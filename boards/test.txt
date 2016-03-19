@@ -1,0 +1,16 @@
+class gizmos.OuterWall OuterWalls
+class gizmos.OuterWall OuterWalls
+class gizmos.OuterWall OuterWalls
+class gizmos.OuterWall OuterWalls
+class gizmos.BoosterGizmo 13_16
+class gizmos.DeathSquare 6_6
+class gizmos.TriangleBumper 8_5
+class gizmos.LeftFlipper 11_7
+class gizmos.LeftFlipper 11_11
+class gizmos.LeftFlipper 8_12
+class gizmos.Absorber 6_13
+class gizmos.Absorber 1_8
+class gizmos.SquareBumper 14_4
+class gizmos.SquareBumper 15_7
+class gizmos.SquareBumper 15_11
+class gizmos.SquareBumper 15_13

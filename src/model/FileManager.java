@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -49,12 +50,48 @@ public class FileManager {
 	}
 	
 	public void saveFile(String filePath){
-		System.out.println(filePath);
+		List<AbstractGizmo> boardGizmos = pm.getBoardGizmos();
+		String gizmoType;		
 		PrintWriter writer;
 		try {
 			writer = new PrintWriter(filePath, "UTF-8");
-			writer.println("First line");
-			writer.println("Second line");
+			
+			for(AbstractGizmo gizmo: boardGizmos){
+				gizmoType = gizmo.getType();
+				switch(gizmoType){
+				case "Square":
+					commandSave(gizmo, writer, gizmoType);
+					break;
+					
+				case "Circle":
+					commandSave(gizmo, writer, gizmoType);
+					break;
+					
+				case "Triangle":
+					commandSave(gizmo, writer, gizmoType);
+					break;
+					
+				case "LeftFlipper":
+					commandSave(gizmo, writer, gizmoType);
+					break;
+					
+				case "RightFlipper":
+					commandSave(gizmo, writer, gizmoType);
+					break;
+				
+				case "Booster":
+					commandSave(gizmo, writer, gizmoType);
+					break;
+					
+				case "DeathSquare":
+					commandSave(gizmo, writer, gizmoType);
+					break;
+					
+				case "Teleporter":
+					commandSave(gizmo, writer, gizmoType);
+					break;
+				}
+			}
 			writer.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -62,6 +99,13 @@ public class FileManager {
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+
+	private void commandSave(AbstractGizmo gizmo, PrintWriter writer, String gizmoType) {
+		writer.println(gizmoType + " " + gizmo.getName() + " "  + (int)gizmo.getXPos() + " " + (int)gizmo.getYPos());
+		for(int i=0;i<(gizmo.getGizAngle()/90);i++){
+			writer.println("Rotate " + gizmo.getName());
 		}
 	}
 
