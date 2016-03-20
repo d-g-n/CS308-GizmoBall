@@ -1,9 +1,6 @@
 package controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 import java.util.HashMap;
 
 import javax.swing.JOptionPane;
@@ -17,7 +14,7 @@ import model.ProjectManager;
 import view.Board;
 import view.BuildGUI;
 
-public class BuildListener implements ActionListener, ChangeListener {
+public class BuildListener implements ActionListener, ChangeListener, WindowListener {
 
 	private BuildGUI view;
 	private ProjectManager pm;
@@ -40,13 +37,6 @@ public class BuildListener implements ActionListener, ChangeListener {
 		default:
 			pm.setFocusedButton(action);
 			pm.setStatusLabel(gizmoMap.get(action));
-			break;
-		case "Close":
-			pm.dynamicModeOff();
-			pm.setFocusedButton("");
-			pm.setStatusLabel("Score: " + pm.getScore() + " HighScore " + pm.getHighScore() + " Lives: " + pm.getLives());
-			view.disposeFrame();
-			visualTimer.start();
 			break;
 		case "Dynamic Play":
 			pm.dynamicModeOn();
@@ -115,6 +105,46 @@ public class BuildListener implements ActionListener, ChangeListener {
 			pm.setFriction(source.getValue() / 1000.0);
 
 		}
+
+	}
+
+	@Override
+	public void windowOpened(WindowEvent e) {
+
+	}
+
+	@Override
+	public void windowClosing(WindowEvent e) {
+		pm.dynamicModeOff();
+		pm.setFocusedButton("");
+		pm.setStatusLabel("Score: " + pm.getScore() + " HighScore " + pm.getHighScore() + " Lives: " + pm.getLives());
+		pm.setBuildModeOn(false);
+		view.disposeFrame();
+		visualTimer.start();
+	}
+
+	@Override
+	public void windowClosed(WindowEvent e) {
+
+	}
+
+	@Override
+	public void windowIconified(WindowEvent e) {
+
+	}
+
+	@Override
+	public void windowDeiconified(WindowEvent e) {
+
+	}
+
+	@Override
+	public void windowActivated(WindowEvent e) {
+
+	}
+
+	@Override
+	public void windowDeactivated(WindowEvent e) {
 
 	}
 }

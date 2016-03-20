@@ -70,6 +70,7 @@ public class RunListener implements ActionListener {
 				BuildGUI buildMode = new BuildGUI(visualTimer,pm);
 				pm.setBuildModeOn(true);
 				buildMode.showPalette();
+				pm.pushVisualUpdate();
 				break;
 			case "Settings":
 				/* Change the settings of the project */ break;
