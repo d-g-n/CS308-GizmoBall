@@ -6,6 +6,8 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -46,7 +48,7 @@ public class FileManager {
 	private final Pattern addAbsorberCommand = Pattern.compile("Absorber" + " " + IDENTIFIER + " " + NUMBER_PAIR + " " + NUMBER_PAIR);
 	private final Pattern connectGizmoCommand = Pattern.compile("Connect" + " " + IDENTIFIER + " " + IDENTIFIER);
 	private final Pattern keyConnectGizmoCommand = Pattern.compile("KeyConnect" + " " + KEYID + " " + IDENTIFIER);
-
+	private final Pattern gravityCommand = Pattern.compile("Gravity " + FLOAT);
 
 
 	public FileManager(ProjectManager projectManager) {
@@ -58,6 +60,7 @@ public class FileManager {
 		List<Ball> ballList = pm.getBallList();
 		List<AbstractGizmo> gizmoListeners;
 		List<String> connectList = new LinkedList<String>();
+		Map<Map.Entry<String, Integer>, List<AbstractGizmo>> keyConnects = pm.getKeyConnects();
 		
 		String gizmoType;		
 		PrintWriter writer;
@@ -69,68 +72,68 @@ public class FileManager {
 				gizmoType = gizmo.getType();
 				
 				switch(gizmoType){
-				case "Square":
-					commandSave(gizmo, writer, gizmoType);
-					break;
+					case "Square":
+						commandSave(gizmo, writer, gizmoType);
+						break;
+						
+					case "Circle":
+						commandSave(gizmo, writer, gizmoType);
+						break;
+						
+					case "Triangle":
+						commandSave(gizmo, writer, gizmoType);
+						break;
+						
+					case "LeftFlipper":
+						commandSave(gizmo, writer, gizmoType);
+						break;
+						
+					case "RightFlipper":
+						commandSave(gizmo, writer, gizmoType);
+						break;
 					
-				case "Circle":
-					commandSave(gizmo, writer, gizmoType);
-					break;
-					
-				case "Triangle":
-					commandSave(gizmo, writer, gizmoType);
-					break;
-					
-				case "LeftFlipper":
-					commandSave(gizmo, writer, gizmoType);
-					break;
-					
-				case "RightFlipper":
-					commandSave(gizmo, writer, gizmoType);
-					break;
-				
-				case "Booster":
-					commandSave(gizmo, writer, gizmoType);
-					break;
-					
-				case "DeathSquare":
-					commandSave(gizmo, writer, gizmoType);
-					break;
-					
-				case "Teleporter":
-					commandSave(gizmo, writer, gizmoType);
-					break;
-					
-				case "Absorber":					
-					absorberSave((Absorber)gizmo, writer);
-					break;
+					case "Booster":
+						commandSave(gizmo, writer, gizmoType);
+						break;
+						
+					case "DeathSquare":
+						commandSave(gizmo, writer, gizmoType);
+						break;
+						
+					case "Teleporter":
+						commandSave(gizmo, writer, gizmoType);
+						break;
+						
+					case "Absorber":					
+						absorberSave((Absorber)gizmo, writer);
+						break;
 			}			
 			
 			for(AbstractGizmo listener: gizmoListeners){
 				connectList.add("Connect" + " " + gizmo.getName() + " " + listener.getName());
-			}
-			
-			//writer.println("Gravity " + pm.getGravity());
-			//writer.println("Friction " + pm.getFriction() + " " + );
-			}
-			
-			for(Ball ball: ballList){
-				ballSave(ball, writer);
-			}
-			
-			for(String connection: connectList){
-				writer.println(connection);
-			}
-			
-			writer.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			}	
 		}
+			
+		for(Ball ball: ballList){
+			ballSave(ball, writer);
+		}
+			
+		for(String connection: connectList){
+			writer.println(connection);
+		}
+			
+		writer.println("Gravity " + pm.getGravity());
+		//writer.println("Friction " + pm.getFriction() + " " + );
+			
+		writer.close();
+	} catch (FileNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (UnsupportedEncodingException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
 	}
+}
 
 	private String ballSave(Ball ball, PrintWriter writer) {
 		writer.println("Ball " + ball.getName() + " " + ball.getXPos() + " " + ball.getYPos() + " " + "0.0" + " " + "0.0");
@@ -188,9 +191,19 @@ public class FileManager {
 			if ((lineMatch = addBallCommand.matcher(currentLine)).matches()){
 				addBall(lineMatch);
 			}
+			
+			if ((lineMatch = gravityCommand.matcher(currentLine)).matches()){
+				setGravity(lineMatch);
+			}
 
 			lineMatch.reset();
 		}
+	}
+
+	private void setGravity(Matcher lineMatch) {
+		double gravity = Double.parseDouble(lineMatch.group(1));
+		pm.setGravity(gravity);
+		
 	}
 
 	private void addBall(Matcher lineMatch){

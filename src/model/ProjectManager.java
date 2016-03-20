@@ -200,7 +200,9 @@ public class ProjectManager extends Observable{
 	public List<AbstractGizmo> getBoardGizmos(){
 		return boardGizmos;
 	}
-	public Map<Map.Entry<String, Integer>, List<AbstractGizmo>> getKeyConnects() { return gizmoKeyPressMap; }
+	public Map<Map.Entry<String, Integer>, List<AbstractGizmo>> getKeyConnects(){
+		return gizmoKeyPressMap;
+	}
 
 	public void moveBall(){
 

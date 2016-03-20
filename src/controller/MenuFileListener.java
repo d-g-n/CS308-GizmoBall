@@ -39,7 +39,7 @@ public class MenuFileListener implements ActionListener {
 	public void fileLoad() {
 		fmGUI = new FileManagerGUI();
 		String filePath = fmGUI.getLoadFilePath();
-		if (!filePath.isEmpty()) {
+		if (filePath!= null && !filePath.isEmpty()) {
 			pm.clearAllBoardGizmos();
 			pm.loadFile(filePath);
 		}
