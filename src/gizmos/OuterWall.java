@@ -14,6 +14,8 @@ public class OuterWall extends AbstractGizmo {
 		);
 
 		this.setName("OuterWalls");
+
+		this.type = "OuterWall";
 	}
 
 	@Override
@@ -33,11 +35,6 @@ public class OuterWall extends AbstractGizmo {
 				new Vect(xpos, ypos) // and back up to top left
 		));
 
-	}
-
-	@Override
-	public String getType() {
-		return "OuterWall";
 	}
 
 }

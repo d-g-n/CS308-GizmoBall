@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -56,10 +57,16 @@ public class FileManager {
 	
 	public void saveFile(String filePath){
 		List<AbstractGizmo> boardGizmos = pm.getBoardGizmos();
-		List<Ball> ballList = pm.getBallList();
+		List<Ball> ballList = new ArrayList<>();
 		List<AbstractGizmo> gizmoListeners;
 		List<String> connectList = new LinkedList<String>();
-		
+
+		for(AbstractGizmo g : boardGizmos){
+			if(g.getClass().equals(Ball.class))
+				ballList.add((Ball) g);
+		}
+
+
 		String gizmoType;		
 		PrintWriter writer;
 		try {
@@ -224,7 +231,6 @@ public class FileManager {
 		AbstractGizmo ball = new Ball(initX, initY, new Vect(velX, velY));
 		ball.setName(ballName);
 
-		pm.addBall((Ball) ball);
 		pm.addGizmo(ball);
 	}
 

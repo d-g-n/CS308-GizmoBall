@@ -28,6 +28,7 @@ public class RunBoard extends JPanel {
 		RenderingHints ro = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g2d.setRenderingHints(ro);
 
+
 		drawEmptyBoardWithGuidelines(g,Board.BOARD_WIDTH, Board.BOARD_HEIGHT);
 
 		//drawBall(pm.getBallList(),g);
@@ -64,6 +65,9 @@ public class RunBoard extends JPanel {
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 
 		g.setColor(Color.darkGray);
+
+		if(!pm.isBuildModeOn())
+			return;
 
 		// Draw guidelines on x axis
 		for (int i = 1; i <= Board.X_CELLS; i++) {

@@ -7,6 +7,8 @@ public class RightFlipper extends Flipper {
 
 		rotateClockwise = true;
 
+		this.type = "RightFlipper";
+
 	}
 
 	@Override
@@ -21,11 +23,6 @@ public class RightFlipper extends Flipper {
 			}
 
 		}
-	}
-
-	@Override
-	public String getType() {
-		return "RightFlipper";
 	}
 
 }

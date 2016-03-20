@@ -6,7 +6,9 @@ import java.util.Observable;
 import gizmos.Absorber;
 import gizmos.AbstractGizmo;
 import gizmos.Ball;
-
+import gizmos.CircleBumper;
+import gizmos.SquareBumper;
+import gizmos.TriangleBumper;
 import physics.Circle;
 import physics.Geometry;
 import physics.LineSegment;
@@ -16,7 +18,6 @@ import view.Board;
 public class CollisionManager extends Observable {
 
 	private ProjectManager pm;
-	private List<Ball> ballList;
 
 	private double SETTINGS_GRAVITY = 25;
 	private double SETTINGS_FRICTION_MU = 0.025;
@@ -24,20 +25,19 @@ public class CollisionManager extends Observable {
 
 	public CollisionManager(ProjectManager pm) {
 		this.pm = pm;
-		this.ballList = pm.getBallList();
 	}
 
 	public void moveBall() {
 
-		if(ballList.size() == 0){
-			this.ballList = pm.getBallList();
-			return;
-		}
+		for(AbstractGizmo g : pm.getBoardGizmos()) {
 
-		for(Ball ball : ballList) {
+			if(!g.getClass().equals(Ball.class))
+				continue;
+
+			Ball ball = (Ball) g;
 
 			if (ball.isStopped())
-				return;
+				continue;
 
 			CollisionDetails info = shortestTimeUntilCollision(ball);
 
@@ -55,6 +55,7 @@ public class CollisionManager extends Observable {
 				}
 
 				info.getHitGizmo().onHit(ball);
+				pm.updateScore(info.getHitGizmo());
 			}
 
 
@@ -145,8 +146,9 @@ public class CollisionManager extends Observable {
 								velocity,
 								gizmo.getReflectionCoefficient()
 						);
+						
 						hitGiz = gizmo;
-
+						
 					}
 				}
 				for (Circle circle : gizmo.getStoredCircles()) {
@@ -166,6 +168,8 @@ public class CollisionManager extends Observable {
 								velocity,
 								gizmo.getReflectionCoefficient()
 						);
+
+						
 						hitGiz = gizmo;
 
 					}
@@ -220,24 +224,20 @@ public class CollisionManager extends Observable {
 								velocity,
 								gizmo.getReflectionCoefficient()
 						);
+						
 						hitGiz = gizmo;
-
+						
 					}
-
-
-
+					
 				}
-
-
+				
 			}
 		}
-
+		
 		return new CollisionDetails(newVelocity, otherVelocity, shortestTime, hitGiz);
 	}
 
 	public Ball moveBallForTime(Ball ball, double time) {
-
-
 
 		double newXPos = 0.0;
 		double newYPos = 0.0;

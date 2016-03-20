@@ -77,16 +77,14 @@ public class RunGUI implements GBallGui, Observer {
 		addAButton("Settings", rightPanel);
 		addAButton("About", rightPanel);
 		addAButton("Exit", rightPanel);
-		
 		pane.add(rightPanel,BorderLayout.LINE_END);
 		pane.addKeyListener(keyListener);
 	}
 	
 	private void createStatusBar(Container pane){
-		statusLabel = new JLabel("Here will be the status label");
-		pane.add(statusLabel,BorderLayout.PAGE_END);
+		statusLabel = new JLabel("Score: " + pm.getScore());
+		pane.add(statusLabel,BorderLayout.SOUTH);
 		pane.addKeyListener(keyListener);
-
 	}
 
 	private void addAButton(String title, Container pane) {

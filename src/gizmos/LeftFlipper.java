@@ -7,6 +7,7 @@ public class LeftFlipper extends Flipper {
 		super(x, y);
 
 		rotateClockwise = false;
+		this.type = "LeftFlipper";
 
 	}
 
