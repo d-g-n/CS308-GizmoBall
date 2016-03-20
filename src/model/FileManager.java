@@ -161,6 +161,11 @@ public class FileManager {
 	}
 
 	public void loadFile(String fileName) {
+		// before doing anything else set gravity and friction to their default values
+		// these will be overwritten if the appropriate commands are present in the file being loaded,
+		// otherwise the board will use these defaults
+		pm.setGravity(25.0);
+		pm.setFriction(0.025, 0.025);
 		file = new File(fileName);
 		String currentLine;
 		Matcher lineMatch;
