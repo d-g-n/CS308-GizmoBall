@@ -31,7 +31,7 @@ public class MenuFileListener implements ActionListener {
 	public void fileSave() {
 		fmGUI = new FileManagerGUI();
 		String filePath = fmGUI.getSaveFilePath();
-		if (!filePath.isEmpty()) {
+		if (filePath!= null && !filePath.isEmpty()) {
 			pm.saveAs(filePath);
 		}
 	}
