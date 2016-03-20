@@ -120,7 +120,7 @@ public class BoardListener implements MouseListener {
 			case "Delete":
 				AbstractGizmo del = null;
 				for (AbstractGizmo a : pm.getBoardGizmos()) {
-					if ((int) a.getXPos() == x && a.getYPos() == y) {
+					if ((int) a.getXPos() == x && (int) a.getYPos() == y) {
 
 						del = a;
 						break;
@@ -136,7 +136,7 @@ public class BoardListener implements MouseListener {
 					AbstractGizmo move = null;
 					for (AbstractGizmo a : pm.getBoardGizmos()) {
 
-						if ((int) a.getXPos() == x && a.getYPos() == y) {
+						if ((int) a.getXPos() == x && (int) a.getYPos() == y) {
 
 							move = a;
 							break;
