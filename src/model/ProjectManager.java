@@ -292,9 +292,9 @@ public class ProjectManager extends Observable{
 		cManager.setGravity(newGravity);
 	}
 	
-	public void setFriction(double newFriction) {
+	public void setFriction(double mu, double mu2) {
 		
-		cManager.setFriction(newFriction, newFriction);
+		cManager.setFriction(mu, mu2);
 	}
 
 	public double getGravity() {
@@ -302,9 +302,12 @@ public class ProjectManager extends Observable{
 		return cManager.getGravity();
 	}
 	
-	public double getFriction() {
-		
-		return cManager.getFriction();
+	public double getMuFriction() {		
+		return cManager.getMuFriction();
+	}
+	
+	public double getMu2Friction(){
+		return cManager.getMu2Friction();
 	}
 
 	public String getStatusLabel() {

@@ -62,7 +62,7 @@ public class BuildGUI implements GBallGui {
 
 	private void addSliders(Container pane) {
 		addGravitySlider(0, 100, (int)pm.getGravity(), pane);
-		addFrictionSlider(0, 100, 25, pane);
+		addFrictionSlider(0, 100, (int)(pm.getMuFriction()*1000), pane);
 	}
 
 	private void addGravitySlider(int min, int max, int initial, Container pane) {

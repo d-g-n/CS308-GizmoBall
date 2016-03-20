@@ -6,7 +6,6 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -48,6 +47,7 @@ public class FileManager {
 	private final Pattern connectGizmoCommand = Pattern.compile("Connect" + " " + IDENTIFIER + " " + IDENTIFIER);
 	private final Pattern keyConnectGizmoCommand = Pattern.compile("KeyConnect" + " " + KEYID + " " + IDENTIFIER);
 	private final Pattern gravityCommand = Pattern.compile("Gravity " + FLOAT);
+	private final Pattern frictionCommand = Pattern.compile("Friction " + FLOAT_PAIR);
 
 
 	public FileManager(ProjectManager projectManager) {
@@ -59,7 +59,6 @@ public class FileManager {
 		List<Ball> ballList = pm.getBallList();
 		List<AbstractGizmo> gizmoListeners;
 		List<String> connectList = new LinkedList<String>();
-		Map<Map.Entry<String, Integer>, List<AbstractGizmo>> keyConnects = pm.getKeyConnects();
 		
 		String gizmoType;		
 		PrintWriter writer;
@@ -122,7 +121,7 @@ public class FileManager {
 		}
 			
 		writer.println("Gravity " + pm.getGravity());
-		//writer.println("Friction " + pm.getFriction() + " " + );
+		writer.println("Friction " + pm.getMuFriction() + " " + pm.getMu2Friction());
 			
 		writer.close();
 	} catch (FileNotFoundException e) {
@@ -194,9 +193,19 @@ public class FileManager {
 			if ((lineMatch = gravityCommand.matcher(currentLine)).matches()){
 				setGravity(lineMatch);
 			}
+			
+			if ((lineMatch = frictionCommand.matcher(currentLine)).matches()){
+				setFriction(lineMatch);
+			}
 
 			lineMatch.reset();
 		}
+	}
+
+	private void setFriction(Matcher lineMatch) {
+		double mu = Double.parseDouble(lineMatch.group(1));
+		double mu2 = Double.parseDouble(lineMatch.group(1));
+		pm.setFriction(mu, mu2);		
 	}
 
 	private void setGravity(Matcher lineMatch) {
