@@ -7,10 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba8a27f3-a444-45e2-a0a5-81e76341a790" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src_test/File_Testing/SaveFileTst.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src_test/Gizmo_Testing/AddGizmoTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src_test/Gizmo_Testing/ManipulateGizmoTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src_test/Gizmo_Testing/InteractionGizmoTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src_test/Gizmo_Testing/AddGizmoTest.java" afterPath="$PROJECT_DIR$/src_test/Gizmo_Testing/AddGizmoTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src_test/Gizmo_Testing/ManipulateGizmoTest.java" afterPath="$PROJECT_DIR$/src_test/Gizmo_Testing/ManipulateGizmoTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src_test/Project_Testing/GizmoFunctionsTest.java" afterPath="$PROJECT_DIR$/src_test/Project_Testing/GizmoFunctionsTest.java" />
     </list>
     <ignored path="CS308-GizmoBall.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,7 +27,7 @@
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/CS308-GizmoBall$MainInit.coverage" NAME="MainInit Coverage Results" MODIFIED="1458423551784" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/CS308-GizmoBall$All_in_CS308_GizmoBall.coverage" NAME="All in CS308-GizmoBall Coverage Results" MODIFIED="1458423563983" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/CS308-GizmoBall$All_in_CS308_GizmoBall.coverage" NAME="All in CS308-GizmoBall Coverage Results" MODIFIED="1458480611924" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -37,21 +38,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="RunListener.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/RunListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="55" column="26" selection-start-line="55" selection-start-column="26" selection-end-line="55" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ProjectManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/ProjectManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="245" column="16" selection-start-line="245" selection-start-column="16" selection-end-line="245" selection-end-column="16" />
+              <caret line="287" column="46" selection-start-line="287" selection-start-column="35" selection-end-line="287" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -69,31 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Absorber.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gizmos/Absorber.java">
+      <file leaf-file-name="BuildListener.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controller/BuildListener.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="57" column="28" selection-start-line="57" selection-start-column="28" selection-end-line="57" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SaveFileTst.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src_test/File_Testing/SaveFileTst.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Ball.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gizmos/Ball.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="32" column="16" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
+              <caret line="162" column="53" selection-start-line="162" selection-start-column="53" selection-end-line="162" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -103,7 +74,7 @@
         <entry file="file://$PROJECT_DIR$/src_test/Gizmo_Testing/AddGizmoTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+              <caret line="93" column="138" selection-start-line="93" selection-start-column="138" selection-end-line="93" selection-end-column="138" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -111,34 +82,463 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ManipulateGizmoTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="InteractionGizmoTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src_test/Gizmo_Testing/InteractionGizmoTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JAVA/" pinned="false" current-in-tab="true">
+        <entry file="uml://JAVA/">
+          <provider selected="true" editor-type-id="UmlEditorProvider">
+            <state>
+              <ID>JAVA</ID>
+              <OriginalElement />
+              <nodes>
+                <node x="1413.424983083652" y="972.0">controller.MagicKeyListener</node>
+                <node x="1200.7241175040135" y="665.0">model.ProjectManager</node>
+                <node x="0.0" y="1224.0">view.BuildBoard</node>
+                <node x="1130.2975912975912" y="893.0">view.FileManagerGUI</node>
+                <node x="866.636210850123" y="893.0">view.BuildGUI</node>
+                <node x="1008.2975912975912" y="972.0">view.TestView</node>
+                <node x="693.1243980907292" y="169.0">gizmos.AbstractGizmo</node>
+                <node x="1134.5554027693152" y="318.0">gizmos.OuterWall</node>
+                <node x="152.5" y="427.0">gizmos.LeftFlipper</node>
+                <node x="311.0" y="427.0">gizmos.DeathSquare</node>
+                <node x="1239.5554027693152" y="318.0">model.CollisionDetails</node>
+                <node x="682.9138717749397" y="0.0">physics</node>
+                <node x="688.0416666666665" y="427.0">gizmos.CircleBumper</node>
+                <node x="1030.7975912975912" y="1071.0">view.RunGUI</node>
+                <node x="36.5" y="427.0">gizmos.RightFlipper</node>
+                <node x="1212.7975912975912" y="1150.0">MainInit</node>
+                <node x="135.0" y="1224.0">view.Board</node>
+                <node x="865.386210850123" y="814.0">controller.BuildListener</node>
+                <node x="462.74999999999994" y="814.0">controller.BoardListener</node>
+                <node x="960.1448135198134" y="318.0">gizmos.TriangleBumper</node>
+                <node x="812.0416666666666" y="427.0">gizmos.Absorber</node>
+                <node x="537.2083333333333" y="318.0">gizmos.Ball</node>
+                <node x="1227.6749830836518" y="814.0">controller.KeyPressListener</node>
+                <node x="106.5" y="318.0">gizmos.Flipper</node>
+                <node x="430.0" y="427.0">gizmos.BoosterGizmo</node>
+                <node x="1156.2975912975912" y="972.0">controller.MenuFileListener</node>
+                <node x="583.0416666666665" y="427.0">gizmos.Teleporter</node>
+                <node x="1246.2220694359817" y="427.0">model.CollisionManager</node>
+                <node x="1026.2975912975912" y="893.0">view.RunBoard</node>
+                <node x="705.1388441065292" y="536.0">model.FileManager</node>
+                <node x="365.74999999999994" y="814.0">view.GBallGui</node>
+                <node x="894.2975912975912" y="972.0">controller.RunListener</node>
+                <node x="229.0" y="318.0">gizmos.SquareBumper</node>
+              </nodes>
+              <notes />
+              <edges>
+                <edge source="model.ProjectManager" target="gizmos.OuterWall">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="model.FileManager" target="gizmos.Absorber">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="controller.BoardListener" target="gizmos.Teleporter">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="model.CollisionManager" target="model.CollisionDetails">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="model.CollisionDetails" target="gizmos.AbstractGizmo">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="gizmos.SquareBumper" target="physics">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="controller.BoardListener" target="model.ProjectManager">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="gizmos.LeftFlipper" target="gizmos.Flipper">
+                  <point x="0.0" y="-14.5" />
+                  <point x="196.5" y="407.0" />
+                  <point x="157.5" y="407.0" />
+                  <point x="17.0" y="14.5" />
+                </edge>
+                <edge source="model.FileManager" target="gizmos.CircleBumper">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="model.CollisionManager" target="gizmos.Ball">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="gizmos.Absorber" target="gizmos.Ball">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="controller.BoardListener" target="gizmos.CircleBumper">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="controller.BoardListener" target="gizmos.TriangleBumper">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="model.FileManager" target="physics">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="model.CollisionDetails" target="physics">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="model.CollisionManager" target="physics">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="gizmos.SquareBumper" target="gizmos.AbstractGizmo">
+                  <point x="27.5" y="-14.5" />
+                  <point x="311.5" y="248.0" />
+                  <point x="705.8167057830369" y="248.0" />
+                  <point x="-42.30769230769232" y="14.5" />
+                </edge>
+                <edge source="controller.BoardListener" target="gizmos.DeathSquare">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="controller.BoardListener" target="gizmos.Absorber">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="controller.BuildListener" target="view.BuildGUI">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="model.FileManager" target="gizmos.LeftFlipper">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="view.RunBoard" target="model.ProjectManager">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="MainInit" target="model.ProjectManager">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="gizmos.Teleporter" target="gizmos.AbstractGizmo">
+                  <point x="21.25" y="-14.5" />
+                  <point x="646.7916666666665" y="288.0" />
+                  <point x="739.6628596291907" y="288.0" />
+                  <point x="-8.461538461538453" y="14.5" />
+                </edge>
+                <edge source="view.TestView" target="view.RunBoard">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="gizmos.Teleporter" target="gizmos.Ball">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="gizmos.DeathSquare" target="gizmos.Ball">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="gizmos.OuterWall" target="physics">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="controller.BoardListener" target="gizmos.Ball">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="MainInit" target="view.RunGUI">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="gizmos.BoosterGizmo" target="physics">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="gizmos.Flipper" target="gizmos.AbstractGizmo">
+                  <point x="17.0" y="-14.5" />
+                  <point x="157.5" y="238.0" />
+                  <point x="697.3551673214984" y="238.0" />
+                  <point x="-50.769230769230774" y="14.5" />
+                </edge>
+                <edge source="model.FileManager" target="model.ProjectManager">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="model.ProjectManager" target="model.CollisionManager">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="gizmos.AbstractGizmo" target="physics">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="controller.BoardListener" target="gizmos.LeftFlipper">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="gizmos.DeathSquare" target="gizmos.AbstractGizmo">
+                  <point x="0.0" y="-14.5" />
+                  <point x="360.5" y="258.0" />
+                  <point x="714.2782442445754" y="258.0" />
+                  <point x="-33.84615384615381" y="14.5" />
+                </edge>
+                <edge source="gizmos.Ball" target="physics">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="gizmos.BoosterGizmo" target="gizmos.Ball">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="view.RunGUI" target="controller.RunListener">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="gizmos.DeathSquare" target="physics">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="model.FileManager" target="gizmos.SquareBumper">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="gizmos.OuterWall" target="gizmos.AbstractGizmo">
+                  <point x="-21.25" y="-14.5" />
+                  <point x="1155.8054027693152" y="258.0" />
+                  <point x="790.4320903984216" y="258.0" />
+                  <point x="42.30769230769238" y="14.5" />
+                </edge>
+                <edge source="model.ProjectManager" target="gizmos.Ball">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="model.FileManager" target="gizmos.RightFlipper">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="controller.KeyPressListener" target="model.ProjectManager">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="model.ProjectManager" target="gizmos.AbstractGizmo">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="controller.MenuFileListener" target="model.ProjectManager">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="gizmos.TriangleBumper" target="gizmos.AbstractGizmo">
+                  <point x="-29.0" y="-14.5" />
+                  <point x="989.1448135198134" y="268.0" />
+                  <point x="781.970551936883" y="268.0" />
+                  <point x="33.84615384615381" y="14.5" />
+                </edge>
+                <edge source="gizmos.Absorber" target="physics">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="controller.BoardListener" target="gizmos.RightFlipper">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="controller.MenuFileListener" target="view.FileManagerGUI">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="gizmos.CircleBumper" target="gizmos.AbstractGizmo">
+                  <point x="0.0" y="-14.5" />
+                  <point x="740.0416666666665" y="298.0" />
+                  <point x="748.1243980907292" y="298.0" />
+                  <point x="0.0" y="14.5" />
+                </edge>
+                <edge source="gizmos.Ball" target="gizmos.AbstractGizmo">
+                  <point x="17.0" y="-14.5" />
+                  <point x="579.7083333333333" y="278.0" />
+                  <point x="731.2013211676523" y="278.0" />
+                  <point x="-16.923076923076906" y="14.5" />
+                </edge>
+                <edge source="controller.RunListener" target="view.BuildGUI">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="model.FileManager" target="gizmos.Ball">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="gizmos.TriangleBumper" target="physics">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="controller.RunListener" target="model.ProjectManager">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="view.RunGUI" target="controller.MenuFileListener">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="model.ProjectManager" target="model.FileManager">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="gizmos.Absorber" target="gizmos.AbstractGizmo">
+                  <point x="0.0" y="-14.5" />
+                  <point x="852.0416666666666" y="298.0" />
+                  <point x="756.5859365522676" y="298.0" />
+                  <point x="8.461538461538453" y="14.5" />
+                </edge>
+                <edge source="view.RunGUI" target="model.ProjectManager">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="view.TestView" target="controller.BoardListener">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="view.RunGUI" target="controller.MagicKeyListener">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="controller.MagicKeyListener" target="model.ProjectManager">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="controller.BoardListener" target="gizmos.SquareBumper">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="controller.BoardListener" target="gizmos.BoosterGizmo">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="view.BuildGUI" target="controller.BuildListener">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="controller.BuildListener" target="model.ProjectManager">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="gizmos.BoosterGizmo" target="gizmos.AbstractGizmo">
+                  <point x="0.0" y="-14.5" />
+                  <point x="483.0" y="268.0" />
+                  <point x="722.7397827061138" y="268.0" />
+                  <point x="-25.38461538461536" y="14.5" />
+                </edge>
+                <edge source="controller.BoardListener" target="physics">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="view.RunGUI" target="view.GBallGui">
+                  <point x="-32.0" y="-14.5" />
+                  <point x="1034.7975912975912" y="1051.0" />
+                  <point x="384.99999999999994" y="1051.0" />
+                  <point x="-19.25" y="14.5" />
+                </edge>
+                <edge source="model.ProjectManager" target="physics">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="gizmos.RightFlipper" target="gizmos.Flipper">
+                  <point x="0.0" y="-14.5" />
+                  <point x="84.5" y="407.0" />
+                  <point x="123.5" y="407.0" />
+                  <point x="-17.0" y="14.5" />
+                </edge>
+                <edge source="model.FileManager" target="gizmos.TriangleBumper">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="model.CollisionManager" target="model.ProjectManager">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="view.RunGUI" target="view.TestView">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="view.BuildGUI" target="view.GBallGui">
+                  <point x="-29.25" y="-14.5" />
+                  <point x="876.386210850123" y="868.0" />
+                  <point x="423.49999999999994" y="868.0" />
+                  <point x="19.25" y="14.5" />
+                </edge>
+                <edge source="gizmos.Flipper" target="physics">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="physics" target="physics">
+                  <point x="0.0" y="0.0" />
+                  <point x="741.9138717749397" y="-24.5" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+              </edges>
+              <settings layout="Hierarchic Group" zoom="0.7172034564021995" x="-80.2267250821468" y="374.7831325301205" />
+              <SelectedNodes />
+              <Categories />
+              <SCOPE>All</SCOPE>
+              <VISIBILITY>private</VISIBILITY>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CollisionManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/CollisionManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="260" column="0" selection-start-line="260" selection-start-column="0" selection-end-line="260" selection-end-column="0" />
+              <folding>
+                <element signature="e#6171#6172#0" expanded="true" />
+                <element signature="e#6210#6211#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GizmoFunctionsTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src_test/Project_Testing/GizmoFunctionsTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="33" column="82" selection-start-line="33" selection-start-column="82" selection-end-line="33" selection-end-column="82" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseTestCase.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src_test/General_Testing/BaseTestCase.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ManipulateGizmoTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src_test/Gizmo_Testing/ManipulateGizmoTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.0736842">
-              <caret line="42" column="170" selection-start-line="42" selection-start-column="170" selection-end-line="42" selection-end-column="170" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="57" column="66" selection-start-line="57" selection-start-column="66" selection-end-line="57" selection-end-column="66" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="testboard.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/boards/testboard.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BoardListener.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/BoardListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -181,8 +581,6 @@
         <option value="$PROJECT_DIR$/src/controller/RunListener.java" />
         <option value="$PROJECT_DIR$/src/view/Board.java" />
         <option value="$PROJECT_DIR$/src/controller/MagicKeyListener.java" />
-        <option value="$PROJECT_DIR$/src/model/CollisionManager.java" />
-        <option value="$PROJECT_DIR$/src/model/ProjectManager.java" />
         <option value="$PROJECT_DIR$/src/controller/FileListener.java" />
         <option value="$PROJECT_DIR$/src/controller/MenuFileListener.java" />
         <option value="$PROJECT_DIR$/src/view/RunGUI.java" />
@@ -197,14 +595,18 @@
         <option value="$PROJECT_DIR$/src/gizmos/LeftFlipper.java" />
         <option value="$PROJECT_DIR$/src/gizmos/RightFlipper.java" />
         <option value="$PROJECT_DIR$/src/gizmos/Flipper.java" />
-        <option value="$PROJECT_DIR$/src/controller/BuildListener.java" />
         <option value="$PROJECT_DIR$/src/view/BuildGUI.java" />
         <option value="$PROJECT_DIR$/src/controller/BoardListener.java" />
         <option value="$PROJECT_DIR$/src/gizmos/AbstractGizmo.java" />
         <option value="$PROJECT_DIR$/boards/testboard.txt" />
         <option value="$PROJECT_DIR$/src_test/File_Testing/LoadFileTest.java" />
-        <option value="$PROJECT_DIR$/src_test/Gizmo_Testing/AddGizmoTest.java" />
         <option value="$PROJECT_DIR$/src_test/Gizmo_Testing/ManipulateGizmoTest.java" />
+        <option value="$PROJECT_DIR$/src_test/Gizmo_Testing/AddGizmoTest.java" />
+        <option value="$PROJECT_DIR$/src/model/ProjectManager.java" />
+        <option value="$PROJECT_DIR$/src/model/CollisionManager.java" />
+        <option value="$PROJECT_DIR$/src_test/Project_Testing/GizmoFunctionsTest.java" />
+        <option value="$PROJECT_DIR$/src/controller/BuildListener.java" />
+        <option value="$PROJECT_DIR$/src_test/Gizmo_Testing/InteractionGizmoTest.java" />
       </list>
     </option>
   </component>
@@ -214,8 +616,8 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="69" />
-    <option name="y" value="127" />
+    <option name="x" value="98" />
+    <option name="y" value="79" />
     <option name="width" value="2149" />
     <option name="height" value="1181" />
   </component>
@@ -244,7 +646,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -275,6 +676,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src_test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project_Testing" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -310,7 +715,39 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="General_Testing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS308-GizmoBall" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS308-GizmoBall" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src_test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="File_Testing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS308-GizmoBall" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS308-GizmoBall" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src_test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -434,6 +871,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -968,6 +1406,7 @@
       <workItem from="1458332153507" duration="2103000" />
       <workItem from="1458344249049" duration="1700000" />
       <workItem from="1458420933572" duration="2632000" />
+      <workItem from="1458478972623" duration="2399000" />
     </task>
     <task id="LOCAL-00001" summary="Partial george merge, code is questionable, possible broken in places but loading is integrated with the master branch, will fix collisions when i merge giorgos">
       <created>1456270949321</created>
@@ -1117,43 +1556,43 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_CS308-GizmoBall - 2016.03.19 at 00h 05m 38s.xml">
-      <configuration name="All in CS308-GizmoBall" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_CS308-GizmoBall - 2016.03.19 at 21h 07m 16s.xml">
-      <configuration name="All in CS308-GizmoBall" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_CS308-GizmoBall - 2016.03.19 at 21h 08m 50s.xml">
-      <configuration name="All in CS308-GizmoBall" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_CS308-GizmoBall - 2016.03.19 at 21h 09m 18s.xml">
-      <configuration name="All in CS308-GizmoBall" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_CS308-GizmoBall - 2016.03.19 at 21h 11m 27s.xml">
-      <configuration name="All in CS308-GizmoBall" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_CS308-GizmoBall - 2016.03.19 at 21h 12m 25s.xml">
-      <configuration name="All in CS308-GizmoBall" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_CS308-GizmoBall - 2016.03.19 at 21h 25m 17s.xml">
-      <configuration name="All in CS308-GizmoBall" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_CS308-GizmoBall - 2016.03.19 at 21h 25m 53s.xml">
-      <configuration name="All in CS308-GizmoBall" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_CS308-GizmoBall - 2016.03.19 at 21h 29m 44s.xml">
-      <configuration name="All in CS308-GizmoBall" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="All_in_CS308-GizmoBall - 2016.03.19 at 21h 39m 24s.xml">
+      <configuration name="All in CS308-GizmoBall" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_CS308-GizmoBall - 2016.03.20 at 13h 06m 13s.xml">
+      <configuration name="All in CS308-GizmoBall" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_CS308-GizmoBall - 2016.03.20 at 13h 09m 33s.xml">
+      <configuration name="All in CS308-GizmoBall" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_CS308-GizmoBall - 2016.03.20 at 13h 09m 58s.xml">
+      <configuration name="All in CS308-GizmoBall" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_CS308-GizmoBall - 2016.03.20 at 13h 10m 07s.xml">
+      <configuration name="All in CS308-GizmoBall" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_CS308-GizmoBall - 2016.03.20 at 13h 22m 59s.xml">
+      <configuration name="All in CS308-GizmoBall" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_CS308-GizmoBall - 2016.03.20 at 13h 24m 57s.xml">
+      <configuration name="All in CS308-GizmoBall" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_CS308-GizmoBall - 2016.03.20 at 13h 25m 31s.xml">
+      <configuration name="All in CS308-GizmoBall" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_CS308-GizmoBall - 2016.03.20 at 13h 28m 56s.xml">
+      <configuration name="All in CS308-GizmoBall" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_CS308-GizmoBall - 2016.03.20 at 13h 30m 13s.xml">
       <configuration name="All in CS308-GizmoBall" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58091000" />
+    <option name="totallyTimeSpent" value="60490000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="69" y="127" width="2149" height="1181" extended-state="0" />
-    <editor active="true" />
+    <frame x="98" y="79" width="2149" height="1181" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1163,7 +1602,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919848" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33874047" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1163236" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12876974" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19435136" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1229,47 +1668,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/model/ProjectManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="49" column="28" selection-start-line="49" selection-start-column="28" selection-end-line="49" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainInit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/FileManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1666#1667#0" expanded="false" />
-            <element signature="e#1697#1698#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gizmos/AbstractGizmo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="51" column="25" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
-          <folding>
-            <element signature="e#3830#3831#0" expanded="true" />
-            <element signature="e#3858#3859#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/RunGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1370,14 +1768,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/CollisionManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gizmos/BoosterGizmo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1455,16 +1845,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/BuildListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="20" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1586,42 +1966,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="55" column="26" selection-start-line="55" selection-start-column="26" selection-end-line="55" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/ProjectManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="245" column="16" selection-start-line="245" selection-start-column="16" selection-end-line="245" selection-end-column="16" />
           <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src_test/File_Testing/SaveFileTst.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src_test/File_Testing/LoadFileTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src_test/Gizmo_Testing/AddGizmoTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1646,17 +1992,502 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_test/File_Testing/SaveFileTst.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src_test/Gizmo_Testing/ManipulateGizmoTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0736842">
-          <caret line="42" column="170" selection-start-line="42" selection-start-column="170" selection-end-line="42" selection-end-column="170" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="57" column="66" selection-start-line="57" selection-start-column="66" selection-end-line="57" selection-end-column="66" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/ProjectManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="287" column="46" selection-start-line="287" selection-start-column="35" selection-end-line="287" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/CollisionManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="260" column="0" selection-start-line="260" selection-start-column="0" selection-end-line="260" selection-end-column="0" />
+          <folding>
+            <element signature="e#6171#6172#0" expanded="true" />
+            <element signature="e#6210#6211#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/BuildListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="162" column="53" selection-start-line="162" selection-start-column="53" selection-end-line="162" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_test/Project_Testing/GizmoFunctionsTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="82" selection-start-line="33" selection-start-column="82" selection-end-line="33" selection-end-column="82" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_test/General_Testing/BaseTestCase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_test/Gizmo_Testing/AddGizmoTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="93" column="138" selection-start-line="93" selection-start-column="138" selection-end-line="93" selection-end-column="138" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_test/File_Testing/LoadFileTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_test/Gizmo_Testing/InteractionGizmoTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement />
+          <nodes>
+            <node x="1413.424983083652" y="972.0">controller.MagicKeyListener</node>
+            <node x="1200.7241175040135" y="665.0">model.ProjectManager</node>
+            <node x="0.0" y="1224.0">view.BuildBoard</node>
+            <node x="1130.2975912975912" y="893.0">view.FileManagerGUI</node>
+            <node x="866.636210850123" y="893.0">view.BuildGUI</node>
+            <node x="1008.2975912975912" y="972.0">view.TestView</node>
+            <node x="693.1243980907292" y="169.0">gizmos.AbstractGizmo</node>
+            <node x="1134.5554027693152" y="318.0">gizmos.OuterWall</node>
+            <node x="152.5" y="427.0">gizmos.LeftFlipper</node>
+            <node x="311.0" y="427.0">gizmos.DeathSquare</node>
+            <node x="1239.5554027693152" y="318.0">model.CollisionDetails</node>
+            <node x="682.9138717749397" y="0.0">physics</node>
+            <node x="688.0416666666665" y="427.0">gizmos.CircleBumper</node>
+            <node x="1030.7975912975912" y="1071.0">view.RunGUI</node>
+            <node x="36.5" y="427.0">gizmos.RightFlipper</node>
+            <node x="1212.7975912975912" y="1150.0">MainInit</node>
+            <node x="135.0" y="1224.0">view.Board</node>
+            <node x="865.386210850123" y="814.0">controller.BuildListener</node>
+            <node x="462.74999999999994" y="814.0">controller.BoardListener</node>
+            <node x="960.1448135198134" y="318.0">gizmos.TriangleBumper</node>
+            <node x="812.0416666666666" y="427.0">gizmos.Absorber</node>
+            <node x="537.2083333333333" y="318.0">gizmos.Ball</node>
+            <node x="1227.6749830836518" y="814.0">controller.KeyPressListener</node>
+            <node x="106.5" y="318.0">gizmos.Flipper</node>
+            <node x="430.0" y="427.0">gizmos.BoosterGizmo</node>
+            <node x="1156.2975912975912" y="972.0">controller.MenuFileListener</node>
+            <node x="583.0416666666665" y="427.0">gizmos.Teleporter</node>
+            <node x="1246.2220694359817" y="427.0">model.CollisionManager</node>
+            <node x="1026.2975912975912" y="893.0">view.RunBoard</node>
+            <node x="705.1388441065292" y="536.0">model.FileManager</node>
+            <node x="365.74999999999994" y="814.0">view.GBallGui</node>
+            <node x="894.2975912975912" y="972.0">controller.RunListener</node>
+            <node x="229.0" y="318.0">gizmos.SquareBumper</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="model.ProjectManager" target="gizmos.OuterWall">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="model.FileManager" target="gizmos.Absorber">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="controller.BoardListener" target="gizmos.Teleporter">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="model.CollisionManager" target="model.CollisionDetails">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="model.CollisionDetails" target="gizmos.AbstractGizmo">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="gizmos.SquareBumper" target="physics">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="controller.BoardListener" target="model.ProjectManager">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="gizmos.LeftFlipper" target="gizmos.Flipper">
+              <point x="0.0" y="-14.5" />
+              <point x="196.5" y="407.0" />
+              <point x="157.5" y="407.0" />
+              <point x="17.0" y="14.5" />
+            </edge>
+            <edge source="model.FileManager" target="gizmos.CircleBumper">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="model.CollisionManager" target="gizmos.Ball">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="gizmos.Absorber" target="gizmos.Ball">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="controller.BoardListener" target="gizmos.CircleBumper">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="controller.BoardListener" target="gizmos.TriangleBumper">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="model.FileManager" target="physics">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="model.CollisionDetails" target="physics">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="model.CollisionManager" target="physics">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="gizmos.SquareBumper" target="gizmos.AbstractGizmo">
+              <point x="27.5" y="-14.5" />
+              <point x="311.5" y="248.0" />
+              <point x="705.8167057830369" y="248.0" />
+              <point x="-42.30769230769232" y="14.5" />
+            </edge>
+            <edge source="controller.BoardListener" target="gizmos.DeathSquare">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="controller.BoardListener" target="gizmos.Absorber">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="controller.BuildListener" target="view.BuildGUI">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="model.FileManager" target="gizmos.LeftFlipper">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="view.RunBoard" target="model.ProjectManager">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="MainInit" target="model.ProjectManager">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="gizmos.Teleporter" target="gizmos.AbstractGizmo">
+              <point x="21.25" y="-14.5" />
+              <point x="646.7916666666665" y="288.0" />
+              <point x="739.6628596291907" y="288.0" />
+              <point x="-8.461538461538453" y="14.5" />
+            </edge>
+            <edge source="view.TestView" target="view.RunBoard">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="gizmos.Teleporter" target="gizmos.Ball">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="gizmos.DeathSquare" target="gizmos.Ball">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="gizmos.OuterWall" target="physics">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="controller.BoardListener" target="gizmos.Ball">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="MainInit" target="view.RunGUI">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="gizmos.BoosterGizmo" target="physics">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="gizmos.Flipper" target="gizmos.AbstractGizmo">
+              <point x="17.0" y="-14.5" />
+              <point x="157.5" y="238.0" />
+              <point x="697.3551673214984" y="238.0" />
+              <point x="-50.769230769230774" y="14.5" />
+            </edge>
+            <edge source="model.FileManager" target="model.ProjectManager">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="model.ProjectManager" target="model.CollisionManager">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="gizmos.AbstractGizmo" target="physics">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="controller.BoardListener" target="gizmos.LeftFlipper">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="gizmos.DeathSquare" target="gizmos.AbstractGizmo">
+              <point x="0.0" y="-14.5" />
+              <point x="360.5" y="258.0" />
+              <point x="714.2782442445754" y="258.0" />
+              <point x="-33.84615384615381" y="14.5" />
+            </edge>
+            <edge source="gizmos.Ball" target="physics">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="gizmos.BoosterGizmo" target="gizmos.Ball">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="view.RunGUI" target="controller.RunListener">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="gizmos.DeathSquare" target="physics">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="model.FileManager" target="gizmos.SquareBumper">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="gizmos.OuterWall" target="gizmos.AbstractGizmo">
+              <point x="-21.25" y="-14.5" />
+              <point x="1155.8054027693152" y="258.0" />
+              <point x="790.4320903984216" y="258.0" />
+              <point x="42.30769230769238" y="14.5" />
+            </edge>
+            <edge source="model.ProjectManager" target="gizmos.Ball">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="model.FileManager" target="gizmos.RightFlipper">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="controller.KeyPressListener" target="model.ProjectManager">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="model.ProjectManager" target="gizmos.AbstractGizmo">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="controller.MenuFileListener" target="model.ProjectManager">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="gizmos.TriangleBumper" target="gizmos.AbstractGizmo">
+              <point x="-29.0" y="-14.5" />
+              <point x="989.1448135198134" y="268.0" />
+              <point x="781.970551936883" y="268.0" />
+              <point x="33.84615384615381" y="14.5" />
+            </edge>
+            <edge source="gizmos.Absorber" target="physics">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="controller.BoardListener" target="gizmos.RightFlipper">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="controller.MenuFileListener" target="view.FileManagerGUI">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="gizmos.CircleBumper" target="gizmos.AbstractGizmo">
+              <point x="0.0" y="-14.5" />
+              <point x="740.0416666666665" y="298.0" />
+              <point x="748.1243980907292" y="298.0" />
+              <point x="0.0" y="14.5" />
+            </edge>
+            <edge source="gizmos.Ball" target="gizmos.AbstractGizmo">
+              <point x="17.0" y="-14.5" />
+              <point x="579.7083333333333" y="278.0" />
+              <point x="731.2013211676523" y="278.0" />
+              <point x="-16.923076923076906" y="14.5" />
+            </edge>
+            <edge source="controller.RunListener" target="view.BuildGUI">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="model.FileManager" target="gizmos.Ball">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="gizmos.TriangleBumper" target="physics">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="controller.RunListener" target="model.ProjectManager">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="view.RunGUI" target="controller.MenuFileListener">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="model.ProjectManager" target="model.FileManager">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="gizmos.Absorber" target="gizmos.AbstractGizmo">
+              <point x="0.0" y="-14.5" />
+              <point x="852.0416666666666" y="298.0" />
+              <point x="756.5859365522676" y="298.0" />
+              <point x="8.461538461538453" y="14.5" />
+            </edge>
+            <edge source="view.RunGUI" target="model.ProjectManager">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="view.TestView" target="controller.BoardListener">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="view.RunGUI" target="controller.MagicKeyListener">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="controller.MagicKeyListener" target="model.ProjectManager">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="controller.BoardListener" target="gizmos.SquareBumper">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="controller.BoardListener" target="gizmos.BoosterGizmo">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="view.BuildGUI" target="controller.BuildListener">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="controller.BuildListener" target="model.ProjectManager">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="gizmos.BoosterGizmo" target="gizmos.AbstractGizmo">
+              <point x="0.0" y="-14.5" />
+              <point x="483.0" y="268.0" />
+              <point x="722.7397827061138" y="268.0" />
+              <point x="-25.38461538461536" y="14.5" />
+            </edge>
+            <edge source="controller.BoardListener" target="physics">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="view.RunGUI" target="view.GBallGui">
+              <point x="-32.0" y="-14.5" />
+              <point x="1034.7975912975912" y="1051.0" />
+              <point x="384.99999999999994" y="1051.0" />
+              <point x="-19.25" y="14.5" />
+            </edge>
+            <edge source="model.ProjectManager" target="physics">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="gizmos.RightFlipper" target="gizmos.Flipper">
+              <point x="0.0" y="-14.5" />
+              <point x="84.5" y="407.0" />
+              <point x="123.5" y="407.0" />
+              <point x="-17.0" y="14.5" />
+            </edge>
+            <edge source="model.FileManager" target="gizmos.TriangleBumper">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="model.CollisionManager" target="model.ProjectManager">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="view.RunGUI" target="view.TestView">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="view.BuildGUI" target="view.GBallGui">
+              <point x="-29.25" y="-14.5" />
+              <point x="876.386210850123" y="868.0" />
+              <point x="423.49999999999994" y="868.0" />
+              <point x="19.25" y="14.5" />
+            </edge>
+            <edge source="gizmos.Flipper" target="physics">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="physics" target="physics">
+              <point x="0.0" y="0.0" />
+              <point x="741.9138717749397" y="-24.5" />
+              <point x="0.0" y="0.0" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.7172034564021995" x="-80.2267250821468" y="374.7831325301205" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
         </state>
       </provider>
     </entry>

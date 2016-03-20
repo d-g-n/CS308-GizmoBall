@@ -4,6 +4,7 @@ import General_Testing.BaseTestCase;
 import gizmos.*;
 import org.junit.Assert;
 import org.junit.Test;
+import physics.Vect;
 
 /**
  * Created by Declan on 19/03/2016.
@@ -25,11 +26,11 @@ public class AddGizmoTest extends BaseTestCase {
 		pm.addGizmo(testTriangle);
 		pm.addGizmo(testCircle);
 
-		Assert.assertNotEquals("Square should be not null as is found on board", pm.getGizmoByName(testSquare.getName()), null );
+		Assert.assertNotNull("Square should be not null as is found on board", pm.getGizmoByName(testSquare.getName()) );
 
-		Assert.assertNotEquals("Triangle should be not null as is found on board", pm.getGizmoByName(testTriangle.getName()), null );
+		Assert.assertNotNull("Triangle should be not null as is found on board", pm.getGizmoByName(testTriangle.getName()) );
 
-		Assert.assertNotEquals("Circle should be not null as is found on board", pm.getGizmoByName(testCircle.getName()), null );
+		Assert.assertNotNull("Circle should be not null as is found on board", pm.getGizmoByName(testCircle.getName()));
 
 
 	}
@@ -45,9 +46,9 @@ public class AddGizmoTest extends BaseTestCase {
 
 		pm.addGizmo(testRightFlipper);
 
-		Assert.assertNotEquals("Left Flipper should be not null as is found on board", pm.getGizmoByName(testLeftFlipper.getName()), null );
+		Assert.assertNotNull("Left Flipper should be not null as is found on board", pm.getGizmoByName(testLeftFlipper.getName()) );
 
-		Assert.assertNotEquals("Right Flipper should be not null as is found on board", pm.getGizmoByName(testRightFlipper.getName()), null );
+		Assert.assertNotNull("Right Flipper should be not null as is found on board", pm.getGizmoByName(testRightFlipper.getName()) );
 
 		Assert.assertTrue("Flippers should be 2 high and 2 wide", testLeftFlipper.getWidth() == 2 && testLeftFlipper.getHeight() == 2);
 	}
@@ -67,12 +68,29 @@ public class AddGizmoTest extends BaseTestCase {
 
 		pm.addGizmo(testAbsorberHigh);
 
-		Assert.assertNotEquals("Absorber should be not null as is found on board", pm.getGizmoByName(testAbsorberShort.getName()), null );
+		Assert.assertNotNull("Absorber should be not null as is found on board", pm.getGizmoByName(testAbsorberShort.getName()) );
 
 		Assert.assertEquals("Wide absorber should be 10 wide", 10, (int) testAbsorberWide.getWidth());
 
 		Assert.assertEquals("Wide absorber should be 10 high", 10, (int) testAbsorberHigh.getHeight());
 
+	}
 
+	@Test
+	public void canAddBall(){
+
+		Ball testBall = new Ball(0, 0, new Vect(0, 0)); // test with initial velocity 0
+
+		Ball testBallFast = new Ball(1, 1, new Vect(100, 100));
+
+		pm.addGizmo(testBall);
+
+		pm.addGizmo(testBallFast);
+
+		Assert.assertNotNull("Ball should be not null as is found on board", pm.getGizmoByName(testBall.getName()));
+
+		Assert.assertEquals("Regular ball should have starting velocity 0, 0", new Vect(0, 0), ((Ball) pm.getGizmoByName(testBall.getName())).getVelocity());
+
+		Assert.assertEquals("Fast ball should have starting velocity 100, 100", new Vect(100, 100), ((Ball) pm.getGizmoByName(testBallFast.getName())).getVelocity());
 	}
 }
