@@ -1,0 +1,26 @@
+Square 6_5 6 5
+Square 6_6 6 6
+Square 6_7 6 7
+Square 7_7 7 7
+Square 8_7 8 7
+Square 8_6 8 6
+Square 8_5 8 5
+LeftFlipper 10_5 10 5
+RightFlipper 4_5 4 5
+Circle 15_11 15 11
+Circle 14_10 14 10
+Circle 16_10 16 10
+RightFlipper 12_16 12 16
+RightFlipper 8_15 8 15
+RightFlipper 5_14 5 14
+RightFlipper 3_11 3 11
+Ball 7_4 7.5 6.732854115123203 0.0 0.0
+Ball 15_10 15.5 10.741414503373177 0.0 0.0
+Connect 7_7 10_5
+Connect 7_7 4_5
+Connect 4_5 7_7
+Connect 4_5 7_7
+Connect 15_11 12_16
+Connect 15_11 8_15
+Connect 15_11 5_14
+Connect 15_11 3_11

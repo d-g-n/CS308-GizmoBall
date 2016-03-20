@@ -11,6 +11,7 @@ public class ProjectManager extends Observable {
 	private FileManager fManager;
 	private List<AbstractGizmo> boardGizmos;
 	private Map<Map.Entry<String, Integer>, List<AbstractGizmo>> gizmoKeyPressMap;
+	private List<Ball> ballList;
 	private String focusedButton;
 	private boolean buildModeOn = false;
 	private AbstractGizmo gizmoToConnect = null;
@@ -48,6 +49,20 @@ public class ProjectManager extends Observable {
 		this.setChanged();
 		this.notifyObservers();
 
+	}
+
+	public void loadFile(String fileName) {
+		currentBoard = fileName;
+		fManager = new FileManager(this);
+		fManager.loadFile(fileName);
+
+		this.setChanged();
+		this.notifyObservers();
+	}
+
+	public void saveAs(String filePath) {
+		fManager = new FileManager(this);
+		fManager.saveFile(filePath);
 	}
 
 	public String getFocusedButton() {
@@ -185,7 +200,7 @@ public class ProjectManager extends Observable {
 			gameOver = false;
 			fManager.loadFile(currentBoard);
 		}
-		
+
 	}
 	public boolean isBuildModeOn() {
 		return buildModeOn;
@@ -244,20 +259,23 @@ public class ProjectManager extends Observable {
 
 		cManager.setGravity(newGravity);
 	}
+	
+	public void setFriction(double mu, double mu2) {
 
-	public void setFriction(double newFriction) {
-
-		cManager.setFriction(newFriction, newFriction);
+		cManager.setFriction(mu, mu2);
 	}
 
 	public double getGravity() {
 
 		return cManager.getGravity();
 	}
+	
+	public double getMuFriction() {
+		return cManager.getMuFriction();
+	}
 
-	public double getFriction() {
-
-		return cManager.getFriction();
+	public double getMu2Friction(){
+		return cManager.getMu2Friction();
 	}
 
 	public String getStatusLabel() {
@@ -283,14 +301,14 @@ public class ProjectManager extends Observable {
 	public void setGizmoToKeyDisconnect(AbstractGizmo gizmoToKeyDisconnect) {
 		this.gizmoToKeyDisconnect = gizmoToKeyDisconnect;
 	}
-	
+
 	public int getScore(){
 		return totalScore;
 	}
-	
+
 	public void updateScore(AbstractGizmo giz){
 		if(giz != null && !dynamicMode){
-			
+
 		if(giz.getClass().equals(SquareBumper.class))
 			totalScore+=1;
 		else if(giz.getClass().equals(CircleBumper.class))
@@ -299,28 +317,28 @@ public class ProjectManager extends Observable {
 			totalScore+=3;
 		else if(giz.getClass().equals(Absorber.class))
 			numLives--;
-		
+
 		if(getLives() < 0){
 		gameOver = true;
 		return;
 		}
 		if(highestScore <= totalScore)
 			highestScore = totalScore;
-		
+
 		setStatusLabel("Score: " + totalScore + " High Score: " + getHighScore() + " Lives: " + getLives());
-		}	
+		}
 	}
-	
+
 	public void startGame(){
 		gameOver = false;
 	}
-	
+
 	public void resetScore(){
 		totalScore = 0;
 		numLives = 10;
 		setStatusLabel("Score: " + totalScore + "HighScore: " + highestScore + " Lives: " + getLives());
 	}
-	
+
 	public boolean gameOver(){
 		return gameOver;
 	}
@@ -333,15 +351,15 @@ public class ProjectManager extends Observable {
 	public void dynamicModeOff(){
 		dynamicMode = false;
 	}
-	
+
 	public void setLives(int lives){
 		numLives = lives;
 	}
-	
+
 	public int getLives(){
 		return numLives;
 	}
-	
+
 	public int getHighScore(){
 		return highestScore;
 	}

@@ -41,11 +41,17 @@ public class RunGUI implements GBallGui, Observer {
 		menu.getAccessibleContext().setAccessibleDescription(
 				"The file menu");
 		menuBar.add(menu);
-		JMenuItem fileItem1 = new JMenuItem("Load...");
+		
+		JMenuItem fileItem1 = new JMenuItem("Save As...");
+		JMenuItem fileItem2 = new JMenuItem("Load...");		
+		JMenuItem fileItem3 = new JMenuItem("Exit");
+		
 		fileItem1.addActionListener(new MenuFileListener(pm));
-		JMenuItem fileItem2 = new JMenuItem("Exit");
+		fileItem2.addActionListener(new MenuFileListener(pm));
+		
 		menu.add(fileItem1);
 		menu.add(fileItem2);
+		menu.add(fileItem3);
 		pane.add(menuBar,BorderLayout.PAGE_START);
 	}
 	private void addComponentsToPane(Container pane, ProjectManager pm) {

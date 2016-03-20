@@ -1,11 +1,12 @@
 package gizmos;
 
 
-import physics.Vect;
-
-import java.awt.*;
-import java.awt.geom.Ellipse2D;
+import java.awt.Color;
+import java.awt.Polygon;
+import java.awt.Shape;
 import java.util.Arrays;
+
+import physics.Vect;
 
 public class TriangleBumper extends AbstractGizmo {
 
@@ -67,5 +68,11 @@ public class TriangleBumper extends AbstractGizmo {
 				new Vect(x, y)
 		));
 		
+	}
+
+
+	@Override
+	public String getType() {
+		return "Triangle";
 	}
 }

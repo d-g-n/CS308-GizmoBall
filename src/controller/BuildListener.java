@@ -101,8 +101,8 @@ public class BuildListener implements ActionListener, ChangeListener, WindowList
 			pm.setGravity(source.getValue());
 
 		} else if (source.getName() == "Friction") {
-
-			pm.setFriction(source.getValue() / 1000.0);
+			double fric = source.getValue() / 1000.0;
+			pm.setFriction(fric,fric);
 
 		}
 
