@@ -73,10 +73,10 @@ public class GizmoFunctionsTest extends BaseTestCase {
 	@Test
 	public void canSetFriction(){
 
-		Assert.assertEquals("The default value of friction for mu and mu2 should be 0.025", 0.025, pm.getFriction());
+		Assert.assertEquals("The default value of friction for mu and mu2 should be 0.025", 0.025, pm.getMuFriction());
 
-		pm.setFriction(0.05);
+		pm.setFriction(0.05, 0.05);
 
-		Assert.assertEquals("The new value should be 0.05", 0.05, pm.getFriction());
+		Assert.assertEquals("The new value should be 0.05", 0.05, pm.getMuFriction());
 	}
 }
