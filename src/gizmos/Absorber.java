@@ -21,6 +21,7 @@ public class Absorber extends AbstractGizmo {
 				0 // reflection coefficent
 		);
 
+		this.type = "Absorber";
 
 	}
 

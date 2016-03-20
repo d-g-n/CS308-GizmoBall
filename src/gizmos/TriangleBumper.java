@@ -16,6 +16,8 @@ public class TriangleBumper extends AbstractGizmo {
 				1// reflection coefficent
 		);
 
+		this.type = "Triangle";
+
 	}
 	
 	
@@ -70,9 +72,4 @@ public class TriangleBumper extends AbstractGizmo {
 		
 	}
 
-
-	@Override
-	public String getType() {
-		return "Triangle";
-	}
 }

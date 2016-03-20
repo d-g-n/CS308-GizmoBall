@@ -16,6 +16,8 @@ public class SquareBumper extends AbstractGizmo {
 				1 // reflection coefficent
 		);
 		score = 10;
+
+		this.type = "Square";
 	}
 	
 	@Override

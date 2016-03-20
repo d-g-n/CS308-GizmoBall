@@ -17,7 +17,7 @@ public abstract class AbstractGizmo {
 	protected double reflectionCoefficient, angleVel;
 	protected Vect rotateAroundPoint;
 	protected List<AbstractGizmo> gizmoListeners;
-	protected String name;
+	protected String name, type;
 	protected int score;
 	
 	protected List<Circle> StoredCircles;
@@ -31,6 +31,7 @@ public abstract class AbstractGizmo {
 		this.ypos = y;
 		this.width = width;
 		this.height = height;
+		this.type = "";
 
 		this.gizAngle = 0;
 		this.name = ""+(int)x+"_"+(int)y; // Added Very Basic naming to new gizmos that have not been read in from file
@@ -224,5 +225,13 @@ public abstract class AbstractGizmo {
 
 	public Vect getRotateAroundPoint(){
 		return rotateAroundPoint;
+	}
+
+	public String getType(){
+		return this.type;
+	}
+
+	public List<AbstractGizmo> getGizmoListeners() {
+		return gizmoListeners;
 	}
 }

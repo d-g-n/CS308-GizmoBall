@@ -17,6 +17,8 @@ public class DeathSquare extends AbstractGizmo {
 				1 // reflection coefficent
 		);
 
+		this.type = "DeathSquare";
+
 	}
 	
 	@Override

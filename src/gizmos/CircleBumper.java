@@ -18,6 +18,7 @@ public class CircleBumper extends AbstractGizmo {
 				1 // reflection coefficent
 		);
 
+		this.type = "Circle";
 
 	}
 	

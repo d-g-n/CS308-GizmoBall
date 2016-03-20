@@ -17,6 +17,8 @@ public class BoosterGizmo extends AbstractGizmo {
 				1// reflection coefficent
 		);
 
+		this.type = "Booster";
+
 	}
 	
 	

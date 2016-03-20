@@ -14,6 +14,8 @@ public class Teleporter extends AbstractGizmo {
 				1 // reflection coefficent
 		);
 
+		this.type = "Teleporter";
+
 
 	}
 	
@@ -64,10 +66,5 @@ public class Teleporter extends AbstractGizmo {
 		super.onHit(hit);
 	}
 
-	@Override
-	public String getType() {
-		return "Teleporter";
-	}
-	
 
 }

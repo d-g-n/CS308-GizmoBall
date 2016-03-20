@@ -24,6 +24,8 @@ public class Ball extends AbstractGizmo {
 		velocity = initialVelocity;
 		stopped = false;
 
+		this.type = "Ball";
+
 	}
 
 	public void setVelocity(Vect v) {
