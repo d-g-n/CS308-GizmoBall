@@ -18,7 +18,6 @@ import view.Board;
 public class CollisionManager extends Observable {
 
 	private ProjectManager pm;
-	private List<Ball> ballList;
 
 	private double SETTINGS_GRAVITY = 25;
 	private double SETTINGS_FRICTION_MU = 0.025;
@@ -26,20 +25,19 @@ public class CollisionManager extends Observable {
 
 	public CollisionManager(ProjectManager pm) {
 		this.pm = pm;
-		this.ballList = pm.getBallList();
 	}
 
 	public void moveBall() {
 
-		if(ballList.size() == 0){
-			this.ballList = pm.getBallList();
-			return;
-		}
+		for(AbstractGizmo g : pm.getBoardGizmos()) {
 
-		for(Ball ball : ballList) {
+			if(!g.getClass().equals(Ball.class))
+				continue;
+
+			Ball ball = (Ball) g;
 
 			if (ball.isStopped())
-				return;
+				continue;
 
 			CollisionDetails info = shortestTimeUntilCollision(ball);
 

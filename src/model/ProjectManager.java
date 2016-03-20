@@ -11,7 +11,6 @@ public class ProjectManager extends Observable {
 	private FileManager fManager;
 	private List<AbstractGizmo> boardGizmos;
 	private Map<Map.Entry<String, Integer>, List<AbstractGizmo>> gizmoKeyPressMap;
-	private List<Ball> ballList;
 	private String focusedButton;
 	private boolean buildModeOn = false;
 	private AbstractGizmo gizmoToConnect = null;
@@ -26,7 +25,6 @@ public class ProjectManager extends Observable {
 
 	public ProjectManager() {
 		boardGizmos = new ArrayList<>();
-		ballList = new ArrayList<>();
 		gizmoKeyPressMap = new HashMap<>();
 		cManager = new CollisionManager(this);
 		currentBoard = null;
@@ -189,15 +187,6 @@ public class ProjectManager extends Observable {
 		}
 		
 	}
-
-	public void addBall(Ball ball) {
-		this.ballList.add(ball);
-	}
-
-	public List<Ball> getBallList() {
-		return ballList;
-	}
-
 	public boolean isBuildModeOn() {
 		return buildModeOn;
 	}
@@ -359,10 +348,6 @@ public class ProjectManager extends Observable {
 
 	public void clearAllBoardGizmos() {
 		boardGizmos.clear();
-
-		// this is required along with boardGizmos.clear() as otherwise we have
-		// invisible balls roaming around the board
-		this.ballList.clear();
 
 		// forgot this first time round, need to clear the key connect map too
 		gizmoKeyPressMap.clear();

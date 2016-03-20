@@ -39,7 +39,6 @@ public class BoardListener implements MouseListener {
 				Ball b = new Ball(x + 0.5, y + 0.5, new Vect(0, 0));
 				if(pm.canPlaceGizmoAt(new CircleBumper(x, y, 1, 1))) {
 					pm.addGizmo(b);
-					pm.addBall(b);
 					pm.pushVisualUpdate();
 				}
 				break;

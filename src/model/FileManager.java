@@ -94,7 +94,6 @@ public class FileManager {
 		AbstractGizmo ball = new Ball(initX, initY, new Vect(velX, velY));
 		ball.setName(ballName);
 
-		pm.addBall((Ball) ball);
 		pm.addGizmo(ball);
 	}
 
