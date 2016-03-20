@@ -11,7 +11,13 @@ public class FileManagerGUI {
 	public String getSaveFilePath(){
 	    JFileChooser chooser = new JFileChooser("boards");
 	    if (chooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
-	        return chooser.getSelectedFile().getPath()+".txt";
+	    	String path = chooser.getSelectedFile().getPath();
+	    	if(path.substring(path.length() - 4).equals(".txt")){
+	    		return path;
+	    	}
+	    	else{
+	    		return path+".txt";
+	    	}
 	    }
 	    return null;
 		
