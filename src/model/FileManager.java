@@ -341,10 +341,6 @@ public class FileManager {
 		int keyNum = Integer.parseInt(lineMatch.group(1));
 		String activateOnDownOrUp = lineMatch.group(2);
 		String gizmoName = lineMatch.group(3);
-		
-		System.out.println("Keynum: "+keyNum);
-		System.out.println("Up or down: "+activateOnDownOrUp);
-		System.out.println("Giz Name: "+gizmoName);
 
 		pm.addKeyConnect(gizmoName, keyNum, activateOnDownOrUp);
 	}
