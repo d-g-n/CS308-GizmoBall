@@ -7,6 +7,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -116,7 +117,17 @@ public class FileManager {
 			
 			for(AbstractGizmo listener: gizmoListeners){
 				connectList.add("Connect" + " " + gizmo.getName() + " " + listener.getName());
-			}	
+			}
+			
+		}
+			
+		for(Map.Entry<Map.Entry<String, Integer>, List<AbstractGizmo>> ent : pm.getKeyConnects().entrySet()){
+			Map.Entry<String, Integer> intStringMap = ent.getKey();
+			List<AbstractGizmo> gizList = ent.getValue();
+
+			for (AbstractGizmo giz : gizList) {
+				writer.println("KeyConnect key " + intStringMap.getValue() + " " + intStringMap.getKey() + " " + giz.getName());
+			}
 		}
 			
 		for(Ball ball: ballList){
@@ -141,7 +152,7 @@ public class FileManager {
 }
 
 	private String ballSave(Ball ball, PrintWriter writer) {
-		writer.println("Ball " + ball.getName() + " " + ball.getXPos() + " " + ball.getYPos() + " " + "0.0" + " " + "0.0");
+		writer.println("Ball " + ball.getName() + " " + ball.getXPos() + " " + ball.getYPos() + " " + ball.getVelocity().x() + " " + ball.getVelocity().y());
 		return null;
 	}
 
@@ -330,6 +341,10 @@ public class FileManager {
 		int keyNum = Integer.parseInt(lineMatch.group(1));
 		String activateOnDownOrUp = lineMatch.group(2);
 		String gizmoName = lineMatch.group(3);
+		
+		System.out.println("Keynum: "+keyNum);
+		System.out.println("Up or down: "+activateOnDownOrUp);
+		System.out.println("Giz Name: "+gizmoName);
 
 		pm.addKeyConnect(gizmoName, keyNum, activateOnDownOrUp);
 	}
