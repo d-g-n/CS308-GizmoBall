@@ -8,6 +8,12 @@ import java.util.Map;
 import gizmos.AbstractGizmo;
 import model.ProjectManager;
 
+/**
+ * 
+ * The MagicKeyListener class implements the KeyListener interface
+ * and it handles all the keyboard events.
+ *
+ */
 public class MagicKeyListener implements KeyListener {
 	private ProjectManager pm;
 	

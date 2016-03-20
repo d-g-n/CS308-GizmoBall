@@ -11,11 +11,16 @@ import model.ProjectManager;
 import physics.Vect;
 import view.Board;
 
+/**
+ * The BoardListener class implements the MouseListener interface and handles
+ * the mouse events on the play board.
+ * 
+ */
 public class BoardListener implements MouseListener {
 
 	private JPanel board;
 	private ProjectManager pm;
-	private int x,y;
+	private int x, y;
 
 	public BoardListener(ProjectManager pm, JPanel board) {
 		this.board = board;
@@ -33,11 +38,10 @@ public class BoardListener implements MouseListener {
 			x = e.getX() / (Board.BOARD_WIDTH / Board.X_CELLS);
 			y = e.getY() / (Board.BOARD_HEIGHT / Board.Y_CELLS);
 			int width = 1;
-
 			switch (pm.getFocusedButton()) {
 			case "Ball":
 				Ball b = new Ball(x + 0.5, y + 0.5, new Vect(0, 0));
-				if(pm.canPlaceGizmoAt(new CircleBumper(x, y, 1, 1))) {
+				if (pm.canPlaceGizmoAt(new CircleBumper(x, y, 1, 1))) {
 					pm.addGizmo(b);
 					pm.pushVisualUpdate();
 				}
@@ -55,21 +59,14 @@ public class BoardListener implements MouseListener {
 				pm.pushVisualUpdate();
 				break;
 			case "Absorber":
-
 				if (pm.getAbsorberToBeAddedX() == -1) {
-
 					pm.setAbsorberToBeAddedX(x);
 					pm.setAbsorberToBeAddedY(y);
-
 				} else {
-
 					if (x < pm.getAbsorberToBeAddedX() || y < pm.getAbsorberToBeAddedY()) {
-
 						pm.setAbsorberToBeAddedX(-1);
 						pm.setAbsorberToBeAddedY(-1);
-
 					} else {
-
 						int absorberWidth = x - pm.getAbsorberToBeAddedX() + 1;
 						int absorberHeight = y - pm.getAbsorberToBeAddedY() + 1;
 						pm.addGizmo(new Absorber(pm.getAbsorberToBeAddedX(), pm.getAbsorberToBeAddedY(), absorberWidth,
@@ -77,9 +74,7 @@ public class BoardListener implements MouseListener {
 						pm.setAbsorberToBeAddedX(-1);
 						pm.setAbsorberToBeAddedY(-1);
 						pm.pushVisualUpdate();
-
 					}
-
 				}
 				break;
 			case "LFlipper":
@@ -109,8 +104,8 @@ public class BoardListener implements MouseListener {
 					 * also; we will need to override the rotate method for the
 					 * flippers
 					 */
-					if ((int) a.getXPos() == x && a.getYPos() == y && (a instanceof TriangleBumper || a instanceof BoosterGizmo)) {
-
+					if ((int) a.getXPos() == x && a.getYPos() == y
+							&& (a instanceof TriangleBumper || a instanceof BoosterGizmo)) {
 						a.rotateClockwise();
 						break;
 					}
@@ -121,57 +116,42 @@ public class BoardListener implements MouseListener {
 				AbstractGizmo del = null;
 				for (AbstractGizmo a : pm.getBoardGizmos()) {
 					if ((int) a.getXPos() == x && a.getYPos() == y) {
-
 						del = a;
 						break;
 					}
 				}
 				pm.deleteGizmo(del);
 				pm.pushVisualUpdate();
-
 				break;
 			case "Move":
-
 				if (pm.getGizmoToMove() == null) {
 					AbstractGizmo move = null;
 					for (AbstractGizmo a : pm.getBoardGizmos()) {
-
 						if ((int) a.getXPos() == x && a.getYPos() == y) {
-
 							move = a;
 							break;
 						}
-
 					}
 					pm.setGizmoToMove(move);
-
 				} else {
-
 					if (pm.canPlaceGizmoAt(x, y, pm.getGizmoToMove().getWidth(), pm.getGizmoToMove().getHeight())) {
-
 						pm.getGizmoToMove().moveGizmo(x, y);
-						// Added to update a Gizmos name when it is moved to a new position on the board
-						pm.getGizmoToMove().setName(""+(int)pm.getGizmoToMove().getXPos()+"_"+(int)pm.getGizmoToMove().getYPos());
-						
-
+						// Added to update a Gizmos name when it is moved to a
+						// new position on the board
+						pm.getGizmoToMove().setName(
+								"" + (int) pm.getGizmoToMove().getXPos() + "_" + (int) pm.getGizmoToMove().getYPos());
 						int numberOfRotations = pm.getGizmoToMove().getGizAngle() / 90;
-
 						for (int i = 0; i < numberOfRotations; i++) {
-
 							pm.getGizmoToMove().rotatePhysicsAroundPoint(
 									pm.getGizmoToMove().getXPos() + pm.getGizmoToMove().getWidth() / 2,
 									pm.getGizmoToMove().getYPos() + (pm.getGizmoToMove().getHeight() / 2), 90.0);
-
 						}
 						pm.setGizmoToMove(null);
-
 						pm.pushVisualUpdate();
 					}
 				}
-
 				break;
 			case "Connect Gizmos":
-
 				for (AbstractGizmo a : pm.getBoardGizmos()) {
 					if ((int) a.getXPos() == x && a.getYPos() == y) {
 						if (pm.getGizmoToConnect() == null) {
@@ -180,14 +160,11 @@ public class BoardListener implements MouseListener {
 							a.addGizmoListener(pm.getGizmoToConnect());
 							pm.setGizmoToConnect(null);
 						}
-
 						break;
 					}
 				}
 				break;
-
 			case "Disconnect Gizmos":
-
 				for (AbstractGizmo a : pm.getBoardGizmos()) {
 					if ((int) a.getXPos() == x && a.getYPos() == y) {
 						if (pm.getGizmoToDisconnect() == null) {
@@ -196,67 +173,44 @@ public class BoardListener implements MouseListener {
 							a.removeGizmoListener(pm.getGizmoToDisconnect());
 							pm.setGizmoToDisconnect(null);
 						}
-
 						break;
 					}
 				}
-
 				break;
-				
 			case "Key Connect":
-
-
 				if (pm.getGizmoToKeyConnect() == null) {
-					
 					for (AbstractGizmo a : pm.getBoardGizmos()) {
 						if ((int) a.getXPos() == x && a.getYPos() == y) {
-							
-								pm.setGizmoToKeyConnect(a);
-								break;
+							pm.setGizmoToKeyConnect(a);
+							break;
 						}
 					}
-
 				}
-
 				break;
-				
 			case "Key Disconnect":
-
-
 				if (pm.getGizmoToKeyDisconnect() == null) {
-					
 					for (AbstractGizmo a : pm.getBoardGizmos()) {
 						if ((int) a.getXPos() == x && a.getYPos() == y) {
-							
-								pm.setGizmoToKeyDisconnect(a);
-								break;
+							pm.setGizmoToKeyDisconnect(a);
+							break;
 						}
 					}
-
 				}
-
 				break;
-
 			}
 		}
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-
 	}
-	
+
 }
