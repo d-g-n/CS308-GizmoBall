@@ -41,11 +41,17 @@ public class RunGUI implements GBallGui, Observer {
 		menu.getAccessibleContext().setAccessibleDescription(
 				"The file menu");
 		menuBar.add(menu);
-		JMenuItem fileItem1 = new JMenuItem("Load...");
+		
+		JMenuItem fileItem1 = new JMenuItem("Save As...");
+		JMenuItem fileItem2 = new JMenuItem("Load...");		
+		JMenuItem fileItem3 = new JMenuItem("Exit");
+		
 		fileItem1.addActionListener(new MenuFileListener(pm));
-		JMenuItem fileItem2 = new JMenuItem("Exit");
+		fileItem2.addActionListener(new MenuFileListener(pm));
+		
 		menu.add(fileItem1);
 		menu.add(fileItem2);
+		menu.add(fileItem3);
 		pane.add(menuBar,BorderLayout.PAGE_START);
 	}
 	private void addComponentsToPane(Container pane, ProjectManager pm) {
@@ -71,16 +77,14 @@ public class RunGUI implements GBallGui, Observer {
 		addAButton("Settings", rightPanel);
 		addAButton("About", rightPanel);
 		addAButton("Exit", rightPanel);
-		
 		pane.add(rightPanel,BorderLayout.LINE_END);
 		pane.addKeyListener(keyListener);
 	}
 	
 	private void createStatusBar(Container pane){
-		statusLabel = new JLabel("Here will be the status label");
-		pane.add(statusLabel,BorderLayout.PAGE_END);
+		statusLabel = new JLabel("Score: " + pm.getScore());
+		pane.add(statusLabel,BorderLayout.SOUTH);
 		pane.addKeyListener(keyListener);
-
 	}
 
 	private void addAButton(String title, Container pane) {

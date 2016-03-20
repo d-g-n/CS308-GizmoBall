@@ -16,45 +16,9 @@ public class BoosterGizmo extends AbstractGizmo {
 				Color.green, // colour of gizmo
 				1// reflection coefficent
 		);
-		
-		addPhysicsPath(Arrays.asList(
-				new Vect(xpos, ypos),
-				new Vect(xpos + width, ypos + height),
-				new Vect(xpos, ypos + height),
-				new Vect(xpos, ypos)
-		));
 
-		Shape shape = new Polygon();
-		//Add the three points of the triangle to the shape
+		this.type = "Booster";
 
-				/*
-				 *  *
-				 *  - -
-				 */
-		((Polygon) shape).addPoint(
-				(int) (xpos),
-				(int) (ypos)
-		);
-
-				/*
-				 *  -
-				 *  - *
-				 */
-		((Polygon) shape).addPoint(
-				(int) ((xpos) + (width)),
-				(int) ((ypos) + (height))
-		);
-
-				/*
-				 *  -
-				 *  * -
-				 */
-		((Polygon) shape).addPoint(
-				(int) (xpos),
-				(int) ((ypos) + (height))
-		);
-
-		setShape(shape);
 	}
 	
 	

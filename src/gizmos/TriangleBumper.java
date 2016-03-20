@@ -1,11 +1,12 @@
 package gizmos;
 
 
-import physics.Vect;
-
-import java.awt.*;
-import java.awt.geom.Ellipse2D;
+import java.awt.Color;
+import java.awt.Polygon;
+import java.awt.Shape;
 import java.util.Arrays;
+
+import physics.Vect;
 
 public class TriangleBumper extends AbstractGizmo {
 
@@ -14,6 +15,8 @@ public class TriangleBumper extends AbstractGizmo {
 				Color.yellow, // colour of gizmo
 				1// reflection coefficent
 		);
+
+		this.type = "Triangle";
 
 	}
 	
@@ -68,4 +71,5 @@ public class TriangleBumper extends AbstractGizmo {
 		));
 		
 	}
+
 }

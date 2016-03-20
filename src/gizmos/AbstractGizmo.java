@@ -17,8 +17,9 @@ public abstract class AbstractGizmo {
 	protected double reflectionCoefficient, angleVel;
 	protected Vect rotateAroundPoint;
 	protected List<AbstractGizmo> gizmoListeners;
-	protected String name;
-
+	protected String name, type;
+	protected int score;
+	
 	protected List<Circle> StoredCircles;
 	protected List<LineSegment> StoredLines;
 	protected Color gizCol;
@@ -30,6 +31,7 @@ public abstract class AbstractGizmo {
 		this.ypos = y;
 		this.width = width;
 		this.height = height;
+		this.type = "";
 
 		this.gizAngle = 0;
 		this.name = ""+(int)x+"_"+(int)y; // Added Very Basic naming to new gizmos that have not been read in from file
@@ -147,8 +149,6 @@ public abstract class AbstractGizmo {
 		this.setGizPhysics(x, y);
 
 	}
-	
-
 
 	/**
 	 * This method is called by the engine when the ball collides with this
@@ -229,5 +229,11 @@ public abstract class AbstractGizmo {
 		return rotateAroundPoint;
 	}
 
+	public String getType(){
+		return this.type;
+	}
 
+	public List<AbstractGizmo> getGizmoListeners() {
+		return gizmoListeners;
+	}
 }

@@ -2,15 +2,26 @@ package model;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import gizmos.*;
+import gizmos.Absorber;
+import gizmos.AbstractGizmo;
+import gizmos.Ball;
+import gizmos.BoosterGizmo;
+import gizmos.CircleBumper;
+import gizmos.DeathSquare;
+import gizmos.LeftFlipper;
+import gizmos.RightFlipper;
+import gizmos.SquareBumper;
+import gizmos.Teleporter;
+import gizmos.TriangleBumper;
 import physics.Vect;
 
 public class FileManager {
@@ -26,7 +37,7 @@ public class FileManager {
 
 	private final String NUMBER_PAIR = INTEGER + " " + INTEGER;
 	private final String FLOAT_PAIR = FLOAT + " " + FLOAT;
-	private final String GIZMO_OP = "(Square|Circle|Triangle|RightFlipper|LeftFlipper)";
+	private final String GIZMO_OP = "(Square|Circle|Triangle|RightFlipper|LeftFlipper|Booster|DeathSquare|Teleporter)";
 	private final String KEYID = "key" + " " + KEYNUM + " " + "(down|up)";
 
 
@@ -36,11 +47,117 @@ public class FileManager {
 	private final Pattern addAbsorberCommand = Pattern.compile("Absorber" + " " + IDENTIFIER + " " + NUMBER_PAIR + " " + NUMBER_PAIR);
 	private final Pattern connectGizmoCommand = Pattern.compile("Connect" + " " + IDENTIFIER + " " + IDENTIFIER);
 	private final Pattern keyConnectGizmoCommand = Pattern.compile("KeyConnect" + " " + KEYID + " " + IDENTIFIER);
-
+	private final Pattern gravityCommand = Pattern.compile("Gravity " + FLOAT);
+	private final Pattern frictionCommand = Pattern.compile("Friction " + FLOAT_PAIR);
 
 
 	public FileManager(ProjectManager projectManager) {
 		this.pm = projectManager;
+	}
+	
+	public void saveFile(String filePath){
+		List<AbstractGizmo> boardGizmos = pm.getBoardGizmos();
+		List<Ball> ballList = new ArrayList<>();
+		List<AbstractGizmo> gizmoListeners;
+		List<String> connectList = new LinkedList<String>();
+
+		for(AbstractGizmo g : boardGizmos){
+			if(g.getClass().equals(Ball.class))
+				ballList.add((Ball) g);
+		}
+
+
+		String gizmoType;		
+		PrintWriter writer;
+		try {
+			writer = new PrintWriter(filePath, "UTF-8");
+			
+			for(AbstractGizmo gizmo: boardGizmos){
+				gizmoListeners = gizmo.getGizmoListeners();
+				gizmoType = gizmo.getType();
+				
+				switch(gizmoType){
+					case "Square":
+						commandSave(gizmo, writer, gizmoType);
+						break;
+						
+					case "Circle":
+						commandSave(gizmo, writer, gizmoType);
+						break;
+						
+					case "Triangle":
+						commandSave(gizmo, writer, gizmoType);
+						break;
+						
+					case "LeftFlipper":
+						commandSave(gizmo, writer, gizmoType);
+						break;
+						
+					case "RightFlipper":
+						commandSave(gizmo, writer, gizmoType);
+						break;
+					
+					case "Booster":
+						commandSave(gizmo, writer, gizmoType);
+						break;
+						
+					case "DeathSquare":
+						commandSave(gizmo, writer, gizmoType);
+						break;
+						
+					case "Teleporter":
+						commandSave(gizmo, writer, gizmoType);
+						break;
+						
+					case "Absorber":					
+						absorberSave((Absorber)gizmo, writer);
+						break;
+			}			
+			
+			for(AbstractGizmo listener: gizmoListeners){
+				connectList.add("Connect" + " " + gizmo.getName() + " " + listener.getName());
+			}	
+		}
+			
+		for(Ball ball: ballList){
+			ballSave(ball, writer);
+		}
+			
+		for(String connection: connectList){
+			writer.println(connection);
+		}
+			
+		writer.println("Gravity " + pm.getGravity());
+		writer.println("Friction " + pm.getMuFriction() + " " + pm.getMu2Friction());
+			
+		writer.close();
+	} catch (FileNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (UnsupportedEncodingException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+}
+
+	private String ballSave(Ball ball, PrintWriter writer) {
+		writer.println("Ball " + ball.getName() + " " + ball.getXPos() + " " + ball.getYPos() + " " + "0.0" + " " + "0.0");
+		return null;
+	}
+
+	private void absorberSave(Absorber abs, PrintWriter writer) {
+		int xPos = (int)abs.getXPos();
+		int yPos = (int)abs.getYPos();
+		int width = (int)abs.getWidth();
+		int height = (int)abs.getHeight();
+		writer.println("Absorber " + abs.getName() + " " + xPos + " " + yPos + " " + (xPos+width) + " " + (yPos+height));		
+	}
+
+	private void commandSave(AbstractGizmo gizmo, PrintWriter writer, String gizmoType) {
+		writer.println(gizmoType + " " + gizmo.getName() + " "  + (int)gizmo.getXPos() + " " + (int)gizmo.getYPos());
+		for(int i=0;i<(gizmo.getGizAngle()/90);i++){
+			writer.println("Rotate " + gizmo.getName());
+		}
 	}
 
 	public void loadFile(String fileName) {
@@ -79,9 +196,29 @@ public class FileManager {
 			if ((lineMatch = addBallCommand.matcher(currentLine)).matches()){
 				addBall(lineMatch);
 			}
+			
+			if ((lineMatch = gravityCommand.matcher(currentLine)).matches()){
+				setGravity(lineMatch);
+			}
+			
+			if ((lineMatch = frictionCommand.matcher(currentLine)).matches()){
+				setFriction(lineMatch);
+			}
 
 			lineMatch.reset();
 		}
+	}
+
+	private void setFriction(Matcher lineMatch) {
+		double mu = Double.parseDouble(lineMatch.group(1));
+		double mu2 = Double.parseDouble(lineMatch.group(1));
+		pm.setFriction(mu, mu2);		
+	}
+
+	private void setGravity(Matcher lineMatch) {
+		double gravity = Double.parseDouble(lineMatch.group(1));
+		pm.setGravity(gravity);
+		
 	}
 
 	private void addBall(Matcher lineMatch){
@@ -94,7 +231,6 @@ public class FileManager {
 		AbstractGizmo ball = new Ball(initX, initY, new Vect(velX, velY));
 		ball.setName(ballName);
 
-		pm.addBall((Ball) ball);
 		pm.addGizmo(ball);
 	}
 
@@ -110,25 +246,46 @@ public class FileManager {
 			sb.setName(gizmoName);
 			pm.addGizmo(sb);
 			break;
+			
 		case "Circle":
 			CircleBumper cb = new CircleBumper(x, y, 1, 1);
 			cb.setName(gizmoName);
 			pm.addGizmo(cb);
 			break;
+			
 		case "Triangle":
 			TriangleBumper tb = new TriangleBumper(x, y, 1, 1);
 			tb.setName(gizmoName);
 			pm.addGizmo(tb);
 			break;
+			
 		case "RightFlipper":
 			RightFlipper rf = new RightFlipper(x, y);
 			rf.setName(gizmoName);
 			pm.addGizmo(rf);
 			break;
+			
 		case "LeftFlipper":
 			LeftFlipper lf = new LeftFlipper(x, y);
 			lf.setName(gizmoName);
 			pm.addGizmo(lf);
+			break;
+			
+		case "Booster":
+			BoosterGizmo boost = new BoosterGizmo(x, y, 1, 1);
+			boost.setName(gizmoName);
+			pm.addGizmo(boost);
+			break;
+		case "DeathSquare":
+			DeathSquare ds = new DeathSquare(x, y, 1, 1);
+			ds.setName(gizmoName);
+			pm.addGizmo(ds);
+			break;
+			
+		case "Teleporter":
+			Teleporter tele = new Teleporter(x, y, 1, 1);
+			tele.setName(gizmoName);
+			pm.addGizmo(tele);
 			break;
 		}
 
@@ -136,9 +293,7 @@ public class FileManager {
 
 	private void rotateGizmo(Matcher lineMatch) {
 		String gizmoName = lineMatch.group(1);
-
 		pm.getGizmoByName(gizmoName).rotateClockwise();
-
 	}
 
 	private void addAbsorber(Matcher lineMatch){

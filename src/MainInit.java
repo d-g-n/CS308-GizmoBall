@@ -6,7 +6,6 @@ import view.RunGUI;
  */
 public class MainInit {
     public static void main(String[] args){
-
         // init model
         ProjectManager pm = new ProjectManager();
         // init test view and pass ref from model to view

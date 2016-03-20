@@ -1,16 +1,10 @@
 package view;
 
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.util.Hashtable;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JSlider;
-import javax.swing.Timer;
+import javax.swing.*;
+import javax.swing.border.TitledBorder;
 
 import controller.BuildListener;
 import model.ProjectManager;
@@ -23,45 +17,65 @@ public class BuildGUI implements GBallGui {
 	public BuildGUI(Timer visualTimer, ProjectManager pm) {
 		frame = new JFrame("Palette");
 		controller = new BuildListener(this, visualTimer, pm);
+		frame.addWindowListener(controller);
 
 	}
 
 	public void showPalette() {
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setLayout(new GridLayout(5, 1));
-		frame.setPreferredSize(new Dimension(700, 500));
-		addButtons(frame.getContentPane());
-		addSliders(frame.getContentPane());
+		frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
+		//frame.setPreferredSize(new Dimension(600, 625));
+		addComponents(frame.getContentPane());
 		frame.pack();
 		frame.setVisible(true);
 	}
 
-	private void addButtons(Container pane) {
-		addAButton("Ball", pane);
-		addAButton("Square", pane);
-		addAButton("Circle", pane);
-		addAButton("Triangle", pane);
-		addAButton("LFlipper", pane);
-		addAButton("RFlipper", pane);
-		addAButton("Absorber", pane);
-		addAButton("Booster", pane);
-		addAButton("Death Sqaure", pane);
-		addAButton("Teleporter", pane);
-		addAButton("Move", pane);
-		addAButton("Rotate", pane);
-		addAButton("Delete", pane);
-		addAButton("Clear Board", pane);
-		addAButton("Connect Gizmos", pane);
-		addAButton("Disconnect Gizmos", pane);
-		addAButton("Key Connect", pane);
-		addAButton("Key Disconnect", pane);
-		addAButton("Reload Board", pane);
-		addAButton("Close", pane);
+
+
+	private void addComponents(Container pane) {
+
+		JPanel gizmoSection = addSection("Add Gizmos", pane);
+
+		JPanel commandsSection = addSection("Commands", pane);
+
+		JPanel settingsSection = addSection("Settings", pane);
+
+
+		addAButton("Ball", gizmoSection);
+		addAButton("Square", gizmoSection);
+		addAButton("Circle", gizmoSection);
+		addAButton("Triangle", gizmoSection);
+		addAButton("LFlipper", gizmoSection);
+		addAButton("RFlipper", gizmoSection);
+		addAButton("Absorber", gizmoSection);
+		addAButton("Booster", gizmoSection);
+		addAButton("Death Sqaure", gizmoSection);
+		addAButton("Teleporter", gizmoSection);
+
+		addAButton("Move", commandsSection);
+		addAButton("Rotate", commandsSection);
+		addAButton("Delete", commandsSection);
+		addAButton("Clear Board", commandsSection);
+		addAButton("Connect Gizmos", commandsSection);
+		addAButton("Disconnect Gizmos", commandsSection);
+		addAButton("Key Connect", commandsSection);
+		addAButton("Key Disconnect", commandsSection);
+		addAButton("Reload Board", commandsSection);
+		addAButton("Dynamic Play",commandsSection);
+
+		addGravitySlider(0, 100, 25, settingsSection);
+		addFrictionSlider(0, 100, 25, settingsSection);
 	}
 
-	private void addSliders(Container pane) {
-		addGravitySlider(0, 100, 25, pane);
-		addFrictionSlider(0, 100, 25, pane);
+	private JPanel addSection(String sectionName, Container pane){
+
+		JPanel sectPan = new JPanel(new GridLayout(2, 5));
+
+		sectPan.setBorder(new TitledBorder(BorderFactory.createLineBorder(Color.black), sectionName));
+
+		pane.add(sectPan);
+
+		return sectPan;
 	}
 
 	private void addGravitySlider(int min, int max, int initial, Container pane) {

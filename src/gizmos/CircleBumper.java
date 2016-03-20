@@ -18,16 +18,8 @@ public class CircleBumper extends AbstractGizmo {
 				1 // reflection coefficent
 		);
 
-		this.radius = 0.5;
+		this.type = "Circle";
 
-		addPhysicsCircle(xpos + radius, ypos + radius, radius);
-
-		setShape(new Ellipse2D.Double(
-				(xpos),
-				(ypos),
-				(width),
-				(height)
-		));
 	}
 	
 	@Override
@@ -45,8 +37,8 @@ public class CircleBumper extends AbstractGizmo {
 	
 	@Override
 	public void setGizPhysics(double x, double y) {
-		
-		
+
+		this.radius = 0.5;
 		addPhysicsCircle(x + radius, y + radius, radius);
 		
 	}

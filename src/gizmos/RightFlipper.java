@@ -1,30 +1,22 @@
 package gizmos;
 
-
-import physics.Vect;
-import java.awt.Color;
-import java.awt.Shape;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.RoundRectangle2D;
-import java.awt.*;
-import java.util.Arrays;
-
 public class RightFlipper extends Flipper {
-
 
 	public RightFlipper(int x, int y) {
 		super(x, y);
 
 		rotateClockwise = true;
 
+		this.type = "RightFlipper";
+
 	}
 
 	@Override
 	public void doPhysicsCalculations() {
 
-		if(flipperMoving){
+		if (flipperMoving) {
 
-			if(rotateClockwise) {
+			if (rotateClockwise) {
 				flipClockwise(270);
 			} else {
 				flipAntiClockwise(180);
@@ -32,6 +24,5 @@ public class RightFlipper extends Flipper {
 
 		}
 	}
-
 
 }

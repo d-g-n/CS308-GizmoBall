@@ -1,12 +1,7 @@
 package gizmos;
 
-import java.awt.*;
+import java.awt.Color;
 import java.awt.geom.Ellipse2D;
-import java.awt.geom.Rectangle2D;
-import java.util.Arrays;
-
-import physics.Vect;
-import view.Board;
 
 public class Teleporter extends AbstractGizmo {
 
@@ -19,7 +14,8 @@ public class Teleporter extends AbstractGizmo {
 				1 // reflection coefficent
 		);
 
-		this.radius = 0.5;
+		this.type = "Teleporter";
+
 
 	}
 	
@@ -37,6 +33,8 @@ public class Teleporter extends AbstractGizmo {
 	
 	@Override
 	public void setGizPhysics(double x, double y) {
+
+		this.radius = 0.5;
 		
 		addPhysicsCircle(x + radius, y + radius, radius);
 		
@@ -67,6 +65,6 @@ public class Teleporter extends AbstractGizmo {
 
 		super.onHit(hit);
 	}
-	
+
 
 }

@@ -8,18 +8,20 @@ import java.awt.geom.Rectangle2D;
 import java.util.Arrays;
 
 public class SquareBumper extends AbstractGizmo {
-
+	private int score;
+	
 	public SquareBumper(int x, int y, int w, int h) {
 		super(x, y, w, h,
 				Color.red, // colour of gizmo
 				1 // reflection coefficent
 		);
+		score = 10;
 
+		this.type = "Square";
 	}
 	
 	@Override
 	public void setGizShape(double x, double y) {
-		
 		
 		setShape(new Rectangle2D.Double(
 				(x),
@@ -43,9 +45,4 @@ public class SquareBumper extends AbstractGizmo {
 		));
 		
 	}
-	
-	
-	
-	
-
 }

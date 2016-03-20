@@ -1,41 +1,34 @@
 package gizmos;
 
-
 import java.awt.Color;
 import java.awt.geom.Rectangle2D;
-import java.awt.geom.RoundRectangle2D;
 import java.util.Arrays;
+
 import physics.Vect;
 
 public class OuterWall extends AbstractGizmo {
-	
 
 	public OuterWall(int x, int y, int w, int h) {
-		super(x, y, w, h,
-				Color.black, // colour of gizmo
+		super(x, y, w, h, Color.black, // colour of gizmo
 				1 // reflection coefficent
 		);
 
 		this.setName("OuterWalls");
+
+		this.type = "OuterWall";
 	}
 
 	@Override
 	public void setGizShape(double x, double y) {
 
-		setShape(new Rectangle2D.Double(
-				(xpos),
-				(ypos),
-				(0),
-				(0)
-		));
+		setShape(new Rectangle2D.Double((xpos), (ypos), (0), (0)));
 
 	}
 
 	@Override
 	public void setGizPhysics(double x, double y) {
 
-		addPhysicsPath(Arrays.asList(
-				new Vect(xpos, ypos), // start at top left
+		addPhysicsPath(Arrays.asList(new Vect(xpos, ypos), // start at top left
 				new Vect(xpos + width, ypos), // move to top right
 				new Vect(xpos + width, ypos + height), // move to bottom right
 				new Vect(xpos, ypos + height), // move to bottom left
