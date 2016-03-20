@@ -62,8 +62,9 @@ public class FileManager {
 			writer = new PrintWriter(filePath, "UTF-8");
 			
 			for(AbstractGizmo gizmo: boardGizmos){
+				System.out.println("yo");
 				gizmoType = gizmo.getType();
-				
+				System.out.println(gizmoType);
 				switch(gizmoType){
 				case "Square":
 					commandSave(gizmo, writer, gizmoType);
@@ -108,8 +109,8 @@ public class FileManager {
 			
 			//writer.println("Gravity " + pm.getGravity());
 			//writer.println("Friction " + pm.getFriction() + " " + );
-			writer.close();
 			}
+			writer.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -129,6 +130,7 @@ public class FileManager {
 	}
 
 	private void commandSave(AbstractGizmo gizmo, PrintWriter writer, String gizmoType) {
+		System.out.println("yoyo");
 		writer.println(gizmoType + " " + gizmo.getName() + " "  + (int)gizmo.getXPos() + " " + (int)gizmo.getYPos());
 		for(int i=0;i<(gizmo.getGizAngle()/90);i++){
 			writer.println("Rotate " + gizmo.getName());
