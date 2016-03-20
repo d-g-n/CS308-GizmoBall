@@ -1,4 +1,5 @@
 Triangle T1 0 0
+Rotate T1
 
 Square S1 1 0
 
@@ -9,5 +10,9 @@ LeftFlipper LF1 3 0
 RightFlipper RF1 5 0
 
 Absorber A 0 2 5 3
+
+Connect S1 A
+
+KeyConnect key 32 down LF1
 
 Ball B 2.0 11.0 0.0 0.0
