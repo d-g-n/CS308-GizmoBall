@@ -1,14 +1,10 @@
 package gizmos;
 
-
-import model.ProjectManager;
-import physics.Vect;
-import view.Board;
-
-import java.awt.*;
+import java.awt.Color;
 import java.awt.geom.Rectangle2D;
 import java.util.Arrays;
-import java.util.Random;
+
+import physics.Vect;
 
 public class Absorber extends AbstractGizmo {
 
@@ -16,36 +12,28 @@ public class Absorber extends AbstractGizmo {
 
 	public Absorber(int x, int y, int w, int h) {
 
-		super(x, y, w, h,
-				Color.magenta, // colour of gizmo
+		super(x, y, w, h, Color.magenta, // colour of gizmo
 				0 // reflection coefficent
 		);
 
-
-		addPhysicsPath(Arrays.asList(
-				new Vect(xpos, ypos), // start at top left
+		addPhysicsPath(Arrays.asList(new Vect(xpos, ypos), // start at top left
 				new Vect(xpos + width, ypos), // move to top right
 				new Vect(xpos + width, ypos + height), // move to bottom right
 				new Vect(xpos, ypos + height), // move to bottom left
 				new Vect(xpos, ypos) // and back up to top left
 		));
 
-		setShape(new Rectangle2D.Double(
-				(xpos),
-				(ypos),
-				(width),
-				(height)
-		));
+		setShape(new Rectangle2D.Double((xpos), (ypos), (width), (height)));
 
 	}
 
-	public void setHeldBall(Ball b){
+	public void setHeldBall(Ball b) {
 		this.boardBall = b;
 	}
 
-
 	/**
-	 * This is an example of how to extend abstract behaviour to provide additional behaviour
+	 * This is an example of how to extend abstract behaviour to provide
+	 * additional behaviour
 	 */
 	@Override
 	public void onHit(AbstractGizmo hit) {
@@ -53,7 +41,7 @@ public class Absorber extends AbstractGizmo {
 
 		boardBall = ((Ball) hit);
 
-		if(boardBall != null) {
+		if (boardBall != null) {
 
 			boardBall.setStopped(true);
 
@@ -67,7 +55,8 @@ public class Absorber extends AbstractGizmo {
 	}
 
 	/**
-	 * Like above, will want to set the velocity of the ball if the ball is currently being held
+	 * Like above, will want to set the velocity of the ball if the ball is
+	 * currently being held
 	 */
 	@Override
 	public void doTrigger() {
@@ -75,7 +64,7 @@ public class Absorber extends AbstractGizmo {
 
 		// if ball is held, chuck it back out
 
-		if(boardBall != null && boardBall.isStopped()){
+		if (boardBall != null && boardBall.isStopped()) {
 
 			boardBall.setStopped(false);
 
@@ -86,31 +75,28 @@ public class Absorber extends AbstractGizmo {
 		}
 
 	}
-	
+
 	@Override
 	public void setGizShape(double x, double y) {
-		
-		
-		setShape(new Rectangle2D.Double(
-				(x),
-				(y),
-				(width),
-				(height)
-		));
-		
+
+		setShape(new Rectangle2D.Double((x), (y), (width), (height)));
+
 	}
-	
+
 	@Override
 	public void setGizPhysics(double x, double y) {
-		
-		
-		addPhysicsPath(Arrays.asList(
-				new Vect(x, y), // start at top left
+
+		addPhysicsPath(Arrays.asList(new Vect(x, y), // start at top left
 				new Vect(x + width, y), // move to top right
 				new Vect(x + width, y + height), // move to bottom right
 				new Vect(x, y + height), // move to bottom left
 				new Vect(x, y) // and back up to top left
 		));
-		
+
+	}
+
+	@Override
+	public String getType() {
+		return "Absorber";
 	}
 }

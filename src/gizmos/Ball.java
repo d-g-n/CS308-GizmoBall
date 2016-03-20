@@ -1,10 +1,10 @@
 package gizmos;
 
+import java.awt.Color;
+import java.awt.Shape;
+
 import physics.Circle;
 import physics.Vect;
-import view.Board;
-
-import java.awt.*;
 
 public class Ball extends AbstractGizmo {
 
@@ -16,8 +16,7 @@ public class Ball extends AbstractGizmo {
 	// x, y coordinates and x,y velocity
 	public Ball(double x, double y, Vect initialVelocity) {
 
-		super(x, y, 0, 0,
-				Color.white, // colour of gizmo
+		super(x, y, 0, 0, Color.white, // colour of gizmo
 				0 // reflection coefficent
 		);
 
@@ -30,26 +29,25 @@ public class Ball extends AbstractGizmo {
 		velocity = v;
 	}
 
-	public void setStopped(boolean stopped) { this.stopped = stopped; }
+	public void setStopped(boolean stopped) {
+		this.stopped = stopped;
+	}
 
 	public void applyGravityConstant(double tickTime, double gravity) {
-		
+
 		Vect gravityApplied = new Vect(velocity.x(), velocity.y() + ((gravity) * tickTime));
-		
+
 		this.setVelocity(gravityApplied);
 	}
-	
+
 	public void applyFriction(double tickTime, double mu, double mu2) {
-		
-		Vect frictionApplied = new Vect(velocity.x() * (1 - (mu * tickTime)) - (mu2 * velocity.x()) * tickTime, velocity.y() * (1 - (mu * tickTime)) - (mu2 * velocity.y()) * tickTime);
-		
-		
+
+		Vect frictionApplied = new Vect(velocity.x() * (1 - (mu * tickTime)) - (mu2 * velocity.x()) * tickTime,
+				velocity.y() * (1 - (mu * tickTime)) - (mu2 * velocity.y()) * tickTime);
+
 		this.setVelocity(frictionApplied);
-		
-		
+
 	}
-
-
 
 	public boolean isStopped() {
 		return stopped;
@@ -64,11 +62,16 @@ public class Ball extends AbstractGizmo {
 	}
 
 	@Override
-	public Shape getShape(){
+	public Shape getShape() {
 		return getCircle().toEllipse2D();
 	}
 
 	public double getRadius() {
 		return radius;
+	}
+
+	@Override
+	public String getType() {
+		return "Ball";
 	}
 }

@@ -1,10 +1,5 @@
 package gizmos;
 
-import java.awt.Color;
-import java.awt.Shape;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.RoundRectangle2D;
-
 public class LeftFlipper extends Flipper {
 
 	public LeftFlipper(int x, int y) {
@@ -16,16 +11,21 @@ public class LeftFlipper extends Flipper {
 	}
 
 	@Override
-	public void doPhysicsCalculations(){
-		if(flipperMoving){
+	public void doPhysicsCalculations() {
+		if (flipperMoving) {
 
-			if(!rotateClockwise) {
+			if (!rotateClockwise) {
 				flipAntiClockwise(90);
 			} else {
 				flipClockwise(180);
 			}
 
 		}
+	}
+
+	@Override
+	public String getType() {
+		return "LeftFlipper";
 	}
 
 }

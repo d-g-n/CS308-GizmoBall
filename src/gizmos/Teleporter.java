@@ -1,12 +1,7 @@
 package gizmos;
 
-import java.awt.*;
+import java.awt.Color;
 import java.awt.geom.Ellipse2D;
-import java.awt.geom.Rectangle2D;
-import java.util.Arrays;
-
-import physics.Vect;
-import view.Board;
 
 public class Teleporter extends AbstractGizmo {
 
@@ -66,6 +61,11 @@ public class Teleporter extends AbstractGizmo {
 		}
 
 		super.onHit(hit);
+	}
+
+	@Override
+	public String getType() {
+		return "Teleporter";
 	}
 	
 

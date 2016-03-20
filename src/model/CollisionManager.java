@@ -268,7 +268,11 @@ public class CollisionManager extends Observable {
 		return this.SETTINGS_GRAVITY;
 	}
 
-	public double getFriction() {
+	public double getMuFriction() {
 		return this.SETTINGS_FRICTION_MU;
+	}
+
+	public double getMu2Friction() {
+		return this.SETTINGS_FRICTION_MU2;
 	}
 }

@@ -19,11 +19,12 @@ public class BuildGUI implements GBallGui {
 
 	private JFrame frame;
 	private BuildListener controller;
+	private ProjectManager pm;
 
 	public BuildGUI(Timer visualTimer, ProjectManager pm) {
 		frame = new JFrame("Palette");
 		controller = new BuildListener(this, visualTimer, pm);
-
+		this.pm = pm;
 	}
 
 	public void showPalette() {
@@ -60,8 +61,8 @@ public class BuildGUI implements GBallGui {
 	}
 
 	private void addSliders(Container pane) {
-		addGravitySlider(0, 100, 25, pane);
-		addFrictionSlider(0, 100, 25, pane);
+		addGravitySlider(0, 100, (int)pm.getGravity(), pane);
+		addFrictionSlider(0, 100, (int)(pm.getMuFriction()*1000), pane);
 	}
 
 	private void addGravitySlider(int min, int max, int initial, Container pane) {

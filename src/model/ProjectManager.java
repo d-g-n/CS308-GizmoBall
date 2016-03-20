@@ -45,6 +45,20 @@ public class ProjectManager extends Observable{
 		this.notifyObservers();
 
 	}
+	
+	public void loadFile(String fileName) {
+		currentBoard = fileName;
+		fManager = new FileManager(this);
+		fManager.loadFile(fileName);
+
+		this.setChanged();
+		this.notifyObservers();
+	}
+	
+	public void saveAs(String filePath) {
+		fManager = new FileManager(this);
+		fManager.saveFile(filePath);		
+	}
 
 	public String getFocusedButton() {
 		return focusedButton;
@@ -186,7 +200,9 @@ public class ProjectManager extends Observable{
 	public List<AbstractGizmo> getBoardGizmos(){
 		return boardGizmos;
 	}
-	public Map<Map.Entry<String, Integer>, List<AbstractGizmo>> getKeyConnects() { return gizmoKeyPressMap; }
+	public Map<Map.Entry<String, Integer>, List<AbstractGizmo>> getKeyConnects(){
+		return gizmoKeyPressMap;
+	}
 
 	public void moveBall(){
 
@@ -199,15 +215,6 @@ public class ProjectManager extends Observable{
 	}
 
 	public void pushVisualUpdate(){
-		this.setChanged();
-		this.notifyObservers();
-	}
-
-	public void loadFile(String fileName) {
-		currentBoard = fileName;
-		fManager = new FileManager(this);
-		fManager.loadFile(fileName);
-
 		this.setChanged();
 		this.notifyObservers();
 	}
@@ -285,9 +292,9 @@ public class ProjectManager extends Observable{
 		cManager.setGravity(newGravity);
 	}
 	
-	public void setFriction(double newFriction) {
+	public void setFriction(double mu, double mu2) {
 		
-		cManager.setFriction(newFriction, newFriction);
+		cManager.setFriction(mu, mu2);
 	}
 
 	public double getGravity() {
@@ -295,9 +302,12 @@ public class ProjectManager extends Observable{
 		return cManager.getGravity();
 	}
 	
-	public double getFriction() {
-		
-		return cManager.getFriction();
+	public double getMuFriction() {		
+		return cManager.getMuFriction();
+	}
+	
+	public double getMu2Friction(){
+		return cManager.getMu2Friction();
 	}
 
 	public String getStatusLabel() {
