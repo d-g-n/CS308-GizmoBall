@@ -151,7 +151,7 @@ public class BoardListener implements MouseListener {
 
 						pm.getGizmoToMove().moveGizmo(x, y);
 						// Added to update a Gizmos name when it is moved to a new position on the board
-						pm.getGizmoToMove().setName(""+pm.getGizmoToMove().getXPos()+"_"+pm.getGizmoToMove().getYPos());
+						pm.getGizmoToMove().setName(""+(int)pm.getGizmoToMove().getXPos()+"_"+(int)pm.getGizmoToMove().getYPos());
 						
 
 						int numberOfRotations = pm.getGizmoToMove().getGizAngle() / 90;
