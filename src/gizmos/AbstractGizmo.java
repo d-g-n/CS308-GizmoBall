@@ -120,6 +120,10 @@ public abstract class AbstractGizmo {
 	public void addGizmoListener(AbstractGizmo listener) {
 		this.gizmoListeners.add(listener);
 	}
+	
+	public List<AbstractGizmo> getGizmoListeners(){
+		return gizmoListeners;
+	}
 
 	public void removeGizmoListener(AbstractGizmo listener) {
 		this.gizmoListeners.remove(listener);

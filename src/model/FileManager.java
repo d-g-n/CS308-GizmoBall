@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -55,6 +56,8 @@ public class FileManager {
 	public void saveFile(String filePath){
 		List<AbstractGizmo> boardGizmos = pm.getBoardGizmos();
 		List<Ball> ballList = pm.getBallList();
+		List<AbstractGizmo> gizmoListeners;
+		List<String> connectList = new LinkedList<String>();
 		
 		String gizmoType;		
 		PrintWriter writer;
@@ -62,9 +65,9 @@ public class FileManager {
 			writer = new PrintWriter(filePath, "UTF-8");
 			
 			for(AbstractGizmo gizmo: boardGizmos){
-				System.out.println("yo");
+				gizmoListeners = gizmo.getGizmoListeners();
 				gizmoType = gizmo.getType();
-				System.out.println(gizmoType);
+				
 				switch(gizmoType){
 				case "Square":
 					commandSave(gizmo, writer, gizmoType);
@@ -101,15 +104,24 @@ public class FileManager {
 				case "Absorber":					
 					absorberSave((Absorber)gizmo, writer);
 					break;
-			}
-				
-			for(Ball ball: ballList){
-				ballSave(ball, writer);
+			}			
+			
+			for(AbstractGizmo listener: gizmoListeners){
+				connectList.add("Connect" + " " + gizmo.getName() + " " + listener.getName());
 			}
 			
 			//writer.println("Gravity " + pm.getGravity());
 			//writer.println("Friction " + pm.getFriction() + " " + );
 			}
+			
+			for(Ball ball: ballList){
+				ballSave(ball, writer);
+			}
+			
+			for(String connection: connectList){
+				writer.println(connection);
+			}
+			
 			writer.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -126,11 +138,14 @@ public class FileManager {
 	}
 
 	private void absorberSave(Absorber abs, PrintWriter writer) {
-		writer.println("Absorber " + abs.getName() + " " + (int)abs.getXPos() + " " + (int)abs.getYPos() + " " + (int)abs.getWidth() + " " + (int)abs.getHeight());		
+		int xPos = (int)abs.getXPos();
+		int yPos = (int)abs.getYPos();
+		int width = (int)abs.getWidth();
+		int height = (int)abs.getHeight();
+		writer.println("Absorber " + abs.getName() + " " + xPos + " " + yPos + " " + (xPos+width) + " " + (yPos+height));		
 	}
 
 	private void commandSave(AbstractGizmo gizmo, PrintWriter writer, String gizmoType) {
-		System.out.println("yoyo");
 		writer.println(gizmoType + " " + gizmo.getName() + " "  + (int)gizmo.getXPos() + " " + (int)gizmo.getYPos());
 		for(int i=0;i<(gizmo.getGizAngle()/90);i++){
 			writer.println("Rotate " + gizmo.getName());
