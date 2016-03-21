@@ -45,6 +45,9 @@ public class FileManager {
 	private final Pattern addBallCommand = Pattern.compile("Ball" + " " + IDENTIFIER + " " + FLOAT_PAIR + " " + FLOAT_PAIR);
 	private final Pattern addGizmoCommand = Pattern.compile(GIZMO_OP + " " + IDENTIFIER + " " + NUMBER_PAIR);
 	private final Pattern rotateGizmoCommand = Pattern.compile("Rotate" + " " + IDENTIFIER);
+	private final Pattern deleteGizmoCommand = Pattern.compile("Delete" + " " + IDENTIFIER);
+	private final Pattern moveGizmoCommand = Pattern.compile("Move" + " " + IDENTIFIER + " " + NUMBER_PAIR);
+	private final Pattern moveBallCommand = Pattern.compile("Move" + " " + IDENTIFIER + " " + FLOAT_PAIR);
 	private final Pattern addAbsorberCommand = Pattern.compile("Absorber" + " " + IDENTIFIER + " " + NUMBER_PAIR + " " + NUMBER_PAIR);
 	private final Pattern connectGizmoCommand = Pattern.compile("Connect" + " " + IDENTIFIER + " " + IDENTIFIER);
 	private final Pattern keyConnectGizmoCommand = Pattern.compile("KeyConnect" + " " + KEYID + " " + IDENTIFIER);
@@ -196,6 +199,18 @@ public class FileManager {
 			if ((lineMatch = rotateGizmoCommand.matcher(currentLine)).matches()) {
 				rotateGizmo(lineMatch);
 			}
+			
+			if ((lineMatch = deleteGizmoCommand.matcher(currentLine)).matches()) {
+				deleteGizmo(lineMatch);
+			}
+			
+			if ((lineMatch = moveGizmoCommand.matcher(currentLine)).matches()) {
+				moveGizmo(lineMatch);
+			}
+			
+			if ((lineMatch = moveBallCommand.matcher(currentLine)).matches()) {
+				moveBall(lineMatch);
+			}
 
 			if ((lineMatch = addAbsorberCommand.matcher(currentLine)).matches()){
 				addAbsorber(lineMatch);
@@ -310,6 +325,34 @@ public class FileManager {
 	private void rotateGizmo(Matcher lineMatch) {
 		String gizmoName = lineMatch.group(1);
 		pm.getGizmoByName(gizmoName).rotateClockwise();
+	}
+	
+	private void deleteGizmo(Matcher lineMatch) {
+		String gizmoName = lineMatch.group(1);
+		pm.deleteGizmo(pm.getGizmoByName(gizmoName));
+	}
+	
+	private void moveGizmo(Matcher lineMatch) {
+		String gizmoName = lineMatch.group(1);
+		int x = Integer.parseInt(lineMatch.group(2));
+		int y= Integer.parseInt(lineMatch.group(3));
+		int numberOfRotations = pm.getGizmoByName(gizmoName).getGizAngle() / 90;
+		
+		pm.getGizmoByName(gizmoName).moveGizmo(x, y);
+		
+		for (int i = 0; i < numberOfRotations; i++) {
+			pm.getGizmoByName(gizmoName).rotatePhysicsAroundPoint(
+					pm.getGizmoByName(gizmoName).getXPos() + pm.getGizmoByName(gizmoName).getWidth() / 2,
+					pm.getGizmoByName(gizmoName).getYPos() + (pm.getGizmoByName(gizmoName).getHeight() / 2), 90.0);
+		}
+	}
+	
+	private void moveBall(Matcher lineMatch) {
+		String gizmoName = lineMatch.group(1);
+		double x = Double.parseDouble(lineMatch.group(2));
+		double y= Double.parseDouble(lineMatch.group(3));
+		
+		pm.getGizmoByName(gizmoName).moveGizmo((int)x, (int)y);
 	}
 
 	private void addAbsorber(Matcher lineMatch){
