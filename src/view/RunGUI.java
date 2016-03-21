@@ -26,7 +26,7 @@ import model.ProjectManager;
 public class RunGUI implements GBallGui, Observer {
 
 	private MagicKeyListener keyListener;
-	private TestView tv;
+	private RunBoardWrapper tv;
 	private RunListener runListener;
 	public static final int BOARD_WIDTH = 500;
 	public static final int BOARD_HEIGHT = 500;
@@ -125,7 +125,7 @@ public class RunGUI implements GBallGui, Observer {
 			}
 		});
 		this.pm = pm;
-		tv = new TestView(pm);
+		tv = new RunBoardWrapper(pm);
 		keyListener = new MagicKeyListener(pm);
 		runListener = new RunListener(pm);
 	}

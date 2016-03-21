@@ -6,15 +6,20 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Line2D;
+import java.util.List;
 
 import javax.swing.JPanel;
 
 import gizmos.AbstractGizmo;
 import model.ProjectManager;
+import physics.Circle;
+import physics.LineSegment;
 
 public class RunBoard extends JPanel {
 
 	private static final long serialVersionUID = 1L;
+	private static final boolean DEBUG_MODE = true;
 	private ProjectManager pm;
 
 	public RunBoard(ProjectManager pm) {
@@ -55,6 +60,60 @@ public class RunBoard extends JPanel {
 
 
 			g2d.setTransform(pT);
+		}
+
+		if(!DEBUG_MODE)
+			return;
+
+		//drawBall(pm.getBallList(),g);
+		for (AbstractGizmo gizmo : pm.getBoardGizmos()) {
+
+
+			List<LineSegment> lsList = gizmo.getStoredLines();
+			List<Circle> lsCircle = gizmo.getStoredCircles();
+
+			for(LineSegment ls : lsList){
+
+				AffineTransform pT = g2d.getTransform();
+
+				double scaleFactor = (Board.BOARD_WIDTH / Board.X_CELLS);
+
+				Shape shape = ls.toLine2D();
+
+				AffineTransform shapeT = new AffineTransform();
+
+				shapeT.scale(scaleFactor, scaleFactor);
+
+				shape = shapeT.createTransformedShape(shape);
+
+				g.setColor(Color.red);
+
+				g2d.draw(shape);
+
+				g2d.setTransform(pT);
+			}
+
+			for(Circle ls : lsCircle){
+
+				AffineTransform pT = g2d.getTransform();
+
+				double scaleFactor = (Board.BOARD_WIDTH / Board.X_CELLS);
+
+				Shape shape = ls.toEllipse2D();
+
+				AffineTransform shapeT = new AffineTransform();
+
+				shapeT.scale(scaleFactor, scaleFactor);
+
+				shape = shapeT.createTransformedShape(shape);
+
+				g.setColor(Color.red);
+
+				g2d.draw(shape);
+
+				g2d.setTransform(pT);
+			}
+
 		}
 
 	}

@@ -10,7 +10,8 @@ import view.Board;
 
 public class CircleBumper extends AbstractGizmo {
 
-	private double radius;
+	private final double radius = 0.5;
+
 
 	public CircleBumper(int x, int y, int w, int h) {
 		super(x, y, w, h,
@@ -38,7 +39,6 @@ public class CircleBumper extends AbstractGizmo {
 	@Override
 	public void setGizPhysics(double x, double y) {
 
-		this.radius = 0.5;
 		addPhysicsCircle(x + radius, y + radius, radius);
 		
 	}
