@@ -13,8 +13,8 @@ public class CircleBumper extends AbstractGizmo {
 	private final double radius = 0.5;
 
 
-	public CircleBumper(int x, int y, int w, int h) {
-		super(x, y, w, h,
+	public CircleBumper(int x, int y) {
+		super(x, y, 1, 1,
 				Color.blue, // colour of gizmo
 				1 // reflection coefficent
 		);

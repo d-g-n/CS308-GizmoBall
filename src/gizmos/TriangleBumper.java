@@ -10,7 +10,7 @@ import physics.Vect;
 
 public class TriangleBumper extends AbstractGizmo {
 
-	public TriangleBumper(int x, int y, int w, int h) {
+	public TriangleBumper(int x, int y) {
 		super(x, y, 1, 1,
 				Color.yellow, // colour of gizmo
 				1// reflection coefficent

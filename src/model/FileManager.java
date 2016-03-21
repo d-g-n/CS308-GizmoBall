@@ -273,19 +273,19 @@ public class FileManager {
 
 		switch (opCode) {
 		case "Square":
-			SquareBumper sb = new SquareBumper(x, y, 1, 1);
+			SquareBumper sb = new SquareBumper(x, y);
 			sb.setName(gizmoName);
 			pm.addGizmo(sb);
 			break;
 			
 		case "Circle":
-			CircleBumper cb = new CircleBumper(x, y, 1, 1);
+			CircleBumper cb = new CircleBumper(x, y);
 			cb.setName(gizmoName);
 			pm.addGizmo(cb);
 			break;
 			
 		case "Triangle":
-			TriangleBumper tb = new TriangleBumper(x, y, 1, 1);
+			TriangleBumper tb = new TriangleBumper(x, y);
 			tb.setName(gizmoName);
 			pm.addGizmo(tb);
 			break;
@@ -303,18 +303,18 @@ public class FileManager {
 			break;
 			
 		case "Booster":
-			BoosterGizmo boost = new BoosterGizmo(x, y, 1, 1);
+			BoosterGizmo boost = new BoosterGizmo(x, y);
 			boost.setName(gizmoName);
 			pm.addGizmo(boost);
 			break;
 		case "DeathSquare":
-			DeathSquare ds = new DeathSquare(x, y, 1, 1);
+			DeathSquare ds = new DeathSquare(x, y);
 			ds.setName(gizmoName);
 			pm.addGizmo(ds);
 			break;
 			
 		case "Teleporter":
-			Teleporter tele = new Teleporter(x, y, 1, 1);
+			Teleporter tele = new Teleporter(x, y);
 			tele.setName(gizmoName);
 			pm.addGizmo(tele);
 			break;

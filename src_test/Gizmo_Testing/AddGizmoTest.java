@@ -16,11 +16,11 @@ public class AddGizmoTest extends BaseTestCase {
 
 		// Standard gizmos being squarebumper, circle or triangle
 
-		SquareBumper testSquare = new SquareBumper(0, 0, 1, 1);
+		SquareBumper testSquare = new SquareBumper(0, 0);
 
-		TriangleBumper testTriangle = new TriangleBumper(1, 0, 1, 1);
+		TriangleBumper testTriangle = new TriangleBumper(1, 0);
 
-		CircleBumper testCircle = new CircleBumper(2, 0, 1, 1);
+		CircleBumper testCircle = new CircleBumper(2, 0);
 
 		pm.addGizmo(testSquare);
 		pm.addGizmo(testTriangle);

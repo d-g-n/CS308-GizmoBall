@@ -17,7 +17,7 @@ public class InteractionGizmoTest extends BaseTestCase {
 	@Test
 	public void canConnectGizmos(){
 
-		SquareBumper testSquare = new SquareBumper(0, 0, 1, 1);
+		SquareBumper testSquare = new SquareBumper(0, 0);
 
 		Absorber testAbsorber = new Absorber(0, 1, 1, 10);
 
@@ -52,7 +52,7 @@ public class InteractionGizmoTest extends BaseTestCase {
 	@Test
 	public void canGizmoKeyConnects(){
 
-		SquareBumper testSquare = new SquareBumper(0, 0, 1, 1);
+		SquareBumper testSquare = new SquareBumper(0, 0);
 
 		Absorber testAbsorber = new Absorber(0, 1, 1, 10);
 
@@ -88,7 +88,7 @@ public class InteractionGizmoTest extends BaseTestCase {
 
 		// repeated code but it's easier this way rather than iterating to find the name
 
-		SquareBumper testSquare = new SquareBumper(0, 0, 1, 1);
+		SquareBumper testSquare = new SquareBumper(0, 0);
 
 		Absorber testAbsorber = new Absorber(0, 1, 1, 10);
 
@@ -111,7 +111,7 @@ public class InteractionGizmoTest extends BaseTestCase {
 	@Test
 	public void canGizmoKeyDisconnect(){
 
-		SquareBumper testSquare = new SquareBumper(0, 0, 1, 1);
+		SquareBumper testSquare = new SquareBumper(0, 0);
 
 		Absorber testAbsorber = new Absorber(0, 1, 1, 10);
 

@@ -47,9 +47,9 @@ public class LoadFileTest extends BaseTestCase {
 
 		pm.loadFile("boards/testboard.txt");
 
-		Assert.assertFalse("Should not be able to place anything in 0 0", pm.canPlaceGizmoAt(new SquareBumper(0, 0, 1, 1)));
+		Assert.assertFalse("Should not be able to place anything in 0 0", pm.canPlaceGizmoAt(new SquareBumper(0, 0)));
 
-		Assert.assertFalse("Should not be able to place anything in 4 1 due to flippers being 2x2", pm.canPlaceGizmoAt(new SquareBumper(4, 1, 1, 1)));
+		Assert.assertFalse("Should not be able to place anything in 4 1 due to flippers being 2x2", pm.canPlaceGizmoAt(new SquareBumper(4, 1)));
 	}
 
 	@Test

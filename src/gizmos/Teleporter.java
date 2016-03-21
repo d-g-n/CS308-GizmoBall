@@ -8,8 +8,8 @@ public class Teleporter extends AbstractGizmo {
 	private double radius;
 	Ball boardBall = null;
 
-	public Teleporter(int x, int y, int w, int h) {
-		super(x, y, w, h,
+	public Teleporter(int x, int y) {
+		super(x, y, 1, 1,
 				Color.CYAN, // colour of gizmo
 				1 // reflection coefficent
 		);

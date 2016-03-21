@@ -11,7 +11,7 @@ public class BoosterGizmo extends AbstractGizmo {
 	
 	Ball boardBall = null;
 
-	public BoosterGizmo(int x, int y, int w, int h) {
+	public BoosterGizmo(int x, int y) {
 		super(x, y, 1, 1,
 				Color.green, // colour of gizmo
 				1// reflection coefficent

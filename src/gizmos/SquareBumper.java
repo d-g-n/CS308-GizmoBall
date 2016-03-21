@@ -10,8 +10,8 @@ import java.util.Arrays;
 public class SquareBumper extends AbstractGizmo {
 	private int score;
 	
-	public SquareBumper(int x, int y, int w, int h) {
-		super(x, y, w, h,
+	public SquareBumper(int x, int y) {
+		super(x, y, 1, 1,
 				Color.red, // colour of gizmo
 				1 // reflection coefficent
 		);

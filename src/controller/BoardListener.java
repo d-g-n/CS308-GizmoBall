@@ -37,21 +37,21 @@ public class BoardListener implements MouseListener {
 			switch (pm.getFocusedButton()) {
 			case "Ball":
 				Ball b = new Ball(x + 0.5, y + 0.5, new Vect(0, 0));
-				if(pm.canPlaceGizmoAt(new CircleBumper(x, y, 1, 1))) {
+				if(pm.canPlaceGizmoAt(new CircleBumper(x, y))) {
 					pm.addGizmo(b);
 					pm.pushVisualUpdate();
 				}
 				break;
 			case "Square":
-				pm.addGizmo(new SquareBumper(x, y, width, width));
+				pm.addGizmo(new SquareBumper(x, y));
 				pm.pushVisualUpdate();
 				break;
 			case "Triangle":
-				pm.addGizmo(new TriangleBumper(x, y, width, width));
+				pm.addGizmo(new TriangleBumper(x, y));
 				pm.pushVisualUpdate();
 				break;
 			case "Circle":
-				pm.addGizmo(new CircleBumper(x, y, width, width));
+				pm.addGizmo(new CircleBumper(x, y));
 				pm.pushVisualUpdate();
 				break;
 			case "Absorber":
@@ -91,15 +91,15 @@ public class BoardListener implements MouseListener {
 				pm.pushVisualUpdate();
 				break;
 			case "Booster":
-				pm.addGizmo(new BoosterGizmo(x, y, width, width));
+				pm.addGizmo(new BoosterGizmo(x, y));
 				pm.pushVisualUpdate();
 				break;
 			case "Death Sqaure":
-				pm.addGizmo(new DeathSquare(x, y, width, width));
+				pm.addGizmo(new DeathSquare(x, y));
 				pm.pushVisualUpdate();
 				break;
 			case "Teleporter":
-				pm.addGizmo(new Teleporter(x, y, width, width));
+				pm.addGizmo(new Teleporter(x, y));
 				pm.pushVisualUpdate();
 				break;
 			case "Rotate":
