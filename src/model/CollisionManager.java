@@ -70,7 +70,9 @@ public class CollisionManager extends Observable {
 
 				moveBallForTime(ball, info.getTimeToCollision());
 
-				ball.setVelocity(info.getVelocity());
+				Vect resultV = Geometry.applyReflectionCoeff(ball.getVelocity(), info.getVelocity(), info.getHitGizmo().getReflectionCoefficient());
+
+				ball.setVelocity(resultV);
 
 				if(info.getHitGizmo().getClass().equals(Ball.class)) {
 					((Ball) info.getHitGizmo()).setVelocity(info.getOtherVelocity());
