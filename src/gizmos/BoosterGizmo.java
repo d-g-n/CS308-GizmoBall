@@ -21,11 +21,11 @@ public class BoosterGizmo extends AbstractGizmo {
 
 	}
 	
-	
+	/**
+	 * @See {@link gizmos.AbstractGizmo#setGizShape(double, double)}
+	 */
 	@Override
 	public void setGizShape(double x, double y) {
-		
-		
 		Shape shape = new Polygon();
 		//Add the three points of the triangle to the shape
 
@@ -60,10 +60,12 @@ public class BoosterGizmo extends AbstractGizmo {
 		
 	}
 	
+	/**
+	 * @see gizmos.AbstractGizmo#setGizPhysics(double, double)
+	 */
 	@Override
 	public void setGizPhysics(double x, double y) {
-		
-		
+				
 		addPhysicsPath(Arrays.asList(
 				new Vect(x, y),
 				new Vect(x + width, y + height),
@@ -73,18 +75,16 @@ public class BoosterGizmo extends AbstractGizmo {
 		
 	}
 
-	
+	/**
+	 * @see gizmos.AbstractGizmo#onHit(AbstractGizmo)
+	 */
 	@Override
 	public void onHit(AbstractGizmo hit) {
-
 		boardBall = ((Ball) hit);
-
 		if(boardBall != null) {
 			boardBall.setVelocity(new Vect(50, boardBall.getVelocity().y()));
 		}
-
 		super.onHit(hit);
 	}
-
 
 }
