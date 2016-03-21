@@ -372,12 +372,14 @@ public class FileManager {
 		pm.addGizmo(giz);
 	}
 
-	// for connections, the first match should be
 	public void connectGizmos(Matcher lineMatch){
-		AbstractGizmo shouter = pm.getGizmoByName(lineMatch.group(1));
+		ArrayList<AbstractGizmo>  shouters = pm.getGizmoByNameList(lineMatch.group(1));
 		AbstractGizmo listener = pm.getGizmoByName(lineMatch.group(2));
 
-		shouter.addGizmoListener(listener);
+		
+		for (AbstractGizmo shouter: shouters) {
+			shouter.addGizmoListener(listener);
+		}
 	}
 
 	public void keyConnectGizmos(Matcher lineMatch){

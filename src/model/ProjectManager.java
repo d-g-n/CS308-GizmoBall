@@ -147,12 +147,22 @@ public class ProjectManager extends Observable {
 	}
 
 	public AbstractGizmo getGizmoByName(String name) {
+		
+		if (!getGizmoByNameList(name).isEmpty()) {
+		return getGizmoByNameList(name).get(0);
+		} else {
+			return null;
+		}
+	}
+	
+	public ArrayList<AbstractGizmo> getGizmoByNameList(String name) {
+		ArrayList<AbstractGizmo> gizList = new ArrayList<AbstractGizmo>();
 		for (AbstractGizmo giz : boardGizmos) {
 			if (giz.getName().equals(name))
-				return giz;
+				gizList.add(giz);
 		}
 
-		return null;
+		return gizList;
 	}
 
 	public List<AbstractGizmo> getBoardGizmos() {
