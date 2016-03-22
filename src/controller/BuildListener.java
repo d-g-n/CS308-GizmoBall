@@ -44,29 +44,35 @@ public class BuildListener implements ActionListener, ChangeListener, WindowList
 		if(getCom != null && getCom.getCommandLevel().equals(CommandMapper.CommandLevel.BUTTON_LEVEL))
 			getCom.getAction().onClickAndRelease(-1, -1, -1, -1); // questionable
 
+		if(gizmoMap.containsKey(action))
+			pm.setStatusLabel(gizmoMap.get(action));
+
+		pm.pushVisualUpdate();
+
 	}
 
 	// need to move this to the commandlist file somewhere or just define it in the actual command func
 	
 	public void fillMap(){
 		String label = "Now click anywhere inside the canvas to draw the ";
-		gizmoMap.put("Ball",label + "ball");
-		gizmoMap.put("Triangle", label + "triangle");
-		gizmoMap.put("Square", label + "square");
-		gizmoMap.put("LFlipper", label + "left flipper");
-		gizmoMap.put("RFlipper", label + "right flipper");
-		gizmoMap.put("Circle", label + "circle");
-		gizmoMap.put("Death Square", label + "death square");
-		gizmoMap.put("Teleporter", label + "teleporter");
-		gizmoMap.put("Booster", label + "booster");
-		gizmoMap.put("Connect Gizmos", "Click on the two gizmos you want to connect");
-		gizmoMap.put("Rotate", "Click on the gizmo you want to rotate");
-		gizmoMap.put("Key Connect", "Click on the Gizmo you want to connect a key to; then press the keyboard key");
-		gizmoMap.put("Key Disconnect","Click on the Gizmo you want to disconnect a key from; then press the keyboard key");
-		gizmoMap.put("Absorber", "Click on the two points you want to draw the absorber");
-		gizmoMap.put("Disconnect Gizmos", "Click on the two gizmos you want to disconnect");
-		gizmoMap.put("Delete", "Click on a gizmo to delete it");
-		gizmoMap.put("Move", "Click the gizmo you want to move and then click on the new position");
+		gizmoMap.put("add_ball",label + "ball");
+		gizmoMap.put("add_trianglebumper", label + "triangle");
+		gizmoMap.put("add_squarebumper", label + "square");
+		gizmoMap.put("add_leftflipper", label + "left flipper");
+		gizmoMap.put("add_rightflipper", label + "right flipper");
+		gizmoMap.put("add_circlebumper", label + "circle");
+		gizmoMap.put("add_deathsquare", label + "death square");
+		gizmoMap.put("add_teleporter", label + "teleporter");
+		gizmoMap.put("add_booster", label + "booster");
+		gizmoMap.put("add_spinner", label + "booster");
+		gizmoMap.put("connect_gizmos", "Click on the two gizmos you want to connect");
+		gizmoMap.put("manip_rotate", "Click on the gizmo you want to rotate");
+		gizmoMap.put("keyconnect_gizmos", "Click on the Gizmo you want to connect a key to; then press the keyboard key");
+		gizmoMap.put("keydisconnect_gizmos","Click on the Gizmo you want to disconnect a key from; then press the keyboard key");
+		gizmoMap.put("add_absorber", "Click on the two points you want to draw the absorber");
+		gizmoMap.put("disconnect_gizmos", "Click on the two gizmos you want to disconnect");
+		gizmoMap.put("manip_delete", "Click on a gizmo to delete it");
+		gizmoMap.put("manip_move", "Click the gizmo you want to move and then click on the new position");
 		
 	}
 
