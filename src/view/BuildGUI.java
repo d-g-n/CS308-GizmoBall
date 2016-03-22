@@ -64,15 +64,6 @@ public class BuildGUI implements GBallGui {
 		addFrictionSlider(0, 100, 25, settingsSection);
 	}
 
-	private void addAButton(String title, Container pane) {
-		JButton button = new JButton(title);
-
-		button.setPreferredSize(new Dimension(100, 100));
-		button.setAlignmentX(Component.LEFT_ALIGNMENT);
-		button.addActionListener(controller);
-		pane.add(button);
-	}
-
 	private void addAButton(String title, Icon icon, Container pane) {
 		JButton button = new JButton(title);
 		button.setIcon(icon);
