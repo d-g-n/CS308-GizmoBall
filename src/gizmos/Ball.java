@@ -16,7 +16,7 @@ public class Ball extends AbstractGizmo {
 	// x, y coordinates and x,y velocity
 	public Ball(double x, double y, Vect initialVelocity) {
 
-		super(x, y, 0, 0,
+		super(x, y, 0.5, 0.5,
 				Color.white, // colour of gizmo
 				0 // reflection coefficent
 		);

@@ -43,7 +43,7 @@ public class GizmoFunctionsTest extends BaseTestCase {
 
 		Assert.assertFalse("Should be false as Absorber takes up 0, 0 -> 4, 4", pm.canPlaceGizmoAt(sq22));
 
-		Assert.assertFalse("Should be false as Absorber takes up 0, 0 -> 4, 4", pm.canPlaceGizmoAt(sq22));
+		Assert.assertFalse("Should be false as Absorber takes up 0, 0 -> 4, 4", pm.canPlaceGizmoAt(sq44));
 
 
 		// now test ball placement, note that there's an absorber at 0, 0 and a square at 19, 19
