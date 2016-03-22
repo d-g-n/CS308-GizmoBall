@@ -223,12 +223,10 @@ public class ProjectManager extends Observable {
 	}
 
 	public void restartGame() {
-		if (currentBoard != null){
-			resetScore();
-			gameOver = false;
+		if (currentBoard != null)
 			fManager.loadFile(currentBoard);
-		}
-
+		resetScore();
+		gameOver = false;
 	}
 	public boolean isBuildModeOn() {
 		return buildModeOn;
