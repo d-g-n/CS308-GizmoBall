@@ -54,7 +54,7 @@ public class BuildListener implements ActionListener, ChangeListener, WindowList
 	// need to move this to the commandlist file somewhere or just define it in the actual command func
 	
 	public void fillMap(){
-		String label = "Now click anywhere inside the canvas to draw the ";
+		String label = "Click on any free position on the board to place the ";
 		gizmoMap.put("add_ball",label + "ball");
 		gizmoMap.put("add_trianglebumper", label + "triangle");
 		gizmoMap.put("add_squarebumper", label + "square");
@@ -64,15 +64,15 @@ public class BuildListener implements ActionListener, ChangeListener, WindowList
 		gizmoMap.put("add_deathsquare", label + "death square");
 		gizmoMap.put("add_teleporter", label + "teleporter");
 		gizmoMap.put("add_booster", label + "booster");
-		gizmoMap.put("add_spinner", label + "booster");
-		gizmoMap.put("connect_gizmos", "Click on the two gizmos you want to connect");
-		gizmoMap.put("manip_rotate", "Click on the gizmo you want to rotate");
-		gizmoMap.put("keyconnect_gizmos", "Click on the Gizmo you want to connect a key to; then press the keyboard key");
-		gizmoMap.put("keydisconnect_gizmos","Click on the Gizmo you want to disconnect a key from; then press the keyboard key");
-		gizmoMap.put("add_absorber", "Click on the two points you want to draw the absorber");
-		gizmoMap.put("disconnect_gizmos", "Click on the two gizmos you want to disconnect");
-		gizmoMap.put("manip_delete", "Click on a gizmo to delete it");
-		gizmoMap.put("manip_move", "Click the gizmo you want to move and then click on the new position");
+		gizmoMap.put("add_spinner", label + "spinner");
+		gizmoMap.put("connect_gizmos", "Click and hold on the gizmo want to connect as the trigger, then drag the mouse over to the gizmo you want to connect as the action and release");
+		gizmoMap.put("manip_rotate", "Click on the gizmo you want to rotate. (You cannot rotate an absorber, sorry!)");
+		gizmoMap.put("keyconnect_gizmos", "Click on the Gizmo you want to connect a keyboard key to");
+		gizmoMap.put("keydisconnect_gizmos","Select the key that you want to disconnect from the menu");
+		gizmoMap.put("add_absorber", "Click and hold over the desired starting position of the absorber, then drag the mouse to it's desired end position and release");
+		gizmoMap.put("disconnect_gizmos", "Click and hold on the gizmo want to disconnect as the trigger, then drag the mouse over to the gizmo you want to disconnect as the action and release");
+		gizmoMap.put("manip_delete", "Click on the gizmo you want to delete");
+		gizmoMap.put("manip_move", "Click and hold the mouse over the gizmo you wish to move, then drag the mouse to the gizmos new desired location and release");
 		
 	}
 

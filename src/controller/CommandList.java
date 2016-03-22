@@ -138,7 +138,7 @@ final class CommandList {
 				(firstX, firstY, secondX, secondY) -> {
 					ProjectManager pm = CommandMapper.getPMRef();
 					AbstractGizmo gizAt = pm.getGizmoByCoordinate(firstX, firstY);
-					if(gizAt != null)
+					if(gizAt != null && gizAt.getClass() != Absorber.class)
 						gizAt.rotateClockwise();
 				}
 		);
@@ -152,8 +152,15 @@ final class CommandList {
 				(firstX, firstY, secondX, secondY) -> {
 					ProjectManager pm = CommandMapper.getPMRef();
 					AbstractGizmo gizAt = pm.getGizmoByCoordinate(firstX, firstY);
-					if(gizAt != null && pm.canPlaceGizmoAt(secondX, secondY, gizAt.getWidth(), gizAt.getHeight()))
+					if(gizAt != null && pm.canPlaceGizmoAt(secondX, secondY, gizAt.getWidth(), gizAt.getHeight())) {
 						gizAt.moveGizmo(secondX, secondY);
+					
+						int numberOfRoationsRequired = gizAt.getGizAngle()/90;
+					
+						for (int i = 0; i<numberOfRoationsRequired ;i++) {
+							gizAt.rotatePhysicsAroundPoint(gizAt.getXPos() + (gizAt.getWidth() / 2), gizAt.getYPos() + (gizAt.getHeight() / 2), 90.0);
+						}
+					}
 				}
 		);
 
@@ -177,7 +184,7 @@ final class CommandList {
 		CommandMapper.addNewCommand(
 				"reload_board",
 				CommandMapper.CommandLevel.BUTTON_LEVEL,
-				"Reload GizmoConstants",
+				"Reload Board",
 				CommandEnums.CATEGORY_COMMANDS,
 				"icons/commands/reload.png",
 				(firstX, firstY, secondX, secondY) -> {
@@ -216,7 +223,7 @@ final class CommandList {
 		CommandMapper.addNewCommand(
 				"clear_board",
 				CommandMapper.CommandLevel.BUTTON_LEVEL,
-				"Clear GizmoConstants",
+				"Clear Board",
 				CommandEnums.CATEGORY_COMMANDS,
 				"icons/commands/clear.png",
 				(firstX, firstY, secondX, secondY) -> {
