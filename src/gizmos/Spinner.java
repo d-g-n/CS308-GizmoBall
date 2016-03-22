@@ -40,6 +40,8 @@ public class Spinner extends AbstractGizmo {
 				0.25,
 				0.25
 		));
+		
+		rotateAroundPoint = this.getCenter();
 
 	}
 
