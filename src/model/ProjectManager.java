@@ -20,14 +20,7 @@ public class ProjectManager extends Observable {
 	private List<AbstractGizmo> boardGizmos;
 	private Map<Map.Entry<String, Integer>, List<AbstractGizmo>> gizmoKeyPressMap;
 	private List<Ball> ballList;
-	private String focusedButton;
 	private boolean buildModeOn = false;
-	private AbstractGizmo gizmoToConnect = null;
-	private AbstractGizmo gizmoToDisconnect = null;
-	private AbstractGizmo gizmoToKeyConnect = null;
-	private AbstractGizmo gizmoToKeyDisconnect = null;
-	private AbstractGizmo gizmoToMove = null;
-	private int absorberToBeAddedX = -1, absorberToBeAddedY = -1;
 	private String statusLabel, currentBoard;
 	private int totalScore,highestScore,numLives;
 	private boolean gameOver,dynamicMode;
@@ -40,7 +33,6 @@ public class ProjectManager extends Observable {
 		gizmoKeyPressMap = new HashMap<>();
 		cManager = new CollisionManager(this);
 		currentBoard = null;
-		focusedButton = "Square";
 		currentCommand = "";
 		totalScore = 0;
 		highestScore = 0;
@@ -68,23 +60,6 @@ public class ProjectManager extends Observable {
 	public void saveAs(String filePath) {
 		fManager = new FileManager(this);
 		fManager.saveFile(filePath);
-	}
-
-	public String getFocusedButton() {
-		return focusedButton;
-	}
-
-	public void setFocusedButton(String focusedButton) {
-
-		// reset all projectmanager build mode gizmos
-		setAbsorberToBeAddedX(-1);
-		setAbsorberToBeAddedY(-1);
-		setGizmoToConnect(null);
-		setGizmoToKeyConnect(null);
-		setGizmoToMove(null);
-		setGizmoToKeyConnect(null);
-		setGizmoToKeyDisconnect(null);
-		this.focusedButton = focusedButton;
 	}
 
 	public void addKeyConnect(String gizName, int keyNum, String onDownOrUp) {
@@ -243,49 +218,10 @@ public class ProjectManager extends Observable {
 		this.buildModeOn = buildModeOn;
 	}
 
-	public AbstractGizmo getGizmoToConnect() {
-		return gizmoToConnect;
-	}
-
-	public void setGizmoToConnect(AbstractGizmo gizmoToConnect) {
-		this.gizmoToConnect = gizmoToConnect;
-	}
 
 	public void deleteGizmo(AbstractGizmo a) {
 		boardGizmos.remove(a);
 
-	}
-
-	public AbstractGizmo getGizmoToMove() {
-		return gizmoToMove;
-	}
-
-	public void setGizmoToMove(AbstractGizmo gizmoToMove) {
-		this.gizmoToMove = gizmoToMove;
-	}
-
-	public AbstractGizmo getGizmoToDisconnect() {
-		return gizmoToDisconnect;
-	}
-
-	public void setGizmoToDisconnect(AbstractGizmo gizmoToDisconnect) {
-		this.gizmoToDisconnect = gizmoToDisconnect;
-	}
-
-	public int getAbsorberToBeAddedX() {
-		return absorberToBeAddedX;
-	}
-
-	public void setAbsorberToBeAddedX(int absorberToBeAddedX) {
-		this.absorberToBeAddedX = absorberToBeAddedX;
-	}
-
-	public int getAbsorberToBeAddedY() {
-		return absorberToBeAddedY;
-	}
-
-	public void setAbsorberToBeAddedY(int absorberToBeAddedY) {
-		this.absorberToBeAddedY = absorberToBeAddedY;
 	}
 
 	public void setGravity(double newGravity) {
@@ -319,21 +255,6 @@ public class ProjectManager extends Observable {
 		this.statusLabel = statusLabel;
 	}
 
-	public AbstractGizmo getGizmoToKeyConnect() {
-		return gizmoToKeyConnect;
-	}
-
-	public void setGizmoToKeyConnect(AbstractGizmo gizmoToKeyConnect) {
-		this.gizmoToKeyConnect = gizmoToKeyConnect;
-	}
-
-	public AbstractGizmo getGizmoToKeyDisconnect() {
-		return gizmoToKeyDisconnect;
-	}
-
-	public void setGizmoToKeyDisconnect(AbstractGizmo gizmoToKeyDisconnect) {
-		this.gizmoToKeyDisconnect = gizmoToKeyDisconnect;
-	}
 
 	public void updateScore(AbstractGizmo giz){
 		if(giz != null && !dynamicMode){
