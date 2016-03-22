@@ -33,7 +33,7 @@ public class ProjectManager extends Observable {
 		totalScore = 0;
 		highestScore = 0;
 		setLives(10);
-		setStatusLabel("Score: " + totalScore + " High Score: " + getHighScore() + " Lives: " + getLives());
+		setStatusLabel("Score: " + getScore() + " High Score: " + getHighScore() + " Lives: " + getLives());
 		gameOver = false;
 		dynamicMode = false;
 		// HARDCODED GIZMO DEFS (mind the outer walls are never supposed to
@@ -192,6 +192,7 @@ public class ProjectManager extends Observable {
 		currentBoard = fileName;
 		fManager = new FileManager(this);
 		fManager.loadFile(fileName);
+		resetScore();
 
 		this.setChanged();
 		this.notifyObservers();
@@ -305,10 +306,6 @@ public class ProjectManager extends Observable {
 		this.gizmoToKeyDisconnect = gizmoToKeyDisconnect;
 	}
 
-	public int getScore(){
-		return totalScore;
-	}
-
 	public void updateScore(AbstractGizmo giz){
 		if(giz != null && !dynamicMode){
 
@@ -321,13 +318,14 @@ public class ProjectManager extends Observable {
 		else if(giz.getClass().equals(Absorber.class))
 			numLives--;
 
+		if(highestScore <= totalScore)
+			highestScore = totalScore;
+		
 		if(getLives() < 0){
 		gameOver = true;
 		return;
 		}
-		if(highestScore <= totalScore)
-			highestScore = totalScore;
-
+		
 		setStatusLabel("Score: " + totalScore + " High Score: " + getHighScore() + " Lives: " + getLives());
 		}
 	}
@@ -367,6 +365,10 @@ public class ProjectManager extends Observable {
 		return highestScore;
 	}
 
+	public int getScore(){
+		return totalScore;
+	}
+	
 	public void clearAllBoardGizmos() {
 		boardGizmos.clear();
 

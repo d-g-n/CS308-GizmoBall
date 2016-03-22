@@ -20,8 +20,6 @@ public class RunListener implements ActionListener {
 		visualTimer = new Timer((int) (1000 * (1/Board.FRAME_RATE)), this);
 		visualTimer.start();
 	}
-
-	
 	
 	@Override
 	public void actionPerformed(final ActionEvent e) {
@@ -81,7 +79,7 @@ public class RunListener implements ActionListener {
 	}else {
 		
 		int confirmation = JOptionPane.YES_NO_OPTION;
-		int result = JOptionPane.showConfirmDialog(null, " HighScore: " + pm.getScore() + " \nDo you want to start Again?",
+		int result = JOptionPane.showConfirmDialog(null, " HighScore: " + pm.getHighScore() + " \nDo you want to start Again?",
 				"GameOver", confirmation);
 		if (result == 0) {
 			pm.clearAllBoardGizmos();

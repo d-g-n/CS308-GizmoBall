@@ -39,9 +39,15 @@ public class BuildListener implements ActionListener, ChangeListener, WindowList
 			pm.setStatusLabel(gizmoMap.get(action));
 			break;
 		case "Dynamic Play":
+			if(!pm.isDynamicMode()){
 			pm.dynamicModeOn();
-			pm.setStatusLabel("You can now add Gizmos in real time!");
+			pm.setStatusLabel("Dynamic Mode ON");
 			visualTimer.start();
+			}else {
+				pm.dynamicModeOff();
+				pm.setStatusLabel("Dynamic Mode OFF");
+				visualTimer.stop();
+			}
 			break;
 		case "Reload Board":
 			statusLabel = "Board Restored";
