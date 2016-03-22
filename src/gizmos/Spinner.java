@@ -20,7 +20,7 @@ public class Spinner extends AbstractGizmo {
 				0.95 // reflection coefficent
 		);
 
-		// flipper specific things
+		this.type = "Spinner";
 
 
 		angleVel = Math.toRadians(1080 * GizmoConstants.MOVE_TIME);

@@ -82,6 +82,8 @@ Square 17_10 17 10
 Square 18_9 18 9
 Square 19_9 19 9
 Square 19_8 19 8
+Spinner 7_12 7 12
+Spinner 11_12 11 12
 Ball 0_0 0.5 0.5 0.0 0.0
 Ball 19_0 19.5 0.5 0.0 0.0
 Gravity 25.0
