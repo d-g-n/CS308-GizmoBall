@@ -114,29 +114,28 @@ public class ProjectManager extends Observable {
 			return false;
 		}
 
-		List<Vect> requestedPoints = new ArrayList<>();
+		List<Vect> requestedSquares = new ArrayList<>();
 
-		for (double ix = x; ix < (x + w); ix++) {
-			for (double iy = y; iy < (y + h); iy++) {
-				requestedPoints.add(new Vect(ix, iy));
+		for(int gx = (int) Math.floor(x); gx < (Math.floor(x) + w); gx++){
+			for(int gy = (int) Math.floor(y); gy < (Math.floor(y) + h); gy++){
+				requestedSquares.add(new Vect(gx, gy));
 			}
 		}
 
 		for (AbstractGizmo giz : this.boardGizmos) {
+			if(giz.getClass().equals(OuterWall.class))
+				continue;
 
-			double gx = giz.getXPos();
-			double gy = giz.getYPos();
-			double gw = giz.getWidth();
-			double gh = giz.getHeight();
+			for(int gx = (int) Math.floor(giz.getXPos()); gx < (Math.floor(giz.getXPos()) + giz.getWidth()); gx++){
+				for(int gy = (int) Math.floor(giz.getYPos()); gy < (Math.floor(giz.getYPos()) + giz.getHeight()); gy++){
+					Vect notAllowed = new Vect(gx, gy);
 
-			for (double ix = gx; ix < (gx + gw); ix++) {
-				for (double iy = gy; iy < (gy + gh); iy++) {
-					if (requestedPoints.contains(new Vect(ix, iy)))
+					if(requestedSquares.contains(notAllowed))
 						return false;
 				}
 			}
-
 		}
+
 
 		return true;
 
