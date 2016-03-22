@@ -1,17 +1,32 @@
 package model;
 
-import java.util.*;
+import java.io.File;
+import java.util.AbstractMap;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Observable;
 
-import gizmos.*;
-import physics.Vect;
-
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 /**
  * The ProjectManager class provides general information about the state
  * of the game.
  *
  */
-import javax.swing.*;
 import javax.swing.Timer;
+
+import gizmos.Absorber;
+import gizmos.AbstractGizmo;
+import gizmos.Ball;
+import gizmos.CircleBumper;
+import gizmos.OuterWall;
+import gizmos.SquareBumper;
+import gizmos.Teleporter;
+import gizmos.TriangleBumper;
+import physics.Vect;
 
 public class ProjectManager extends Observable {
 
@@ -118,13 +133,15 @@ public class ProjectManager extends Observable {
 				for(int gy = (int) Math.floor(giz.getYPos()); gy < (Math.floor(giz.getYPos()) + giz.getHeight()); gy++){
 					Vect notAllowed = new Vect(gx, gy);
 
-					if(requestedSquares.contains(notAllowed))
-						return false;
+					if(requestedSquares.contains(notAllowed)){
+						playSound("cannotplace");
+						return false;	
+					}
 				}
 			}
 		}
 
-
+		playSound("canplace");
 		return true;
 
 	}
@@ -197,7 +214,7 @@ public class ProjectManager extends Observable {
 		fManager = new FileManager(this);
 		fManager.loadFile(fileName);
 		resetScore();
-
+		playSound("load");
 		this.setChanged();
 		this.notifyObservers();
 	}
@@ -265,16 +282,24 @@ public class ProjectManager extends Observable {
 			totalScore+=2;
 		else if(giz.getClass().equals(TriangleBumper.class))
 			totalScore+=3;
-		else if(giz.getClass().equals(Absorber.class))
+		else if(giz.getClass().equals(Absorber.class)){
 			numLives--;
+			playSound("fireball");	
+		}else if(giz.getClass().equals(Teleporter.class))
+			playSound("teleporter");
 
-		if(highestScore <= totalScore)
+		if(highestScore <= totalScore){
+			
 			highestScore = totalScore;
-		
+			//playSound("highscore");
+		}
+
 		if(getLives() < 0){
+			playSound("gameover");
 		gameOver = true;
 		return;
 		}
+		
 		
 		setStatusLabel("Score: " + totalScore + " High Score: " + getHighScore() + " Lives: " + getLives());
 		}
@@ -351,4 +376,16 @@ public class ProjectManager extends Observable {
 	public String getCurrentCommand() {
 		return currentCommand;
 	}
+	
+	public void playSound(String soundURL){
+		try{
+			Clip clip = AudioSystem.getClip();
+			clip.open(AudioSystem.getAudioInputStream(new File("clips/" + soundURL + ".wav")));
+			clip.start();
+		}catch(Exception e){
+			
+		}
+		
+	}
+
 }

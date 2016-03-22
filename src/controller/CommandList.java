@@ -150,6 +150,7 @@ final class CommandList {
 					AbstractGizmo gizAt = pm.getGizmoByCoordinate(firstX, firstY);
 					if(gizAt != null)
 						pm.deleteGizmo(gizAt);
+					pm.playSound("delete");
 				}
 		);
 
@@ -208,6 +209,7 @@ final class CommandList {
 							"Warning", confirmation);
 					if (result == 0) {
 						pm.clearAllBoardGizmos();
+						pm.playSound("clearboard");
 					}
 				}
 		);

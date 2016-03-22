@@ -54,8 +54,6 @@ public class BoardListener implements MouseListener {
 			getCom.getAction().onClickAndRelease(x, y, destx, desty);
 
 		pm.pushVisualUpdate();
-
-
 	}
 
 	@Override
