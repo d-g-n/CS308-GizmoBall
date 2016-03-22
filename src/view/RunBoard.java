@@ -7,6 +7,7 @@ import java.awt.RenderingHints;
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Line2D;
+import java.awt.geom.Rectangle2D;
 import java.util.List;
 
 import javax.swing.JPanel;
@@ -43,18 +44,20 @@ public class RunBoard extends JPanel {
 
 
 			Shape shape = gizmo.getShape();
+			Shape positionShape = new Rectangle2D.Double(gizmo.getXPos(), gizmo.getYPos(), gizmo.getWidth(), gizmo.getHeight());
 			AffineTransform shapeT = new AffineTransform();
 
 			double scaleFactor = (GizmoConstants.BOARD_WIDTH / GizmoConstants.X_CELLS);
 			shapeT.scale(scaleFactor, scaleFactor);
 
 			shape = shapeT.createTransformedShape(shape);
+			positionShape = shapeT.createTransformedShape(positionShape);
 
 			g.setColor(gizmo.getGizCol());
 			g2d.rotate(
 					Math.toRadians(gizmo.getGizAngle()),
-					shape.getBounds2D().getCenterX(),
-					shape.getBounds2D().getCenterY()
+					positionShape.getBounds2D().getCenterX(),
+					positionShape.getBounds2D().getCenterY()
 			);
 			g2d.draw(shape);
 			g2d.fill(shape);
