@@ -38,47 +38,18 @@ public class BuildListener implements ActionListener, ChangeListener, WindowList
 	public void actionPerformed(ActionEvent e) {
 		String statusLabel = "";
 		String action = e.getActionCommand();
-		switch (action) {
-		default:
-			pm.setFocusedButton(action);
-			pm.setStatusLabel(gizmoMap.get(action));
-			break;
-		case "Dynamic Play":
-			if(!pm.isDynamicMode()){
-			pm.dynamicModeOn();
-			pm.setStatusLabel("Dynamic Mode ON");
-			visualTimer.start();
-			}else {
-				pm.dynamicModeOff();
-				pm.setStatusLabel("Dynamic Mode OFF");
-				visualTimer.stop();
-			}
-			break;
-		case "Reload Board":
-			statusLabel = "Board Restored";
-			pm.setStatusLabel(statusLabel);
-			int confirmation1 = JOptionPane.YES_NO_OPTION;
-			int result1 = JOptionPane.showConfirmDialog(null, "Are you sure you want to restore the board?",
-					"Warning", confirmation1);
-			if (result1 == 0) {
-				pm.clearAllBoardGizmos();
-				pm.restartGame();
-			}
-			break;
-		case "Clear Board":
-			pm.setFocusedButton("Clear Board");
-			statusLabel = "Clearing Board..";
-			pm.setStatusLabel(statusLabel);
-			int confirmation = JOptionPane.YES_NO_OPTION;
-			int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to clear the entire board?",
-					"Warning", confirmation);
-			if (result == 0) {
-				pm.clearAllBoardGizmos();
-			}
-			break;
-		}
-		pm.pushVisualUpdate();
+
+		pm.setCurrentCommand(action);
+
+		// check highlevel first
+		CommandMapper.Command getCom = CommandMapper.getCommandByUID(pm.getCurrentCommand());
+
+		if(getCom != null && getCom.getCommandLevel().equals(CommandMapper.CommandLevel.BUTTON_LEVEL))
+			getCom.getAction().onClickAndRelease(-1, -1, -1, -1); // questionable
+
 	}
+
+	// need to move this to the commandlist file somewhere or just define it in the actual command func
 	
 	public void fillMap(){
 		String label = "Now click anywhere inside the canvas to draw the ";
@@ -101,6 +72,9 @@ public class BuildListener implements ActionListener, ChangeListener, WindowList
 		gizmoMap.put("Move", "Click the gizmo you want to move and then click on the new position");
 		
 	}
+
+	// need to add commands for this aswell
+	// might be a bit weird on client tho
 
 	@Override
 	public void stateChanged(ChangeEvent c) {

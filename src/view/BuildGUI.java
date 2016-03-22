@@ -1,12 +1,15 @@
 package view;
 
 import java.awt.*;
+import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.Map;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 
 import controller.BuildListener;
+import controller.CommandMapper;
 import model.ProjectManager;
 
 /**
@@ -36,43 +39,30 @@ public class BuildGUI implements GBallGui {
 
 	private void addComponents(Container pane) {
 
-		JPanel gizmoSection = addSection("Add Gizmos", pane);
+		Map<CommandEnums, JPanel> categoryMap = new HashMap<>();
 
-		JPanel commandsSection = addSection("Commands", pane);
+		for(CommandEnums cat : CommandEnums.values()){
+			JPanel category = addSection(cat.getCategory(), pane);
+			categoryMap.put(cat, category);
+		}
 
-		JPanel settingsSection = addSection("Settings", pane);
+		for(Map.Entry<String, CommandMapper.Command> comMap : CommandMapper.getCommandMap().entrySet()){
+			CommandMapper.Command c = comMap.getValue();
+			addAButton(comMap.getKey(), c.getPrettyName(), new ImageIcon(c.getIconPath()), categoryMap.get(c.getCategory()));
+		}
 
-		addAButton("Ball", new ImageIcon("icons/gizmos/ball.png"), gizmoSection);
-		addAButton("Square", new ImageIcon("icons/gizmos/square.png"), gizmoSection);
-		addAButton("Circle", new ImageIcon("icons/gizmos/circle.png"), gizmoSection);
-		addAButton("Triangle", new ImageIcon("icons/gizmos/triangle.png"), gizmoSection);
-		addAButton("Absorber", new ImageIcon("icons/gizmos/absorber.png"), gizmoSection);
-		addAButton("LFlipper", new ImageIcon("icons/gizmos/leftflipper.png"), gizmoSection);
-		addAButton("RFlipper", new ImageIcon("icons/gizmos/rightflipper.png"), gizmoSection);
-		addAButton("Booster", new ImageIcon("icons/gizmos/booster.png"), gizmoSection);
-		addAButton("Death Sqaure", new ImageIcon("icons/gizmos/deathsquare.png"), gizmoSection);
-		addAButton("Teleporter", new ImageIcon("icons/gizmos/teleporter.png"), gizmoSection);
 
-		addAButton("Move", new ImageIcon("icons/commands/move.png"), commandsSection);
-		addAButton("Rotate", new ImageIcon("icons/commands/rotate.png"), commandsSection);
-		addAButton("Delete", new ImageIcon("icons/commands/delete.png"), commandsSection);
-		addAButton("Clear Board", new ImageIcon("icons/commands/clear.png"), commandsSection);
-		addAButton("Reload Board", new ImageIcon("icons/commands/reload.png"), commandsSection);
-		addAButton("Connect Gizmos", new ImageIcon("icons/commands/connect.png"), commandsSection);
-		addAButton("Disconnect Gizmos", new ImageIcon("icons/commands/disconnect.png"), commandsSection);
-		addAButton("Key Connect", new ImageIcon("icons/commands/keyconnect.png"), commandsSection);
-		addAButton("Key Disconnect", new ImageIcon("icons/commands/keydisconnect.png"), commandsSection);
-		addAButton("Dynamic Play", new ImageIcon("icons/commands/play.png"), commandsSection);
+		addGravitySlider(0, 100, 25, categoryMap.get(CommandEnums.CATEGORY_OTHER));
+		addFrictionSlider(0, 100, 25, categoryMap.get(CommandEnums.CATEGORY_OTHER));
 
-		addGravitySlider(0, 100, 25, settingsSection);
-		addFrictionSlider(0, 100, 25, settingsSection);
 	}
 
-	private void addAButton(String title, Icon icon, Container pane) {
+	private void addAButton(String actionCommand, String title, Icon icon, Container pane) {
 		JButton button = new JButton(title);
 		button.setIcon(icon);
 		button.setVerticalTextPosition(SwingConstants.TOP);
 		button.setHorizontalTextPosition(SwingConstants.CENTER);
+		button.setActionCommand(actionCommand);
 
 		button.setPreferredSize(new Dimension(100, 100));
 		button.setAlignmentX(Component.LEFT_ALIGNMENT);
