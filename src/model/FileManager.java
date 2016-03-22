@@ -12,17 +12,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import gizmos.Absorber;
-import gizmos.AbstractGizmo;
-import gizmos.Ball;
-import gizmos.BoosterGizmo;
-import gizmos.CircleBumper;
-import gizmos.DeathSquare;
-import gizmos.LeftFlipper;
-import gizmos.RightFlipper;
-import gizmos.SquareBumper;
-import gizmos.Teleporter;
-import gizmos.TriangleBumper;
+import gizmos.*;
 import physics.Vect;
 
 /**
@@ -43,7 +33,7 @@ public class FileManager {
 
 	private final String NUMBER_PAIR = INTEGER + " " + INTEGER;
 	private final String FLOAT_PAIR = FLOAT + " " + FLOAT;
-	private final String GIZMO_OP = "(Square|Circle|Triangle|RightFlipper|LeftFlipper|Booster|DeathSquare|Teleporter)";
+	private final String GIZMO_OP = "(Square|Circle|Triangle|RightFlipper|LeftFlipper|Booster|DeathSquare|Teleporter|Spinner)";
 	private final String KEYID = "key" + " " + KEYNUM + " " + "(down|up)";
 
 
@@ -120,6 +110,10 @@ public class FileManager {
 						break;
 						
 					case "Teleporter":
+						commandSave(gizmo, writer, gizmoType);
+						break;
+
+					case "Spinner":
 						commandSave(gizmo, writer, gizmoType);
 						break;
 						
@@ -347,7 +341,15 @@ public class FileManager {
 			tele.setName(gizmoName);
 			pm.addGizmo(tele);
 			break;
+
+		case "Spinner":
+			Spinner spin = new Spinner(x, y);
+			spin.setName(gizmoName);
+			pm.addGizmo(spin);
+			break;
 		}
+
+
 
 	}
 

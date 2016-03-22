@@ -1,0 +1,88 @@
+Triangle 6_13 6 13
+Rotate 6_13
+Rotate 6_13
+Rotate 6_13
+Triangle 5_12 5 12
+Rotate 5_12
+Rotate 5_12
+Rotate 5_12
+Triangle 9_13 9 13
+Rotate 9_13
+Rotate 9_13
+Triangle 10_13 10 13
+Rotate 10_13
+Rotate 10_13
+Rotate 10_13
+Square 6_14 6 14
+Square 7_14 7 14
+Square 8_14 8 14
+Square 9_14 9 14
+Square 10_14 10 14
+Square 11_14 11 14
+Square 12_14 12 14
+Square 13_14 13 14
+Triangle 13_13 13 13
+Rotate 13_13
+Rotate 13_13
+Triangle 14_12 14 12
+Rotate 14_12
+Rotate 14_12
+Square 5_14 5 14
+Square 5_13 5 13
+Square 4_13 4 13
+Square 4_12 4 12
+Square 3_11 3 11
+Square 2_10 2 10
+Square 1_9 1 9
+Square 0_8 0 8
+Triangle 4_11 4 11
+Rotate 4_11
+Rotate 4_11
+Rotate 4_11
+Triangle 3_10 3 10
+Rotate 3_10
+Rotate 3_10
+Rotate 3_10
+Triangle 2_9 2 9
+Rotate 2_9
+Rotate 2_9
+Rotate 2_9
+Triangle 1_8 1 8
+Rotate 1_8
+Rotate 1_8
+Rotate 1_8
+Triangle 0_7 0 7
+Rotate 0_7
+Rotate 0_7
+Rotate 0_7
+Triangle 15_11 15 11
+Rotate 15_11
+Rotate 15_11
+Triangle 16_10 16 10
+Rotate 16_10
+Rotate 16_10
+Triangle 17_9 17 9
+Rotate 17_9
+Rotate 17_9
+Triangle 18_8 18 8
+Rotate 18_8
+Rotate 18_8
+Triangle 19_7 19 7
+Rotate 19_7
+Rotate 19_7
+Square 14_14 14 14
+Square 14_13 14 13
+Square 15_13 15 13
+Square 15_12 15 12
+Square 16_12 16 12
+Square 16_11 16 11
+Square 17_11 17 11
+Square 18_10 18 10
+Square 17_10 17 10
+Square 18_9 18 9
+Square 19_9 19 9
+Square 19_8 19 8
+Ball 0_0 0.5 0.5 0.0 0.0
+Ball 19_0 19.5 0.5 0.0 0.0
+Gravity 25.0
+Friction 0.025 0.025

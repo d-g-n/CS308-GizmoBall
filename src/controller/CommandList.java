@@ -47,6 +47,15 @@ final class CommandList {
 		);
 
 		CommandMapper.addNewCommand(
+				"add_spinner",
+				CommandMapper.CommandLevel.BOARD_LEVEL,
+				"Add Spinner",
+				CommandEnums.CATEGORY_GIZMO,
+				"icons/gizmos/leftflipper.png",
+				(firstX, firstY, secondX, secondY) -> CommandMapper.getPMRef().addGizmo(new Spinner(firstX, firstY))
+		);
+
+		CommandMapper.addNewCommand(
 				"add_trianglebumper",
 				CommandMapper.CommandLevel.BOARD_LEVEL,
 				"Add TriangleBumper",
