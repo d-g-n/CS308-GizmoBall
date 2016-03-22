@@ -29,6 +29,10 @@ public class MenuFileListener implements ActionListener {
 		case "Load...":
 			fileLoad();
 			break;
+			
+		case "Exit":
+			System.exit(0);
+			break;
 		}
 	}
 
