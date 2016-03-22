@@ -19,8 +19,10 @@ public class RunListener implements ActionListener {
 		this.pm = model;
 		visualTimer = new Timer((int) (1000 * (1/Board.FRAME_RATE)), this);
 		visualTimer.start();
+		pm.setTimer(visualTimer);
 	}
-	
+
+	// technically could also offload these commands to the commandmapper
 	@Override
 	public void actionPerformed(final ActionEvent e) {
 		if(!pm.gameOver()){

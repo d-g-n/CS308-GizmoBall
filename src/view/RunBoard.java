@@ -62,58 +62,93 @@ public class RunBoard extends JPanel {
 			g2d.setTransform(pT);
 		}
 
-		if(!DEBUG_MODE)
-			return;
-
-		//drawBall(pm.getBallList(),g);
-		for (AbstractGizmo gizmo : pm.getBoardGizmos()) {
+		if(DEBUG_MODE) {
 
 
-			List<LineSegment> lsList = gizmo.getStoredLines();
-			List<Circle> lsCircle = gizmo.getStoredCircles();
+			//drawBall(pm.getBallList(),g);
+			for (AbstractGizmo gizmo : pm.getBoardGizmos()) {
 
-			for(LineSegment ls : lsList){
 
-				AffineTransform pT = g2d.getTransform();
+				List<LineSegment> lsList = gizmo.getStoredLines();
+				List<Circle> lsCircle = gizmo.getStoredCircles();
 
-				double scaleFactor = (Board.BOARD_WIDTH / Board.X_CELLS);
+				for (LineSegment ls : lsList) {
 
-				Shape shape = ls.toLine2D();
+					AffineTransform pT = g2d.getTransform();
 
-				AffineTransform shapeT = new AffineTransform();
+					double scaleFactor = (Board.BOARD_WIDTH / Board.X_CELLS);
 
-				shapeT.scale(scaleFactor, scaleFactor);
+					Shape shape = ls.toLine2D();
 
-				shape = shapeT.createTransformedShape(shape);
+					AffineTransform shapeT = new AffineTransform();
 
-				g.setColor(Color.red);
+					shapeT.scale(scaleFactor, scaleFactor);
 
-				g2d.draw(shape);
+					shape = shapeT.createTransformedShape(shape);
 
-				g2d.setTransform(pT);
+					g.setColor(Color.red);
+
+					g2d.draw(shape);
+
+					g2d.setTransform(pT);
+				}
+
+				for (Circle ls : lsCircle) {
+
+					AffineTransform pT = g2d.getTransform();
+
+					double scaleFactor = (Board.BOARD_WIDTH / Board.X_CELLS);
+
+					Shape shape = ls.toEllipse2D();
+
+					AffineTransform shapeT = new AffineTransform();
+
+					shapeT.scale(scaleFactor, scaleFactor);
+
+					shape = shapeT.createTransformedShape(shape);
+
+					g.setColor(Color.red);
+
+					g2d.draw(shape);
+
+					g2d.setTransform(pT);
+				}
+
 			}
 
-			for(Circle ls : lsCircle){
+		}
 
-				AffineTransform pT = g2d.getTransform();
+		// draw arrows pointing from which gizmos will trigger what on hit, this is at the end to ensure it's drawn ontop of everything
 
-				double scaleFactor = (Board.BOARD_WIDTH / Board.X_CELLS);
+		if(pm.isBuildModeOn()) {
 
-				Shape shape = ls.toEllipse2D();
+			for (AbstractGizmo sourceGiz : pm.getBoardGizmos()) {
 
-				AffineTransform shapeT = new AffineTransform();
+				for (AbstractGizmo listener : sourceGiz.getGizmoListeners()) {
+					AffineTransform pT = g2d.getTransform();
 
-				shapeT.scale(scaleFactor, scaleFactor);
+					double scaleFactor = (Board.BOARD_WIDTH / Board.X_CELLS);
 
-				shape = shapeT.createTransformedShape(shape);
+					Shape shape = new Line2D.Double(
+							sourceGiz.getXPos() + sourceGiz.getWidth()/2,
+							sourceGiz.getYPos() + sourceGiz.getHeight()/2,
+							listener.getXPos() + listener.getWidth()/2,
+							listener.getYPos() + listener.getHeight()/2);
 
-				g.setColor(Color.red);
+					AffineTransform shapeT = new AffineTransform();
 
-				g2d.draw(shape);
+					shapeT.scale(scaleFactor, scaleFactor);
 
-				g2d.setTransform(pT);
+					shape = shapeT.createTransformedShape(shape);
+
+					g.setColor(Color.white);
+
+					g2d.draw(shape);
+
+					g2d.setTransform(pT);
+				}
+
 			}
-
 		}
 
 	}

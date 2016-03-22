@@ -1,3 +1,4 @@
+import controller.CommandMapper;
 import model.ProjectManager;
 import view.RunGUI;
 
@@ -8,6 +9,8 @@ public class MainInit {
     public static void main(String[] args){
         // init model
         ProjectManager pm = new ProjectManager();
+        CommandMapper.setPMRef(pm);
+        CommandMapper.loadCommands();
         // init test view and pass ref from model to view
         RunGUI testGUI = new RunGUI(pm);
         pm.addObserver(testGUI);

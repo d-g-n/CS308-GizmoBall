@@ -5,6 +5,9 @@ import java.util.*;
 import gizmos.*;
 import physics.Vect;
 
+import javax.swing.*;
+import javax.swing.Timer;
+
 public class ProjectManager extends Observable {
 
 	private CollisionManager cManager;
@@ -24,12 +27,16 @@ public class ProjectManager extends Observable {
 	private int totalScore,highestScore,numLives;
 	private boolean gameOver,dynamicMode;
 
+	private String currentCommand;
+	private Timer runTimer;
+
 	public ProjectManager() {
 		boardGizmos = new ArrayList<>();
 		gizmoKeyPressMap = new HashMap<>();
 		cManager = new CollisionManager(this);
 		currentBoard = null;
 		focusedButton = "Square";
+		currentCommand = "";
 		totalScore = 0;
 		highestScore = 0;
 		setLives(10);
@@ -56,6 +63,14 @@ public class ProjectManager extends Observable {
 	public void saveAs(String filePath) {
 		fManager = new FileManager(this);
 		fManager.saveFile(filePath);
+	}
+
+	public String getCurrentCommand(){
+		return currentCommand;
+	}
+
+	public void setCurrentCommand(String command){
+		this.currentCommand = command;
 	}
 
 	public String getFocusedButton() {
@@ -103,8 +118,10 @@ public class ProjectManager extends Observable {
 	public void addGizmo(AbstractGizmo g) {
 		// ideally we'll give it a random name here but irght now
 		// also need to do square checking in here to prevent overlapping gizmos
-		if (canPlaceGizmoAt(g) || g.getClass().equals(OuterWall.class) || (g.getClass().equals(Ball.class) && this.getGizmoByCoordinate((int)Math.floor(g.getXPos()),(int) Math.floor(g.getYPos())).getClass().equals(Absorber.class)))
+		if (canPlaceGizmoAt(g) || g.getClass().equals(OuterWall.class) || (g.getClass().equals(Ball.class) && this.getGizmoByCoordinate((int)Math.floor(g.getXPos()),(int) Math.floor(g.getYPos())).getClass().equals(Absorber.class))) {
 			boardGizmos.add(g);
+			this.pushVisualUpdate();
+		}
 	}
 
 	public boolean canPlaceGizmoAt(double x, double y, double w, double h) {
@@ -399,5 +416,13 @@ public class ProjectManager extends Observable {
 		addGizmo(new OuterWall(20, -1, 1, 22)); // start at top right, 22 down y
 		addGizmo(new OuterWall(-1, 20, 22, 1)); // start at bottom left, 22
 												// along x
+	}
+
+	public void setTimer(Timer timer) {
+		this.runTimer = timer;
+	}
+
+	public Timer getTimer(){
+		return runTimer;
 	}
 }
