@@ -64,11 +64,13 @@ public class RunListener implements ActionListener {
 				pm.restartGame();
 				break;
 			case "Build Mode":
-				visualTimer.stop(); 
-				BuildGUI buildMode = new BuildGUI(visualTimer,pm);
-				pm.setBuildModeOn(true);
-				buildMode.showPalette();
-				pm.pushVisualUpdate();
+				if(!pm.isBuildModeOn()){
+					visualTimer.stop(); 
+					BuildGUI buildMode = new BuildGUI(visualTimer,pm);
+					pm.setBuildModeOn(true);
+					buildMode.showPalette();
+					pm.pushVisualUpdate();
+				}
 				break;
 			case "Settings":
 				/* Change the settings of the project */ break;
