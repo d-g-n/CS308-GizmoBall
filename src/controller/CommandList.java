@@ -26,7 +26,15 @@ final class CommandList {
 				"Add Ball",
 				CommandEnums.CATEGORY_GIZMO,
 				"icons/gizmos/ball.png",
-				(firstX, firstY, secondX, secondY) -> CommandMapper.getPMRef().addGizmo(new Ball(firstX + 0.5, firstY + 0.5, new Vect(0, 0)))
+				(firstX, firstY, secondX, secondY) -> {
+					String xVel = JOptionPane.showInputDialog(null, "Please enter the starting X velocity you want this ball to have.");
+					String yVel = JOptionPane.showInputDialog(null, "Please enter the starting Y velocity you want this ball to have.");
+					try {
+						CommandMapper.getPMRef().addGizmo(new Ball(firstX + 0.5, firstY + 0.5, new Vect(Double.parseDouble(xVel), Double.parseDouble(yVel))));
+					} catch (NullPointerException | NumberFormatException e) {
+						CommandMapper.getPMRef().addGizmo(new Ball(firstX + 0.5, firstY + 0.5, new Vect(0.0,0.0)));
+					}
+				}
 		);
 
 		CommandMapper.addNewCommand(
