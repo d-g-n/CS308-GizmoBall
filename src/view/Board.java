@@ -1,6 +1,10 @@
 package view;
 
-
+/**
+ * The Board class provides information about the board such as
+ * board dimensions, frame rate, move time etc.
+ * 
+ */
 public final class Board {
 
 	public static final int X_CELLS = 20;

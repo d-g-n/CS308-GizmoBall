@@ -43,7 +43,7 @@ public class Flipper extends AbstractGizmo {
 	}
 
 	/**
-	 * 
+	 * @see gizmos.AbstractGizmo#setGizPhysics(double, double)
 	 */
 	@Override
 	public void setGizPhysics(double x, double y) {
@@ -66,6 +66,10 @@ public class Flipper extends AbstractGizmo {
 		this.flipperMoving = true;
 	}
 
+	/**
+	 * Flip the flipper clockwise by the specified degrees.
+	 * @param toDegrees the degrees to be flipped
+	 */
 	public void flipClockwise(int toDegrees) {
 		if (flipRotation >= toDegrees) {
 
@@ -98,6 +102,10 @@ public class Flipper extends AbstractGizmo {
 		}
 	}
 
+	/**
+	 * Flip the flipper anticlockwise to the specified degrees
+	 * @param toDegrees the degrees the flipper to be flipped
+	 */
 	public void flipAntiClockwise(int toDegrees) {
 		if (flipRotation <= toDegrees) {
 
@@ -107,27 +115,21 @@ public class Flipper extends AbstractGizmo {
 										// something
 
 		} else {
-
 			double localAngVel = angleVel;
-
 			AffineTransform at = new AffineTransform();
-
 			if ((flipRotation - localAngVel) < toDegrees)
 				localAngVel = flipRotation - toDegrees;
-
 			at.rotate(Math.toRadians(-localAngVel), rotateAroundPoint.x(), rotateAroundPoint.y());
-
 			super.rotatePhysicsAroundPoint(rotateAroundPoint, -localAngVel);
-
 			Shape path = at.createTransformedShape(super.getShape());
-
 			super.setShape(path);
-
 			flipRotation -= localAngVel; // because it rotates counterclockwise
-
 		}
 	}
 
+	/**
+	 * @see gizmos.AbstractGizmo#getAngularVelocity()
+	 */
 	@Override
 	public double getAngularVelocity() {
 		return (flipperMoving ? Math.toRadians(rotateClockwise ? angleVel : -angleVel) : 0.0);

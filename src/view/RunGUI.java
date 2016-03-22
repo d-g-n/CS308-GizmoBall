@@ -23,7 +23,7 @@ import controller.MagicKeyListener;
 import controller.RunListener;
 import model.ProjectManager;
 
-public class RunGUI implements GBallGui, Observer {
+public class RunGUI implements Observer {
 
 	private MagicKeyListener keyListener;
 	private TestView tv;

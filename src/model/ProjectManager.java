@@ -5,6 +5,11 @@ import java.util.*;
 import gizmos.*;
 import physics.Vect;
 
+/**
+ * The ProjectManager class provides general information about the state 
+ * of the game.
+ *
+ */
 public class ProjectManager extends Observable {
 
 	private CollisionManager cManager;

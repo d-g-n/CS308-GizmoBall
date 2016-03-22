@@ -187,6 +187,10 @@ public abstract class AbstractGizmo {
 
 	public Shape getShape(){ return gizShape; }
 
+	/**
+	 * Recalculate the physics of the gizmo after a possible
+	 * change of its location
+	 */
 	public void doPhysicsCalculations() {}
 
 	public String getName(){

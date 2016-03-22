@@ -2,12 +2,13 @@ package view;
 
 import javax.swing.JFileChooser;
 
+/**
+ * The FileManagerGUI creates a file chooser to either save
+ * or load a board.
+ *
+ */
 public class FileManagerGUI {
 
-	public FileManagerGUI() {
-
-	}
-	
 	public String getSaveFilePath(){
 	    JFileChooser chooser = new JFileChooser("boards");
 	    if (chooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {

@@ -6,15 +6,17 @@ import java.util.Observable;
 import gizmos.Absorber;
 import gizmos.AbstractGizmo;
 import gizmos.Ball;
-import gizmos.CircleBumper;
-import gizmos.SquareBumper;
-import gizmos.TriangleBumper;
 import physics.Circle;
 import physics.Geometry;
 import physics.LineSegment;
 import physics.Vect;
 import view.Board;
 
+/**
+ * The CollisionManager class provides core functionality to identify collisions
+ * of the balls on the board with its gizmos.
+ * 
+ */
 public class CollisionManager extends Observable {
 
 	private ProjectManager pm;
@@ -27,62 +29,59 @@ public class CollisionManager extends Observable {
 		this.pm = pm;
 	}
 
+	/**
+	 * The moveBall method is fired every time tick to move the ball taking into
+	 * account any collisions
+	 */
 	public void moveBall() {
-
-		for(AbstractGizmo g : pm.getBoardGizmos()) {
-
-			if(!g.getClass().equals(Ball.class))
+		for (AbstractGizmo g : pm.getBoardGizmos()) {
+			if (!g.getClass().equals(Ball.class)) {
 				continue;
-
+			}
 			Ball ball = (Ball) g;
-
-			if (ball.isStopped())
+			if (ball.isStopped()) {
 				continue;
-
+			}
 			CollisionDetails info = shortestTimeUntilCollision(ball);
-
 			if (info.getTimeToCollision() <= Board.MOVE_TIME) {
-				// collision going to occur so fire any gizmos now so that the angular velocity of flippers and other
+				// collision going to occur so fire any gizmos now so that the
+				// angular velocity of flippers and other
 				// moving things will be posted to the next shortesttimecall
 
 				// fire onhit method on the gizmo it's hitting
 
-
-				// maybe just change the onHit method to always take in the Ball object hitting it then we can just
-				// choose not to use the ball object if we don't want to
-				if(info.getHitGizmo().getClass().equals(Absorber.class)) { // must be a better way to do this
-					((Absorber)info.getHitGizmo()).setHeldBall(ball);
+				if (info.getHitGizmo().getClass().equals(Absorber.class)) {
+					((Absorber) info.getHitGizmo()).setHeldBall(ball);
 				}
 
 				info.getHitGizmo().onHit(ball);
 				pm.updateScore(info.getHitGizmo());
 			}
 
-
 			info = shortestTimeUntilCollision(ball);
 			if (info.getTimeToCollision() > Board.MOVE_TIME) {
-
 				moveBallForTime(ball, Board.MOVE_TIME);
-
 			} else {
-
 				// We've got a collision in tuc
-
 				moveBallForTime(ball, info.getTimeToCollision());
-
 				ball.setVelocity(info.getVelocity());
 
-				if(info.getHitGizmo().getClass().equals(Ball.class)) {
+				if (info.getHitGizmo().getClass().equals(Ball.class)) {
 					((Ball) info.getHitGizmo()).setVelocity(info.getOtherVelocity());
 				}
 			}
-
-
 		}
-
-
 	}
 
+	/**
+	 * Find the shortest time until the ball collides with another gizmo
+	 * 
+	 * @param ball
+	 *            the moving ball
+	 * @return a CollisionsDetails object which contains the new velocity, the
+	 *         old velocity, the time until the collision and the gizmo that
+	 *         will hit
+	 */
 	public CollisionDetails shortestTimeUntilCollision(Ball ball) {
 		List<AbstractGizmo> gizmos = pm.getBoardGizmos();
 		Vect velocity = ball.getVelocity();
@@ -95,148 +94,98 @@ public class CollisionManager extends Observable {
 
 		for (AbstractGizmo gizmo : gizmos) {
 
-			if(gizmo.equals(ball)) // skip collision checking if the gizmo to collide with is itself
+			if (gizmo.equals(ball)) // skip collision checking if the gizmo to
+									// collide with is itself
 				continue;
 
-			if(gizmo.getClass().equals(Ball.class)){ // if the collidable is another ball
+			if (gizmo.getClass().equals(Ball.class)) { // if the collidable is
+														// another ball
 
 				Ball otherB = ((Ball) gizmo);
 
-				timeToCollision = Geometry.timeUntilBallBallCollision(
-						ball.getCircle(),
-						ball.getVelocity(),
-						otherB.getCircle(),
-						otherB.getVelocity()
-				);
+				timeToCollision = Geometry.timeUntilBallBallCollision(ball.getCircle(), ball.getVelocity(),
+						otherB.getCircle(), otherB.getVelocity());
 
 				if (timeToCollision < shortestTime) {
 
 					shortestTime = timeToCollision;
-					Geometry.VectPair vectPair = Geometry.reflectBalls(
-							ball.getCenter(),
-							1.0,
-							ball.getVelocity(),
-							otherB.getCenter(),
-							1.0,
-							otherB.getVelocity()
-					);
-
+					Geometry.VectPair vectPair = Geometry.reflectBalls(ball.getCenter(), 1.0, ball.getVelocity(),
+							otherB.getCenter(), 1.0, otherB.getVelocity());
 					newVelocity = vectPair.v1;
-
 					otherVelocity = vectPair.v2;
-
 					hitGiz = gizmo;
-
 				}
 
-			} else if(gizmo.getAngularVelocity() == 0.0) { // this has issues
+			} else if (gizmo.getAngularVelocity() == 0.0) { // this has issues
 				for (LineSegment line : gizmo.getStoredLines()) {
-
-					timeToCollision = Geometry.timeUntilWallCollision(
-							line,
-							ball.getCircle(),
-							velocity
-					);
-
+					timeToCollision = Geometry.timeUntilWallCollision(line, ball.getCircle(), velocity);
 					if (timeToCollision < shortestTime) {
-
 						shortestTime = timeToCollision;
-						newVelocity = Geometry.reflectWall(
-								line,
-								velocity,
-								gizmo.getReflectionCoefficient()
-						);
-						
+						newVelocity = Geometry.reflectWall(line, velocity, gizmo.getReflectionCoefficient());
 						hitGiz = gizmo;
-						
+
 					}
 				}
 				for (Circle circle : gizmo.getStoredCircles()) {
-
-					timeToCollision = Geometry.timeUntilCircleCollision(
-							circle,
-							ball.getCircle(),
-							velocity
-					);
-
+					timeToCollision = Geometry.timeUntilCircleCollision(circle, ball.getCircle(), velocity);
 					if (timeToCollision < shortestTime) {
-
 						shortestTime = timeToCollision;
-						newVelocity = Geometry.reflectCircle(
-								circle.getCenter(),
-								ball.getCircle().getCenter(),
-								velocity,
-								gizmo.getReflectionCoefficient()
-						);
-
-						
+						newVelocity = Geometry.reflectCircle(circle.getCenter(), ball.getCircle().getCenter(), velocity,
+								gizmo.getReflectionCoefficient());
 						hitGiz = gizmo;
 
 					}
 				}
 			} else { // do rotating wall stuff
 
-
-
 				for (LineSegment line : gizmo.getStoredLines()) {
 
-					timeToCollision = Geometry.timeUntilRotatingWallCollision(
-							line,
-							gizmo.getRotateAroundPoint(),
-							gizmo.getAngularVelocity(),
-							ball.getCircle(),
-							velocity
-					);
+					timeToCollision = Geometry.timeUntilRotatingWallCollision(line, gizmo.getRotateAroundPoint(),
+							gizmo.getAngularVelocity(), ball.getCircle(), velocity);
 
 					if (timeToCollision < shortestTime) {
 
 						shortestTime = timeToCollision;
-						newVelocity = Geometry.reflectRotatingWall(
-								line,
-								gizmo.getRotateAroundPoint(),
-								gizmo.getAngularVelocity(),
-								ball.getCircle(),
-								velocity,
-								gizmo.getReflectionCoefficient()
-						);
+						newVelocity = Geometry.reflectRotatingWall(line, gizmo.getRotateAroundPoint(),
+								gizmo.getAngularVelocity(), ball.getCircle(), velocity,
+								gizmo.getReflectionCoefficient());
 						hitGiz = gizmo;
 
 					}
 				}
 				for (Circle circle : gizmo.getStoredCircles()) {
 
-					timeToCollision = Geometry.timeUntilRotatingCircleCollision(
-							circle,
-							gizmo.getRotateAroundPoint(),
-							gizmo.getAngularVelocity(),
-							ball.getCircle(),
-							velocity
-					);
+					timeToCollision = Geometry.timeUntilRotatingCircleCollision(circle, gizmo.getRotateAroundPoint(),
+							gizmo.getAngularVelocity(), ball.getCircle(), velocity);
 
 					if (timeToCollision < shortestTime) {
 
 						shortestTime = timeToCollision;
-						newVelocity = Geometry.reflectRotatingCircle(
-								circle,
-								gizmo.getRotateAroundPoint(),
-								gizmo.getAngularVelocity(),
-								ball.getCircle(),
-								velocity,
-								gizmo.getReflectionCoefficient()
-						);
-						
+						newVelocity = Geometry.reflectRotatingCircle(circle, gizmo.getRotateAroundPoint(),
+								gizmo.getAngularVelocity(), ball.getCircle(), velocity,
+								gizmo.getReflectionCoefficient());
+
 						hitGiz = gizmo;
-						
+
 					}
-					
+
 				}
-				
+
 			}
 		}
-		
+
 		return new CollisionDetails(newVelocity, otherVelocity, shortestTime, hitGiz);
 	}
 
+	/**
+	 * Move the ball for a specified time period
+	 * @param ball
+	 * 				the ball to move
+	 * @param time
+	 * 				the time period to move the ball
+	 * @return
+	 * 		the updated ball object
+	 */
 	public Ball moveBallForTime(Ball ball, double time) {
 
 		double newXPos = 0.0;
@@ -249,17 +198,26 @@ public class CollisionManager extends Observable {
 
 		ball.setPos(newXPos, newYPos);
 
-		ball.applyGravityConstant( time, SETTINGS_GRAVITY);
-		ball.applyFriction( time, SETTINGS_FRICTION_MU * time, SETTINGS_FRICTION_MU2 * Board.X_CELLS);
+		ball.applyGravityConstant(time, SETTINGS_GRAVITY);
+		ball.applyFriction(time, SETTINGS_FRICTION_MU * time, SETTINGS_FRICTION_MU2 * Board.X_CELLS);
 
 		return ball;
 	}
 
-	public void setGravity(double grav){
-		this.SETTINGS_GRAVITY = grav;
+	/**
+	 * Set the gravity of the game
+	 * @param newGravity
+	 */
+	public void setGravity(double newGravity) {
+		this.SETTINGS_GRAVITY = newGravity;
 	}
 
-	public void setFriction(double mu, double mu2){
+	/**
+	 * Set the new friction of the game
+	 * @param mu
+	 * @param mu2
+	 */
+	public void setFriction(double mu, double mu2) {
 		this.SETTINGS_FRICTION_MU = mu;
 		this.SETTINGS_FRICTION_MU2 = mu2;
 	}
@@ -276,30 +234,36 @@ public class CollisionManager extends Observable {
 		return this.SETTINGS_FRICTION_MU2;
 	}
 
+	/**
+	 * The CollisionDetails class contains all the information about a future collision
+	 *
+	 */
 	public class CollisionDetails {
-
 		private Vect velocity, velocity2;
 		private double time;
 		private AbstractGizmo hitGizmo;
 
-		public CollisionDetails(Vect velocity1, Vect velocity2, double time, AbstractGizmo hitGiz){
+		public CollisionDetails(Vect velocity1, Vect velocity2, double time, AbstractGizmo hitGiz) {
 			this.velocity = velocity1;
 			this.velocity2 = velocity2;
 			this.time = time;
 			this.hitGizmo = hitGiz;
 		}
 
-		public Vect getVelocity(){
+		public Vect getVelocity() {
 			return velocity;
 		}
-		public Vect getOtherVelocity(){
+
+		public Vect getOtherVelocity() {
 			return velocity2;
 		}
 
-		public double getTimeToCollision(){
+		public double getTimeToCollision() {
 			return time;
 		}
 
-		public AbstractGizmo getHitGizmo() { return hitGizmo; }
+		public AbstractGizmo getHitGizmo() {
+			return hitGizmo;
+		}
 	}
 }
