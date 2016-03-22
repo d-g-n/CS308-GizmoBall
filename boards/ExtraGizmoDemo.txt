@@ -1,16 +1,13 @@
 Absorber 0_19 0 19 20 20
 Teleporter 19_0 19 0
-Teleporter 3_10 3 10
-Teleporter 10_0 9 0
-Booster 11_12 11 12
+Teleporter 3_10 3 0
+Teleporter 10_0 15 7
+Booster 11_12 4 15
 Rotate 11_12
 Rotate 11_12
 Rotate 11_12
-Teleporter 5_14 5 14
-DeathSquare 11_15 11 15
-Booster 14_18 14 18
-DeathSquare 18_14 18 14
-Ball 19_3 19.5 14.560644457324857 0.0 0.0
+Teleporter 5_14 10 11
+Ball 19_3 8.790522066537102 17.293827345551776 -17.54646757614216 43.29611633494162
 Connect 0_19 0_19
 Connect 19_0 3_10
 Connect 10_0 5_14

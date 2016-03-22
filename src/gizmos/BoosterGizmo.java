@@ -14,7 +14,7 @@ public class BoosterGizmo extends AbstractGizmo {
 	public BoosterGizmo(int x, int y) {
 		super(x, y, 1, 1,
 				Color.green, // colour of gizmo
-				1// reflection coefficent
+				1.5// reflection coefficent
 		);
 
 		this.type = "Booster";

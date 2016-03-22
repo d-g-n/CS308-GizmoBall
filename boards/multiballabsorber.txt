@@ -52,29 +52,15 @@ Square 3_19 3 19
 Booster 19_1 19 1
 Rotate 19_1
 Rotate 19_1
-Square 7_4 7 4
-Square 7_5 7 5
-Square 7_6 7 6
-Square 7_7 7 7
-Square 7_8 7 8
 Square 8_8 8 8
-Square 9_8 9 8
 Square 10_8 10 8
 Square 11_8 11 8
 Square 11_7 11 7
-Square 11_6 11 6
-Square 11_5 11 5
-Square 11_4 11 4
-Square 11_3 11 3
 Square 7_0 7 0
 Square 11_0 11 0
 DeathSquare 7_1 7 1
 DeathSquare 7_2 7 2
 DeathSquare 7_3 7 3
-Triangle 8_7 8 7
-Rotate 8_7
-Rotate 8_7
-Rotate 8_7
 Triangle 10_7 10 7
 Rotate 10_7
 Rotate 10_7
@@ -85,6 +71,13 @@ Rotate 10_7
 Square 8_0 8 0
 Square 9_0 9 0
 Square 10_0 10 0
+DeathSquare 7_4 7 4
+DeathSquare 7_6 7 6
+DeathSquare 7_5 7 5
+DeathSquare 8_7 8 7
+Square 7_7 7 7
+Square 7_8 7 8
+DeathSquare 9_8 9 8
 Ball 13_17 13.5 17.5 0.0 0.0
 Ball 14_16 14.5 16.5 0.0 0.0
 Ball 15_15 15.5 15.5 0.0 0.0
