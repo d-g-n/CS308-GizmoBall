@@ -2,11 +2,6 @@ package gizmos;
 
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
-import java.awt.geom.Rectangle2D;
-import java.util.Arrays;
-
-import physics.Vect;
-import view.Board;
 
 public class CircleBumper extends AbstractGizmo {
 

@@ -1,13 +1,9 @@
 package gizmos;
 
-import model.ProjectManager;
 import physics.*;
-import view.Board;
 
 import java.awt.*;
-import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public abstract class AbstractGizmo {

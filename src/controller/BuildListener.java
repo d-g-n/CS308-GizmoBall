@@ -3,15 +3,12 @@ package controller;
 import java.awt.event.*;
 import java.util.HashMap;
 
-import javax.swing.JOptionPane;
 import javax.swing.JSlider;
 import javax.swing.Timer;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import gizmos.SquareBumper;
 import model.ProjectManager;
-import view.Board;
 import view.BuildGUI;
 
 /**

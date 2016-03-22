@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 import model.ProjectManager;
-import view.Board;
+import model.GizmoConstants;
 import view.BuildGUI;
 
 /**
@@ -24,7 +24,7 @@ public class RunListener implements ActionListener {
 
 	public RunListener(ProjectManager model) {
 		this.pm = model;
-		visualTimer = new Timer((int) (1000 * (1/Board.FRAME_RATE)), this);
+		visualTimer = new Timer((int) (1000 * (1/ GizmoConstants.FRAME_RATE)), this);
 		visualTimer.start();
 		pm.setTimer(visualTimer);
 	}
@@ -40,7 +40,7 @@ public class RunListener implements ActionListener {
 			// 50 fps we need to take 20 physics steps for every visual update to keep it looking smooth
 			// and consistent
 
-			for(int i = 0; i < (int) (Board.PHYSICS_FRAME_RATE / Board.FRAME_RATE); i++){
+			for(int i = 0; i < (int) (GizmoConstants.PHYSICS_FRAME_RATE / GizmoConstants.FRAME_RATE); i++){
 				pm.moveBall();
 			}
 
@@ -61,7 +61,7 @@ public class RunListener implements ActionListener {
 
 				// simulate one second of movement in visual time
 
-				for(int i = 0; i < 1000*(1/Board.FRAME_RATE); i++){
+				for(int i = 0; i < 1000*(1/ GizmoConstants.FRAME_RATE); i++){
 					pm.moveBall();
 				}
 

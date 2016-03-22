@@ -30,10 +30,12 @@ public class BuildGUI {
 
 	public void showPalette() {
 		frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+
 		frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
 		// frame.setPreferredSize(new Dimension(600, 625));
 		addComponents(frame.getContentPane());
 		frame.pack();
+		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 	}
 

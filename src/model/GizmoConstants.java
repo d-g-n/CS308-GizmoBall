@@ -1,11 +1,11 @@
-package view;
+package model;
 
 /**
- * The Board class provides information about the board such as
+ * The GizmoConstants class provides information about the board such as
  * board dimensions, frame rate, move time etc.
  * 
  */
-public final class Board {
+public final class GizmoConstants {
 
 	public static final int X_CELLS = 20;
 	public static final int Y_CELLS = 20;

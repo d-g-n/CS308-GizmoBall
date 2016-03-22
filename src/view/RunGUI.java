@@ -115,12 +115,14 @@ public class RunGUI implements Observer {
 		JFrame frame = new JFrame("Gizmoball");
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 		// frame.setPreferredSize(new Dimension(950,800));
 		addComponentsToPane(frame.getContentPane(), pm);
 		createMenuBar(frame.getContentPane());
 		createStatusBar(frame.getContentPane());
 		frame.addKeyListener(keyListener);
 		frame.pack();
+		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 	}
 

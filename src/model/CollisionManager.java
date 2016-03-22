@@ -3,17 +3,12 @@ package model;
 import java.util.List;
 import java.util.Observable;
 
-import gizmos.Absorber;
 import gizmos.AbstractGizmo;
 import gizmos.Ball;
-import gizmos.CircleBumper;
-import gizmos.SquareBumper;
-import gizmos.TriangleBumper;
 import physics.Circle;
 import physics.Geometry;
 import physics.LineSegment;
 import physics.Vect;
-import view.Board;
 
 /**
  * The CollisionManager class provides core functionality to identify collisions
@@ -50,7 +45,7 @@ public class CollisionManager extends Observable {
 
 			CollisionDetails info = shortestTimeUntilCollision(ball);
 
-			if (info.getTimeToCollision() <= Board.MOVE_TIME) {
+			if (info.getTimeToCollision() <= GizmoConstants.MOVE_TIME) {
 				// collision going to occur so fire any gizmos now so that the angular velocity of flippers and other
 				// moving things will be posted to the next shortesttimecall
 
@@ -66,9 +61,9 @@ public class CollisionManager extends Observable {
 
 
 			//info = shortestTimeUntilCollision(ball);
-			if (info.getTimeToCollision() > Board.MOVE_TIME) {
+			if (info.getTimeToCollision() > GizmoConstants.MOVE_TIME) {
 
-				moveBallForTime(ball, Board.MOVE_TIME);
+				moveBallForTime(ball, GizmoConstants.MOVE_TIME);
 
 			} else {
 
@@ -289,7 +284,7 @@ public class CollisionManager extends Observable {
 		ball.setPos(newXPos, newYPos);
 
 		ball.applyGravityConstant( time, SETTINGS_GRAVITY);
-		ball.applyFriction( time, SETTINGS_FRICTION_MU * time, SETTINGS_FRICTION_MU2 * Board.X_CELLS);
+		ball.applyFriction( time, SETTINGS_FRICTION_MU * time, SETTINGS_FRICTION_MU2 * GizmoConstants.X_CELLS);
 
 		return ball;
 	}
