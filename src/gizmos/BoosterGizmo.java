@@ -82,8 +82,6 @@ public class BoosterGizmo extends AbstractGizmo {
 		if(boardBall != null) {
 			boardBall.setVelocity(new Vect(boardBall.getVelocity().x()*2, boardBall.getVelocity().y()*2));
 		}
-
-		super.onHit(hit);
 	}
 
 

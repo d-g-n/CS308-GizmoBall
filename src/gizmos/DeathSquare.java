@@ -57,7 +57,6 @@ public class DeathSquare extends AbstractGizmo {
 			boardBall.setVelocity(new Vect(0,0));
 		}
 
-		super.onHit(hit);
 	}
 	
 	

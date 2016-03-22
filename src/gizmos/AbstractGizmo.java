@@ -160,9 +160,7 @@ public abstract class AbstractGizmo {
 	 * in the Absorber.
 	 */
 	public void onHit(AbstractGizmo hitGiz) {
-		for (AbstractGizmo g : gizmoListeners) {
-			g.doTrigger();
-		}
+
 	}
 
 	/**
@@ -171,6 +169,12 @@ public abstract class AbstractGizmo {
 	 */
 	public void doTrigger() {
 		// there is no default action but needed here to override it.
+	}
+
+	public void sendTriggers(){
+		for (AbstractGizmo g : gizmoListeners) {
+			g.doTrigger();
+		}
 	}
 
 

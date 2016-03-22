@@ -81,7 +81,13 @@ public class CollisionManager extends Observable {
 				if(info.getHitGizmo().getClass().equals(Ball.class)) {
 					((Ball) info.getHitGizmo()).setVelocity(info.getOtherVelocity());
 				}
+
+				// a collision has happened so trigger the superclass onhit
+
+				((AbstractGizmo)info.getHitGizmo()).sendTriggers();
+
 			}
+
 
 
 		}

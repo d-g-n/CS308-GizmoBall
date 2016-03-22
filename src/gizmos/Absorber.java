@@ -17,7 +17,7 @@ public class Absorber extends AbstractGizmo {
 
 		super(x, y, w, h,
 				Color.magenta, // colour of gizmo
-				1 // reflection coefficent
+				0 // reflection coefficent
 		);
 
 		this.type = "Absorber";
@@ -51,9 +51,6 @@ public class Absorber extends AbstractGizmo {
 			heldBalls.add(boardBall);
 			sortBalls();
 		}
-
-
-		super.onHit(hit);
 	}
 
 	/**
@@ -61,17 +58,18 @@ public class Absorber extends AbstractGizmo {
 	 */
 	@Override
 	public void doTrigger() {
-		super.doTrigger();
 
 		// if ball is held, chuck it back out
 
 		if(heldBalls.size() > 0){
 			Ball throwB = heldBalls.remove(0);
 
-			throwB.setPos(throwB.getXPos(), throwB.getYPos() - (throwB.getRadius() * 2) );
-			throwB.setStopped(false);
-			throwB.setVelocity(new Vect(0, -50));
+			throwB.setPos(throwB.getXPos(), throwB.getYPos() - (throwB.getRadius() * 3) );
 
+			throwB.setVelocity(new Vect(0, -50));
+			throwB.setStopped(false);
+
+			System.out.println(heldBalls.size());
 			sortBalls();
 		}
 

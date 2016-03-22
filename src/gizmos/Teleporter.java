@@ -63,7 +63,6 @@ public class Teleporter extends AbstractGizmo {
 			}
 		}
 
-		super.onHit(hit);
 	}
 
 
