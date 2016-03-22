@@ -15,6 +15,11 @@ import physics.LineSegment;
 import physics.Vect;
 import view.Board;
 
+/**
+ * The CollisionManager class provides core functionality to identify collisions
+ * of the balls on the board with its gizmos.
+ *
+ * */
 public class CollisionManager extends Observable {
 
 	private ProjectManager pm;
@@ -27,6 +32,10 @@ public class CollisionManager extends Observable {
 		this.pm = pm;
 	}
 
+	/**
+	  * The moveBall method is fired every time tick to move the ball taking into
+	  * account any collisions
+	  */
 	public void moveBall() {
 
 		for(AbstractGizmo g : pm.getBoardGizmos()) {
@@ -95,6 +104,15 @@ public class CollisionManager extends Observable {
 
 	}
 
+	/**
+	  * Find the shortest time until the ball collides with another gizmo
+	  *
+	  * @param ball
+	  *            the moving ball
+	  * @return a CollisionsDetails object which contains the new velocity, the
+	  *         old velocity, the time until the collision and the gizmo that
+	  *         will hit
+	  */
 	public CollisionDetails shortestTimeUntilCollision(Ball ball) {
 		List<AbstractGizmo> gizmos = pm.getBoardGizmos();
 		Vect velocity = ball.getVelocity();
@@ -249,6 +267,15 @@ public class CollisionManager extends Observable {
 		return new CollisionDetails(newVelocity, otherVelocity, shortestTime, hitGiz);
 	}
 
+	/**
+	  * Move the ball for a specified time period
+	  * @param ball
+	  * 				the ball to move
+	  * @param time
+	  * 				the time period to move the ball
+	  * @return
+	  * 		the updated ball object
+	  */
 	public Ball moveBallForTime(Ball ball, double time) {
 
 		double newXPos = 0.0;
@@ -267,27 +294,52 @@ public class CollisionManager extends Observable {
 		return ball;
 	}
 
+	/**
+	 * Set the gravity of the board
+	 * @param grav
+	 */
 	public void setGravity(double grav){
 		this.SETTINGS_GRAVITY = grav;
 	}
 
+	/**
+	 * Set the new friction of the board
+	 * @param mu
+	 * @param mu2
+	 */
 	public void setFriction(double mu, double mu2){
 		this.SETTINGS_FRICTION_MU = mu;
 		this.SETTINGS_FRICTION_MU2 = mu2;
 	}
 
+	/**
+	 * Get the gravity of the board
+	 * @return
+	 */
 	public double getGravity() {
 		return this.SETTINGS_GRAVITY;
 	}
 
+	/**
+	 * Get the mu friction of the board
+	 * @return
+	 */
 	public double getMuFriction() {
 		return this.SETTINGS_FRICTION_MU;
 	}
 
+	/**
+	 * Get the mu2 friction of the board
+	 * @return
+	 */
 	public double getMu2Friction() {
 		return this.SETTINGS_FRICTION_MU2;
 	}
 
+	/**
+	  * The CollisionDetails class contains all the information about a future collision
+	  *
+	  */
 	public class CollisionDetails {
 
 		private Vect velocity, velocity2;

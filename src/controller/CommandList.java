@@ -202,7 +202,6 @@ final class CommandList {
 				"icons/commands/clear.png",
 				(firstX, firstY, secondX, secondY) -> {
 					ProjectManager pm = CommandMapper.getPMRef();
-					pm.setFocusedButton("Clear Board");
 					pm.setStatusLabel("Clearing Board..");
 					int confirmation = JOptionPane.YES_NO_OPTION;
 					int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to clear the entire board?",

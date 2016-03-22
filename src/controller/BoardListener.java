@@ -17,6 +17,11 @@ public class BoardListener implements MouseListener {
 	private ProjectManager pm;
 	private int x,y;
 
+	/**
+	 * The BoardListener class implements the MouseListener interface and handles
+	 * the mouse events on the play board.
+	 *
+	 */
 	public BoardListener(ProjectManager pm, JPanel board) {
 		this.board = board;
 		this.pm = pm;

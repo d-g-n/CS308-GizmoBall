@@ -13,7 +13,11 @@ public class Ball extends AbstractGizmo {
 
 	private boolean stopped;
 
-	// x, y coordinates and x,y velocity
+	/**
+	 * The Ball class represents the ball on the board,
+	 * where the user can retrieve all the information
+	 * about the state of the ball.
+	 */
 	public Ball(double x, double y, Vect initialVelocity) {
 
 		super(x, y, 0.5, 0.5,
@@ -63,6 +67,9 @@ public class Ball extends AbstractGizmo {
 		return new Circle(xpos, ypos, radius);
 	}
 
+	/**
+	 * @see gizmos.AbstractGizmo#getShape
+	 */
 	@Override
 	public Shape getShape(){
 		return getCircle().toEllipse2D();

@@ -53,7 +53,9 @@ public class GizmoFunctionsTest extends BaseTestCase {
 
 		Ball b1919 = new Ball(19, 19, new Vect(19, 19));
 
-		Assert.assertTrue("Should be able to place the ball inside the absorber", pm.canPlaceGizmoAt(b00));
+		pm.addGizmo(b00);
+
+		Assert.assertNotNull("Should be able to place the ball inside the absorber", pm.getGizmoByName(b00.getName()));
 
 		Assert.assertFalse("Should not be able to add ball inside the square", pm.canPlaceGizmoAt(b1919));
 

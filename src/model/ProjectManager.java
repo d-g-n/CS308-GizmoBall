@@ -343,4 +343,12 @@ public class ProjectManager extends Observable {
 	public Timer getTimer(){
 		return runTimer;
 	}
+
+	public void setCurrentCommand(String currentCommand) {
+		this.currentCommand = currentCommand;
+	}
+
+	public String getCurrentCommand() {
+		return currentCommand;
+	}
 }

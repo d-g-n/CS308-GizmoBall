@@ -20,8 +20,10 @@ public class BoosterGizmo extends AbstractGizmo {
 		this.type = "Booster";
 
 	}
-	
-	
+
+	/**
+	 * @see gizmos.AbstractGizmo#setGizShape
+	 */
 	@Override
 	public void setGizShape(double x, double y) {
 		
@@ -59,7 +61,10 @@ public class BoosterGizmo extends AbstractGizmo {
 		setShape(shape);
 		
 	}
-	
+
+	/**
+	 * @see gizmos.AbstractGizmo#setGizPhysics
+	 */
 	@Override
 	public void setGizPhysics(double x, double y) {
 		
@@ -73,7 +78,9 @@ public class BoosterGizmo extends AbstractGizmo {
 		
 	}
 
-	
+	/**
+	 * @see gizmos.AbstractGizmo#onHit
+	 */
 	@Override
 	public void onHit(AbstractGizmo hit) {
 

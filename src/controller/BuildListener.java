@@ -101,7 +101,7 @@ public class BuildListener implements ActionListener, ChangeListener, WindowList
 	@Override
 	public void windowClosing(WindowEvent e) {
 		pm.dynamicModeOff();
-		pm.setFocusedButton("");
+		pm.setCurrentCommand("");
 		pm.setStatusLabel("Score: " + pm.getScore() + " HighScore " + pm.getHighScore() + " Lives: " + pm.getLives());
 		pm.setBuildModeOn(false);
 		view.disposeFrame();

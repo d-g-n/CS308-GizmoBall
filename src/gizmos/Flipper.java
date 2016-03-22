@@ -13,6 +13,11 @@ public class Flipper extends AbstractGizmo {
 	boolean flipperMoving, rotateClockwise;
 	double flipRotation, localxpos;
 
+	/**
+	 * The Flipper class represents the flippers of the board and provides basic
+	 * functionality for flipping and triggering.
+	 *
+	 */
 	public Flipper(int x, int y) {
 
 		super(x, y, 2, 2,
@@ -29,6 +34,9 @@ public class Flipper extends AbstractGizmo {
 
 	}
 
+	/**
+	 * @see gizmos.AbstractGizmo#setGizShape
+	 */
 	@Override
 	public void setGizShape(double x, double y) {
 
@@ -47,6 +55,9 @@ public class Flipper extends AbstractGizmo {
 
 	}
 
+	/**
+	 * @see gizmos.AbstractGizmo#setGizPhysics
+	 */
 	@Override
 	public void setGizPhysics(double x, double y) {
 
@@ -68,11 +79,18 @@ public class Flipper extends AbstractGizmo {
 	// note to whoever, this is fired whenever a button that's linked to this gizmo is pressed or if
 	// the ball touches another gizmo that's linked to this gizmo
 	// to debug all flippers are linked to themselves as in the Flipper class
+	/**
+	 * @see gizmos.AbstractGizmo#doTrigger
+	 */
 	@Override
 	public void doTrigger(){
 		this.flipperMoving = true;
 	}
 
+	/**
+	 * Flip the flipper clockwise to the specified degrees
+	 * @param toDegrees the degrees the flipper to be flipped
+	 */
 	public void flipClockwise(int toDegrees){
 		if (flipRotation >= toDegrees) {
 
@@ -105,6 +123,10 @@ public class Flipper extends AbstractGizmo {
 		}
 	}
 
+	/**
+	  * Flip the flipper anticlockwise to the specified degrees
+	  * @param toDegrees the degrees the flipper to be flipped
+	  */
 	public void flipAntiClockwise(int toDegrees){
 		if (flipRotation <= toDegrees) {
 
@@ -135,6 +157,9 @@ public class Flipper extends AbstractGizmo {
 		}
 	}
 
+	/**
+	 * @see gizmos.AbstractGizmo#getAngularVelocity
+	 */
 	@Override
 	public double getAngularVelocity(){
 		return (flipperMoving ? Math.toRadians(rotateClockwise ? angleVel : -angleVel) : 0.0);

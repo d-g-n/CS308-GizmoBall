@@ -11,6 +11,11 @@ public class DeathSquare extends AbstractGizmo {
 	
 	Ball boardBall = null;
 
+	/**
+	 * The DeathSquare class represents the special squares on the board
+	 * which kill the ball when they get hit by it.
+	 *
+	 */
 	public DeathSquare(int x, int y) {
 		super(x, y, 1, 1,
 				Color.GRAY, // colour of gizmo
@@ -20,7 +25,10 @@ public class DeathSquare extends AbstractGizmo {
 		this.type = "DeathSquare";
 
 	}
-	
+
+	/**
+	 * @see gizmos.AbstractGizmo#setGizShape
+	 */
 	@Override
 	public void setGizShape(double x, double y) {
 		
@@ -33,7 +41,10 @@ public class DeathSquare extends AbstractGizmo {
 		));
 		
 	}
-	
+
+	/**
+	 * @see gizmos.AbstractGizmo#setGizPhysics
+	 */
 	@Override
 	public void setGizPhysics(double x, double y) {
 		
@@ -47,7 +58,10 @@ public class DeathSquare extends AbstractGizmo {
 		));
 		
 	}
-	
+
+	/**
+	 * @see gizmos.AbstractGizmo#onHit
+	 */
 	@Override
 	public void onHit(AbstractGizmo hit) {
 

@@ -13,6 +13,11 @@ public class Absorber extends AbstractGizmo {
 
 	List<Ball> heldBalls;
 
+	/**
+	 * The Absorber class implements the AbstractGizmo class
+	 * which represents an absorber of the board.
+	 *
+	 */
 	public Absorber(int x, int y, int w, int h) {
 
 		super(x, y, w, h,
@@ -39,7 +44,7 @@ public class Absorber extends AbstractGizmo {
 	}
 
 	/**
-	 * This is an example of how to extend abstract behaviour to provide additional behaviour
+	 * @see gizmos.AbstractGizmo#onHit
 	 */
 	@Override
 	public void onHit(AbstractGizmo hit) {
@@ -54,7 +59,7 @@ public class Absorber extends AbstractGizmo {
 	}
 
 	/**
-	 * Like above, will want to set the velocity of the ball if the ball is currently being held
+	 * @see gizmos.AbstractGizmo#doTrigger
 	 */
 	@Override
 	public void doTrigger() {
@@ -73,18 +78,12 @@ public class Absorber extends AbstractGizmo {
 			sortBalls();
 		}
 
-		/*if(boardBall != null && boardBall.isStopped()){
-
-			boardBall.setStopped(false);
-
-			boardBall.setVelocity(new Vect(0, -50));
-
-			boardBall = null;
-
-		}*/
 
 	}
-	
+
+	/**
+	 * @see gizmos.AbstractGizmo#setGizShape
+	 */
 	@Override
 	public void setGizShape(double x, double y) {
 		
@@ -97,7 +96,10 @@ public class Absorber extends AbstractGizmo {
 		));
 		
 	}
-	
+
+	/**
+	 * @see gizmos.AbstractGizmo#setGizPhysics
+	 */
 	@Override
 	public void setGizPhysics(double x, double y) {
 		

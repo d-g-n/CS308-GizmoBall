@@ -16,7 +16,7 @@ import model.ProjectManager;
  * The BuildGUI class creates a window for the palette of the build mode.
  *
  */
-public class BuildGUI implements GBallGui {
+public class BuildGUI {
 
 	private JFrame frame;
 	private BuildListener controller;
