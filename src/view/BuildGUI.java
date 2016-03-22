@@ -32,7 +32,7 @@ public class BuildGUI {
 		frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
 		frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
-		// frame.setPreferredSize(new Dimension(600, 625));
+		frame.setPreferredSize(new Dimension(700, 625));
 		addComponents(frame.getContentPane());
 		frame.pack();
 		frame.setLocationRelativeTo(null);
@@ -43,16 +43,16 @@ public class BuildGUI {
 
 		Map<CommandEnums, JPanel> categoryMap = new HashMap<>();
 
-		for(CommandEnums cat : CommandEnums.values()){
+		for (CommandEnums cat : CommandEnums.values()) {
 			JPanel category = addSection(cat.getCategory(), pane);
 			categoryMap.put(cat, category);
 		}
 
-		for(Map.Entry<String, CommandMapper.Command> comMap : CommandMapper.getCommandMap().entrySet()){
+		for (Map.Entry<String, CommandMapper.Command> comMap : CommandMapper.getCommandMap().entrySet()) {
 			CommandMapper.Command c = comMap.getValue();
-			addAButton(comMap.getKey(), c.getPrettyName(), new ImageIcon(c.getIconPath()), categoryMap.get(c.getCategory()));
+			addAButton(comMap.getKey(), c.getPrettyName(), new ImageIcon(c.getIconPath()),
+					categoryMap.get(c.getCategory()));
 		}
-
 
 		addGravitySlider(0, 100, 25, categoryMap.get(CommandEnums.CATEGORY_OTHER));
 		addFrictionSlider(0, 100, 25, categoryMap.get(CommandEnums.CATEGORY_OTHER));
