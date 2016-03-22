@@ -101,9 +101,6 @@ public class ProjectManager extends Observable {
 	}
 
 	public void addGizmo(AbstractGizmo g) {
-
-		System.out.println();
-
 		// ideally we'll give it a random name here but irght now
 		// also need to do square checking in here to prevent overlapping gizmos
 		if (canPlaceGizmoAt(g) || g.getClass().equals(OuterWall.class) || (g.getClass().equals(Ball.class) && this.getGizmoByCoordinate((int)Math.floor(g.getXPos()),(int) Math.floor(g.getYPos())).getClass().equals(Absorber.class)))
