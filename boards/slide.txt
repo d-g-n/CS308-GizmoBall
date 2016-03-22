@@ -1,0 +1,132 @@
+Triangle 1_2 1 2
+Rotate 1_2
+Rotate 1_2
+Rotate 1_2
+Triangle 2_3 2 3
+Rotate 2_3
+Rotate 2_3
+Rotate 2_3
+Triangle 3_4 3 4
+Rotate 3_4
+Rotate 3_4
+Rotate 3_4
+Triangle 4_5 4 5
+Rotate 4_5
+Rotate 4_5
+Rotate 4_5
+Triangle 5_6 5 6
+Rotate 5_6
+Rotate 5_6
+Rotate 5_6
+Triangle 6_7 6 7
+Rotate 6_7
+Rotate 6_7
+Rotate 6_7
+Triangle 7_8 7 8
+Rotate 7_8
+Rotate 7_8
+Rotate 7_8
+Triangle 8_9 8 9
+Rotate 8_9
+Rotate 8_9
+Rotate 8_9
+Triangle 9_10 9 10
+Rotate 9_10
+Rotate 9_10
+Rotate 9_10
+Rotate 9_10
+Rotate 9_10
+Rotate 9_10
+Rotate 9_10
+Triangle 10_11 10 11
+Rotate 10_11
+Rotate 10_11
+Rotate 10_11
+Triangle 11_12 11 12
+Rotate 11_12
+Rotate 11_12
+Rotate 11_12
+Triangle 12_13 12 13
+Rotate 12_13
+Rotate 12_13
+Rotate 12_13
+Triangle 13_14 13 14
+Rotate 13_14
+Rotate 13_14
+Rotate 13_14
+Triangle 14_15 14 15
+Rotate 14_15
+Rotate 14_15
+Rotate 14_15
+Triangle 16_17 16 17
+Rotate 16_17
+Rotate 16_17
+Rotate 16_17
+Triangle 15_16 15 16
+Rotate 15_16
+Rotate 15_16
+Rotate 15_16
+Triangle 17_18 17 18
+Rotate 17_18
+Rotate 17_18
+Rotate 17_18
+Triangle 18_19 18 19
+Rotate 18_19
+Rotate 18_19
+Rotate 18_19
+Teleporter 0_0 0 0
+Teleporter 19_19 19 19
+Triangle 0_1 0 1
+Rotate 0_1
+Rotate 0_1
+Rotate 0_1
+Triangle 1_0 1 0
+Rotate 1_0
+Triangle 2_1 2 1
+Rotate 2_1
+Rotate 2_1
+Rotate 2_1
+Rotate 2_1
+Rotate 2_1
+Triangle 6_5 6 5
+Rotate 6_5
+Triangle 3_2 3 2
+Rotate 3_2
+Triangle 4_3 4 3
+Rotate 4_3
+Triangle 5_4 5 4
+Rotate 5_4
+Triangle 7_6 7 6
+Rotate 7_6
+Triangle 8_7 8 7
+Rotate 8_7
+Triangle 9_8 9 8
+Rotate 9_8
+Triangle 10_9 10 9
+Rotate 10_9
+Triangle 12_11 12 11
+Rotate 12_11
+Triangle 13_12 13 12
+Rotate 13_12
+Triangle 14_13 14 13
+Rotate 14_13
+Triangle 15_14 15 14
+Rotate 15_14
+Rotate 15_14
+Rotate 15_14
+Rotate 15_14
+Rotate 15_14
+Triangle 16_15 16 15
+Rotate 16_15
+Triangle 17_16 17 16
+Rotate 17_16
+Triangle 18_17 18 17
+Rotate 18_17
+Triangle 19_18 19 18
+Rotate 19_18
+Triangle 11_10 11 10
+Rotate 11_10
+Ball 1_1 11.521942154181277 12.164867447149698 5.718357140259518 7.753967893489188
+Connect 19_19 0_0
+Gravity 27.0
+Friction 0.1 0.1

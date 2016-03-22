@@ -44,21 +44,21 @@ public class BuildGUI implements GBallGui {
 		addAButton("Triangle", new ImageIcon("icons/gizmos/triangle.png"), gizmoSection);
 		addAButton("Absorber", new ImageIcon("icons/gizmos/absorber.png"), gizmoSection);
 		addAButton("LFlipper", new ImageIcon("icons/gizmos/leftflipper.png"), gizmoSection);
-		addAButton("RFlipper", new ImageIcon("icons/gizmos/rightflipper.png"), gizmoSection);		
+		addAButton("RFlipper", new ImageIcon("icons/gizmos/rightflipper.png"), gizmoSection);
 		addAButton("Booster", new ImageIcon("icons/gizmos/booster.png"), gizmoSection);
 		addAButton("Death Sqaure", new ImageIcon("icons/gizmos/deathsquare.png"), gizmoSection);
 		addAButton("Teleporter", new ImageIcon("icons/gizmos/teleporter.png"), gizmoSection);
 
-		addAButton("Move", commandsSection);
-		addAButton("Rotate", commandsSection);
-		addAButton("Delete", commandsSection);
-		addAButton("Clear Board", commandsSection);
-		addAButton("Connect Gizmos", commandsSection);
-		addAButton("Disconnect Gizmos", commandsSection);
-		addAButton("Key Connect", commandsSection);
-		addAButton("Key Disconnect", commandsSection);
-		addAButton("Reload Board", commandsSection);
-		addAButton("Dynamic Play", commandsSection);
+		addAButton("Move", new ImageIcon("icons/commands/move.png"), commandsSection);
+		addAButton("Rotate", new ImageIcon("icons/commands/rotate.png"), commandsSection);
+		addAButton("Delete", new ImageIcon("icons/commands/delete.png"), commandsSection);
+		addAButton("Clear Board", new ImageIcon("icons/commands/clear.png"), commandsSection);
+		addAButton("Reload Board", new ImageIcon("icons/commands/reload.png"), commandsSection);
+		addAButton("Connect Gizmos", new ImageIcon("icons/commands/connect.png"), commandsSection);
+		addAButton("Disconnect Gizmos", new ImageIcon("icons/commands/disconnect.png"), commandsSection);
+		addAButton("Key Connect", new ImageIcon("icons/commands/keyconnect.png"), commandsSection);
+		addAButton("Key Disconnect", new ImageIcon("icons/commands/keydisconnect.png"), commandsSection);
+		addAButton("Dynamic Play", new ImageIcon("icons/commands/play.png"), commandsSection);
 
 		addGravitySlider(0, 100, 25, settingsSection);
 		addFrictionSlider(0, 100, 25, settingsSection);
