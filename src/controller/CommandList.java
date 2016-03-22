@@ -7,6 +7,7 @@ import view.CommandEnums;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
+import java.util.*;
 
 /**
  * Created by Declan on 22/03/2016.
@@ -285,11 +286,76 @@ final class CommandList {
 
 		CommandMapper.addNewCommand(
 				"keydisconnect_gizmos",
-				CommandMapper.CommandLevel.BOARD_LEVEL,
+				CommandMapper.CommandLevel.BUTTON_LEVEL,
 				"Keydisconnect Gizmos",
 				CommandEnums.CATEGORY_COMMANDS,
 				"icons/commands/keydisconnect.png",
 				(firstX, firstY, secondX, secondY) -> {
+
+					ProjectManager pm = CommandMapper.getPMRef();
+
+					List<String> keys = new ArrayList<String>();
+
+					for(Map.Entry<Map.Entry<String, Integer>, List<AbstractGizmo>> e : pm.getKeyConnects().entrySet()){
+						keys.add(KeyEvent.getKeyText(e.getKey().getValue()) + " - " + e.getKey().getKey());
+					}
+
+					Object[] opt = keys.toArray();
+
+					if(opt.length == 0)
+						return;
+
+					String keyToDisconnect = (String) JOptionPane.showInputDialog(
+							null,
+							"Please choose what key to disconnect",
+							"Disconnect key",
+							JOptionPane.PLAIN_MESSAGE,
+							null,
+							opt,
+							opt[0]
+					);
+
+					if(keyToDisconnect != null){
+						String[] keyExplode = keyToDisconnect.split(" - ");
+						int keyCode = KeyEvent.getExtendedKeyCodeForChar(keyExplode[0].charAt(0));
+						String downOrUp = keyExplode[1];
+
+						List<String> gizArray = new ArrayList<>();
+
+						List<AbstractGizmo> gizList = pm.getKeyConnects().get(new AbstractMap.SimpleEntry<String, Integer>(downOrUp, keyCode));
+
+						if(gizList == null)
+							return;
+
+						int i = 0;
+						for(AbstractGizmo gizmo : gizList){
+							gizArray.add(i + ": " + gizmo.getType() + " at (" + gizmo.getXPos() + ", " + gizmo.getYPos() + ")");
+
+							i++;
+						}
+
+						Object[] optg = gizArray.toArray();
+
+						if(optg.length == 0)
+							return;
+
+						String gizmoToDisconnect = (String) JOptionPane.showInputDialog(
+								null,
+								"Please choose what gizmo to disconnect",
+								"Disconnect gizmo",
+								JOptionPane.PLAIN_MESSAGE,
+								null,
+								optg,
+								optg[0]
+						);
+
+						if(gizmoToDisconnect != null){
+
+							int gizIndex = Integer.valueOf(gizmoToDisconnect.substring(0, gizmoToDisconnect.indexOf(':')));
+
+							pm.removeKeyConnect(gizList.get(gizIndex).getName(), keyCode, downOrUp);
+						}
+					}
 
 				}
 		);
