@@ -1,0 +1,71 @@
+Square 13_13 13 13
+Square 18_13 18 13
+Square 19_13 19 13
+Square 17_13 17 13
+Square 17_14 17 14
+Square 17_15 17 15
+Square 17_16 17 16
+Square 16_16 16 16
+Square 11_16 11 16
+Square 10_16 10 16
+Square 10_13 10 13
+Square 10_15 10 15
+Square 10_14 10 14
+Square 9_13 9 13
+Square 8_13 8 13
+Square 7_13 7 13
+Square 6_13 6 13
+Square 5_13 5 13
+Square 4_13 4 13
+Square 3_13 3 13
+Square 1_13 1 13
+Square 0_13 0 13
+Square 2_13 2 13
+Booster 11_15 11 15
+Booster 16_15 16 15
+Rotate 16_15
+Rotate 16_15
+Rotate 16_15
+Booster 9_11 9 11
+Booster 8_10 8 10
+Booster 7_9 7 9
+Booster 10_12 10 12
+Booster 6_8 6 8
+Booster 5_7 5 7
+Booster 4_6 4 6
+Booster 3_5 3 5
+Booster 1_3 1 3
+Booster 2_4 2 4
+Booster 0_2 0 2
+Booster 17_12 17 12
+Rotate 17_12
+Rotate 17_12
+Rotate 17_12
+Booster 18_11 18 11
+Rotate 18_11
+Rotate 18_11
+Rotate 18_11
+Booster 19_10 19 10
+Rotate 19_10
+Rotate 19_10
+Rotate 19_10
+Absorber 12_16 12 16 16 17
+Ball 13_12 13.5 12.5 0.0 0.0
+Ball 13_11 13.5 11.5 0.0 0.0
+Ball 13_10 13.5 10.5 0.0 0.0
+Ball 13_9 13.5 9.5 0.0 0.0
+Ball 13_8 13.5 8.5 0.0 0.0
+Ball 13_7 13.5 7.5 0.0 0.0
+Ball 13_6 13.5 6.5 0.0 0.0
+Ball 13_4 13.5 4.5 0.0 0.0
+Ball 13_1 13.5 1.5 0.0 0.0
+Ball 13_2 13.5 2.5 0.0 0.0
+Ball 13_5 13.5 5.5 0.0 0.0
+Ball 13_3 13.5 3.5 0.0 0.0
+Ball 13_0 13.5 0.5 0.0 0.0
+Ball 9_3 9.5 3.5 0.0 0.0
+Ball 8_2 8.5 2.5 0.0 0.0
+Ball 7_1 7.5 1.5 0.0 0.0
+Connect 12_16 12_16
+Gravity 25.0
+Friction 0.025 0.025
