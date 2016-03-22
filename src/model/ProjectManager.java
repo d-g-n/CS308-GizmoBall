@@ -81,6 +81,9 @@ public class ProjectManager extends Observable {
 		try {
 			Map.Entry<String, Integer> key = new AbstractMap.SimpleEntry<String, Integer>(onDownOrUp, keyNum);
 			gizmoKeyPressMap.get(key).remove(getGizmoByName(gizName));
+			if (gizmoKeyPressMap.get(key).isEmpty()) {
+				gizmoKeyPressMap.remove(key);
+			}
 		} catch (NullPointerException e) {
 
 		}
