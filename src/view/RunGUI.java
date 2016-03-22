@@ -5,22 +5,13 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.*;
 
 import controller.MenuFileListener;
 import controller.MagicKeyListener;
@@ -74,14 +65,21 @@ public class RunGUI implements Observer {
 		pane.add(tv.getBoard(), BorderLayout.CENTER);
 
 		JPanel rightPanel = new JPanel();
-		rightPanel.setLayout(new GridLayout(4, 1));
+		rightPanel.setLayout(new GridLayout(3, 1));
 		rightPanel.addKeyListener(keyListener);
 		addAButton("Build Mode", new ImageIcon("icons/main/build.png"), rightPanel);
-		addAButton("Settings", new ImageIcon("icons/main/settings.png"), rightPanel);
-		addAButton("About", new ImageIcon("icons/main/about.png"), rightPanel);
+		//addAButton("Settings", new ImageIcon("icons/main/settings.png"), rightPanel);
+		JButton aboutPan = addAButton("About", new ImageIcon("icons/main/about.png"), rightPanel);
 		addAButton("Exit", new ImageIcon("icons/main/exit.png"), rightPanel);
 		pane.add(rightPanel, BorderLayout.LINE_END);
 		pane.addKeyListener(keyListener);
+
+		aboutPan.addActionListener(e -> {
+			JOptionPane.showMessageDialog(pane,
+							"This is group WK4s' CS308 Gizmoball project, we hope you enjoy using it!\n" +
+							"Created by the painstaking labour of Declan Neilson, Eddie Wilkie, Jamie Cribbes, George Cassels and Giorgos Georgiadis"
+			);
+		});
 	}
 
 	private void createStatusBar(Container pane) {
@@ -90,16 +88,7 @@ public class RunGUI implements Observer {
 		pane.addKeyListener(keyListener);
 	}
 
-	private void addAButton(String title, Container pane) {
-		JButton button = new JButton(title);
-		button.setAlignmentX(Component.LEFT_ALIGNMENT);
-		button.addActionListener(runListener);
-		button.addKeyListener(keyListener);
-		pane.add(button);
-
-	}
-
-	private void addAButton(String title, Icon icon, Container pane) {
+	private JButton addAButton(String title, Icon icon, Container pane) {
 		JButton button = new JButton(title);
 		button.setIcon(icon);
 		button.setVerticalTextPosition(SwingConstants.TOP);
@@ -109,6 +98,8 @@ public class RunGUI implements Observer {
 		button.addActionListener(runListener);
 		button.addKeyListener(keyListener);
 		pane.add(button);
+
+		return button;
 	}
 
 	private void createAndShowGui(ProjectManager pm) {
@@ -136,11 +127,7 @@ public class RunGUI implements Observer {
 
 		// Schedule a job for the event dispatch thread:
 		// creating and showing this application's GUI.
-		javax.swing.SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				createAndShowGui(pm);
-			}
-		});
+		javax.swing.SwingUtilities.invokeLater(() -> createAndShowGui(pm));
 		this.pm = pm;
 		tv = new RunBoardWrapper(pm);
 		keyListener = new MagicKeyListener(pm);
