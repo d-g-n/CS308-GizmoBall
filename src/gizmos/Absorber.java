@@ -1,34 +1,42 @@
 package gizmos;
 
-
-import model.ProjectManager;
 import physics.Vect;
-import view.Board;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Random;
+import java.util.List;
+
 
 public class Absorber extends AbstractGizmo {
 
-	Ball boardBall = null;
+	List<Ball> heldBalls;
 
 	public Absorber(int x, int y, int w, int h) {
 
 		super(x, y, w, h,
 				Color.magenta, // colour of gizmo
-				0 // reflection coefficent
+				1 // reflection coefficent
 		);
 
 		this.type = "Absorber";
 
+		this.heldBalls = new ArrayList<>();
+
 	}
 
-	public void setHeldBall(Ball b){
-		this.boardBall = b;
-	}
+	private void sortBalls(){
+		int i = 0;
+		for(Ball b : heldBalls){
 
+			b.setStopped(true);
+			b.setVelocity(new Vect(0, 0));
+			b.setPos((xpos + width) - (b.getRadius() * 2) - i, ypos + (b.getRadius() * 2));
+
+			i++;
+		}
+	}
 
 	/**
 	 * This is an example of how to extend abstract behaviour to provide additional behaviour
@@ -37,17 +45,13 @@ public class Absorber extends AbstractGizmo {
 	public void onHit(AbstractGizmo hit) {
 		// hold the ball in this
 
-		boardBall = ((Ball) hit);
+		Ball boardBall = ((Ball) hit);
 
-		if(boardBall != null) {
-
-			boardBall.setStopped(true);
-
-			boardBall.setVelocity(new Vect(0, 0));
-
-			boardBall.setPos(xpos + width - boardBall.getRadius() * 2, ypos);
-
+		if(heldBalls.size() < this.getWidth()){
+			heldBalls.add(boardBall);
+			sortBalls();
 		}
+
 
 		super.onHit(hit);
 	}
@@ -61,7 +65,17 @@ public class Absorber extends AbstractGizmo {
 
 		// if ball is held, chuck it back out
 
-		if(boardBall != null && boardBall.isStopped()){
+		if(heldBalls.size() > 0){
+			Ball throwB = heldBalls.remove(0);
+
+			throwB.setPos(throwB.getXPos(), throwB.getYPos() - (throwB.getRadius() * 2) );
+			throwB.setStopped(false);
+			throwB.setVelocity(new Vect(0, -50));
+
+			sortBalls();
+		}
+
+		/*if(boardBall != null && boardBall.isStopped()){
 
 			boardBall.setStopped(false);
 
@@ -69,7 +83,7 @@ public class Absorber extends AbstractGizmo {
 
 			boardBall = null;
 
-		}
+		}*/
 
 	}
 	
