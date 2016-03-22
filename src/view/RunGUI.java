@@ -42,6 +42,7 @@ public class RunGUI implements Observer {
 
 		fileItem1.addActionListener(new MenuFileListener(pm));
 		fileItem2.addActionListener(new MenuFileListener(pm));
+		fileItem3.addActionListener(new MenuFileListener(pm));
 
 		menu.add(fileItem1);
 		menu.add(fileItem2);
