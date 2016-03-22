@@ -103,16 +103,13 @@ public abstract class AbstractGizmo {
 	protected void addPhysicsPath(List<Vect> lv){
 		
 		Vect lastVect = null;
-
 		for(Vect curVect : lv){
 			if(lastVect == null){
 				lastVect = curVect;
 				continue;
 			}
-
 			StoredCircles.add(new Circle(lastVect, 0.0));
 			StoredLines.add(new LineSegment(lastVect, curVect));
-
 			lastVect = curVect;
 		}
 	}
@@ -130,15 +127,28 @@ public abstract class AbstractGizmo {
 		this.gizShape = gizShape;
 	}
 
+	/**
+	 * Set the shape of the gizmo. This method is overridden by 
+	 * the setGizShape method in the gizmo classes.
+	 * @param x The x coordinate of the gizmo
+	 * @param y The y coordinate of the gizmo
+	 */
 	public void setGizShape(double x, double y) {}
 
+	/**
+	 * Set the physics definitions for the gizmo. This method is overridden by
+	 * the setGizPhysics method in the gizmo classes.
+	 * @param x The x coordinate of the gizmo
+	 * @param y The y coordinate of the gizmo
+	 */
 	public void setGizPhysics(double x, double y) {}
 
+	/**
+	 * Delete all the physics definitions.
+	 */
 	public void deletePhysics() {
-
 		this.StoredLines.clear();
 		this.StoredCircles.clear();
-
 	}
 
 	public void moveGizmo(int x, int y){
@@ -164,8 +174,9 @@ public abstract class AbstractGizmo {
 	}
 
 	/**
-	 * This method is called by the gizmo that has been hit Will likely need to
-	 * extend this method to provide desired functionality
+	 * This method is called by the gizmo that has been hit and it is overridden
+	 * by the method inside the different gizmo classes, to provide specific functionality
+	 * for each gizmo.
 	 */
 	public void doTrigger() {
 		// there is no default action but needed here to override it.
@@ -184,6 +195,10 @@ public abstract class AbstractGizmo {
 
 	public Shape getShape(){ return gizShape; }
 
+	/**
+	 * Recalculate the physics of the gizmo after a possible
+	 * change of its location
+	 */
 	public void doPhysicsCalculations() {}
 
 	public String getName(){

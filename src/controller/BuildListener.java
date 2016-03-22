@@ -14,6 +14,11 @@ import model.ProjectManager;
 import view.Board;
 import view.BuildGUI;
 
+/**
+ * 
+ * The BuildListener class handles all the events on the build panel.
+ * 
+ */
 public class BuildListener implements ActionListener, ChangeListener, WindowListener {
 
 	private BuildGUI view;

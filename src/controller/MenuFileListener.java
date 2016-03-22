@@ -6,7 +6,11 @@ import java.awt.event.ActionListener;
 import model.ProjectManager;
 import view.FileManagerGUI;
 
-//Implements ActionListener unless a different listener is needed. 
+/**
+ * The MenuFileListener handles the events on the menu bar of the application
+ * which include file loading and saving buttons.
+ *
+ */
 public class MenuFileListener implements ActionListener {
 	FileManagerGUI fmGUI;
 	ProjectManager pm;

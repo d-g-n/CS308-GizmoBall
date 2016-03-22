@@ -10,6 +10,12 @@ import model.ProjectManager;
 import view.Board;
 import view.BuildGUI;
 
+/**
+ * The RunListener class is the handler for the events the 
+ * buttons around the board create. It also handles the time tick
+ * events created by the Timer class.
+ *
+ */
 public class RunListener implements ActionListener {
 
 	private ProjectManager pm;

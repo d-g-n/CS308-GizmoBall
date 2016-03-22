@@ -25,6 +25,11 @@ import gizmos.Teleporter;
 import gizmos.TriangleBumper;
 import physics.Vect;
 
+/**
+ * The FileManager class provides core functionality for saving and loading predefined
+ * boards to the game together with settings such as gravity, friction, key connects etc.
+ * 
+ */
 public class FileManager {
 
 	private Scanner scan;
@@ -59,6 +64,11 @@ public class FileManager {
 		this.pm = projectManager;
 	}
 	
+	/**
+	 * Save the current board to a file
+	 * @param filePath
+	 * 				the path the file to be saved
+	 */
 	public void saveFile(String filePath){
 		List<AbstractGizmo> boardGizmos = pm.getBoardGizmos();
 		List<Ball> ballList = new ArrayList<>();
@@ -153,18 +163,32 @@ public class FileManager {
 		e.printStackTrace();
 	}
 }
-
+	/**
+	 * Save the ball to the file
+	 * @param ball
+	 * 				the ball actor
+	 * @param writer
+	 * 				the PrintWriter object which writes to file
+	 * @return
+	 */
 	private String ballSave(Ball ball, PrintWriter writer) {
 		writer.println("Ball " + ball.getName() + " " + ball.getXPos() + " " + ball.getYPos() + " " + ball.getVelocity().x() + " " + ball.getVelocity().y());
 		return null;
 	}
 
-	private void absorberSave(Absorber abs, PrintWriter writer) {
-		int xPos = (int)abs.getXPos();
-		int yPos = (int)abs.getYPos();
-		int width = (int)abs.getWidth();
-		int height = (int)abs.getHeight();
-		writer.println("Absorber " + abs.getName() + " " + xPos + " " + yPos + " " + (xPos+width) + " " + (yPos+height));		
+	/**
+	 * Save the absorber to the file
+	 * @param absorber
+	 * 				the absorber to be saved
+	 * @param writer
+	 * 			the PrintWriter object which writes to file
+	 */
+	private void absorberSave(Absorber absorber, PrintWriter writer) {
+		int xPos = (int)absorber.getXPos();
+		int yPos = (int)absorber.getYPos();
+		int width = (int)absorber.getWidth();
+		int height = (int)absorber.getHeight();
+		writer.println("Absorber " + absorber.getName() + " " + xPos + " " + yPos + " " + (xPos+width) + " " + (yPos+height));		
 	}
 
 	private void commandSave(AbstractGizmo gizmo, PrintWriter writer, String gizmoType) {
@@ -174,6 +198,11 @@ public class FileManager {
 		}
 	}
 
+	/**
+	 * Load a board from a file
+	 * @param fileName
+	 * 				the file to retrieve
+	 */
 	public void loadFile(String fileName) {
 		// before doing anything else set gravity and friction to their default values
 		// these will be overwritten if the appropriate commands are present in the file being loaded,

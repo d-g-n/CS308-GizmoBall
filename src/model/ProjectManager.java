@@ -5,6 +5,11 @@ import java.util.*;
 import gizmos.*;
 import physics.Vect;
 
+/**
+ * The ProjectManager class provides general information about the state
+ * of the game.
+ *
+ */
 import javax.swing.*;
 import javax.swing.Timer;
 
@@ -63,14 +68,6 @@ public class ProjectManager extends Observable {
 	public void saveAs(String filePath) {
 		fManager = new FileManager(this);
 		fManager.saveFile(filePath);
-	}
-
-	public String getCurrentCommand(){
-		return currentCommand;
-	}
-
-	public void setCurrentCommand(String command){
-		this.currentCommand = command;
 	}
 
 	public String getFocusedButton() {
