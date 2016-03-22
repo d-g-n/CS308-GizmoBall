@@ -26,15 +26,7 @@ final class CommandList {
 				"Add Ball",
 				CommandEnums.CATEGORY_GIZMO,
 				"icons/gizmos/ball.png",
-				(firstX, firstY, secondX, secondY) -> {
-					String xVel = JOptionPane.showInputDialog(null, "Please enter the starting X velocity you want this ball to have.");
-					String yVel = JOptionPane.showInputDialog(null, "Please enter the starting Y velocity you want this ball to have.");
-					try {
-						CommandMapper.getPMRef().addGizmo(new Ball(firstX + 0.5, firstY + 0.5, new Vect(Double.parseDouble(xVel), Double.parseDouble(yVel))));
-					} catch (NullPointerException | NumberFormatException e) {
-						CommandMapper.getPMRef().addGizmo(new Ball(firstX + 0.5, firstY + 0.5, new Vect(0.0,0.0)));
-					}
-				}
+				(firstX, firstY, secondX, secondY) -> CommandMapper.getPMRef().addGizmo(new Ball(firstX + 0.5, firstY + 0.5, new Vect(0, 0)))
 		);
 
 		CommandMapper.addNewCommand(
@@ -266,7 +258,7 @@ final class CommandList {
 					AbstractGizmo gizAt = pm.getGizmoByCoordinate(firstX, firstY);
 
 					if(gizAt != null){
-						String k = JOptionPane.showInputDialog(null, "Please type the key you want to connect this gizmo to.");
+						String k = JOptionPane.showInputDialog(null, "Enter the key to connect this gizmo to: ");
 
 						if(k != null && k.length() > 0){
 							int cCode = KeyEvent.getExtendedKeyCodeForChar(k.charAt(0));
@@ -275,12 +267,12 @@ final class CommandList {
 
 							String downOrUp = (String) JOptionPane.showInputDialog(
 									null,
-									"Please choose when to activate this keypress.",
+									"Choose when to activate this keypress.",
 									"Activate on...",
 									JOptionPane.PLAIN_MESSAGE,
 									null,
 									opt,
-									"down"
+									"up"
 									);
 
 							if(downOrUp != null){
@@ -315,7 +307,7 @@ final class CommandList {
 
 					String keyToDisconnect = (String) JOptionPane.showInputDialog(
 							null,
-							"Please choose what key to disconnect",
+							"Choose key to disconnect:",
 							"Disconnect key",
 							JOptionPane.PLAIN_MESSAGE,
 							null,
@@ -349,7 +341,7 @@ final class CommandList {
 
 						String gizmoToDisconnect = (String) JOptionPane.showInputDialog(
 								null,
-								"Please choose what gizmo to disconnect",
+								"Choose gizmo to disconnect from:",
 								"Disconnect gizmo",
 								JOptionPane.PLAIN_MESSAGE,
 								null,
