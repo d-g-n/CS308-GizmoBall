@@ -14,7 +14,7 @@ public class DeathSquare extends AbstractGizmo {
 	public DeathSquare(int x, int y) {
 		super(x, y, 1, 1,
 				Color.GRAY, // colour of gizmo
-				1 // reflection coefficent
+				0 // reflection coefficent
 		);
 
 		this.type = "DeathSquare";
