@@ -102,9 +102,11 @@ public class ProjectManager extends Observable {
 
 	public void addGizmo(AbstractGizmo g) {
 
+		System.out.println();
+
 		// ideally we'll give it a random name here but irght now
 		// also need to do square checking in here to prevent overlapping gizmos
-		if (canPlaceGizmoAt(g) || g.getClass().equals(OuterWall.class))
+		if (canPlaceGizmoAt(g) || g.getClass().equals(OuterWall.class) || (g.getClass().equals(Ball.class) && this.getGizmoByCoordinate((int)Math.floor(g.getXPos()),(int) Math.floor(g.getYPos())).getClass().equals(Absorber.class)))
 			boardGizmos.add(g);
 	}
 
@@ -162,6 +164,23 @@ public class ProjectManager extends Observable {
 		}
 
 		return gizList;
+	}
+
+	public AbstractGizmo getGizmoByCoordinate(int x, int y){
+
+		Vect lookFor = new Vect(x, y);
+
+		for (AbstractGizmo giz : this.boardGizmos) {
+			for(int gx = (int) Math.floor(giz.getXPos()); gx < (Math.floor(giz.getXPos()) + giz.getWidth()); gx++){
+				for(int gy = (int) Math.floor(giz.getYPos()); gy < (Math.floor(giz.getYPos()) + giz.getHeight()); gy++){
+					Vect gizSquare = new Vect(gx, gy);
+					if(lookFor.equals(gizSquare))
+						return giz;
+				}
+			}
+		}
+
+		return null;
 	}
 
 	public List<AbstractGizmo> getBoardGizmos() {
