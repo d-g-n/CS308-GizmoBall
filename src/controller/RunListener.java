@@ -70,11 +70,13 @@ public class RunListener implements ActionListener {
 				pm.restartGame();
 				break;
 			case "Build Mode":
-				visualTimer.stop(); 
-				BuildGUI buildMode = new BuildGUI(visualTimer,pm);
-				pm.setBuildModeOn(true);
-				buildMode.showPalette();
-				pm.pushVisualUpdate();
+				if(!pm.isBuildModeOn()){
+					visualTimer.stop(); 
+					BuildGUI buildMode = new BuildGUI(visualTimer,pm);
+					pm.setBuildModeOn(true);
+					buildMode.showPalette();
+					pm.pushVisualUpdate();
+				}
 				break;
 			case "Settings":
 				/* Change the settings of the project */ break;
@@ -85,7 +87,7 @@ public class RunListener implements ActionListener {
 	}else {
 		
 		int confirmation = JOptionPane.YES_NO_OPTION;
-		int result = JOptionPane.showConfirmDialog(null, " HighScore: " + pm.getScore() + " \nDo you want to start Again?",
+		int result = JOptionPane.showConfirmDialog(null, " HighScore: " + pm.getHighScore() + " \nDo you want to start Again?",
 				"GameOver", confirmation);
 		if (result == 0) {
 			pm.clearAllBoardGizmos();

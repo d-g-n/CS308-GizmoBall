@@ -19,11 +19,11 @@ public class GizmoFunctionsTest extends BaseTestCase {
 
 		// test regular overlapping
 
-		SquareBumper testSquare = new SquareBumper(19, 19, 1, 1);
+		SquareBumper testSquare = new SquareBumper(19, 19);
 
 		pm.addGizmo(testSquare);
 
-		TriangleBumper testTriangle = new TriangleBumper(19, 19, 1, 1);
+		TriangleBumper testTriangle = new TriangleBumper(19, 19);
 
 		Assert.assertFalse("Should be false as 19/19 is taken", pm.canPlaceGizmoAt(testTriangle));
 
@@ -33,17 +33,17 @@ public class GizmoFunctionsTest extends BaseTestCase {
 
 		// should not be able to place anything at 0, 0, 2, 2 or 4, 4
 
-		SquareBumper sq00 = new SquareBumper(0, 0, 1, 1);
+		SquareBumper sq00 = new SquareBumper(0, 0);
 
-		SquareBumper sq22 = new SquareBumper(2, 2, 1, 1);
+		SquareBumper sq22 = new SquareBumper(2, 2);
 
-		SquareBumper sq44 = new SquareBumper(4, 4, 1, 1);
+		SquareBumper sq44 = new SquareBumper(4, 4);
 
 		Assert.assertFalse("Should be false as Absorber takes up 0, 0 -> 4, 4", pm.canPlaceGizmoAt(sq00));
 
 		Assert.assertFalse("Should be false as Absorber takes up 0, 0 -> 4, 4", pm.canPlaceGizmoAt(sq22));
 
-		Assert.assertFalse("Should be false as Absorber takes up 0, 0 -> 4, 4", pm.canPlaceGizmoAt(sq22));
+		Assert.assertFalse("Should be false as Absorber takes up 0, 0 -> 4, 4", pm.canPlaceGizmoAt(sq44));
 
 
 		// now test ball placement, note that there's an absorber at 0, 0 and a square at 19, 19
@@ -55,7 +55,7 @@ public class GizmoFunctionsTest extends BaseTestCase {
 
 		Assert.assertTrue("Should be able to place the ball inside the absorber", pm.canPlaceGizmoAt(b00));
 
-		Assert.assertFalse("Shoiuld not be able to add ball inside the square", pm.canPlaceGizmoAt(b1919));
+		Assert.assertFalse("Should not be able to add ball inside the square", pm.canPlaceGizmoAt(b1919));
 
 
 	}

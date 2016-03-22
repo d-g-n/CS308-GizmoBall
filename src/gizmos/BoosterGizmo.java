@@ -11,7 +11,7 @@ public class BoosterGizmo extends AbstractGizmo {
 	
 	Ball boardBall = null;
 
-	public BoosterGizmo(int x, int y, int w, int h) {
+	public BoosterGizmo(int x, int y) {
 		super(x, y, 1, 1,
 				Color.green, // colour of gizmo
 				1// reflection coefficent
@@ -21,11 +21,11 @@ public class BoosterGizmo extends AbstractGizmo {
 
 	}
 	
-	/**
-	 * @See {@link gizmos.AbstractGizmo#setGizShape(double, double)}
-	 */
+	
 	@Override
 	public void setGizShape(double x, double y) {
+		
+		
 		Shape shape = new Polygon();
 		//Add the three points of the triangle to the shape
 
@@ -60,12 +60,10 @@ public class BoosterGizmo extends AbstractGizmo {
 		
 	}
 	
-	/**
-	 * @see gizmos.AbstractGizmo#setGizPhysics(double, double)
-	 */
 	@Override
 	public void setGizPhysics(double x, double y) {
-				
+		
+		
 		addPhysicsPath(Arrays.asList(
 				new Vect(x, y),
 				new Vect(x + width, y + height),
@@ -75,16 +73,16 @@ public class BoosterGizmo extends AbstractGizmo {
 		
 	}
 
-	/**
-	 * @see gizmos.AbstractGizmo#onHit(AbstractGizmo)
-	 */
+	
 	@Override
 	public void onHit(AbstractGizmo hit) {
+
 		boardBall = ((Ball) hit);
+
 		if(boardBall != null) {
-			boardBall.setVelocity(new Vect(50, boardBall.getVelocity().y()));
+			boardBall.setVelocity(new Vect(boardBall.getVelocity().x()*2, boardBall.getVelocity().y()*2));
 		}
-		super.onHit(hit);
 	}
+
 
 }

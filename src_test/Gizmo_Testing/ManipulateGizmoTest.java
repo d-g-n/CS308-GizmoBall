@@ -14,7 +14,7 @@ public class ManipulateGizmoTest extends BaseTestCase {
 	@Test
 	public void canRotateGizmo(){
 
-		TriangleBumper testTriangle = new TriangleBumper(0, 0, 1, 1);
+		TriangleBumper testTriangle = new TriangleBumper(0, 0);
 
 		// behaviour is generic in abstractgizmo class so no need to test for all
 
@@ -32,7 +32,7 @@ public class ManipulateGizmoTest extends BaseTestCase {
 	@Test
 	public void canMoveGizmo(){
 
-		SquareBumper testSquare = new SquareBumper(0, 0, 1, 1);
+		SquareBumper testSquare = new SquareBumper(0, 0);
 
 		pm.addGizmo(testSquare);
 
@@ -47,7 +47,7 @@ public class ManipulateGizmoTest extends BaseTestCase {
 	@Test
 	public void canDeleteGizmo(){
 
-		SquareBumper testSquare = new SquareBumper(0, 0, 1, 1);
+		SquareBumper testSquare = new SquareBumper(0, 0);
 
 		pm.addGizmo(testSquare);
 

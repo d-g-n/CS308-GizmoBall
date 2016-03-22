@@ -38,7 +38,7 @@ public class ProjectManager extends Observable {
 		totalScore = 0;
 		highestScore = 0;
 		setLives(10);
-		setStatusLabel("Score: " + totalScore + " High Score: " + getHighScore() + " Lives: " + getLives());
+		setStatusLabel("Score: " + getScore() + " High Score: " + getHighScore() + " Lives: " + getLives());
 		gameOver = false;
 		dynamicMode = false;
 		// HARDCODED GIZMO DEFS (mind the outer walls are never supposed to
@@ -106,10 +106,9 @@ public class ProjectManager extends Observable {
 	}
 
 	public void addGizmo(AbstractGizmo g) {
-
 		// ideally we'll give it a random name here but irght now
 		// also need to do square checking in here to prevent overlapping gizmos
-		if (canPlaceGizmoAt(g) || g.getClass().equals(OuterWall.class))
+		if (canPlaceGizmoAt(g) || g.getClass().equals(OuterWall.class) || (g.getClass().equals(Ball.class) && this.getGizmoByCoordinate((int)Math.floor(g.getXPos()),(int) Math.floor(g.getYPos())).getClass().equals(Absorber.class)))
 			boardGizmos.add(g);
 	}
 
@@ -119,29 +118,28 @@ public class ProjectManager extends Observable {
 			return false;
 		}
 
-		List<Vect> requestedPoints = new ArrayList<>();
+		List<Vect> requestedSquares = new ArrayList<>();
 
-		for (double ix = x; ix < (x + w); ix++) {
-			for (double iy = y; iy < (y + h); iy++) {
-				requestedPoints.add(new Vect(ix, iy));
+		for(int gx = (int) Math.floor(x); gx < (Math.floor(x) + w); gx++){
+			for(int gy = (int) Math.floor(y); gy < (Math.floor(y) + h); gy++){
+				requestedSquares.add(new Vect(gx, gy));
 			}
 		}
 
 		for (AbstractGizmo giz : this.boardGizmos) {
+			if(giz.getClass().equals(OuterWall.class))
+				continue;
 
-			double gx = giz.getXPos();
-			double gy = giz.getYPos();
-			double gw = giz.getWidth();
-			double gh = giz.getHeight();
+			for(int gx = (int) Math.floor(giz.getXPos()); gx < (Math.floor(giz.getXPos()) + giz.getWidth()); gx++){
+				for(int gy = (int) Math.floor(giz.getYPos()); gy < (Math.floor(giz.getYPos()) + giz.getHeight()); gy++){
+					Vect notAllowed = new Vect(gx, gy);
 
-			for (double ix = gx; ix < (gx + gw); ix++) {
-				for (double iy = gy; iy < (gy + gh); iy++) {
-					if (requestedPoints.contains(new Vect(ix, iy)))
+					if(requestedSquares.contains(notAllowed))
 						return false;
 				}
 			}
-
 		}
+
 
 		return true;
 
@@ -152,9 +150,36 @@ public class ProjectManager extends Observable {
 	}
 
 	public AbstractGizmo getGizmoByName(String name) {
+		
+		if (!getGizmoByNameList(name).isEmpty()) {
+		return getGizmoByNameList(name).get(0);
+		} else {
+			return null;
+		}
+	}
+	
+	public ArrayList<AbstractGizmo> getGizmoByNameList(String name) {
+		ArrayList<AbstractGizmo> gizList = new ArrayList<AbstractGizmo>();
 		for (AbstractGizmo giz : boardGizmos) {
 			if (giz.getName().equals(name))
-				return giz;
+				gizList.add(giz);
+		}
+
+		return gizList;
+	}
+
+	public AbstractGizmo getGizmoByCoordinate(int x, int y){
+
+		Vect lookFor = new Vect(x, y);
+
+		for (AbstractGizmo giz : this.boardGizmos) {
+			for(int gx = (int) Math.floor(giz.getXPos()); gx < (Math.floor(giz.getXPos()) + giz.getWidth()); gx++){
+				for(int gy = (int) Math.floor(giz.getYPos()); gy < (Math.floor(giz.getYPos()) + giz.getHeight()); gy++){
+					Vect gizSquare = new Vect(gx, gy);
+					if(lookFor.equals(gizSquare))
+						return giz;
+				}
+			}
 		}
 
 		return null;
@@ -187,6 +212,7 @@ public class ProjectManager extends Observable {
 		currentBoard = fileName;
 		fManager = new FileManager(this);
 		fManager.loadFile(fileName);
+		resetScore();
 
 		this.setChanged();
 		this.notifyObservers();
@@ -300,10 +326,6 @@ public class ProjectManager extends Observable {
 		this.gizmoToKeyDisconnect = gizmoToKeyDisconnect;
 	}
 
-	public int getScore(){
-		return totalScore;
-	}
-
 	public void updateScore(AbstractGizmo giz){
 		if(giz != null && !dynamicMode){
 
@@ -316,13 +338,14 @@ public class ProjectManager extends Observable {
 		else if(giz.getClass().equals(Absorber.class))
 			numLives--;
 
+		if(highestScore <= totalScore)
+			highestScore = totalScore;
+		
 		if(getLives() < 0){
 		gameOver = true;
 		return;
 		}
-		if(highestScore <= totalScore)
-			highestScore = totalScore;
-
+		
 		setStatusLabel("Score: " + totalScore + " High Score: " + getHighScore() + " Lives: " + getLives());
 		}
 	}
@@ -362,6 +385,10 @@ public class ProjectManager extends Observable {
 		return highestScore;
 	}
 
+	public int getScore(){
+		return totalScore;
+	}
+	
 	public void clearAllBoardGizmos() {
 		boardGizmos.clear();
 

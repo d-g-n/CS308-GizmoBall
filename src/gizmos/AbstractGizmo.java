@@ -153,7 +153,11 @@ public abstract class AbstractGizmo {
 
 	public void moveGizmo(int x, int y){
 
-		this.setPos(x, y);
+		if (this.getClass() == Ball.class) {
+			this.setPos(x + 0.5, y + 0.5);
+		} else {
+			this.setPos(x, y);
+		}
 		this.deletePhysics();
 		this.setGizShape(x, y);
 		this.setGizPhysics(x, y);
@@ -166,9 +170,7 @@ public abstract class AbstractGizmo {
 	 * in the Absorber.
 	 */
 	public void onHit(AbstractGizmo hitGiz) {
-		for (AbstractGizmo g : gizmoListeners) {
-			g.doTrigger();
-		}
+
 	}
 
 	/**
@@ -178,6 +180,12 @@ public abstract class AbstractGizmo {
 	 */
 	public void doTrigger() {
 		// there is no default action but needed here to override it.
+	}
+
+	public void sendTriggers(){
+		for (AbstractGizmo g : gizmoListeners) {
+			g.doTrigger();
+		}
 	}
 
 

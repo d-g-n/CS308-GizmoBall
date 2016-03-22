@@ -1,18 +1,17 @@
 package gizmos;
 
 import physics.Vect;
+
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
-/**
- * The Absorber class implements the AbstractGizmo class
- * which represents an absorber of the board.
- * 
- */
+
 public class Absorber extends AbstractGizmo {
 
-	Ball boardBall = null;
+	List<Ball> heldBalls;
 
 	public Absorber(int x, int y, int w, int h) {
 
@@ -23,66 +22,86 @@ public class Absorber extends AbstractGizmo {
 
 		this.type = "Absorber";
 
+		this.heldBalls = new ArrayList<>();
+
 	}
 
-	/*
-	 * Set a ball to be held in the absorber
-	 */
-	public void setHeldBall(Ball b){
-		this.boardBall = b;
+	private void sortBalls(){
+		int i = 0;
+		for(Ball b : heldBalls){
+
+			b.setStopped(true);
+			b.setVelocity(new Vect(0, 0));
+			b.setPos((xpos + width) - (b.getRadius() * 2) - i, ypos + (b.getRadius() * 2));
+
+			i++;
+		}
 	}
-
-
 
 	/**
-	 * @see gizmos.AbstractGizmo#onHit
+	 * This is an example of how to extend abstract behaviour to provide additional behaviour
 	 */
 	@Override
 	public void onHit(AbstractGizmo hit) {
 		// hold the ball in this
 
-		boardBall = ((Ball) hit);
-		if(boardBall != null) {
-			boardBall.setStopped(true);
-			boardBall.setVelocity(new Vect(0, 0));
-			boardBall.setPos(xpos + width - boardBall.getRadius() * 2, ypos);
+		Ball boardBall = ((Ball) hit);
+
+		if(heldBalls.size() < this.getWidth()){
+			heldBalls.add(boardBall);
+			sortBalls();
 		}
-		super.onHit(hit);
 	}
 
 	/**
-	 * @see gizmos.AbstractGizmo#doTrigger
+	 * Like above, will want to set the velocity of the ball if the ball is currently being held
 	 */
 	@Override
 	public void doTrigger() {
-		super.doTrigger();
+
 		// if ball is held, chuck it back out
-		if(boardBall != null && boardBall.isStopped()){
-			boardBall.setStopped(false);
-			boardBall.setVelocity(new Vect(0, -50));
-			boardBall = null;
+
+		if(heldBalls.size() > 0){
+			Ball throwB = heldBalls.remove(0);
+
+			throwB.setPos(throwB.getXPos(), throwB.getYPos() - (throwB.getRadius() * 3) );
+
+			throwB.setVelocity(new Vect(0, -50));
+			throwB.setStopped(false);
+
+			System.out.println(heldBalls.size());
+			sortBalls();
 		}
+
+		/*if(boardBall != null && boardBall.isStopped()){
+
+			boardBall.setStopped(false);
+
+			boardBall.setVelocity(new Vect(0, -50));
+
+			boardBall = null;
+
+		}*/
 
 	}
 	
-	/**
-	 * @see gizmos.AbstractGizmo#setGizShape
-	 */
 	@Override
 	public void setGizShape(double x, double y) {
+		
+		
 		setShape(new Rectangle2D.Double(
 				(x),
 				(y),
 				(width),
 				(height)
 		));
+		
 	}
 	
-	/**
-	 * @see gizmos.AbstractGizmo#setGizPhysics
-	 */
 	@Override
 	public void setGizPhysics(double x, double y) {
+		
+		
 		addPhysicsPath(Arrays.asList(
 				new Vect(x, y), // start at top left
 				new Vect(x + width, y), // move to top right
