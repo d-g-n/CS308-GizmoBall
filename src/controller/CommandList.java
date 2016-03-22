@@ -159,12 +159,12 @@ final class CommandList {
 		CommandMapper.addNewCommand(
 				"reload_board",
 				CommandMapper.CommandLevel.BUTTON_LEVEL,
-				"Reload Board",
+				"Reload GizmoConstants",
 				CommandEnums.CATEGORY_COMMANDS,
 				"icons/commands/reload.png",
 				(firstX, firstY, secondX, secondY) -> {
 					ProjectManager pm = CommandMapper.getPMRef();
-					pm.setStatusLabel("Board Restored");
+					pm.setStatusLabel("GizmoConstants Restored");
 					int confirmation1 = JOptionPane.YES_NO_OPTION;
 					int result1 = JOptionPane.showConfirmDialog(null, "Are you sure you want to restore the board?",
 							"Warning", confirmation1);
@@ -198,12 +198,12 @@ final class CommandList {
 		CommandMapper.addNewCommand(
 				"clear_board",
 				CommandMapper.CommandLevel.BUTTON_LEVEL,
-				"Clear Board",
+				"Clear GizmoConstants",
 				CommandEnums.CATEGORY_COMMANDS,
 				"icons/commands/clear.png",
 				(firstX, firstY, secondX, secondY) -> {
 					ProjectManager pm = CommandMapper.getPMRef();
-					pm.setStatusLabel("Clearing Board..");
+					pm.setStatusLabel("Clearing GizmoConstants..");
 					int confirmation = JOptionPane.YES_NO_OPTION;
 					int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to clear the entire board?",
 							"Warning", confirmation);

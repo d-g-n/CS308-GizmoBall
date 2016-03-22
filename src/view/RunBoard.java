@@ -12,6 +12,7 @@ import java.util.List;
 import javax.swing.JPanel;
 
 import gizmos.AbstractGizmo;
+import model.GizmoConstants;
 import model.ProjectManager;
 import physics.Circle;
 import physics.LineSegment;
@@ -34,7 +35,7 @@ public class RunBoard extends JPanel {
 		g2d.setRenderingHints(ro);
 
 
-		drawEmptyBoardWithGuidelines(g,Board.BOARD_WIDTH, Board.BOARD_HEIGHT);
+		drawEmptyBoardWithGuidelines(g, GizmoConstants.BOARD_WIDTH, GizmoConstants.BOARD_HEIGHT);
 
 		//drawBall(pm.getBallList(),g);
 		for (AbstractGizmo gizmo : pm.getBoardGizmos()) {
@@ -44,7 +45,7 @@ public class RunBoard extends JPanel {
 			Shape shape = gizmo.getShape();
 			AffineTransform shapeT = new AffineTransform();
 
-			double scaleFactor = (Board.BOARD_WIDTH / Board.X_CELLS);
+			double scaleFactor = (GizmoConstants.BOARD_WIDTH / GizmoConstants.X_CELLS);
 			shapeT.scale(scaleFactor, scaleFactor);
 
 			shape = shapeT.createTransformedShape(shape);
@@ -76,7 +77,7 @@ public class RunBoard extends JPanel {
 
 					AffineTransform pT = g2d.getTransform();
 
-					double scaleFactor = (Board.BOARD_WIDTH / Board.X_CELLS);
+					double scaleFactor = (GizmoConstants.BOARD_WIDTH / GizmoConstants.X_CELLS);
 
 					Shape shape = ls.toLine2D();
 
@@ -97,7 +98,7 @@ public class RunBoard extends JPanel {
 
 					AffineTransform pT = g2d.getTransform();
 
-					double scaleFactor = (Board.BOARD_WIDTH / Board.X_CELLS);
+					double scaleFactor = (GizmoConstants.BOARD_WIDTH / GizmoConstants.X_CELLS);
 
 					Shape shape = ls.toEllipse2D();
 
@@ -127,7 +128,7 @@ public class RunBoard extends JPanel {
 				for (AbstractGizmo listener : sourceGiz.getGizmoListeners()) {
 					AffineTransform pT = g2d.getTransform();
 
-					double scaleFactor = (Board.BOARD_WIDTH / Board.X_CELLS);
+					double scaleFactor = (GizmoConstants.BOARD_WIDTH / GizmoConstants.X_CELLS);
 
 					Shape shape = new Line2D.Double(
 							sourceGiz.getXPos() + sourceGiz.getWidth()/2,
@@ -164,13 +165,13 @@ public class RunBoard extends JPanel {
 			return;
 
 		// Draw guidelines on x axis
-		for (int i = 1; i <= Board.X_CELLS; i++) {
-			g.drawLine((boardWidth / Board.X_CELLS) * i, 0, (boardWidth / Board.Y_CELLS) * i, boardHeight);
+		for (int i = 1; i <= GizmoConstants.X_CELLS; i++) {
+			g.drawLine((boardWidth / GizmoConstants.X_CELLS) * i, 0, (boardWidth / GizmoConstants.Y_CELLS) * i, boardHeight);
 		}
 
 		// Draw Guidelines on y axis
-		for (int i = 1; i <= Board.Y_CELLS; i++) {
-			g.drawLine(0, (boardWidth / Board.X_CELLS) * i, boardWidth, (boardHeight / Board.Y_CELLS) * i);
+		for (int i = 1; i <= GizmoConstants.Y_CELLS; i++) {
+			g.drawLine(0, (boardWidth / GizmoConstants.X_CELLS) * i, boardWidth, (boardHeight / GizmoConstants.Y_CELLS) * i);
 		}
 	}
 }

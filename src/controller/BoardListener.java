@@ -4,12 +4,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
-import javax.swing.event.MouseInputListener;
 
-import gizmos.*;
+import model.GizmoConstants;
 import model.ProjectManager;
-import physics.Vect;
-import view.Board;
 
 public class BoardListener implements MouseListener {
 
@@ -35,8 +32,8 @@ public class BoardListener implements MouseListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		if (pm.isBuildModeOn()) {
-			x = e.getX() / (Board.BOARD_WIDTH / Board.X_CELLS);
-			y = e.getY() / (Board.BOARD_HEIGHT / Board.Y_CELLS);
+			x = e.getX() / (GizmoConstants.BOARD_WIDTH / GizmoConstants.X_CELLS);
+			y = e.getY() / (GizmoConstants.BOARD_HEIGHT / GizmoConstants.Y_CELLS);
 		}
 	}
 
@@ -45,8 +42,8 @@ public class BoardListener implements MouseListener {
 		if (!pm.isBuildModeOn())
 			return;
 
-		int destx = e.getX() / (Board.BOARD_WIDTH / Board.X_CELLS);
-		int desty = e.getY() / (Board.BOARD_HEIGHT / Board.Y_CELLS);
+		int destx = e.getX() / (GizmoConstants.BOARD_WIDTH / GizmoConstants.X_CELLS);
+		int desty = e.getY() / (GizmoConstants.BOARD_HEIGHT / GizmoConstants.Y_CELLS);
 
 		CommandMapper.Command getCom = CommandMapper.getCommandByUID(pm.getCurrentCommand());
 

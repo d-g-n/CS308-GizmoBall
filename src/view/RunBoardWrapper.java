@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import javax.swing.JPanel;
 
 import controller.BoardListener;
+import model.GizmoConstants;
 import model.ProjectManager;
 
 /**
@@ -20,7 +21,7 @@ public class RunBoardWrapper {
 
 		gp = new RunBoard(pm);
 		gp.addMouseListener(new BoardListener(pm, this.getBoard()));
-		gp.setPreferredSize(new Dimension(Board.BOARD_WIDTH, Board.BOARD_HEIGHT));
+		gp.setPreferredSize(new Dimension(GizmoConstants.BOARD_WIDTH, GizmoConstants.BOARD_HEIGHT));
 	}
 
 	public RunBoard getGizPanel(){

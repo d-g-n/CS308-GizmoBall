@@ -1,11 +1,10 @@
 package gizmos;
 
+import model.GizmoConstants;
 import physics.Vect;
-import view.Board;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;
-import java.awt.geom.Rectangle2D;
 import java.awt.geom.RoundRectangle2D;
 import java.util.Arrays;
 
@@ -29,7 +28,7 @@ public class Flipper extends AbstractGizmo {
 
 
 		flipperMoving = false;
-		angleVel = 1080*Board.MOVE_TIME;
+		angleVel = 1080* GizmoConstants.MOVE_TIME;
 		flipRotation = 180; // because it starts pointing down and the pivot point is above it i guess
 
 	}
