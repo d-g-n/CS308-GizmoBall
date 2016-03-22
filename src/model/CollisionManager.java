@@ -56,7 +56,7 @@ public class CollisionManager extends Observable {
 			}
 
 
-			info = shortestTimeUntilCollision(ball);
+			//info = shortestTimeUntilCollision(ball);
 			if (info.getTimeToCollision() > Board.MOVE_TIME) {
 
 				moveBallForTime(ball, Board.MOVE_TIME);
@@ -68,6 +68,7 @@ public class CollisionManager extends Observable {
 				moveBallForTime(ball, info.getTimeToCollision());
 
 				Vect resultV;
+
 
 				if(info.getHitGizmo().getClass().equals(Ball.class)){
 					resultV = info.getVelocity();

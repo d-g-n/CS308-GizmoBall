@@ -24,7 +24,7 @@ public class Flipper extends AbstractGizmo {
 
 
 		flipperMoving = false;
-		angleVel = 1080 * Board.MOVE_TIME;
+		angleVel = 1080*Board.MOVE_TIME;
 		flipRotation = 180; // because it starts pointing down and the pivot point is above it i guess
 
 	}
