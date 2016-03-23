@@ -174,6 +174,11 @@ public abstract class AbstractGizmo {
 		this.setGizShape(x, y);
 		this.setGizPhysics(x, y);
 
+		for(int i = 0; i < (((double)this.getGizAngle()/360) * 4); i++){
+			rotatePhysicsAroundPoint(this.getCenter(), 90);
+			rotateVisualAroundPoint(this.getCenter(), 90);
+		}
+
 	}
 
 	/**

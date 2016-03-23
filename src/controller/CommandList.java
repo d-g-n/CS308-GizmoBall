@@ -154,12 +154,6 @@ final class CommandList {
 					AbstractGizmo gizAt = pm.getGizmoByCoordinate(firstX, firstY);
 					if(gizAt != null && pm.canPlaceGizmoAt(secondX, secondY, gizAt.getWidth(), gizAt.getHeight())) {
 						gizAt.moveGizmo(secondX, secondY);
-					
-						int numberOfRoationsRequired = gizAt.getGizAngle()/90;
-					
-						for (int i = 0; i<numberOfRoationsRequired ;i++) {
-							gizAt.rotatePhysicsAroundPoint(gizAt.getXPos() + (gizAt.getWidth() / 2), gizAt.getYPos() + (gizAt.getHeight() / 2), 90.0);
-						}
 					}
 				}
 		);

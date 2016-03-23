@@ -27,6 +27,7 @@ public class RunGUI implements Observer {
 	public static final int BOARD_HEIGHT = 500;
 	private JLabel statusLabel;
 	private ProjectManager pm;
+	private JFrame mainFrame;
 
 	private void createMenuBar(Container pane) {
 		JMenuBar menuBar = new JMenuBar();
@@ -104,18 +105,18 @@ public class RunGUI implements Observer {
 	}
 
 	private void createAndShowGui(ProjectManager pm) {
-		JFrame frame = new JFrame("Gizmoball");
-		frame.setResizable(false);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		mainFrame = new JFrame("Gizmoball");
+		mainFrame.setResizable(false);
+		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// frame.setPreferredSize(new Dimension(950,800));
-		addComponentsToPane(frame.getContentPane(), pm);
-		createMenuBar(frame.getContentPane());
-		createStatusBar(frame.getContentPane());
-		frame.addKeyListener(keyListener);
-		frame.pack();
-		frame.setLocationRelativeTo(null);
-		frame.setVisible(true);
+		addComponentsToPane(mainFrame.getContentPane(), pm);
+		createMenuBar(mainFrame.getContentPane());
+		createStatusBar(mainFrame.getContentPane());
+		mainFrame.addKeyListener(keyListener);
+		mainFrame.pack();
+		mainFrame.setLocationRelativeTo(null);
+		mainFrame.setVisible(true);
 	}
 
 	public RunGUI(ProjectManager pm) {
@@ -139,6 +140,10 @@ public class RunGUI implements Observer {
 	public void update(Observable o, Object arg) {
 		if (tv == null)
 			return;
+
+		if(mainFrame != null)
+			//mainFrame.setTitle("Gizmoball - " + pm.);
+
 		changeStatusLabel(pm.getStatusLabel());
 		tv.getGizPanel().repaint();
 	}
