@@ -68,7 +68,7 @@ public abstract class AbstractGizmo {
 		Shape path = at.createTransformedShape(this.gizShape);
 
 		setShape(path);
-		System.out.println("call");
+
 	}
 
 	public void rotatePhysicsAroundPoint(Vect pivot, double degrees){

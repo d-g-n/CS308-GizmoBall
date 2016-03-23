@@ -132,8 +132,6 @@ public class Flipper extends AbstractGizmo {
 
 			// note anglevel is the degrees to rotate this draw iteration
 
-			System.out.println(rotateAroundPoint);
-
 			at.rotate(Math.toRadians(localAngVel), rotateAroundPoint.x(), rotateAroundPoint.y());
 
 			super.rotatePhysicsAroundPoint(rotateAroundPoint, localAngVel);
