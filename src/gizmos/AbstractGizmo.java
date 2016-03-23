@@ -1,8 +1,11 @@
 package gizmos;
 
+import javafx.scene.transform.Transform;
 import physics.*;
 
+
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,8 +54,21 @@ public abstract class AbstractGizmo {
 	public void rotateClockwise(){ // this is experimental
 		gizAngle += 90;
 
-		rotatePhysicsAroundPoint(xpos + (width/2), ypos + (height/2), 90);
+		rotatePhysicsAroundPoint(this.getCenter(), 90);
+		rotateVisualAroundPoint(this.getCenter(), 90);
 
+	}
+
+	private void rotateVisualAroundPoint(Vect center, int i) {
+
+		AffineTransform at = new AffineTransform();
+
+		at.rotate(Math.toRadians(i), center.x(), center.y());
+
+		Shape path = at.createTransformedShape(this.gizShape);
+
+		setShape(path);
+		System.out.println("call");
 	}
 
 	public void rotatePhysicsAroundPoint(Vect pivot, double degrees){

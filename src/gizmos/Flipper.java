@@ -1,6 +1,8 @@
 package gizmos;
 
 import model.GizmoConstants;
+import physics.Angle;
+import physics.Geometry;
 import physics.Vect;
 
 import java.awt.*;
@@ -33,15 +35,36 @@ public class Flipper extends AbstractGizmo {
 
 	}
 
+	private void setRot(){
+
+		localxpos = xpos + ((this.getClass().equals(LeftFlipper.class) ? 0 : 0.75) * width); // this is really bad
+
+		rotateAroundPoint = new Vect(localxpos + (width * 0.125), ypos + (height * 0.125));
+
+	}
+
+
+	@Override
+	public void rotateClockwise(){
+
+		super.rotateClockwise();
+
+		setRot();
+
+		rotateAroundPoint = Geometry.rotateAround(rotateAroundPoint, this.getCenter(), new Angle(Math.toRadians(this.getGizAngle())));
+
+	}
+
 	/**
 	 * @see gizmos.AbstractGizmo#setGizShape
 	 */
 	@Override
 	public void setGizShape(double x, double y) {
 
-		localxpos = xpos + ((this.getClass().equals(LeftFlipper.class) ? 0 : 0.75) * width); // this is really bad
+		setRot();
 
-		rotateAroundPoint = new Vect(localxpos + (width * 0.125), ypos + (height * 0.125));
+		rotateAroundPoint = Geometry.rotateAround(rotateAroundPoint, this.getCenter(), new Angle(Math.toRadians(this.getGizAngle())));
+
 
 		setShape(new RoundRectangle2D.Double(
 				(localxpos),
@@ -60,9 +83,10 @@ public class Flipper extends AbstractGizmo {
 	@Override
 	public void setGizPhysics(double x, double y) {
 
-		localxpos = xpos + ((this.getClass().equals(LeftFlipper.class) ? 0 : 0.75) * width); // really really really bad
+		setRot();
 
-		rotateAroundPoint = new Vect(localxpos + (width * 0.125), ypos + (height * 0.125));
+		rotateAroundPoint = Geometry.rotateAround(rotateAroundPoint, this.getCenter(), new Angle(Math.toRadians(this.getGizAngle())));
+
 
 		addPhysicsPath(Arrays.asList(
 				new Vect(localxpos, ypos),
@@ -108,12 +132,14 @@ public class Flipper extends AbstractGizmo {
 
 			// note anglevel is the degrees to rotate this draw iteration
 
+			System.out.println(rotateAroundPoint);
+
 			at.rotate(Math.toRadians(localAngVel), rotateAroundPoint.x(), rotateAroundPoint.y());
 
 			super.rotatePhysicsAroundPoint(rotateAroundPoint, localAngVel);
 
 
-			Shape path = at.createTransformedShape(super.getShape());
+			Shape path = at.createTransformedShape(getShape());
 
 			super.setShape(path);
 
@@ -147,7 +173,7 @@ public class Flipper extends AbstractGizmo {
 			super.rotatePhysicsAroundPoint(rotateAroundPoint, -localAngVel);
 
 
-			Shape path = at.createTransformedShape(super.getShape());
+			Shape path = at.createTransformedShape(getShape());
 
 			super.setShape(path);
 

@@ -54,11 +54,6 @@ public class RunBoard extends JPanel {
 			positionShape = shapeT.createTransformedShape(positionShape);
 
 			g.setColor(gizmo.getGizCol());
-			g2d.rotate(
-					Math.toRadians(gizmo.getGizAngle()),
-					positionShape.getBounds2D().getCenterX(),
-					positionShape.getBounds2D().getCenterY()
-			);
 			g2d.draw(shape);
 			g2d.fill(shape);
 
