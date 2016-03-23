@@ -74,7 +74,7 @@ public class BuildGUI {
 
 	private JPanel addSection(String sectionName, Container pane) {
 
-		JPanel sectPan = new JPanel(new GridLayout(2, 5));
+		JPanel sectPan = new JPanel(new GridLayout(2, 3));
 
 		sectPan.setBorder(new TitledBorder(BorderFactory.createLineBorder(Color.black), sectionName));
 

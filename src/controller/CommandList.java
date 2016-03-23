@@ -313,9 +313,14 @@ final class CommandList {
 					ProjectManager pm = CommandMapper.getPMRef();
 
 					List<String> keys = new ArrayList<String>();
+					List<Map.Entry<String, Integer>> keyEv = new ArrayList<>();
 
+					int i = 0;
 					for(Map.Entry<Map.Entry<String, Integer>, List<AbstractGizmo>> e : pm.getKeyConnects().entrySet()){
-						keys.add(KeyEvent.getKeyText(e.getKey().getValue()) + " - " + e.getKey().getKey());
+						keys.add(i + ": " + KeyEvent.getKeyText(e.getKey().getValue()) + " - " + e.getKey().getKey());
+						keyEv.add(e.getKey());
+
+						i++;
 					}
 
 					Object[] opt = keys.toArray();
@@ -334,9 +339,9 @@ final class CommandList {
 					);
 
 					if(keyToDisconnect != null){
-						String[] keyExplode = keyToDisconnect.split(" - ");
-						int keyCode = KeyEvent.getExtendedKeyCodeForChar(keyExplode[0].charAt(0));
-						String downOrUp = keyExplode[1];
+						int gizIndex = Integer.valueOf(keyToDisconnect.substring(0, keyToDisconnect.indexOf(':')));
+						int keyCode = keyEv.get(gizIndex).getValue();
+						String downOrUp = keyEv.get(gizIndex).getKey();
 
 						List<String> gizArray = new ArrayList<>();
 
@@ -345,7 +350,7 @@ final class CommandList {
 						if(gizList == null)
 							return;
 
-						int i = 0;
+						i = 0;
 						for(AbstractGizmo gizmo : gizList){
 							gizArray.add(i + ": " + gizmo.getType() + " at (" + gizmo.getXPos() + ", " + gizmo.getYPos() + ")");
 
@@ -369,7 +374,7 @@ final class CommandList {
 
 						if(gizmoToDisconnect != null){
 
-							int gizIndex = Integer.valueOf(gizmoToDisconnect.substring(0, gizmoToDisconnect.indexOf(':')));
+							gizIndex = Integer.valueOf(gizmoToDisconnect.substring(0, gizmoToDisconnect.indexOf(':')));
 
 							pm.removeKeyConnect(gizList.get(gizIndex).getName(), keyCode, downOrUp);
 						}
