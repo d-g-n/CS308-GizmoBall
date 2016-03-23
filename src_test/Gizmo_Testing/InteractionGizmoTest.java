@@ -133,7 +133,7 @@ public class InteractionGizmoTest extends BaseTestCase {
 
 		pm.removeKeyConnect(testAbsorber.getName(), 32, "down");
 
-		Assert.assertEquals("Should only have 0 keyconnects for that mapping after removal", 0, pm.getKeyConnects().get(new AbstractMap.SimpleEntry<String, Integer>("down", 32)).size());
+		Assert.assertNull("Should only have 0 keyconnects for that mapping after removal", pm.getKeyConnects().get(new AbstractMap.SimpleEntry<String, Integer>("down", 32)));
 
 
 	}
