@@ -22,7 +22,7 @@ public class BuildGUI {
 	private BuildListener controller;
 
 	public BuildGUI(Timer visualTimer, ProjectManager pm) {
-		frame = new JFrame("Palette");
+		frame = new JFrame("Build Mode");
 		controller = new BuildListener(this, visualTimer, pm);
 		frame.addWindowListener(controller);
 
