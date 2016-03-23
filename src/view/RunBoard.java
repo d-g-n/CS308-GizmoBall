@@ -21,7 +21,7 @@ import physics.LineSegment;
 public class RunBoard extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private static final boolean DEBUG_MODE = true;
+	private static final boolean DEBUG_MODE = false;
 	private ProjectManager pm;
 
 	public RunBoard(ProjectManager pm) {

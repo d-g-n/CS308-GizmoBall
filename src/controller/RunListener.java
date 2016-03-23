@@ -88,6 +88,9 @@ public class RunListener implements ActionListener {
 			case "About":
 				/* Some general information about the project */ break;
 			}
+
+			pm.pushVisualUpdate();
+
 		}
 	}else {
 		

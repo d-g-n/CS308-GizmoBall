@@ -142,7 +142,7 @@ public class RunGUI implements Observer {
 			return;
 
 		if(mainFrame != null)
-			//mainFrame.setTitle("Gizmoball - " + pm.);
+			mainFrame.setTitle("Gizmoball - " + (pm.getCurrentBoard() != null ? pm.getCurrentBoard() + " - " : "") + (pm.getTimer().isRunning() ? "RUNNING" : "PAUSED"));
 
 		changeStatusLabel(pm.getStatusLabel());
 		tv.getGizPanel().repaint();

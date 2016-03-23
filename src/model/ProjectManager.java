@@ -228,6 +228,11 @@ public class ProjectManager extends Observable {
 		resetScore();
 		gameOver = false;
 	}
+
+	public String getCurrentBoard(){
+		return currentBoard;
+	}
+
 	public boolean isBuildModeOn() {
 		return buildModeOn;
 	}
