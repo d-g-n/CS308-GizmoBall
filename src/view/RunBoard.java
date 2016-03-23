@@ -44,14 +44,12 @@ public class RunBoard extends JPanel {
 
 
 			Shape shape = gizmo.getShape();
-			Shape positionShape = new Rectangle2D.Double(gizmo.getXPos(), gizmo.getYPos(), gizmo.getWidth(), gizmo.getHeight());
 			AffineTransform shapeT = new AffineTransform();
 
 			double scaleFactor = (GizmoConstants.BOARD_WIDTH / GizmoConstants.X_CELLS);
 			shapeT.scale(scaleFactor, scaleFactor);
 
 			shape = shapeT.createTransformedShape(shape);
-			positionShape = shapeT.createTransformedShape(positionShape);
 
 			g.setColor(gizmo.getGizCol());
 			g2d.draw(shape);

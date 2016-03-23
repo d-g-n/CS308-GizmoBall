@@ -32,7 +32,7 @@ public class BuildGUI {
 		frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
 		frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
-		frame.setPreferredSize(new Dimension(700, 625));
+		//frame.setPreferredSize(new Dimension(700, 650));
 		addComponents(frame.getContentPane());
 		frame.pack();
 		frame.setLocationRelativeTo(null);
@@ -88,17 +88,28 @@ public class BuildGUI {
 		JSlider slider = new JSlider(min, max, initial);
 		slider.setName("Gravity");
 		slider.addChangeListener(controller);
-		pane.add(slider);
+
 
 		Hashtable<Integer, JLabel> labelTable = new Hashtable<Integer, JLabel>();
-		labelTable.put(new Integer(0), new JLabel("None"));
-		labelTable.put(new Integer(50), new JLabel("Gravity"));
-		labelTable.put(new Integer(100), new JLabel("Very High"));
+		labelTable.put(new Integer(0), new JLabel("None (0)"));
+		labelTable.put(new Integer(25), new JLabel("Default (25)"));
+		labelTable.put(new Integer(50), new JLabel("High (50)"));
+		labelTable.put(new Integer(75), new JLabel("Very High (75)"));
+		labelTable.put(new Integer(100), new JLabel("Extreme (100)"));
 		slider.setLabelTable(labelTable);
+		slider.setMinorTickSpacing(5);
 		slider.setMajorTickSpacing(25);
+		slider.setSnapToTicks(true);
 
 		slider.setPaintLabels(true);
 		slider.setPaintTicks(true);
+		JPanel sectPan = new JPanel(new BorderLayout());
+
+		sectPan.setBorder(new TitledBorder(BorderFactory.createLineBorder(Color.black), "Gravity"));
+
+		sectPan.add(slider);
+
+		pane.add(sectPan);
 
 	}
 
@@ -106,17 +117,28 @@ public class BuildGUI {
 		JSlider slider = new JSlider(min, max, initial);
 		slider.setName("Friction");
 		slider.addChangeListener(controller);
-		pane.add(slider);
+
 
 		Hashtable<Integer, JLabel> labelTable = new Hashtable<Integer, JLabel>();
-		labelTable.put(new Integer(0), new JLabel("None"));
-		labelTable.put(new Integer(50), new JLabel("Friction"));
-		labelTable.put(new Integer(100), new JLabel("Very High"));
+		labelTable.put(new Integer(0), new JLabel("None (0)"));
+		labelTable.put(new Integer(25), new JLabel("Default (0.025)"));
+		labelTable.put(new Integer(50), new JLabel("High (0.050)"));
+		labelTable.put(new Integer(75), new JLabel("Very High (0.075)"));
+		labelTable.put(new Integer(100), new JLabel("Extreme (0.10)"));
 		slider.setLabelTable(labelTable);
+		slider.setMinorTickSpacing(5);
 		slider.setMajorTickSpacing(25);
+		slider.setSnapToTicks(true);
 
 		slider.setPaintLabels(true);
 		slider.setPaintTicks(true);
+		JPanel sectPan = new JPanel(new BorderLayout());
+
+		sectPan.setBorder(new TitledBorder(BorderFactory.createLineBorder(Color.black), "Friction"));
+
+		sectPan.add(slider);
+
+		pane.add(sectPan);
 
 	}
 
